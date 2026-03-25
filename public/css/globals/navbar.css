@@ -1,10 +1,10 @@
 /* navbar outer container */
 #top-navbar {
-    width: 70%;
+    width: 65%;
     display: grid;
     grid-template-columns: 20% 60% 20%;
     margin: auto;
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
     margin-bottom: 0.5rem;
 }
 

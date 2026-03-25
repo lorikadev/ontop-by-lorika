@@ -1,3 +1,5 @@
+import { applyColorCorrections } from "../utils/apply-color-correctionS";
+
 /*
     Here we handle the initial set of the highlight color.
     We search in the localstorage for the key of the active color,
@@ -24,19 +26,6 @@ export const loadColorHighlight = () => {
                 .getPropertyValue(activeColorKey),
         );
 
-    //check for light colors to change text colors in navbar
-    const navCtaShop = document.getElementById('nav-cta-shop') as HTMLAnchorElement;
-    const navCtaCartSvg = document.querySelector('#nav-cta-cart>svg') as SVGAElement;
-
-    switch (activeColorKey) {
-        case "--yellow":
-        case "--ivory":
-            navCtaShop.style.color = 'var(--dark-text-color)';
-            navCtaCartSvg.style.fill = 'var(--dark-text-color)';
-            break;
-        default:
-            navCtaShop.style.color = 'var(--light-text-color)';
-            navCtaCartSvg.style.fill = 'var(--light-text-color)';
-            break;
-    }
+    //corrects the color corrections when using light or dark colors as highlighted color
+    applyColorCorrections(activeColorKey);
 }

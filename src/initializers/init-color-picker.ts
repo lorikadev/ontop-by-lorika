@@ -1,3 +1,5 @@
+import { applyColorCorrections } from "../utils/apply-color-correctionS";
+
 /* 
     At this point, in the localstorage, a var should be setted with name "--highlight-color".
     This var contains the active color var key and when we select one color-label
@@ -47,21 +49,8 @@ const setNewHighlightColor = (e: MouseEvent) => {
             colorLabel.classList.add('active');
     })
 
-    //check for light colors to change text colors in navbar
-    const navCtaShop = document.getElementById('nav-cta-shop') as HTMLAnchorElement;
-    const navCtaCartSvg = document.querySelector('#nav-cta-cart>svg') as SVGAElement;
-
-    switch (targetCssVarKey) {
-        case "--yellow":
-        case "--ivory":
-            navCtaShop.style.color = 'var(--dark-text-color)';
-            navCtaCartSvg.style.fill = 'var(--dark-text-color)';
-            break;
-        default:
-            navCtaShop.style.color = 'var(--light-text-color)';
-            navCtaCartSvg.style.fill = 'var(--light-text-color)';
-            break;
-    }
+    //corrects the color corrections when using light or dark colors as highlighted color
+    applyColorCorrections(targetCssVarKey);
 }
 
 /** this function load the initial state and click listeners of all color pickers */

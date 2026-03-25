@@ -57,6 +57,8 @@ button {
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
+    color: white;
+    transition: background-color 0.2s;
 }
 
 .button {
@@ -90,13 +92,21 @@ button.icon-35>img {
 .button.primary,
 button.primary {
     background-color: var(--highlight-color);
-    color: white;
-    transition: background-color 0.2s;
 }
 
 .button.primary:hover,
 button.primary:hover {
-    background-color: color-mix(in srgb, var(--highlight-color) 90%, black 10%);
+    background-color: color-mix(in srgb, var(--highlight-color) 80%, black 20%);
+}
+
+.button.secondary,
+button.secondary {
+    background-color: var(--secondary-highlight-color);
+}
+
+.button.secondary:hover,
+button.secondary:hover {
+    background-color: color-mix(in srgb, var(--secondary-highlight-color) 80%, black 20%);
 }
 
 /* !SECTION - BUTTONS */

@@ -1,18 +1,7 @@
 /* SECTION - HERO */
 #hero {
-    background: url("/images/logo/logo-ontop-grey-bg-hero.svg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 70%;
-
-    /*  Used to make aspect ratio of div as the image.
-        the numbers are the width and height of the background image */
-    /* NOTE - without this the height would crop the logo */
-    aspect-ratio: 1048 / 507;
-
+    width: 65%;
     margin: auto;
-    position: relative;
 }
 
 @media (max-width: 1200px) {
@@ -21,10 +10,48 @@
     }
 }
 
+#hero-3d-wrapper {
+    background: url("/images/logo/logo-ontop-grey-bg-hero.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /*  Used to make aspect ratio of div as the image.
+        the numbers are the width and height of the background image */
+    /* NOTE - without this the height would crop the logo */
+    aspect-ratio: 1048 / 507;
+
+    position: relative;
+}
+
+
 #hero-color-picker {
     position: absolute;
     bottom: 0;
     right: 10px;
+}
+
+#hero-cta {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    margin-top: 1.85rem;
+}
+
+#hero-cta>strong {
+    font-size: 2.5rem;
+    color: white;
+    line-height: 2.5rem;
+}
+
+#hero-cta-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+
+#hero-cta-buttons>a {
+    min-width: 7.25rem;
+    width: fit-content;
 }
 
 /* !SECTION - HERO */
