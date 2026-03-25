@@ -1,0 +1,30 @@
+/* SECTION - HERO */
+#hero {
+    background: url("/images/logo/logo-ontop-grey-bg-hero.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 70%;
+
+    /*  Used to make aspect ratio of div as the image.
+        the numbers are the width and height of the background image */
+    /* NOTE - without this the height would crop the logo */
+    aspect-ratio: 1048 / 507;
+
+    margin: auto;
+    position: relative;
+}
+
+@media (max-width: 1200px) {
+    #hero {
+        width: 95%;
+    }
+}
+
+#hero-color-picker {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+/* !SECTION - HERO */

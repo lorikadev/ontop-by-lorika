@@ -1,0 +1,52 @@
+---
+import "./color-picker.css";
+
+interface Props {
+    id: string;
+}
+const { id } = Astro.props;
+---
+
+<!-- NOTE - the initialization of the click functionalities of this color picker is made inside color-picker.ts -->
+<div class="color-picker-wrapper" id={id}>
+    <!-- ORANGE -->
+    <div class="color-label" data-color-css-var-key="--orange">
+        <strong>orange</strong>
+        <div class="color orange"></div>
+    </div>
+    <!-- YELLOW -->
+    <div class="color-label" data-color-css-var-key="--yellow">
+        <strong>yellow</strong>
+        <div class="color yellow"></div>
+    </div>
+    <!-- GREEN -->
+    <div class="color-label" data-color-css-var-key="--green">
+        <strong>green</strong>
+        <div class="color green"></div>
+    </div>
+    <!-- SHOCK BLUE -->
+    <div class="color-label" data-color-css-var-key="--shock-blue">
+        <strong>shock blue</strong>
+        <div class="color shock-blue"></div>
+    </div>
+    <!-- BLUE NAVY -->
+    <div class="color-label" data-color-css-var-key="--blue-navy">
+        <strong>blue navy</strong>
+        <div class="color blue-navy"></div>
+    </div>
+    <!-- IVORY -->
+    <div class="color-label" data-color-css-var-key="--ivory">
+        <strong>ivory</strong>
+        <div class="color ivory"></div>
+    </div>
+    <!-- DARK BLUE GREEN -->
+    <div class="color-label" data-color-css-var-key="--dark-blue-green">
+        <strong>dark blue green</strong>
+        <div class="color dark-blue-green"></div>
+    </div>
+    <!-- FUCHSIA -->
+    <div class="color-label" data-color-css-var-key="--fuchsia">
+        <strong>fuchsia</strong>
+        <div class="color fuchsia"></div>
+    </div>
+</div>

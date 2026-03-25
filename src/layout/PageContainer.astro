@@ -71,18 +71,29 @@ const {
         <!-- !SECTION - META -->
 
         <!-- SECTION - CSS -->
-        <link rel="stylesheet" href="/css/reset.css" />
-        <link rel="stylesheet" href="/css/vars.css" />
-        <link rel="stylesheet" href="/css/font-size.css" />
-        <link rel="stylesheet" href="/css/global.css" />
-        <link rel="stylesheet" href="/css/navbar.css" />
+        <link rel="stylesheet" href="/css/globals/reset.css" />
+        <link rel="stylesheet" href="/css/globals/vars.css" />
+        <link rel="stylesheet" href="/css/globals/font-size.css" />
+        <link rel="stylesheet" href="/css/globals/global.css" />
+        <link rel="stylesheet" href="/css/globals/navbar.css" />
         <!-- !SECTION - CSS -->
     </head>
     <!-- !SECTION - HEAD -->
     <!-- SECTION - BODY -->
     <body>
+        <!-- SECTION - INITIALIZERS -->
+        <script type="module">
+            import { loadColorHighlight } from "/src/initializers/load-color-highlight";
+            import { initColorPickers } from "/src/initializers/init-color-picker";
+
+            //this one goes before init color pickers to set the active color
+            loadColorHighlight();
+            initColorPickers();
+        </script>
+        <!-- !SECTION - INITIALIZERS -->
         <!-- NAVBAR -->
         <Navbar />
+        <!-- PAGE CONTENT -->
         <slot />
     </body>
     <!-- !SECTION - BODY -->

@@ -1,0 +1,16 @@
+:root {
+    --highlight-color: transparent;
+    --secondary-highlight-color: #636466;
+
+    --dark-text-color: #000000;
+    --light-text-color: #ffffff;
+
+    --orange: #f15a22;
+    --yellow: #fff200;
+    --green: #40ae49;
+    --shock-blue: #00aeef;
+    --blue-navy: #24408f;
+    --ivory: #fffde9;
+    --dark-blue-green: #007270;
+    --fuchsia: #ec008c;
+}

@@ -1,0 +1,94 @@
+.color-picker-wrapper {
+    border: 2px solid white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.325rem;
+    padding: 0.4rem 0.3rem;
+    width: fit-content;
+}
+
+.color-label {
+    position: relative;
+    transform: rotateZ(-90deg);
+    transition: all 0.2s;
+}
+
+.color-label>strong {
+    cursor: pointer;
+    background-color: var(--secondary-highlight-color);
+    color: white;
+
+    opacity: 0;
+
+    width: max-content;
+    padding: 0.3rem 0.55rem;
+    padding-right: 2rem;
+    border-radius: 1rem;
+
+    font-size: 0.45rem;
+    text-transform: uppercase;
+
+    position: absolute;
+    right: -0.4rem;
+    top: -0.25rem;
+
+    transition: opacity 0.2s;
+
+    z-index: 2;
+}
+
+.color-label.active,
+.color-label:hover {
+    transform: rotateZ(0deg);
+}
+
+.color-label.active>strong,
+.color-label:hover>strong {
+    display: inline;
+    opacity: 1;
+}
+
+.color {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 0.85rem;
+    height: 0.85rem;
+    position: relative;
+    z-index: 3;
+}
+
+/* SECTION - PICKER COLORS */
+.color.orange {
+    background-color: var(--orange);
+}
+
+.color.yellow {
+    background-color: var(--yellow);
+}
+
+.color.green {
+    background-color: var(--green);
+}
+
+.color.shock-blue {
+    background-color: var(--shock-blue);
+}
+
+.color.blue-navy {
+    background-color: var(--blue-navy);
+}
+
+.color.ivory {
+    background-color: var(--ivory);
+}
+
+.color.dark-blue-green {
+    background-color: var(--dark-blue-green);
+}
+
+.color.fuchsia {
+    background-color: var(--fuchsia);
+}
+
+/* !SECTION - PICKER COLORS */

@@ -1,10 +1,11 @@
 /* navbar outer container */
 #top-navbar {
-    width: 80%;
+    width: 70%;
     display: grid;
     grid-template-columns: 20% 60% 20%;
     margin: auto;
     padding: 0.75rem 0;
+    margin-bottom: 0.5rem;
 }
 
 @media (max-width: 1200px) {
@@ -16,7 +17,6 @@
 /* wrapper for logo that bring back to home */
 #logo-link-wrapper {
     align-content: center;
-    text-align: center;
 }
 
 #logo-link {
@@ -37,7 +37,7 @@
 }
 
 #top-navbar>ul>li>a {
-    color: white;
+    color: var(--light-text-color);
     text-decoration: none;
 }
 
@@ -47,7 +47,7 @@
     background-color: var(--highlight-color);
     width: 0%;
     height: 2px;
-    transition: 0.2s width;
+    transition: 0.2s width, 0.2s background-color;
 }
 
 #top-navbar>ul>li>a.active::after,
@@ -56,13 +56,15 @@
 }
 
 /* shop and cart action wrapper */
-#cta-wrapper {
+#nav-cta-wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    justify-self: end;
 }
 
-#cta-wrapper>a {
+#nav-cta-wrapper>a {
+    color: var(--light-text-color);
     align-self: center;
     max-height: 35px;
 }
