@@ -1,0 +1,68 @@
+/* navbar outer container */
+#top-navbar {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    margin: auto;
+    padding: 1rem 0;
+}
+
+@media (max-width: 1200px) {
+    #top-navbar {
+        width: 95%;
+    }
+}
+
+/* wrapper for logo that bring back to home */
+#logo-link-wrapper {
+    align-content: center;
+    text-align: center;
+}
+
+#logo-link {
+    height: 40px;
+    display: inline-block;
+}
+
+/* nav menu wrapper */
+#top-navbar>ul {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    gap: 2rem;
+}
+
+#top-navbar>ul>li {
+    list-style: none;
+}
+
+#top-navbar>ul>li>a {
+    color: white;
+    text-decoration: none;
+}
+
+#top-navbar>ul>li>a::after {
+    display: block;
+    content: '';
+    background-color: var(--highlight-color);
+    width: 0%;
+    height: 2px;
+    transition: 0.2s width;
+}
+
+#top-navbar>ul>li>a.active::after,
+#top-navbar>ul>li>a:hover::after {
+    width: 100%;
+}
+
+/* shop and cart action wrapper */
+#cta-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#cta-wrapper>a {
+    align-self: center;
+    max-height: 35px;
+}

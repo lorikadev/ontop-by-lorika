@@ -1,0 +1,134 @@
+/* responsive-typography.css
+- Mobile-first
+- Add to <head>: <meta name="viewport" content="width=device-width, initial-scale=1">
+- Use rem to respect user preferences (zoom/accessibility)
+*/
+
+/* ---------- BASE: fluid root font-size (min, ideal, max) ---------- */
+/* Set a minimum of 1rem (≈16px) to comply with WCAG and not break readability */
+html {
+    /* minimum 1rem, ideal value grows slightly with the viewport, maximum ~1.125rem */
+    font-size: clamp(1rem, 1rem + 0.5vw, 1.125rem);
+    -webkit-text-size-adjust: 100%;
+    /* avoid unexpected scaling on iOS */
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/* ---------- BODY / DEFAULT ---------- */
+body {
+    font-size: 1rem;
+    /* base: 1rem = html font-size */
+    line-height: 1.6;
+    color: #222;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- TYPOGRAPHIC SCALE (use rem so it scales with root) ---------- */
+h1 {
+    font-size: clamp(1.75rem, 1.2rem + 4.5vw, 3rem);
+    line-height: 1.08;
+    margin: 0.6em 0 0.4em;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: clamp(1.375rem, 1rem + 3.2vw, 2.25rem);
+    line-height: 1.12;
+    margin: 0.6em 0 0.4em;
+}
+
+h3 {
+    font-size: clamp(1.125rem, 0.95rem + 2.0vw, 1.75rem);
+    line-height: 1.2;
+    margin: 0.5em 0 0.35em;
+}
+
+h4 {
+    font-size: clamp(1rem, 0.9rem + 1.2vw, 1.25rem);
+    margin: 0.4em 0;
+}
+
+h5 {
+    font-size: 1rem;
+    margin: 0.4em 0;
+}
+
+h6 {
+    font-size: 0.875rem;
+    margin: 0.4em 0;
+}
+
+/* Body text and lists */
+p,
+there {
+    font-size: 1rem;
+}
+
+/* Small text variants */
+.small,
+small {
+    font-size: 0.875rem;
+}
+
+/* Lead paragraph */
+.lead {
+    font-size: clamp(1.0625rem, 1rem + 0.5vw, 1.25rem);
+    line-height: 1.5;
+}
+
+/* ---------- FORMS / INPUTS: respect rem for accessibility ---------- */
+input,
+textarea,
+select,
+button {
+    font: inherit;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* ---------- MINIMUM ACCESSIBILITY ---------- */
+/* Ensure line spacing and contrast */
+p,
+li,
+.lead {
+    line-height: 1.5;
+}
+
+/* When the container is large, increase the title scale slightly */
+@container (min-width: 60rem) {
+    .content h1 {
+        font-size: clamp(2rem, 1.6rem + 3.2vw, 3.25rem);
+    }
+
+    .content h2 {
+        font-size: clamp(1.5rem, 1.15rem + 2.4vw, 2.5rem);
+    }
+
+    .content p {
+        font-size: 1.0625rem;
+    }
+}
+
+/* ---------- media queries (fallback / refine) ---------- */
+/* Small adjustments for tablet/desktop range (mobile-first) */
+@media (min-width: 48rem) {
+    /* 768px */
+    html {
+        font-size: clamp(1.025rem, 1rem + 0.6vw, 1.15rem);
+    }
+}
+
+@media (min-width: 75rem) {
+    /* 1200px */
+    html {
+        font-size: clamp(1.05rem, 1rem + 0.9vw, 1.2rem);
+    }
+}

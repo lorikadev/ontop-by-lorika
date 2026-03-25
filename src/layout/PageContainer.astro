@@ -1,0 +1,89 @@
+---
+import Navbar from "./Navbar.astro";
+
+interface Props {
+    // Base SEO
+    title: string;
+    description: string;
+    canonical: string;
+    robots: string;
+
+    // Open Graph
+    ogImage: string;
+    ogType?: "website";
+    //TODO va estratto il locale corretto rispetto al url
+    ogLocale: string;
+    ogSiteName: string;
+
+    // Twitter
+    twitterCard?: "summary_large_image";
+    twitterSite: string;
+    twitterCreator?: string;
+}
+
+const {
+    title,
+    description,
+    canonical,
+    robots = "index, follow",
+
+    ogImage,
+    ogType = "website",
+    ogLocale = "en_US",
+    ogSiteName,
+
+    twitterCard = "summary_large_image",
+    twitterSite,
+    twitterCreator,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <!-- SECTION - HEAD -->
+    <head>
+        <!-- SECTION - META -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- SEO base -->
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="robots" content={robots} />
+        {canonical && <link rel="canonical" href={canonical} />}
+
+        <!-- Open Graph -->
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:site_name" content={ogSiteName} />
+        <meta property="og:locale" content={ogLocale} />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content={twitterCard} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:site" content={twitterSite} />
+        <meta name="twitter:creator" content={twitterCreator} />
+        <!-- !SECTION - META -->
+
+        <!-- SECTION - CSS -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/vars.css" />
+        <link rel="stylesheet" href="/css/font-size.css" />
+        <link rel="stylesheet" href="/css/global.css" />
+        <link rel="stylesheet" href="/css/navbar.css" />
+        <!-- !SECTION - CSS -->
+    </head>
+    <!-- !SECTION - HEAD -->
+    <!-- SECTION - BODY -->
+    <body>
+        <!-- NAVBAR -->
+        <Navbar />
+        <slot />
+    </body>
+    <!-- !SECTION - BODY -->
+</html>

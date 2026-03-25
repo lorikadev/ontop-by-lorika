@@ -1,0 +1,114 @@
+---
+//NOTE - the second values should always be the current page root
+/*
+ *  /en/home -> ['en', 'home'] -> 'home'
+ */
+const activeLinkPath = Astro.url.pathname.split("/")[2] ?? "";
+
+//OGGETTO PROXY PER SANITY
+const navContent = {
+    main: {
+        home: { href: "/", label: "home" },
+        chiSiamo: { href: "/chi-siamo", label: "chi siamo" },
+        ontopCover: { href: "/ontop-cover", label: "ontop cover" },
+        ambassadors: { href: "/ambassadors", label: "ambassadors" },
+    },
+    cta: {
+        shop: {
+            href: "/shop",
+            label: "shop",
+            ariaLabel: "vai alla pagina del negozio",
+        },
+        cart: {
+            href: "/cart",
+            ariaLabel: "vai alla pagina del carrello",
+            icon: "/images/icons/cart-white.svg",
+        },
+    },
+};
+---
+
+<nav id="top-navbar" aria-label="Navigazione principale">
+    <!-- LOGO -->
+    <div id="logo-link-wrapper">
+        <a id="logo-link" href="/" aria-label="home link">
+            <img
+                src="/images/logo/logo-lorika-white.svg"
+                alt="logo Lorika"
+                width="120"
+                height="40"
+            />
+        </a>
+    </div>
+
+    <!-- SECTION - MAIN MENU -->
+    <ul>
+        <li>
+            <a
+                href={navContent.main.home.href}
+                aria-current={activeLinkPath === "" ? "page" : undefined}
+                class:list={{ active: activeLinkPath === "" }}
+            >
+                {navContent.main.home.label}
+            </a>
+        </li>
+
+        <li>
+            <a
+                href={navContent.main.chiSiamo.href}
+                aria-current={activeLinkPath === "/chi-siamo"
+                    ? "page"
+                    : undefined}
+                class:list={{ active: activeLinkPath === "/chi-siamo" }}
+            >
+                {navContent.main.chiSiamo.label}
+            </a>
+        </li>
+
+        <li>
+            <a
+                href={navContent.main.ontopCover.href}
+                aria-current={activeLinkPath === "/ontop-cover"
+                    ? "page"
+                    : undefined}
+                class:list={{ active: activeLinkPath === "/ontop-cover" }}
+            >
+                {navContent.main.ontopCover.label}
+            </a>
+        </li>
+
+        <li>
+            <a
+                href={navContent.main.ambassadors.href}
+                aria-current={activeLinkPath === "/ambassadors"
+                    ? "page"
+                    : undefined}
+                class:list={{ active: activeLinkPath === "/ambassadors" }}
+            >
+                {navContent.main.ambassadors.label}
+            </a>
+        </li>
+    </ul>
+    <!-- !SECTION - MAIN MENU -->
+
+    <!-- CTA -->
+    <div id="cta-wrapper">
+        <a
+            class="button primary wide"
+            href={navContent.cta.shop.href}
+            aria-label={navContent.cta.shop.ariaLabel}
+            aria-current={activeLinkPath === "/shop" ? "page" : undefined}
+        >
+            {navContent.cta.shop.label}
+        </a>
+
+        <a
+            class="button primary icon-35"
+            href={navContent.cta.cart.href}
+            aria-label={navContent.cta.cart.ariaLabel}
+            aria-current={activeLinkPath === "/cart" ? "page" : undefined}
+        >
+            <img src={navContent.cta.cart.icon} alt="" width="25" height="25" />
+        </a>
+    </div>
+</nav>

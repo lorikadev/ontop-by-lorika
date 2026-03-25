@@ -1,0 +1,102 @@
+/* SECTION - FONT */
+@font-face {
+    font-family: "Archivo";
+    src: url("/fonts/archivo-light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Archivo";
+    src: url("/fonts/archivo-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Archivo";
+    src: url("/fonts/archivo-bold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Archivo";
+    src: url("/fonts/archivo-semi-bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+html,
+body {
+    font-family: Archivo;
+    font-weight: 300;
+    background-color: black;
+}
+
+b,
+strong {
+    font-family: Archivo;
+    font-weight: 700;
+}
+
+b.semi,
+strong.semi {
+    font-family: Archivo;
+    font-weight: 600;
+}
+
+/* !SECTION - FONT */
+
+/* SECTION - BUTTONS */
+.button,
+button {
+    border-radius: 1rem;
+    padding: 0.25rem 1rem;
+    border-width: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.button {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button.wide,
+button.wide {
+    padding: 0.25rem 1.5rem;
+}
+
+/* made to work with 25x25 icons */
+.button.icon-35,
+button.icon-35 {
+    padding: 0 5px;
+    border-radius: 32px;
+    width: 35px !important;
+    height: 35px !important;
+    display: flex;
+    align-items: center;
+}
+
+.button.icon-35>img,
+button.icon-35>img {
+    margin: auto;
+}
+
+.button.primary,
+button.primary {
+    background-color: var(--highlight-color);
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.button.primary:hover,
+button.primary:hover {
+    background-color: color-mix(in srgb, var(--highlight-color) 90%, black 10%);
+}
+
+/* !SECTION - BUTTONS */
