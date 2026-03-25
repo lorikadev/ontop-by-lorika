@@ -3,50 +3,141 @@ import "./color-picker.css";
 
 interface Props {
     id: string;
+
+    groupAriaLabel?: string;
+
+    orangeLabel?: string;
+    yellowLabel?: string;
+    greenLabel?: string;
+    shockBlueLabel?: string;
+    blueNavyLabel?: string;
+    ivoryLabel?: string;
+    darkBlueGreenLabel?: string;
+    fuchsiaLabel?: string;
 }
-const { id } = Astro.props;
+const {
+    id,
+    groupAriaLabel = "Select a color",
+
+    orangeLabel = "orange",
+    yellowLabel = "yellow",
+    greenLabel = "green",
+    shockBlueLabel = "shock blue",
+    blueNavyLabel = "blue navy",
+    ivoryLabel = "ivory",
+    darkBlueGreenLabel = "dark blue green",
+    fuchsiaLabel = "fuchsia",
+} = Astro.props;
 ---
 
 <!-- NOTE - the initialization of the click functionalities of this color picker is made inside color-picker.ts -->
-<div class="color-picker-wrapper" id={id}>
+<div
+    class="color-picker-wrapper"
+    id={id}
+    role="radiogroup"
+    aria-label={groupAriaLabel}
+>
     <!-- ORANGE -->
-    <div class="color-label" data-color-css-var-key="--orange">
-        <strong>orange</strong>
-        <div class="color orange"></div>
-    </div>
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--orange"
+        role="radio"
+        aria-checked="false"
+        aria-label={orangeLabel}
+    >
+        <strong>{orangeLabel}</strong>
+        <div class="color orange" aria-hidden="true"></div>
+    </button>
+
     <!-- YELLOW -->
-    <div class="color-label" data-color-css-var-key="--yellow">
-        <strong>yellow</strong>
-        <div class="color yellow"></div>
-    </div>
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--yellow"
+        role="radio"
+        aria-checked="false"
+        aria-label={yellowLabel}
+    >
+        <strong>{yellowLabel}</strong>
+        <div class="color yellow" aria-hidden="true"></div>
+    </button>
+
     <!-- GREEN -->
-    <div class="color-label" data-color-css-var-key="--green">
-        <strong>green</strong>
-        <div class="color green"></div>
-    </div>
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--green"
+        role="radio"
+        aria-checked="false"
+        aria-label={greenLabel}
+    >
+        <strong>{greenLabel}</strong>
+        <div class="color green" aria-hidden="true"></div>
+    </button>
+
     <!-- SHOCK BLUE -->
-    <div class="color-label" data-color-css-var-key="--shock-blue">
-        <strong>shock blue</strong>
-        <div class="color shock-blue"></div>
-    </div>
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--shock-blue"
+        role="radio"
+        aria-checked="false"
+        aria-label={shockBlueLabel}
+    >
+        <strong>{shockBlueLabel}</strong>
+        <div class="color shock-blue" aria-hidden="true"></div>
+    </button>
+
     <!-- BLUE NAVY -->
-    <div class="color-label" data-color-css-var-key="--blue-navy">
-        <strong>blue navy</strong>
-        <div class="color blue-navy"></div>
-    </div>
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--blue-navy"
+        role="radio"
+        aria-checked="false"
+        aria-label={blueNavyLabel}
+    >
+        <strong>{blueNavyLabel}</strong>
+        <div class="color blue-navy" aria-hidden="true"></div>
+    </button>
+
     <!-- IVORY -->
-    <div class="color-label" data-color-css-var-key="--ivory">
-        <strong>ivory</strong>
-        <div class="color ivory"></div>
-    </div>
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--ivory"
+        role="radio"
+        aria-checked="false"
+        aria-label={ivoryLabel}
+    >
+        <strong>{ivoryLabel}</strong>
+        <div class="color ivory" aria-hidden="true"></div>
+    </button>
+
     <!-- DARK BLUE GREEN -->
-    <div class="color-label" data-color-css-var-key="--dark-blue-green">
-        <strong>dark blue green</strong>
-        <div class="color dark-blue-green"></div>
-    </div>
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--dark-blue-green"
+        role="radio"
+        aria-checked="false"
+        aria-label={darkBlueGreenLabel}
+    >
+        <strong>{darkBlueGreenLabel}</strong>
+        <div class="color dark-blue-green" aria-hidden="true"></div>
+    </button>
+
     <!-- FUCHSIA -->
-    <div class="color-label" data-color-css-var-key="--fuchsia">
-        <strong>fuchsia</strong>
-        <div class="color fuchsia"></div>
-    </div>
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--fuchsia"
+        role="radio"
+        aria-checked="false"
+        aria-label={fuchsiaLabel}
+    >
+        <strong>{fuchsiaLabel}</strong>
+        <div class="color fuchsia" aria-hidden="true"></div>
+    </button>
 </div>

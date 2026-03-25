@@ -1,5 +1,25 @@
 ---
 import ColorPicker from "../components/ColorPicker/ColorPicker.astro";
+
+interface Props {
+    // CMS (fallback temporanei)
+    heroTitle?: string;
+
+    buyNowLabel?: string;
+    buyNowAriaLabel?: string;
+
+    discoverLabel?: string;
+    discoverAriaLabel?: string;
+}
+const {
+    heroTitle = "FULL-FRAME COVER <br/> FOR YOUR SMART GLASSES",
+
+    buyNowLabel = "buy now",
+    buyNowAriaLabel = "Buy now - vai alla pagina di acquisto",
+
+    discoverLabel = "discover",
+    discoverAriaLabel = "Discover - scopri il prodotto",
+} = Astro.props;
 ---
 
 <!-- INDEX STYLE -->
@@ -11,15 +31,26 @@ import ColorPicker from "../components/ColorPicker/ColorPicker.astro";
         <div id="hero-3d-wrapper">
             <ColorPicker id="hero-color-picker" />
         </div>
+
         <div id="hero-cta">
-            <strong> FULL-FRAME COVER <br /> FOR YOUR SMART GLASSES </strong>
+            <strong set:html={heroTitle
+            }></strong>
+
             <div id="hero-cta-buttons">
-                <a class="button primary">buy now</a>
-                <a class="button secondary">discover</a>
+                <a class="button primary" href="#" aria-label={buyNowAriaLabel}>
+                    {buyNowLabel}
+                </a>
+
+                <a
+                    class="button secondary"
+                    href="#"
+                    aria-label={discoverAriaLabel}
+                >
+                    {discoverLabel}
+                </a>
             </div>
         </div>
     </div>
-
     <!-- !SECTION - HERO -->
 </main>
 <!-- !SECTION - MAIN -->

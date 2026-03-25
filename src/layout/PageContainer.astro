@@ -19,6 +19,9 @@ interface Props {
     twitterCard?: "summary_large_image";
     twitterSite: string;
     twitterCreator?: string;
+
+    // Accessibility
+    lang?: string;
 }
 
 const {
@@ -35,11 +38,13 @@ const {
     twitterCard = "summary_large_image",
     twitterSite,
     twitterCreator,
+
+    lang = "en",
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
     <!-- SECTION - HEAD -->
     <head>
         <!-- SECTION - META -->
