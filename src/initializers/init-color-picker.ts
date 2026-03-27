@@ -1,4 +1,4 @@
-import { applyColorCorrections } from "../utils/apply-color-correctionS";
+import { applyColorCorrections } from "../utils/apply-color-corrections";
 
 /* 
     At this point, in the localstorage, a var should be setted with name "--highlight-color".

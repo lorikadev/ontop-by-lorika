@@ -15,6 +15,13 @@
 
 @font-face {
     font-family: "Archivo";
+    src: url("/fonts/archivo-medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Archivo";
     src: url("/fonts/archivo-bold.woff2") format("woff2");
     font-weight: 600;
     font-style: normal;
@@ -110,3 +117,95 @@ button.secondary:hover {
 }
 
 /* !SECTION - BUTTONS */
+
+/* SECTION - SPACING */
+.p-0 {
+    padding: 0;
+}
+
+.p-1 {
+    padding: 1rem;
+}
+
+.p-2 {
+    padding: 2rem;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.my-05 {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.mt-05 {
+    margin-top: 0.5rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mb-05 {
+    margin-bottom: 0.5rem;
+}
+
+/* !SECTION - SPACING */
+
+/* SECTION - TEXT */
+.text-light {
+    color: var(--light-text-color);
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fs-5 {
+    font-size: 5rem;
+}
+
+.fs-45 {
+    font-size: 4.5rem;
+}
+
+.fs-2 {
+    font-size: 2rem;
+}
+
+.fs-25 {
+    font-size: 2.5rem;
+}
+
+.fs-3 {
+    font-size: 3rem;
+}
+
+.t-justify {
+    text-align: justify;
+    text-align-last: justify;
+}
+
+.t-uppercase {
+    text-transform: uppercase;
+}
+
+/* !SECTION - TEXT */

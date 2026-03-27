@@ -1,7 +1,28 @@
+/* SECTION - GENERICS */
+.cromed {
+    background-image: url('/images/images/sfondo-cromato.jpg');
+    background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.highlighted-container {
+    background-color: var(--highlight-color);
+    transition: background-color 0.2s;
+}
+
+.sub-hero {
+    width: 100%;
+    margin: auto;
+}
+
+/* !SECTION - GENERICS */
+
 /* SECTION - HERO */
 #hero {
     width: 65%;
     margin: auto;
+    padding-bottom: 3rem;
 }
 
 @media (max-width: 1200px) {
@@ -55,3 +76,194 @@
 }
 
 /* !SECTION - HERO */
+
+/* SECTION - LIGHT SECTION */
+#light-section {
+    background-color: #f9f9f9;
+}
+
+#light-section>.container {
+    width: 80%;
+    margin: auto;
+}
+
+@media (max-width: 1200px) {
+    #light-section>.container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 700px) {
+    #light-section>.container {
+        width: 95%;
+    }
+}
+
+/* BENTO LIGHT */
+/* DESKTOP */
+#bento-light {
+    padding: 2rem 0;
+    display: grid;
+    gap: 0.75em;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-auto-flow: row;
+    grid-template-areas:
+        "item-1 item-1 item-1 item-1 item-2 item-2 item-2 item-2 item-3 item-3"
+        "item-1 item-1 item-1 item-1 item-2 item-2 item-2 item-2 item-3 item-3"
+        "item-1 item-1 item-1 item-1 item-2 item-2 item-2 item-2 item-3 item-3"
+        "item-1 item-1 item-1 item-1 item-2 item-2 item-2 item-2 item-3 item-3"
+        "item-1 item-1 item-1 item-1 item-2 item-2 item-2 item-2 item-3 item-3"
+        "item-1 item-1 item-1 item-1 item-5 item-5 item-5 item-6 item-6 item-6"
+        "item-1 item-1 item-1 item-1 item-5 item-5 item-5 item-6 item-6 item-6"
+        "item-4 item-4 item-4 item-4 item-5 item-5 item-5 item-6 item-6 item-6"
+        "item-4 item-4 item-4 item-4 item-5 item-5 item-5 item-6 item-6 item-6"
+        "item-4 item-4 item-4 item-4 item-5 item-5 item-5 item-6 item-6 item-6"
+        "item-4 item-4 item-4 item-4 item-5 item-5 item-5 item-6 item-6 item-6";
+}
+
+#bento-light>* {
+    border-radius: 10px;
+}
+
+/* break word to no go over width inside bento squares */
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5,
+.item-6 {
+    overflow-wrap: break-word;
+}
+
+/* DIV WITH TEXTS */
+.item-2,
+.item-5,
+.item-6 {
+    padding: 2rem;
+}
+
+/* DYNAMIC TEXT SIZE DESKTOP -> TABLET -> MOBILE */
+.item-2 h1 {
+    font-size: clamp(2rem, 2rem + 2vw, 5rem);
+}
+.item-5 h1,
+.item-6 h1 {
+    font-size: clamp(1.5rem, 1rem + 1.5vw, 2rem);
+}
+.item-5 h2,
+.item-6 h2 {
+    font-size: clamp(1rem, 0.6rem + 0.75vw, 2rem);
+}
+.item-2 h3 {
+    font-size: clamp(1rem, 0.5rem + 1.5vw, 4rem);
+}
+.item-2 p,
+.item-5 p,
+.item-6 p {
+    font-size: clamp(0.8rem, 0.7rem + 0.5vw, 1rem);
+    line-height: 1.25rem;
+}
+.item-6 small {
+    font-size: clamp(0.65rem, 0.5rem + 0.25vw, 0.8rem);
+}
+
+/* BENTO ITEM MICRO HANDLING */
+.item-1 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    grid-area: item-1;
+}
+
+.item-2 {
+    grid-area: item-2;
+    background-color: white;
+}
+
+.item-3 {
+    grid-area: item-3;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 35%;
+}
+
+.item-4 {
+    grid-area: item-4;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.item-5 {
+    grid-area: item-5;
+}
+
+.item-6 {
+    grid-area: item-6;
+}
+
+/* TABLET */
+@media (max-width: 1200px) {
+    #bento-light {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 1rem;
+        grid-template-areas:
+            "item-1 item-1 item-1 item-2 item-2 item-2"
+            "item-3 item-3 item-5 item-5 item-5 item-5"
+            "item-6 item-6 item-6 item-4 item-4 item-4";
+
+    }
+
+    .item-2,
+    .item-5,
+    .item-6 {
+        padding: 1rem;
+    }
+
+    .item-4 {
+        background-size: 150%;
+    }
+
+    .item-2 p,
+    .item-5 p,
+    .item-6 p {
+        line-height: 1rem;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    #bento-light {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, auto);
+        gap: 1rem;
+        grid-template-areas:
+            "item-1"
+            "item-2"
+            "item-3"
+            "item-5"
+            "item-4"
+            "item-6";
+    }
+
+    /* DIV WITH BG */
+    .item-1 {
+        background-size: 175%;
+    }
+
+    .item-1,
+    .item-3,
+    .item-4 {
+        height: 300px;
+    }
+
+    .item-4 {
+        background-size: 120%;
+        background-position: 90%;
+        height: 200px;
+    }
+}
+
+/* !SECTION - LIGHT SECTION */

@@ -11,7 +11,8 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
     const primaryButtons = [
         ...document.querySelectorAll('button.primary'),
         ...document.querySelectorAll('.button.primary'),
-    ] as HTMLElement[]
+    ] as HTMLElement[];
+    const highlightedContainers = document.querySelectorAll('.highlighted-container') as NodeListOf<HTMLElement>;
     //!SECTION - ELEMENTS TO CORRECT
 
     switch (cssColorVarKey) {
@@ -21,12 +22,14 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
             navCtaShop.style.color = 'var(--dark-text-color)';
             navCtaCartSvg.style.fill = 'var(--dark-text-color)';
             primaryButtons.forEach(pb => pb.style.color = 'var(--dark-text-color)');
+            highlightedContainers.forEach(hc => hc.style.color = 'var(--dark-text-color)');
             break;
         //DARK COLORS
         default:
             navCtaShop.style.color = 'var(--light-text-color)';
             navCtaCartSvg.style.fill = 'var(--light-text-color)';
             primaryButtons.forEach(pb => pb.style.color = 'var(--light-text-color)');
+            highlightedContainers.forEach(hc => hc.style.color = 'var(--light-text-color)');
             break;
     }
 }

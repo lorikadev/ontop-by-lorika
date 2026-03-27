@@ -8,7 +8,7 @@
 /* Set a minimum of 1rem (≈16px) to comply with WCAG and not break readability */
 html {
     /* minimum 1rem, ideal value grows slightly with the viewport, maximum ~1.125rem */
-    font-size: clamp(1rem, 1rem + 0.5vw, 1.125rem);
+    font-size: clamp(0.9rem, 1rem + 0.5vw, 1.5rem);
     -webkit-text-size-adjust: 100%;
     /* avoid unexpected scaling on iOS */
     box-sizing: border-box;
@@ -75,7 +75,7 @@ there {
 /* Small text variants */
 .small,
 small {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
 }
 
 /* Lead paragraph */
@@ -120,6 +120,7 @@ li,
 /* ---------- media queries (fallback / refine) ---------- */
 /* Small adjustments for tablet/desktop range (mobile-first) */
 @media (min-width: 48rem) {
+
     /* 768px */
     html {
         font-size: clamp(1.025rem, 1rem + 0.6vw, 1.15rem);
@@ -127,6 +128,7 @@ li,
 }
 
 @media (min-width: 75rem) {
+
     /* 1200px */
     html {
         font-size: clamp(1.05rem, 1rem + 0.9vw, 1.2rem);

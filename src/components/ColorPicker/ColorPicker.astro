@@ -3,9 +3,10 @@ import "./color-picker.css";
 
 interface Props {
     id: string;
-
+    layout?: 'horizontal' | 'vertical';
+    
+    //CMS
     groupAriaLabel?: string;
-
     orangeLabel?: string;
     yellowLabel?: string;
     greenLabel?: string;
@@ -17,8 +18,10 @@ interface Props {
 }
 const {
     id,
-    groupAriaLabel = "Select a color",
+    layout = "vertical",
 
+    //CMS
+    groupAriaLabel = "Select a color",
     orangeLabel = "orange",
     yellowLabel = "yellow",
     greenLabel = "green",
@@ -32,7 +35,7 @@ const {
 
 <!-- NOTE - the initialization of the click functionalities of this color picker is made inside color-picker.ts -->
 <div
-    class="color-picker-wrapper"
+    class={"color-picker-wrapper " + layout}
     id={id}
     role="radiogroup"
     aria-label={groupAriaLabel}

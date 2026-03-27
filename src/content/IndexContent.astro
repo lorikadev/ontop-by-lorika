@@ -1,25 +1,82 @@
 ---
 import ColorPicker from "../components/ColorPicker/ColorPicker.astro";
+import { cleantHtml } from "../utils/clean-html";
 
 interface Props {
-    // CMS (fallback temporanei)
+    // CMS
+    // HERO
     heroTitle?: string;
-
     buyNowLabel?: string;
     buyNowAriaLabel?: string;
-
     discoverLabel?: string;
     discoverAriaLabel?: string;
-}
-const {
-    heroTitle = "FULL-FRAME COVER <br/> FOR YOUR SMART GLASSES",
 
+    //LIGHT SECTION
+    productPhotoAriaLabel?: string;
+    productPhotoAndModelsAriaLabel?: string;
+    item2Content?: string;
+    item5Content?: string;
+    item6Content?: string;
+}
+
+let {
+    // HERO
+    heroTitle = "FULL-FRAME COVER <br/> FOR YOUR SMART GLASSES",
     buyNowLabel = "buy now",
     buyNowAriaLabel = "Buy now - vai alla pagina di acquisto",
-
     discoverLabel = "discover",
     discoverAriaLabel = "Discover - scopri il prodotto",
+    productPhotoAriaLabel = "Foto del prodotto",
+    productPhotoAndModelsAriaLabel = "Foto del prodotto su modelli",
+
+    //LIGHT SECTION
+    item2Content = `
+        <h1 class="m-0 t-uppercase">proteggi</h1>
+        <h3 class="m-0 t-uppercase">quello che indossi</h3>
+        <h3 class="m-0 mb-05 t-uppercase fw-400">senza appesantirlo</h3>
+        <p class="fs-15">
+            <span class="fw-500" style="line-height: 0px;">
+                Una cover progettata per difendere i tuoi smart glasses da urti, graffi e segni dell'uso quotidiano.
+                Una scocca rigida che copre montatura e aste senza aggiungere peso, senza cambiare la calzata.
+            </span>
+            <b class="fw-600" style="display: block; margin-top: 0.25rem;">
+                Perché ciò che usi ogni giorno merita di durare.
+            </b>
+        </p>
+    `,
+    item5Content = `
+        <h1 class="m-0 p-0 t-uppercase">Personalizza</h1>
+        <h2 class="mb-05">
+            Cambia look in un secondo. <br /> Letteralmente.
+        </h2>
+        <p class="fw-500 mb-1">
+            Una palette pensata per adattarsi a stili, momenti e occasioni diverse.
+            Puoi cambiare cover quando vuoi: per l'outfit, per l'occasione o semplicemente perché hai voglia di qualcosa di diverso.
+            <br />
+            Gli stessi occhiali, ogni volta diversi.
+        </p>
+    `,
+    item6Content = `
+        <h1 class="m-0 p-0 t-uppercase">design</h1>
+        <h2 class="mb-05">
+            Segue la forma originale,
+            non la nasconde.
+        </h2>
+        <p class="mb-1 fw-500">
+            Le linee restano pulite, la calzata è precisa e ogni dettaglio si integra perfettamente con la montatura.
+            Si applica e si rimuove in un attimo, con un semplice click.
+            <br />
+            Una cover che sembra parte degli occhiali, non un'aggiunta.
+        </p>
+        <small>
+            Modello compatibile con Rayban | Meta Gen1 e Gen2
+        </small>
+    `,
 } = Astro.props;
+
+item2Content = cleantHtml(item2Content);
+item5Content = cleantHtml(item5Content);
+item6Content = cleantHtml(item6Content);
 ---
 
 <!-- INDEX STYLE -->
@@ -28,19 +85,18 @@ const {
 <main>
     <!-- SECTION - HERO -->
     <div id="hero">
+        <!-- 3D WRAPPER -->
         <div id="hero-3d-wrapper">
+            <!-- COLOR PICKER -->
             <ColorPicker id="hero-color-picker" />
         </div>
-
+        <!-- HERO CTA -->
         <div id="hero-cta">
-            <strong set:html={heroTitle
-            }></strong>
-
+            <strong set:html={heroTitle} />
             <div id="hero-cta-buttons">
                 <a class="button primary" href="#" aria-label={buyNowAriaLabel}>
                     {buyNowLabel}
                 </a>
-
                 <a
                     class="button secondary"
                     href="#"
@@ -52,5 +108,62 @@ const {
         </div>
     </div>
     <!-- !SECTION - HERO -->
+
+    <!-- SECTION - LIGHT SECTION -->
+    <section id="light-section">
+        <div class="container">
+            <!-- BENTO LIGHT -->
+            <div id="bento-light">
+                <!-- ITEM-1 -->
+                <div
+                    class="item-1"
+                    style="background-image: url('/images/images/ontop-decomposto.jpg');"
+                    role="img"
+                    aria-label={productPhotoAriaLabel}
+                >
+                </div>
+                <!-- ITEM-2 -->
+                <div class="item-2">
+                    <div set:html={item2Content} />
+                </div>
+                <!-- ITEM-3 -->
+                <div
+                    class="item-3"
+                    role="img"
+                    aria-label={productPhotoAndModelsAriaLabel}
+                    style="background-image: url('/images/images/coppia-modelli-ontop.jpg');"
+                >
+                </div>
+                <!-- ITEM-4 -->
+                <div
+                    class="item-4"
+                    style="background-image: url('/images/images/ontop-prodotto-laterale-less-cover-zoom.jpg');"
+                    role="img"
+                    aria-label={productPhotoAriaLabel}
+                >
+                </div>
+                <!-- ITEM-5 -->
+                <div class="cromed text-light item-5">
+                    <div set:html={item5Content} />
+                    <ColorPicker
+                        id="white-bent-color-picker"
+                        layout="horizontal"
+                    />
+                </div>
+                <!-- ITEM-6 -->
+                <div class="highlighted-container item-6">
+                    <div set:html={item6Content} />
+                </div>
+            </div>
+        </div>
+
+        <!-- SUB HERO -->
+        <img
+            class="sub-hero"
+            src="/images/images/modella-close-up-ontop.jpg"
+            alt={productPhotoAndModelsAriaLabel}
+        />
+    </section>
+    <!-- !SECTION - LIGHT SECTION -->
 </main>
 <!-- !SECTION - MAIN -->
