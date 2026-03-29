@@ -1,0 +1,63 @@
+---
+import { cleantHtml } from '../utils/clean-html';
+
+interface Props {
+    companyBlockHtml?: string;
+    addressBlockHtml?: string;
+    followUsLabel?: string;
+}
+
+//cms
+const {
+    companyBlockHtml = `
+        <b>LORIKA s.r.l.</b>
+        <br />
+        <b>ONTOP a product by LORIKA s.r.l.</b>
+    `,
+    addressBlockHtml = `
+        <b>ROMA, ITALIA</b>
+        <br />
+        <b>Via Flaminia 330</b>
+    `,
+    followUsLabel = "FOLLOW US ON:",
+} = Astro.props;
+---
+
+
+<footer class="pt-1 pb-5">
+    <div class="container">
+        <!-- OWNERS -->
+        <div set:html={cleantHtml(companyBlockHtml)}></div>
+
+        <!-- ADDRESS -->
+        <div set:html={cleantHtml(addressBlockHtml)}></div>
+        
+        <!-- SOCIAL -->
+        <div>
+            <b> {followUsLabel} </b>
+            <div id="socials-container" class="mt-05">
+                <a href="#TODO" class="social-button large-icon">
+                    <img src="/images/logo/socials/facebook.svg" alt="brand social logo" />
+                </a>
+                <a href="#TODO" class="social-button">
+                    <img src="/images/logo/socials/twitter-x.svg" alt="brand social logo" />
+                </a>
+                <a href="#TODO" class="social-button">
+                    <img src="/images/logo/socials/youtube.svg" alt="brand social logo" />
+                </a>
+                <a href="#TODO" class="social-button super-large-icon">
+                    <img src="/images/logo/socials/instagram.svg" alt="brand social logo" />
+                </a>
+                <a href="#TODO" class="social-button super-small-icon">
+                    <img src="/images/logo/socials/linkedin.svg" alt="brand social logo" />
+                </a>
+                <a href="#TODO" class="social-button">
+                    <img src="/images/logo/socials/whatsapp.svg" alt="brand social logo" />
+                </a>
+                <a href="#TODO" class="social-button">
+                    <img src="/images/logo/socials/spotify.svg" alt="brand social logo" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>

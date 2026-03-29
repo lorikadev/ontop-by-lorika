@@ -1,0 +1,71 @@
+footer {
+    background-color: #f9f9f9;
+}
+
+footer .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#socials-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.social-button {
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    border: 2px solid black;
+    border-radius: 8px;
+    display: flex;
+}
+
+.social-button>img {
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
+
+.social-button.super-large-icon>img {
+    width: 95%;
+}
+
+.social-button.large-icon>img {
+    width: 90%;
+}
+
+.social-button.small-icon>img {
+    width: 70%;
+}
+
+.social-button.super-small-icon>img {
+    width: 65%;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 700px) {
+    .container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 700px) {
+    footer .container {
+        gap: 2rem;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* used in both bentos */
+.container {
+    width: 80%;
+    margin: auto;
+}

@@ -14,14 +14,5 @@ allowedTags.forEach(tag => {
 
 export const cleantHtml = (unsafeHtml: string) => sanitizeHtml(unsafeHtml, {
     allowedTags: [...allowedTags],
-    allowedAttributes: {
-        span: ["class", "style"],
-        p: ["class", "style"],
-        h1: ["class", "style"],
-        h2: ["class", "style"],
-        h3: ["class", "style"],
-        h4: ["class", "style"],
-        h5: ["class", "style"],
-        h6: ["class", "style"],
-    },
+    allowedAttributes: allowedAttributes,
 });
