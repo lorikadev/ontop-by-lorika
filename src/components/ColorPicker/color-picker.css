@@ -104,7 +104,8 @@
 /* TEXT */
 .horizontal.big .color-label>strong {
     padding: 1rem 1.5rem;
-    padding-right: 3rem;
+    padding-right: 1.5rem;
+    padding-left: 3rem;
     border-radius: 2rem;
 
     font-size: 0.65rem;
@@ -116,6 +117,10 @@
 
 
 /* TEXT */
+.horizontal .color-label>strong {
+    transform: scale(-1, -1);
+}
+
 .color-picker-wrapper.hide .color-label>strong {
     display: none;
 }
