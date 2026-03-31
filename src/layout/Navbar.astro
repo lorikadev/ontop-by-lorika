@@ -28,113 +28,115 @@ const navContent = {
 };
 ---
 
-<nav id="top-navbar" aria-label="Navigazione principale">
-    <!-- LOGO -->
-    <div id="logo-link-wrapper">
-        <a id="logo-link" href="/" aria-label="home link">
-            <img
-                src="/images/logo/logo-lorika-white.svg"
-                alt="logo Lorika"
-                width="120"
-                height="40"
-            />
-        </a>
-    </div>
-
-    <!-- SECTION - MAIN MENU -->
-    <ul>
-        <li>
-            <a
-                href={navContent.main.home.href}
-                aria-current={activeLinkPath === "" ? "page" : undefined}
-                class:list={{ active: activeLinkPath === "" }}
-            >
-                {navContent.main.home.label}
+<nav aria-label="Navigazione principale">
+    <div id="top-navbar">
+        <!-- LOGO -->
+        <div id="logo-link-wrapper">
+            <a id="logo-link" href="/" aria-label="home link">
+                <img
+                    src="/images/logo/logo-lorika-white.svg"
+                    alt="logo Lorika"
+                    width="120"
+                    height="40"
+                />
             </a>
-        </li>
+        </div>
 
-        <li>
+        <!-- SECTION - MAIN MENU -->
+        <ul>
+            <li>
+                <a
+                    href={navContent.main.home.href}
+                    aria-current={activeLinkPath === "" ? "page" : undefined}
+                    class:list={{ active: activeLinkPath === "" }}
+                >
+                    {navContent.main.home.label}
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href={navContent.main.chiSiamo.href}
+                    aria-current={activeLinkPath === "/chi-siamo"
+                        ? "page"
+                        : undefined}
+                    class:list={{ active: activeLinkPath === "/chi-siamo" }}
+                >
+                    {navContent.main.chiSiamo.label}
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href={navContent.main.ontopCover.href}
+                    aria-current={activeLinkPath === "/ontop-cover"
+                        ? "page"
+                        : undefined}
+                    class:list={{ active: activeLinkPath === "/ontop-cover" }}
+                >
+                    {navContent.main.ontopCover.label}
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href={navContent.main.ambassadors.href}
+                    aria-current={activeLinkPath === "/ambassadors"
+                        ? "page"
+                        : undefined}
+                    class:list={{ active: activeLinkPath === "/ambassadors" }}
+                >
+                    {navContent.main.ambassadors.label}
+                </a>
+            </li>
+        </ul>
+        <!-- !SECTION - MAIN MENU -->
+
+        <!-- CTA -->
+        <div id="nav-cta-wrapper">
             <a
-                href={navContent.main.chiSiamo.href}
-                aria-current={activeLinkPath === "/chi-siamo"
-                    ? "page"
-                    : undefined}
-                class:list={{ active: activeLinkPath === "/chi-siamo" }}
+                id="nav-cta-shop"
+                class="button primary wide"
+                href={navContent.cta.shop.href}
+                aria-label={navContent.cta.shop.ariaLabel}
+                aria-current={activeLinkPath === "/shop" ? "page" : undefined}
             >
-                {navContent.main.chiSiamo.label}
+                {navContent.cta.shop.label}
             </a>
-        </li>
 
-        <li>
             <a
-                href={navContent.main.ontopCover.href}
-                aria-current={activeLinkPath === "/ontop-cover"
-                    ? "page"
-                    : undefined}
-                class:list={{ active: activeLinkPath === "/ontop-cover" }}
+                id="nav-cta-cart"
+                class="button primary icon-35"
+                href={navContent.cta.cart.href}
+                aria-label={navContent.cta.cart.ariaLabel}
+                aria-current={activeLinkPath === "/cart" ? "page" : undefined}
             >
-                {navContent.main.ontopCover.label}
+                <!-- NOTE plain svg to chanfe fill at run time with color picker -->
+                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+                <svg
+                    fill="#ffffff"
+                    width="25px"
+                    height="25px"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                    transform="matrix(-1, 0, 0, 1, 0, 0)"
+                    stroke="#ffffff"
+                >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <title>ionicons-v5-d</title>
+                        <circle cx="176" cy="416" r="32"></circle>
+                        <circle cx="400" cy="416" r="32"></circle>
+                        <path
+                            d="M456.8,120.78A23.92,23.92,0,0,0,438.24,112H133.89l-6.13-34.78A16,16,0,0,0,112,64H48a16,16,0,0,0,0,32H98.58l45.66,258.78A16,16,0,0,0,160,368H416a16,16,0,0,0,0-32H173.42l-5.64-32H409.44A24.07,24.07,0,0,0,433,284.71l28.8-144A24,24,0,0,0,456.8,120.78Z"
+                        ></path>
+                    </g>
+                </svg>
             </a>
-        </li>
-
-        <li>
-            <a
-                href={navContent.main.ambassadors.href}
-                aria-current={activeLinkPath === "/ambassadors"
-                    ? "page"
-                    : undefined}
-                class:list={{ active: activeLinkPath === "/ambassadors" }}
-            >
-                {navContent.main.ambassadors.label}
-            </a>
-        </li>
-    </ul>
-    <!-- !SECTION - MAIN MENU -->
-
-    <!-- CTA -->
-    <div id="nav-cta-wrapper">
-        <a
-            id="nav-cta-shop"
-            class="button primary wide"
-            href={navContent.cta.shop.href}
-            aria-label={navContent.cta.shop.ariaLabel}
-            aria-current={activeLinkPath === "/shop" ? "page" : undefined}
-        >
-            {navContent.cta.shop.label}
-        </a>
-
-        <a
-            id="nav-cta-cart"
-            class="button primary icon-35"
-            href={navContent.cta.cart.href}
-            aria-label={navContent.cta.cart.ariaLabel}
-            aria-current={activeLinkPath === "/cart" ? "page" : undefined}
-        >
-            <!-- NOTE plain svg to chanfe fill at run time with color picker -->
-            <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-            <svg
-                fill="#ffffff"
-                width="25px"
-                height="25px"
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-                transform="matrix(-1, 0, 0, 1, 0, 0)"
-                stroke="#ffffff"
-            >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                    id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                    <title>ionicons-v5-d</title>
-                    <circle cx="176" cy="416" r="32"></circle>
-                    <circle cx="400" cy="416" r="32"></circle>
-                    <path
-                        d="M456.8,120.78A23.92,23.92,0,0,0,438.24,112H133.89l-6.13-34.78A16,16,0,0,0,112,64H48a16,16,0,0,0,0,32H98.58l45.66,258.78A16,16,0,0,0,160,368H416a16,16,0,0,0,0-32H173.42l-5.64-32H409.44A24.07,24.07,0,0,0,433,284.71l28.8-144A24,24,0,0,0,456.8,120.78Z"
-                    ></path>
-                </g>
-            </svg>
-        </a>
+        </div>
     </div>
 </nav>

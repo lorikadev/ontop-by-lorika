@@ -12,11 +12,21 @@ interface Props {
     discoverAriaLabel?: string;
 
     //LIGHT SECTION
+    sectionLightAriaLabel?: string;
     productPhotoAriaLabel?: string;
     productPhotoAndModelsAriaLabel?: string;
-    item2Content?: string;
-    item5Content?: string;
-    item6Content?: string;
+    lItem2Content?: string;
+    lItem5Content?: string;
+    lItem6Content?: string;
+
+    //DARK SECTION
+    sectionDarkAriaLabel?: string;
+    logoAriaLabel?: string;
+    dItem2Content?: string;
+    dItem3Content?: string;
+    dItem5Content?: string;
+    joinUsLabel?: string;
+    joinUsAriaLabel?: string;
 }
 
 let {
@@ -26,15 +36,16 @@ let {
     buyNowAriaLabel = "Buy now - vai alla pagina di acquisto",
     discoverLabel = "discover",
     discoverAriaLabel = "Discover - scopri il prodotto",
-    productPhotoAriaLabel = "Foto del prodotto",
-    productPhotoAndModelsAriaLabel = "Foto del prodotto su modelli",
 
     //LIGHT SECTION
-    item2Content = `
-        <h1 class="m-0 t-uppercase">proteggi</h1>
-        <h3 class="m-0 t-uppercase">quello che indossi</h3>
-        <h3 class="m-0 mb-05 t-uppercase fw-400">senza appesantirlo</h3>
-        <p class="fs-15">
+    sectionLightAriaLabel = 'prima sezione informativa prodotto',
+    lItem2Content = `
+        <h2 class="t-uppercase m-0 fs-h1">
+            <span class="fs-4 block">proteggi</span>
+            <b class="fs-2 block">quello che indossi</b>
+            <span class="fs-2 lh-2 fw-400 block">senza appesantirlo</span>
+        </h2>
+        <p class="fs-1">
             <span class="fw-500" style="line-height: 0px;">
                 Una cover progettata per difendere i tuoi smart glasses da urti, graffi e segni dell'uso quotidiano.
                 Una scocca rigida che copre montatura e aste senza aggiungere peso, senza cambiare la calzata.
@@ -44,11 +55,12 @@ let {
             </b>
         </p>
     `,
-    item5Content = `
-        <h1 class="m-0 p-0 t-uppercase">Personalizza</h1>
-        <h2 class="mb-05">
-            Cambia look in un secondo. <br /> Letteralmente.
-        </h2>
+    lItem5Content = `
+        <h2 class="t-uppercase fs-2 fs-3-mob m-0 p-0">Personalizza</h2>
+        <b class="block fs-125 fs-15-mob lh-15 my-05">
+            Cambia look in un secondo. <br /> 
+            Letteralmente.
+        </b>
         <p class="fw-500 mb-1">
             Una palette pensata per adattarsi a stili, momenti e occasioni diverse.
             Puoi cambiare cover quando vuoi: per l'outfit, per l'occasione o semplicemente perché hai voglia di qualcosa di diverso.
@@ -56,12 +68,12 @@ let {
             Gli stessi occhiali, ogni volta diversi.
         </p>
     `,
-    item6Content = `
-        <h1 class="m-0 p-0 t-uppercase">design</h1>
-        <h2 class="mb-05">
-            Segue la forma originale,
+    lItem6Content = `
+        <h2 class="t-uppercase fs-2 fs-3-mob m-0 p-0">design</h2>
+        <b class="block fs-125 fs-15-mob lh-15 my-05">
+            Segue la forma originale, <br />
             non la nasconde.
-        </h2>
+        </b>
         <p class="mb-1 fw-500">
             Le linee restano pulite, la calzata è precisa e ogni dettaglio si integra perfettamente con la montatura.
             Si applica e si rimuove in un attimo, con un semplice click.
@@ -72,11 +84,53 @@ let {
             Modello compatibile con Rayban | Meta Gen1 e Gen2
         </small>
     `,
+
+    //DARK SECTION
+    sectionDarkAriaLabel = 'seconda sezione informativa prodotto',
+    dItem2Content = `
+        <h2 class="fs-h4 mb-05">Ideata e realizzata in Italia.</h2>
+        <p class="fs-1">
+            Dalla scelta dei materiali allo sviluppo delle colorazioni, ogni fase è seguita internamente.
+            La cover è costruita in un polimero ad alta resistenza e peso contenuto - progettato per reggere gli urti
+            e mantenere il colore nel tempo, senza cedere all'uso quotidiano.
+        </p>
+    `,
+    dItem3Content = `
+        <h2 class="t-uppercase t-a-center fs-h1 m-0">Made in italy</h2>
+        <p class="t-uppercase t-a-center">
+            <small>available worldwide</small>
+        </p>
+    `,
+    dItem5Content = `
+        <div>
+            <h2 class="t-uppercase m-0">secret club</h2>
+            <h3 class="mb-0 fs-h4">Ontop non è solo un prodotto.</h3>
+            <p>
+                È anche l'accesso a una community riservata, pensata per chi vuole seguire l'evoluzione del progetto fin dall'inizio.
+            </p>
+            <p class="mt-05">
+                Con il tuo acquisto avrai accesso a:
+            </p>
+            <ul class="pl-1 mt-0">
+                <li>ANTEPRIME SUI NUOVI SVILUPPI</li>
+                <li>SURVEY SULLE PROSSIME COMPATIBILITÀ</li>
+                <li>AGGIORNAMENTI DEDICATI ALLA COMMUNITY</li>
+                <li>CONTENUTI ESCLUSIVI</li>
+            </ul>
+        </div>
+    `,
+
+    joinUsLabel = "JOIN US",
+    joinUsAriaLabel = "Join us - entra nella community",
 } = Astro.props;
 
-item2Content = cleantHtml(item2Content);
-item5Content = cleantHtml(item5Content);
-item6Content = cleantHtml(item6Content);
+lItem2Content = cleantHtml(lItem2Content);
+lItem5Content = cleantHtml(lItem5Content);
+lItem6Content = cleantHtml(lItem6Content);
+
+dItem2Content = cleantHtml(dItem2Content);
+dItem3Content = cleantHtml(dItem3Content);
+dItem5Content = cleantHtml(dItem5Content);
 ---
 
 <!-- INDEX STYLE -->
@@ -84,75 +138,82 @@ item6Content = cleantHtml(item6Content);
 <!-- SECTION - MAIN -->
 <main>
     <!-- SECTION - HERO -->
-    <div id="hero">
-        <!-- 3D WRAPPER -->
-        <div id="hero-3d-wrapper">
-            <!-- COLOR PICKER -->
-            <ColorPicker id="hero-color-picker" />
-        </div>
-        <!-- HERO CTA -->
-        <div id="hero-cta">
-            <strong set:html={heroTitle} />
-            <div id="hero-cta-buttons">
-                <a class="button primary" href="#" aria-label={buyNowAriaLabel}>
-                    {buyNowLabel}
-                </a>
-                <a
-                    class="button secondary"
-                    href="#"
-                    aria-label={discoverAriaLabel}
-                >
-                    {discoverLabel}
-                </a>
+    <div id="hero-wrapper" class="py-3">
+        <div id="hero">
+            <!-- 3D WRAPPER -->
+            <!-- TODO -->
+            <div id="hero-3d-wrapper">
+                <!-- COLOR PICKER -->
+                <ColorPicker id="hero-color-picker" />
+            </div>
+            <!-- HERO CTA -->
+            <div id="hero-cta">
+                <h1 set:html={heroTitle} class="m-0"/>
+                <div id="hero-cta-buttons">
+                    <a
+                        class="button primary"
+                        href="#"
+                        aria-label={buyNowAriaLabel}
+                    >
+                        {buyNowLabel}
+                    </a>
+                    <a
+                        class="button secondary"
+                        href="#"
+                        aria-label={discoverAriaLabel}
+                    >
+                        {discoverLabel}
+                    </a>
+                </div>
             </div>
         </div>
     </div>
     <!-- !SECTION - HERO -->
 
-    <!-- SECTION - LIGHT SECTION -->
-    <section id="light-section">
+    <!-- SECTION - SECTION LIGHT -->
+    <section id="section-light" aria-labelledby={sectionLightAriaLabel}>
         <div class="container">
             <!-- BENTO LIGHT -->
             <div id="bento-light">
                 <!-- ITEM-1 -->
                 <div
-                    class="item-1"
+                    id="lb-item-1"
                     style="background-image: url('/images/images/ontop-decomposto.jpg');"
                     role="img"
-                    aria-label={productPhotoAriaLabel}
+                    aria-hidden="true"
                 >
                 </div>
                 <!-- ITEM-2 -->
-                <div class="item-2">
-                    <div set:html={item2Content} />
+                <div id="lb-item-2">
+                    <div set:html={lItem2Content} />
                 </div>
                 <!-- ITEM-3 -->
                 <div
-                    class="item-3"
-                    role="img"
-                    aria-label={productPhotoAndModelsAriaLabel}
+                    id="lb-item-3"
                     style="background-image: url('/images/images/coppia-modelli-ontop.jpg');"
+                    role="img"
+                    aria-hidden="true"
                 >
                 </div>
                 <!-- ITEM-4 -->
                 <div
-                    class="item-4"
+                    id="lb-item-4"
                     style="background-image: url('/images/images/ontop-prodotto-laterale-less-cover-zoom.jpg');"
                     role="img"
-                    aria-label={productPhotoAriaLabel}
+                    aria-hidden="true"
                 >
                 </div>
                 <!-- ITEM-5 -->
-                <div class="cromed text-light item-5">
-                    <div set:html={item5Content} />
+                <div id="lb-item-5" class="cromed text-light">
+                    <div set:html={lItem5Content} />
                     <ColorPicker
                         id="white-bent-color-picker"
                         layout="horizontal"
                     />
                 </div>
                 <!-- ITEM-6 -->
-                <div class="highlighted-container item-6">
-                    <div set:html={item6Content} />
+                <div id="lb-item-6" class="highlighted-container">
+                    <div set:html={lItem6Content} />
                 </div>
             </div>
         </div>
@@ -161,9 +222,74 @@ item6Content = cleantHtml(item6Content);
         <img
             class="sub-hero"
             src="/images/images/modella-close-up-ontop.jpg"
-            alt={productPhotoAndModelsAriaLabel}
+            aria-hidden="true"
         />
     </section>
-    <!-- !SECTION - LIGHT SECTION -->
+    <!-- !SECTION - SECTION LIGHT -->
+
+    <!-- SECTION - SECTION DARK -->
+    <section id="section-dark" aria-labelledby={sectionDarkAriaLabel}>
+        <div class="container pt-2">
+            <div id="bento-dark">
+                <!-- ITEM 1 -->
+                <div id="db-item-1"></div>
+
+                <!-- ITEM 2 -->
+                <div id="db-item-2">
+                    <div set:html={dItem2Content} />
+                </div>
+
+                <!-- ITEM 3 -->
+                <div id="db-item-3">
+                    <div set:html={dItem3Content} />
+                    <!-- TODO -->
+                    <div id="3d-world-wrapper"></div>
+                </div>
+
+                <!-- ITEM 4 -->
+                <div
+                    id="db-item-4"
+                    style="background-image: url('/images/images/trio-modelli-ontop.jpg');"
+                    role="img"
+                    aria-hidden="true"
+                >
+                </div>
+
+                <!-- ITEM 5 -->
+                <div id="db-item-5">
+                    <div set:html={dItem5Content} />
+
+                    <div class="t-a-end mb-05">
+                        <a
+                            href="#TODO"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="button primary fs-1"
+                            aria-label={joinUsAriaLabel}
+                        >
+                            {joinUsLabel}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB HERO -->
+            <div class="mt-2" style="position: relative;">
+                <img
+                    style="border-radius: 10px;"
+                    class="sub-hero"
+                    src="/images/images/trio-blur-ontop.jpg"
+                    aria-hidden="true"
+                />
+                <img
+                    id="logo-over-image"
+                    src="/images/logo/logo-ontop-lorika-white.svg"
+                    alt="Ontop by Lorika logo"
+                    aria-hidden="true"
+                />
+            </div>
+        </div>
+    </section>
+    <!-- SECTION - DARK SECTION -->
 </main>
 <!-- !SECTION - MAIN -->

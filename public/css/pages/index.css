@@ -12,6 +12,7 @@
 }
 
 .sub-hero {
+    vertical-align: middle;
     width: 100%;
     margin: auto;
 }
@@ -19,10 +20,13 @@
 /* !SECTION - GENERICS */
 
 /* SECTION - HERO */
+#hero-wrapper {
+    background-color: black;
+}
+
 #hero {
     width: 65%;
     margin: auto;
-    padding-bottom: 3rem;
 }
 
 @media (max-width: 1200px) {
@@ -57,8 +61,7 @@
     margin-top: 1.85rem;
 }
 
-#hero-cta>strong {
-    font-size: 2.5rem;
+#hero-cta>h1 {
     color: white;
     line-height: 2.5rem;
 }
@@ -77,26 +80,9 @@
 
 /* !SECTION - HERO */
 
-/* SECTION - LIGHT SECTION */
-#light-section {
+/* SECTION - SECTION LIGHT */
+#section-light {
     background-color: #f9f9f9;
-}
-
-#light-section>.container {
-    width: 80%;
-    margin: auto;
-}
-
-@media (max-width: 1200px) {
-    #light-section>.container {
-        width: 90%;
-    }
-}
-
-@media (max-width: 700px) {
-    #light-section>.container {
-        width: 95%;
-    }
 }
 
 /* BENTO LIGHT */
@@ -127,79 +113,54 @@
 }
 
 /* break word to no go over width inside bento squares */
-.item-1,
-.item-2,
-.item-3,
-.item-4,
-.item-5,
-.item-6 {
+#lb-item-1,
+#lb-item-2,
+#lb-item-3,
+#lb-item-4,
+#lb-item-5,
+#lb-item-6 {
     overflow-wrap: break-word;
 }
 
 /* DIV WITH TEXTS */
-.item-2,
-.item-5,
-.item-6 {
+#lb-item-2,
+#lb-item-5,
+#lb-item-6 {
     padding: 2rem;
 }
 
-/* DYNAMIC TEXT SIZE DESKTOP -> TABLET -> MOBILE */
-.item-2 h1 {
-    font-size: clamp(2rem, 2rem + 2vw, 5rem);
-}
-.item-5 h1,
-.item-6 h1 {
-    font-size: clamp(1.5rem, 1rem + 1.5vw, 2rem);
-}
-.item-5 h2,
-.item-6 h2 {
-    font-size: clamp(1rem, 0.6rem + 0.75vw, 2rem);
-}
-.item-2 h3 {
-    font-size: clamp(1rem, 0.5rem + 1.5vw, 4rem);
-}
-.item-2 p,
-.item-5 p,
-.item-6 p {
-    font-size: clamp(0.8rem, 0.7rem + 0.5vw, 1rem);
-    line-height: 1.25rem;
-}
-.item-6 small {
-    font-size: clamp(0.65rem, 0.5rem + 0.25vw, 0.8rem);
-}
-
 /* BENTO ITEM MICRO HANDLING */
-.item-1 {
+#lb-item-1 {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     grid-area: item-1;
 }
 
-.item-2 {
+#lb-item-2 {
     grid-area: item-2;
     background-color: white;
 }
 
-.item-3 {
+#lb-item-3 {
     grid-area: item-3;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 35%;
 }
 
-.item-4 {
+#lb-item-4 {
     grid-area: item-4;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
 }
 
-.item-5 {
+#lb-item-5 {
     grid-area: item-5;
 }
 
-.item-6 {
+#lb-item-6 {
     grid-area: item-6;
 }
 
@@ -216,20 +177,14 @@
 
     }
 
-    .item-2,
-    .item-5,
-    .item-6 {
+    #lb-item-2,
+    #lb-item-5,
+    #lb-item-6 {
         padding: 1rem;
     }
 
-    .item-4 {
+    #lb-item-4 {
         background-size: 150%;
-    }
-
-    .item-2 p,
-    .item-5 p,
-    .item-6 p {
-        line-height: 1rem;
     }
 }
 
@@ -249,21 +204,180 @@
     }
 
     /* DIV WITH BG */
-    .item-1 {
+    #lb-item-1 {
         background-size: 175%;
     }
 
-    .item-1,
-    .item-3,
-    .item-4 {
+    #lb-item-1,
+    #lb-item-3,
+    #lb-item-4 {
         height: 300px;
     }
 
-    .item-4 {
+    #lb-item-4 {
         background-size: 120%;
         background-position: 90%;
         height: 200px;
     }
 }
 
-/* !SECTION - LIGHT SECTION */
+/* !SECTION - SECTION LIGHT */
+
+/* SECTION - SECTION DARK */
+#section-dark {
+    background-color: black;
+}
+
+#bento-dark {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 0.5rem;
+    grid-template-areas:
+        "item-1 item-2 item-2 item-3 item-3 item-3 item-3"
+        "item-4 item-4 item-4 item-4 item-5 item-5 item-5";
+}
+
+#bento-dark>div {
+    background-color: #100d0c;
+    color: var(--light-text-color);
+    border-radius: 10px;
+    border: 1px solid #312f2e;
+}
+
+#db-item-5 ul li {
+    font-size: 0.8rem;
+}
+
+@media (min-width: 1201px) {
+    #bento-dark>div {
+        min-height: 400px;
+    }
+}
+
+
+#db-item-1 {
+    grid-area: item-1;
+    background-size: 80% 80%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url('/images/logo/logo-ontop-white-cropped-rotated.png');
+}
+
+#db-item-2 {
+    grid-area: item-2;
+}
+
+#db-item-3 {
+    grid-area: item-3;
+}
+
+#db-item-4 {
+    grid-area: item-4;
+}
+
+#db-item-5 {
+    grid-area: item-5;
+}
+
+#logo-over-image {
+    width: 30%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#db-item-2,
+#db-item-3,
+#db-item-5 {
+    padding: 2rem;
+}
+
+#db-item-4 {
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+/* TABLET */
+@media (max-width: 1200px) {
+    #section-dark {
+        background-color: #f9f9f9;
+    }
+
+    #bento-dark {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(10, auto);
+        gap: 0.5rem;
+        grid-template-areas:
+            "item-1 item-2 item-2 item-2"
+            "item-1 item-2 item-2 item-2"
+            "item-1 item-3 item-3 item-3"
+            "item-1 item-3 item-3 item-3"
+            "item-1 item-3 item-3 item-3"
+            "item-4 item-4 item-4 item-4"
+            "item-4 item-4 item-4 item-4"
+            "item-5 item-5 item-5 item-5"
+            "item-5 item-5 item-5 item-5";
+    }
+
+    #db-item-1 {
+        background-image: url('/images/logo/logo-ontop-white-cropped-rotated.png');
+    }
+
+    #db-item-2,
+    #db-item-3,
+    #db-item-5 {
+        padding: 1rem;
+    }
+
+    #db-item-5 ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #db-item-5 ul li {
+        width: 45%;
+    }
+
+    #db-item-4 {
+        height: 350px;
+        background-position-y: 70%;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    #bento-dark {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, auto);
+        grid-template-areas:
+            "item-1"
+            "item-2"
+            "item-3"
+            "item-4"
+            "item-5";
+    }
+
+    #db-item-1 {
+        height: 150px;
+        background-size: contain;
+        background-image: url('/images/logo/logo-ontop-white-cropped.svg');
+    }
+
+    #db-item-4 {
+        height: 200px;
+    }
+
+    #db-item-5 ul {
+        display: inline-block;
+    }
+
+    #db-item-5 ul li {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+}
+
+/* !SECTION - SECTION DARK */

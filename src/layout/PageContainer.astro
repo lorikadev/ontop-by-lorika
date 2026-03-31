@@ -1,4 +1,5 @@
 ---
+import Footer from "./Footer.astro";
 import Navbar from "./Navbar.astro";
 
 interface Props {
@@ -80,7 +81,9 @@ const {
         <link rel="stylesheet" href="/css/globals/vars.css" />
         <link rel="stylesheet" href="/css/globals/font-size.css" />
         <link rel="stylesheet" href="/css/globals/global.css" />
+        <link rel="stylesheet" href="/css/globals/spacing.css" />
         <link rel="stylesheet" href="/css/globals/navbar.css" />
+        <link rel="stylesheet" href="/css/globals/footer.css" />
         <!-- !SECTION - CSS -->
     </head>
     <!-- !SECTION - HEAD -->
@@ -100,6 +103,8 @@ const {
         <Navbar />
         <!-- PAGE CONTENT -->
         <slot />
+        <!-- FOOTER -->
+        <Footer />
     </body>
     <!-- !SECTION - BODY -->
 </html>

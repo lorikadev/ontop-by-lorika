@@ -1,3 +1,7 @@
+nav {
+    background-color: black;
+}
+
 /* navbar outer container */
 #top-navbar {
     width: 65%;
@@ -5,7 +9,6 @@
     grid-template-columns: 20% 60% 20%;
     margin: auto;
     padding: 0.5rem 0;
-    margin-bottom: 0.5rem;
 }
 
 @media (max-width: 1200px) {

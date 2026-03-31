@@ -45,27 +45,9 @@ footer .container {
     width: 65%;
 }
 
-@media (max-width: 1200px) {
-    .container {
-        width: 90%;
-    }
-}
-
-@media (max-width: 700px) {
-    .container {
-        width: 95%;
-    }
-}
-
 @media (max-width: 700px) {
     footer .container {
         gap: 2rem;
         grid-template-columns: repeat(1, 1fr);
     }
-}
-
-/* used in both bentos */
-.container {
-    width: 80%;
-    margin: auto;
 }
