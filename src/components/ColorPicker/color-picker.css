@@ -8,6 +8,12 @@
     width: fit-content;
 }
 
+.color-picker-wrapper.big {
+    border-radius: 3rem;
+    gap: 0.6rem;
+    padding: 0.5rem 0.6rem;
+}
+
 /* BUTTON + TEXT HOLDER */
 .color-label {
     /* reset buttons styles */
@@ -45,6 +51,18 @@
     z-index: 2;
 }
 
+.big .color-label>strong {
+    padding: 1rem 1.5rem;
+    padding-right: 3rem;
+    border-radius: 2rem;
+
+    font-size: 0.65rem;
+
+    position: absolute;
+    right: -0.4rem;
+    top: -0.45rem;
+}
+
 /* POSITION ACTIVE/HOVER BUTTON */
 .color-label.active,
 .color-label:hover {
@@ -58,7 +76,6 @@
     opacity: 1;
 }
 
-
 /* SECTION - HORIZONTAL ADJUSTMENT */
 .color-picker-wrapper.horizontal {
     flex-direction: row;
@@ -66,8 +83,40 @@
     gap: 0.5rem;
 }
 
+.color-picker-wrapper.horizontal.big {
+    border-radius: 2rem;
+    gap: 0.6rem;
+    padding: 0.5rem 0.9rem;
+}
+
+/* BUTTON + TEXT HOLDER */
+.horizontal.big .color-label {
+    transform: rotateZ(0deg);
+}
+
+
+/* POSITION ACTIVE/HOVER BUTTON */
+.horizontal.big .color-label.active,
+.horizontal.big .color-label:hover {
+    transform: rotateZ(90deg);
+}
+
 /* TEXT */
-.color-picker-wrapper.horizontal .color-label>strong {
+.horizontal.big .color-label>strong {
+    padding: 1rem 1.5rem;
+    padding-right: 3rem;
+    border-radius: 2rem;
+
+    font-size: 0.65rem;
+
+    position: absolute;
+    right: -0.4rem;
+    top: -0.45rem;
+}
+
+
+/* TEXT */
+.color-picker-wrapper.hide .color-label>strong {
     display: none;
 }
 
@@ -87,6 +136,13 @@
     height: 1rem;
     position: relative;
     z-index: 3;
+}
+
+/* TEXT */
+.big .color {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
 }
 
 .color.orange {

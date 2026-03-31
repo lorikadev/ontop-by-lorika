@@ -43,27 +43,36 @@
     /*  Used to make aspect ratio of div as the image.
         the numbers are the width and height of the background image */
     /* NOTE - without this the height would crop the logo */
-    aspect-ratio: 1048 / 507;
+    aspect-ratio: 4/2;
 
     position: relative;
 }
 
 
-#hero-color-picker {
+#hero-color-picker-desktop-wrapper {
     position: absolute;
     bottom: 0;
     right: 10px;
+}
+
+@media (max-width: 1200px) {
+    #hero-3d-wrapper {
+        aspect-ratio: 4/3;
+    }
+}
+
+#hero-color-picker-tablet-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #hero-cta {
     display: grid;
     grid-template-columns: 80% 20%;
     margin-top: 1.85rem;
-}
-
-#hero-cta>h1 {
     color: white;
-    line-height: 2.5rem;
 }
 
 #hero-cta-buttons {
@@ -76,6 +85,21 @@
 #hero-cta-buttons>a {
     min-width: 7.25rem;
     width: fit-content;
+}
+
+@media (max-width: 1200px) {
+    #hero-cta {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(2, auto);
+        margin-top: 1.85rem;
+    }
+
+    #hero-cta-buttons {
+        flex-direction: row;
+        justify-content: left;
+        gap: 2rem;
+    }
 }
 
 /* !SECTION - HERO */

@@ -243,3 +243,33 @@ button.secondary:hover {
     text-align: end;
 }
 /* !SECTION - TEXT */
+
+/* SECTION - DISPLAY */
+.show-only-desktop {
+    display: inline-block;
+}
+
+.show-tab {
+    display: none;
+}
+
+.show-mob {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .show-only-desktop {
+        display: none;
+    }
+
+    .show-tab {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 700px) {
+    .show-mob {
+        display: inline-block;
+    }
+}
+/* !SECTION - DISPLAY */

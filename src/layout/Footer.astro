@@ -1,5 +1,5 @@
 ---
-import { cleantHtml } from '../utils/clean-html';
+import { cleanHtml } from '../utils/clean-html';
 
 interface Props {
     companyBlockHtml?: string;
@@ -27,10 +27,10 @@ const {
 <footer class="pt-1 pb-5">
     <div class="container">
         <!-- OWNERS -->
-        <div set:html={cleantHtml(companyBlockHtml)}></div>
+        <div set:html={cleanHtml(companyBlockHtml)}></div>
 
         <!-- ADDRESS -->
-        <div set:html={cleantHtml(addressBlockHtml)}></div>
+        <div set:html={cleanHtml(addressBlockHtml)}></div>
         
         <!-- SOCIAL -->
         <div>

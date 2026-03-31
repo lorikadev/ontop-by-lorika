@@ -12,7 +12,7 @@ allowedTags.forEach(tag => {
     allowedAttributes[tag] = ["class", "style", "id", "role", "aria-label"];
 });
 
-export const cleantHtml = (unsafeHtml: string) => sanitizeHtml(unsafeHtml, {
+export const cleanHtml = (unsafeHtml: string) => sanitizeHtml(unsafeHtml, {
     allowedTags: [...allowedTags],
     allowedAttributes: allowedAttributes,
 });
