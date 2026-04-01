@@ -7,6 +7,7 @@ const activeLinkPath = Astro.url.pathname.split("/")[2] ?? "";
 
 //OGGETTO PROXY PER SANITY
 const navContent = {
+    navAriaLabel: "Navigazione principale",
     main: {
         home: { href: "/", label: "home" },
         chiSiamo: { href: "/chi-siamo", label: "chi siamo" },
@@ -28,22 +29,27 @@ const navContent = {
 };
 ---
 
-<nav aria-label="Navigazione principale">
-    <div id="top-navbar">
+<nav aria-label={navContent.navAriaLabel}>
+    <div id="top-navbar" data-mobile-menu-opened="closed">
         <!-- LOGO -->
         <div id="logo-link-wrapper">
             <a id="logo-link" href="/" aria-label="home link">
                 <img
                     src="/images/logo/logo-lorika-white.svg"
                     alt="logo Lorika"
-                    width="120"
-                    height="40"
                 />
             </a>
         </div>
 
+        <!-- MOBILE MENU BUTTON -->
+        <div id="mobile-menu-button-wrapper" class="show-mob">
+            <button id="mobile-menu-button">
+                <img src="/images/icons/menu.svg" alt="mobile menu button" />
+            </button>
+        </div>
+
         <!-- SECTION - MAIN MENU -->
-        <ul>
+        <ul class="fs-2-mob">
             <li>
                 <a
                     href={navContent.main.home.href}
@@ -96,7 +102,7 @@ const navContent = {
         <div id="nav-cta-wrapper">
             <a
                 id="nav-cta-shop"
-                class="button primary wide"
+                class="button primary wide fs-2-mob"
                 href={navContent.cta.shop.href}
                 aria-label={navContent.cta.shop.ariaLabel}
                 aria-current={activeLinkPath === "/shop" ? "page" : undefined}
@@ -106,17 +112,14 @@ const navContent = {
 
             <a
                 id="nav-cta-cart"
-                class="button primary icon-35"
+                class="button primary icon-for-button"
                 href={navContent.cta.cart.href}
                 aria-label={navContent.cta.cart.ariaLabel}
                 aria-current={activeLinkPath === "/cart" ? "page" : undefined}
             >
-                <!-- NOTE plain svg to chanfe fill at run time with color picker -->
-                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+                <!-- NOTE plain svg to change fill at run time with color picker -->
                 <svg
                     fill="#ffffff"
-                    width="25px"
-                    height="25px"
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                     transform="matrix(-1, 0, 0, 1, 0, 0)"
@@ -140,3 +143,35 @@ const navContent = {
         </div>
     </div>
 </nav>
+<!-- NOTE: leave this here as css will find it with brother operator -->
+<!-- blur curtain -->
+<div id="blur-curtain"></div>
+
+<!-- MOBILE MENU TOGGLE -->
+<script>
+    const mobileMenuBtn = document.getElementById("mobile-menu-button");
+    const topNavbar = document.getElementById("top-navbar");
+    const blurCurtain = document.getElementById("blur-curtain");
+
+    if (mobileMenuBtn && topNavbar) {
+        const toggleMobileMenu = (_: MouseEvent) => {
+            switch (topNavbar.dataset.mobileMenuOpened) {
+                case "opened":
+                    topNavbar.dataset.mobileMenuOpened = "closed";
+                    break;
+                case "closed":
+                    topNavbar.dataset.mobileMenuOpened = "opened";
+                    break;
+            }
+        };
+        //ADD CLICK EVENT LOGIC
+        mobileMenuBtn.addEventListener("click", toggleMobileMenu);
+        //optional
+        if (blurCurtain)
+            blurCurtain.addEventListener("click", toggleMobileMenu);
+    } else {
+        console.error(
+            "#mobile-menu-button and/or #top-navbar is missing from the navbar",
+        );
+    }
+</script>

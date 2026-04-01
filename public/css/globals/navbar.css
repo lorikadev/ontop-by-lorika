@@ -1,5 +1,9 @@
 nav {
     background-color: black;
+    z-index: 3;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 /* navbar outer container */
@@ -11,12 +15,6 @@ nav {
     padding: 0.5rem 0;
 }
 
-@media (max-width: 1200px) {
-    #top-navbar {
-        width: 95%;
-    }
-}
-
 /* wrapper for logo that bring back to home */
 #logo-link-wrapper {
     align-content: center;
@@ -25,6 +23,11 @@ nav {
 #logo-link {
     height: 40px;
     display: inline-block;
+}
+
+#logo-link img {
+    height: 40px;
+    width: 120px;
 }
 
 /* nav menu wrapper */
@@ -61,7 +64,6 @@ nav {
 /* shop and cart action wrapper */
 #nav-cta-wrapper {
     display: flex;
-    flex-wrap: wrap;
     gap: 1rem;
     justify-self: end;
 }
@@ -69,5 +71,145 @@ nav {
 #nav-cta-wrapper>a {
     color: var(--light-text-color);
     align-self: center;
-    max-height: 35px;
+}
+
+/*  NOTE 
+    this adjustment allow us to reach 700px 
+    without breaking the navbar and 
+    then switching to mobile style menu 
+*/
+/* TABLET */
+@media (max-width: 1200px) {
+    #top-navbar {
+        width: 95%;
+        grid-template-columns: 10% 70% 20%;
+    }
+
+    #top-navbar>ul {
+        gap: 1rem;
+    }
+
+    #logo-link {
+        height: 30px;
+    }
+
+    #logo-link img {
+        height: 30px;
+        width: 100px;
+    }
+
+    #nav-cta-shop {
+        width: 100px;
+    }
+}
+
+/* MOBILE */
+#blur-curtain {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    z-index: 2;
+    backdrop-filter: blur(2px);
+}
+
+@media (max-width: 700px) {
+    /* navbar */
+    #top-navbar {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        grid-template-columns: none;
+        grid-template-rows: none;
+        transition: all 0.2s;
+    }
+
+    /* logo link */
+    #logo-link-wrapper {
+        width: 40%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+
+    #logo-link-wrapper>a,
+    #logo-link-wrapper>a>img {
+        width: 100%;
+        height: auto;
+        vertical-align: bottom !important;
+    }
+
+    /* mobile menu button*/
+    #mobile-menu-button-wrapper {
+        width: 60%;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    #mobile-menu-button {
+        display: contents;
+        cursor: pointer;
+    }
+
+    #mobile-menu-button,
+    #mobile-menu-button>img {
+        background-color: transparent;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    /* mobile menu */
+    #top-navbar>ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #nav-cta-wrapper {
+        margin-bottom: 1rem;
+    }
+
+    #nav-cta-wrapper>#nav-cta-shop {
+        width: 150px;
+        border-radius: 70px;
+    }
+
+    /* mobile menu toggle */
+    /* collapse content */
+    #top-navbar>ul,
+    #nav-cta-wrapper {
+        width: 100%;
+        overflow: hidden;
+
+        max-height: 0;
+        margin: 0;
+        margin-left: 1rem;
+        opacity: 0;
+
+        transition:
+            max-height 0.3s ease,
+            opacity 0.3s ease,
+            margin 0.3s ease;
+    }
+
+    /* show content on 'opened' */
+    #top-navbar[data-mobile-menu-opened="opened"]>ul,
+    #top-navbar[data-mobile-menu-opened="opened"] #nav-cta-wrapper {
+        /* should never reach this value */
+        max-height: 80vh;
+        opacity: 1;
+        margin: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #top-navbar[data-mobile-menu-opened="opened"] #nav-cta-wrapper {
+        margin-bottom: 1rem;
+    }
+
+    nav:has(#top-navbar[data-mobile-menu-opened="opened"])+#blur-curtain {
+        display: block;
+    }
 }

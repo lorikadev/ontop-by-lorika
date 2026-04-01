@@ -90,19 +90,27 @@ button.wide {
     padding: 0.25rem 1.5rem;
 }
 
-/* made to work with 25x25 icons */
-.button.icon-35,
-button.icon-35 {
+.button.icon-for-button,
+button.icon-for-button {
     padding: 0 5px;
     border-radius: 32px;
-    width: 35px !important;
-    height: 35px !important;
+    width: 40px !important;
+    height: 40px !important;
     display: flex;
     align-items: center;
 }
 
-.button.icon-35>img,
-button.icon-35>img {
+@media (max-width: 700px) {
+    .button.icon-for-button,
+    button.icon-for-button {
+        border-radius: 70px;
+        width: 50px !important;
+        height: 50px !important;
+    }   
+}
+
+.button.icon-for-button>img,
+button.icon-for-button>img {
     margin: auto;
 }
 
@@ -167,14 +175,14 @@ button.secondary:hover {
 .fs-05 { font-size: clamp(0.35rem, 0.3rem + 0.3vw, 0.5rem); }
 .fs-1 { font-size: clamp(0.7rem, 0.65rem + 0.4vw, 1rem); }
 .fs-125 { font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.25rem); }
-.fs-15 { font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem); border-radius: 1.5rem; }
-.fs-2 { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem); border-radius: 2rem; }
-.fs-25 { font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem); border-radius: 2.5rem; }
-.fs-3 { font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem); border-radius: 3rem; }
-.fs-35 { font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem); border-radius: 3.5rem; }
-.fs-4 { font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem); border-radius: 4rem; }
-.fs-45 { font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem); border-radius: 4.5rem; }
-.fs-5 { font-size: clamp(3.5rem, 3rem + 2vw, 5rem); border-radius: 5rem; }
+.fs-15 { font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem); }
+.fs-2 { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem); }
+.fs-25 { font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem); }
+.fs-3 { font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem); }
+.fs-35 { font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem); }
+.fs-4 { font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem); }
+.fs-45 { font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem); }
+.fs-5 { font-size: clamp(3.5rem, 3rem + 2vw, 5rem); }
 
 .fs-h1 { font-size: clamp(1.75rem, 1.2rem + 4.5vw, 3rem); }
 .fs-h2 { font-size: clamp(1.375rem, 1rem + 3.2vw, 2.25rem); }
@@ -188,14 +196,14 @@ button.secondary:hover {
   .fs-05-tab { font-size: clamp(0.35rem, 0.3rem + 0.3vw, 0.5rem); }
   .fs-1-tab { font-size: clamp(0.7rem, 0.65rem + 0.4vw, 1rem); }
   .fs-125-tab { font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.25rem); }
-  .fs-15-tab { font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem); border-radius: 1.5rem; }
-  .fs-2-tab { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem); border-radius: 2rem; }
-  .fs-25-tab { font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem); border-radius: 2.5rem; }
-  .fs-3-tab { font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem); border-radius: 3rem; }
-  .fs-35-tab { font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem); border-radius: 3.5rem; }
-  .fs-4-tab { font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem); border-radius: 4rem; }
-  .fs-45-tab { font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem); border-radius: 4.5rem; }
-  .fs-5-tab { font-size: clamp(3.5rem, 3rem + 2vw, 5rem); border-radius: 5rem; }
+  .fs-15-tab { font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem); }
+  .fs-2-tab { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem); }
+  .fs-25-tab { font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem); }
+  .fs-3-tab { font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem); }
+  .fs-35-tab { font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem); }
+  .fs-4-tab { font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem); }
+  .fs-45-tab { font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem); }
+  .fs-5-tab { font-size: clamp(3.5rem, 3rem + 2vw, 5rem); }
 }
 
 /* mobile */
@@ -203,14 +211,14 @@ button.secondary:hover {
   .fs-05-mob { font-size: clamp(0.35rem, 0.3rem + 0.3vw, 0.5rem); }
   .fs-1-mob { font-size: clamp(0.7rem, 0.65rem + 0.4vw, 1rem); }
   .fs-125-mob { font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.25rem); }
-  .fs-15-mob { font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem); border-radius: 1.5rem; }
-  .fs-2-mob { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem); border-radius: 2rem; }
-  .fs-25-mob { font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem); border-radius: 2.5rem; }
-  .fs-3-mob { font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem); border-radius: 3rem; }
-  .fs-35-mob { font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem); border-radius: 3.5rem; }
-  .fs-4-mob { font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem); border-radius: 4rem; }
-  .fs-45-mob { font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem); border-radius: 4.5rem; }
-  .fs-5-mob { font-size: clamp(3.5rem, 3rem + 2vw, 5rem); border-radius: 5rem; }
+  .fs-15-mob { font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem); }
+  .fs-2-mob { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem); }
+  .fs-25-mob { font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem); }
+  .fs-3-mob { font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem); }
+  .fs-35-mob { font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem); }
+  .fs-4-mob { font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem); }
+  .fs-45-mob { font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem); }
+  .fs-5-mob { font-size: clamp(3.5rem, 3rem + 2vw, 5rem); }
 }
 
 /* for buttons with bigger texts we need more rounding */

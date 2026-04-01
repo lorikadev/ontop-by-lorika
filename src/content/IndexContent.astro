@@ -137,174 +137,170 @@ dItem5Content = cleanHtml(dItem5Content);
 
 <!-- INDEX STYLE -->
 <link rel="stylesheet" href="/css/pages/index.css" />
-<!-- SECTION - MAIN -->
-<main>
-    <!-- SECTION - HERO -->
-    <div id="hero-wrapper" class="py-3">
-        <div id="hero">
-            <!-- 3D WRAPPER -->
-            <!-- TODO -->
-            <div id="hero-3d-wrapper">
-                <!-- COLOR PICKER -->
-                <div class="show-only-desktop" id="hero-color-picker-desktop-wrapper">
-                    <ColorPicker id="hero-color-picker-desktop" />
-                </div>
-                <div class="show-tab" id="hero-color-picker-tablet-wrapper">
-                    <ColorPicker
-                        id="hero-color-picker-tablet"
-                        layout="horizontal"
-                        size="big"
-                    />
-                </div>
+
+<!-- SECTION - HERO -->
+<div id="hero-wrapper" class="py-3">
+    <div id="hero">
+        <!-- 3D WRAPPER -->
+        <!-- TODO -->
+        <div id="hero-3d-wrapper">
+            <!-- COLOR PICKER -->
+            <div
+                class="show-only-desktop"
+                id="hero-color-picker-desktop-wrapper"
+            >
+                <ColorPicker id="hero-color-picker-desktop" />
             </div>
-            <!-- HERO CTA -->
-            <div id="hero-cta">
-                <h1 set:html={heroTitle} class="m-0 lh-35" />
-                <p class="show-tab fs-2 my-1">
-                    {mobileAds}
-                </p>
-                <div id="hero-cta-buttons">
-                    <a
-                        class="button primary"
-                        href="#"
-                        aria-label={buyNowAriaLabel}
-                    >
-                        {buyNowLabel}
-                    </a>
-                    <a
-                        class="button secondary"
-                        href="#"
-                        aria-label={discoverAriaLabel}
-                    >
-                        {discoverLabel}
-                    </a>
-                </div>
+            <div class="show-tab" id="hero-color-picker-tablet-wrapper">
+                <ColorPicker
+                    id="hero-color-picker-tablet"
+                    layout="horizontal"
+                    size="big"
+                />
+            </div>
+        </div>
+        <!-- HERO CTA -->
+        <div id="hero-cta">
+            <h1 set:html={heroTitle} class="m-0 lh-35" />
+            <p class="show-tab fs-2 my-1">
+                {mobileAds}
+            </p>
+            <div id="hero-cta-buttons">
+                <a class="button primary" href="#" aria-label={buyNowAriaLabel}>
+                    {buyNowLabel}
+                </a>
+                <a
+                    class="button secondary"
+                    href="#"
+                    aria-label={discoverAriaLabel}
+                >
+                    {discoverLabel}
+                </a>
             </div>
         </div>
     </div>
-    <!-- !SECTION - HERO -->
+</div>
+<!-- !SECTION - HERO -->
 
-    <!-- SECTION - SECTION LIGHT -->
-    <section id="section-light" aria-labelledby={sectionLightAriaLabel}>
-        <div class="container">
-            <!-- BENTO LIGHT -->
-            <div id="bento-light">
-                <!-- ITEM-1 -->
-                <div
-                    id="lb-item-1"
-                    style="background-image: url('/images/images/ontop-decomposto.jpg');"
-                    role="img"
-                    aria-hidden="true"
-                >
-                </div>
-                <!-- ITEM-2 -->
-                <div id="lb-item-2">
-                    <div set:html={lItem2Content} />
-                </div>
-                <!-- ITEM-3 -->
-                <div
-                    id="lb-item-3"
-                    style="background-image: url('/images/images/coppia-modelli-ontop.jpg');"
-                    role="img"
-                    aria-hidden="true"
-                >
-                </div>
-                <!-- ITEM-4 -->
-                <div
-                    id="lb-item-4"
-                    style="background-image: url('/images/images/ontop-prodotto-laterale-less-cover-zoom.jpg');"
-                    role="img"
-                    aria-hidden="true"
-                >
-                </div>
-                <!-- ITEM-5 -->
-                <div id="lb-item-5" class="cromed text-light">
-                    <div set:html={lItem5Content} />
-                    <ColorPicker
-                        id="white-bent-color-picker"
-                        layout="horizontal"
-                        displayLabel="hide"
-                    />
-                </div>
-                <!-- ITEM-6 -->
-                <div id="lb-item-6" class="highlighted-container">
-                    <div set:html={lItem6Content} />
+<!-- SECTION - SECTION LIGHT -->
+<section id="section-light" aria-labelledby={sectionLightAriaLabel}>
+    <div class="container">
+        <!-- BENTO LIGHT -->
+        <div id="bento-light">
+            <!-- ITEM-1 -->
+            <div
+                id="lb-item-1"
+                style="background-image: url('/images/images/ontop-decomposto.jpg');"
+                role="img"
+                aria-hidden="true"
+            >
+            </div>
+            <!-- ITEM-2 -->
+            <div id="lb-item-2">
+                <div set:html={lItem2Content} />
+            </div>
+            <!-- ITEM-3 -->
+            <div
+                id="lb-item-3"
+                style="background-image: url('/images/images/coppia-modelli-ontop.jpg');"
+                role="img"
+                aria-hidden="true"
+            >
+            </div>
+            <!-- ITEM-4 -->
+            <div
+                id="lb-item-4"
+                style="background-image: url('/images/images/ontop-prodotto-laterale-less-cover-zoom.jpg');"
+                role="img"
+                aria-hidden="true"
+            >
+            </div>
+            <!-- ITEM-5 -->
+            <div id="lb-item-5" class="cromed text-light">
+                <div set:html={lItem5Content} />
+                <ColorPicker
+                    id="white-bent-color-picker"
+                    layout="horizontal"
+                    displayLabel="hide"
+                />
+            </div>
+            <!-- ITEM-6 -->
+            <div id="lb-item-6" class="highlighted-container">
+                <div set:html={lItem6Content} />
+            </div>
+        </div>
+    </div>
+
+    <!-- SUB HERO -->
+    <img
+        class="sub-hero"
+        src="/images/images/modella-close-up-ontop.jpg"
+        aria-hidden="true"
+    />
+</section>
+<!-- !SECTION - SECTION LIGHT -->
+
+<!-- SECTION - SECTION DARK -->
+<section id="section-dark" aria-labelledby={sectionDarkAriaLabel}>
+    <div class="container pt-2">
+        <div id="bento-dark">
+            <!-- ITEM 1 -->
+            <div id="db-item-1"></div>
+
+            <!-- ITEM 2 -->
+            <div id="db-item-2">
+                <div set:html={dItem2Content} />
+            </div>
+
+            <!-- ITEM 3 -->
+            <div id="db-item-3">
+                <div set:html={dItem3Content} />
+                <!-- TODO -->
+                <div id="3d-world-wrapper"></div>
+            </div>
+
+            <!-- ITEM 4 -->
+            <div
+                id="db-item-4"
+                style="background-image: url('/images/images/trio-modelli-ontop.jpg');"
+                role="img"
+                aria-hidden="true"
+            >
+            </div>
+
+            <!-- ITEM 5 -->
+            <div id="db-item-5">
+                <div set:html={dItem5Content} />
+
+                <div class="t-a-end mb-05">
+                    <a
+                        href="#TODO"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="button primary fs-1 fs-15-mob"
+                        aria-label={joinUsAriaLabel}
+                    >
+                        {joinUsLabel}
+                    </a>
                 </div>
             </div>
         </div>
 
         <!-- SUB HERO -->
-        <img
-            class="sub-hero"
-            src="/images/images/modella-close-up-ontop.jpg"
-            aria-hidden="true"
-        />
-    </section>
-    <!-- !SECTION - SECTION LIGHT -->
-
-    <!-- SECTION - SECTION DARK -->
-    <section id="section-dark" aria-labelledby={sectionDarkAriaLabel}>
-        <div class="container pt-2">
-            <div id="bento-dark">
-                <!-- ITEM 1 -->
-                <div id="db-item-1"></div>
-
-                <!-- ITEM 2 -->
-                <div id="db-item-2">
-                    <div set:html={dItem2Content} />
-                </div>
-
-                <!-- ITEM 3 -->
-                <div id="db-item-3">
-                    <div set:html={dItem3Content} />
-                    <!-- TODO -->
-                    <div id="3d-world-wrapper"></div>
-                </div>
-
-                <!-- ITEM 4 -->
-                <div
-                    id="db-item-4"
-                    style="background-image: url('/images/images/trio-modelli-ontop.jpg');"
-                    role="img"
-                    aria-hidden="true"
-                >
-                </div>
-
-                <!-- ITEM 5 -->
-                <div id="db-item-5">
-                    <div set:html={dItem5Content} />
-
-                    <div class="t-a-end mb-05">
-                        <a
-                            href="#TODO"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="button primary fs-1"
-                            aria-label={joinUsAriaLabel}
-                        >
-                            {joinUsLabel}
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SUB HERO -->
-            <div class="mt-2" style="position: relative;">
-                <img
-                    style="border-radius: 10px;"
-                    class="sub-hero"
-                    src="/images/images/trio-blur-ontop.jpg"
-                    aria-hidden="true"
-                />
-                <img
-                    id="logo-over-image"
-                    src="/images/logo/logo-ontop-lorika-white.svg"
-                    alt="Ontop by Lorika logo"
-                    aria-hidden="true"
-                />
-            </div>
+        <div class="mt-2" style="position: relative;">
+            <img
+                style="border-radius: 10px;"
+                class="sub-hero"
+                src="/images/images/trio-blur-ontop.jpg"
+                aria-hidden="true"
+            />
+            <img
+                id="logo-over-image"
+                src="/images/logo/logo-ontop-lorika-white.svg"
+                alt="Ontop by Lorika logo"
+                aria-hidden="true"
+            />
         </div>
-    </section>
-    <!-- SECTION - DARK SECTION -->
-</main>
-<!-- !SECTION - MAIN -->
+    </div>
+</section>
+<!-- SECTION - DARK SECTION -->
