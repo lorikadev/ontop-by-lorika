@@ -143,7 +143,7 @@
     z-index: 3;
 }
 
-/* TEXT */
+/* COLOR DOT */
 .big .color {
     border-radius: 50%;
     width: 2rem;
@@ -183,3 +183,34 @@
 }
 
 /* !SECTION - PICKER COLORS */
+
+/* mobile */
+@media (max-width: 700px) {
+
+    /* WRAPPER */
+    .color-picker-wrapper.horizontal.big {
+        border-radius: 2rem;
+        gap: 0.4rem;
+        padding: 0.4rem 0.7rem;
+    }
+
+    /* COLOR DOT */
+    .big .color {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    /* COLOR LABEL */
+    .horizontal.big .color-label>strong {
+        padding: 0.5rem 1.5rem;
+        padding-right: 1.25rem;
+        padding-left: 2.5rem;
+        border-radius: 2rem;
+
+        font-size: 0.65rem;
+
+        position: absolute;
+        right: -0.4rem;
+        top: -0.15rem;
+    }
+}
