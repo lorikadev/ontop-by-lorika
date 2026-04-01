@@ -150,37 +150,16 @@
     height: 2rem;
 }
 
-.color.orange {
-    background-color: var(--orange);
-}
-
-.color.yellow {
-    background-color: var(--yellow);
-}
-
-.color.green {
-    background-color: var(--green);
-}
-
-.color.shock-blue {
-    background-color: var(--shock-blue);
-}
-
-.color.blue-navy {
-    background-color: var(--blue-navy);
-}
-
-.color.ivory {
-    background-color: var(--ivory);
-}
-
-.color.dark-blue-green {
-    background-color: var(--dark-blue-green);
-}
-
-.color.fuchsia {
-    background-color: var(--fuchsia);
-}
+.color.carmine-red          { background-color: var(--carmine-red); } 
+.color.traffic-purple       { background-color: var(--traffic-purple); } 
+.color.pearl-light-grey     { background-color: var(--pearl-light-grey); } 
+.color.pure-green           { background-color: var(--pure-green); } 
+.color.bright-red-orange    { background-color: var(--bright-red-orange); } 
+.color.pearl-white          { background-color: var(--pearl-white); } 
+.color.sky-blue             { background-color: var(--sky-blue); } 
+.color.zinc-yellow          { background-color: var(--zinc-yellow); } 
+.color.sand-yellow          { background-color: var(--sand-yellow); } 
+.color.jet-black            { background-color: var(--jet-black); border: 1px solid rgb(76, 76, 76); }
 
 /* !SECTION - PICKER COLORS */
 
@@ -190,19 +169,19 @@
     /* WRAPPER */
     .color-picker-wrapper.horizontal.big {
         border-radius: 2rem;
-        gap: 0.4rem;
+        gap: 0.3rem;
         padding: 0.4rem 0.7rem;
     }
 
     /* COLOR DOT */
     .big .color {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.35rem;
+        height: 1.35rem;
     }
 
     /* COLOR LABEL */
     .horizontal.big .color-label>strong {
-        padding: 0.5rem 1.5rem;
+        padding: 0.4rem 1.5rem;
         padding-right: 1.25rem;
         padding-left: 2.5rem;
         border-radius: 2rem;

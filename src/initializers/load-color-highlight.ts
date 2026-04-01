@@ -1,4 +1,4 @@
-import { applyColorCorrections } from "../utils/apply-color-correctionS";
+import { applyColorCorrections } from "../utils/apply-color-corrections";
 
 /*
     Here we handle the initial set of the highlight color.
@@ -13,9 +13,9 @@ export const loadColorHighlight = () => {
         HIGHLIGHT_COLOR_CSS_VAR_KEY,
     );
     if (!activeColorKey) {
-        activeColorKey = "--orange";
+        activeColorKey = "--bright-red-orange";
         //set active key in the localstorage
-        localStorage.setItem(HIGHLIGHT_COLOR_CSS_VAR_KEY, "--orange");
+        localStorage.setItem(HIGHLIGHT_COLOR_CSS_VAR_KEY, "--bright-red-orange");
     }
 
     //set the highlight color using the key

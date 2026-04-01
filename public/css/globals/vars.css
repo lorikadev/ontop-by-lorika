@@ -5,12 +5,14 @@
     --dark-text-color: #000000;
     --light-text-color: #ffffff;
 
-    --orange: #f15a22;
-    --yellow: #fff200;
-    --green: #40ae49;
-    --shock-blue: #00aeef;
-    --blue-navy: #24408f;
-    --ivory: #fffde9;
-    --dark-blue-green: #007270;
-    --fuchsia: #ec008c;
+    --bright-red-orange: #FF5700;   /* RAL 2008 */
+    --carmine-red: #9B111E;         /* RAL 3002 */
+    --traffic-purple: #A03472;      /* RAL 4006 */
+    --pearl-light-grey: #9E9EA1;    /* RAL 9022 */
+    --pure-green: #008F39;          /* RAL 6037 */
+    --pearl-white: #EAE6CA;         /* RAL 1013 */
+    --sky-blue: #007CB0;            /* RAL 5015 */
+    --zinc-yellow: #FFCD00;         /* RAL 1018 */
+    --sand-yellow: #C6A664;         /* RAL 1002 */
+    --jet-black: #0A0A0A;           /* RAL 9005 */
 }

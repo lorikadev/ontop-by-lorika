@@ -9,14 +9,16 @@ interface Props {
 
     //CMS
     groupAriaLabel?: string;
-    orangeLabel?: string;
-    yellowLabel?: string;
-    greenLabel?: string;
-    shockBlueLabel?: string;
-    blueNavyLabel?: string;
-    ivoryLabel?: string;
-    darkBlueGreenLabel?: string;
-    fuchsiaLabel?: string;
+    carmineRedLabel?: string;
+    trafficPurpleLabel?: string;
+    pearlLightGreyLabel?: string;
+    pureGreenLabel?: string;
+    brightRedOrangeLabel?: string;
+    pearlWhiteLabel?: string;
+    skyBlueLabel?: string;
+    zincYellowLabel?: string;
+    sandYellowLabel?: string;
+    jetBlackLabel?: string;
 }
 const {
     id,
@@ -26,14 +28,16 @@ const {
 
     //CMS
     groupAriaLabel = "Select a color",
-    orangeLabel = "orange",
-    yellowLabel = "yellow",
-    greenLabel = "green",
-    shockBlueLabel = "shock blue",
-    blueNavyLabel = "blue navy",
-    ivoryLabel = "ivory",
-    darkBlueGreenLabel = "dark blue green",
-    fuchsiaLabel = "fuchsia",
+    carmineRedLabel = "carmine red",
+    trafficPurpleLabel = "traffic purple",
+    pearlLightGreyLabel = "pearl light grey",
+    pureGreenLabel = "pure green",
+    brightRedOrangeLabel = "bright red orange",
+    pearlWhiteLabel = "pearl white",
+    skyBlueLabel = "sky blue",
+    zincYellowLabel = "zinc yellow",
+    sandYellowLabel = "sand yellow",
+    jetBlackLabel = "jet black",
 } = Astro.props;
 ---
 
@@ -44,107 +48,133 @@ const {
     role="radiogroup"
     aria-label={groupAriaLabel}
 >
-    <!-- ORANGE -->
+    <!-- BRIGHT RED ORANGE -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--orange"
+        data-color-css-var-key="--bright-red-orange"
         role="radio"
         aria-checked="false"
-        aria-label={orangeLabel}
+        aria-label={brightRedOrangeLabel}
     >
-        <strong>{orangeLabel}</strong>
-        <div class="color orange" aria-hidden="true"></div>
+        <strong>{brightRedOrangeLabel}</strong>
+        <div class="color bright-red-orange" aria-hidden="true"></div>
     </button>
 
-    <!-- YELLOW -->
+    <!-- CARMINE RED -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--yellow"
+        data-color-css-var-key="--carmine-red"
         role="radio"
         aria-checked="false"
-        aria-label={yellowLabel}
+        aria-label={carmineRedLabel}
     >
-        <strong>{yellowLabel}</strong>
-        <div class="color yellow" aria-hidden="true"></div>
+        <strong>{carmineRedLabel}</strong>
+        <div class="color carmine-red" aria-hidden="true"></div>
     </button>
 
-    <!-- GREEN -->
+    <!-- TRAFFIC PURPLE -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--green"
+        data-color-css-var-key="--traffic-purple"
         role="radio"
         aria-checked="false"
-        aria-label={greenLabel}
+        aria-label={trafficPurpleLabel}
     >
-        <strong>{greenLabel}</strong>
-        <div class="color green" aria-hidden="true"></div>
+        <strong>{trafficPurpleLabel}</strong>
+        <div class="color traffic-purple" aria-hidden="true"></div>
     </button>
 
-    <!-- SHOCK BLUE -->
+    <!-- PEARL LIGHT GREY -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--shock-blue"
+        data-color-css-var-key="--pearl-light-grey"
         role="radio"
         aria-checked="false"
-        aria-label={shockBlueLabel}
+        aria-label={pearlLightGreyLabel}
     >
-        <strong>{shockBlueLabel}</strong>
-        <div class="color shock-blue" aria-hidden="true"></div>
+        <strong>{pearlLightGreyLabel}</strong>
+        <div class="color pearl-light-grey" aria-hidden="true"></div>
     </button>
 
-    <!-- BLUE NAVY -->
+    <!-- PURE GREEN -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--blue-navy"
+        data-color-css-var-key="--pure-green"
         role="radio"
         aria-checked="false"
-        aria-label={blueNavyLabel}
+        aria-label={pureGreenLabel}
     >
-        <strong>{blueNavyLabel}</strong>
-        <div class="color blue-navy" aria-hidden="true"></div>
+        <strong>{pureGreenLabel}</strong>
+        <div class="color pure-green" aria-hidden="true"></div>
     </button>
 
-    <!-- IVORY -->
+    <!-- PEARL WHITE -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--ivory"
+        data-color-css-var-key="--pearl-white"
         role="radio"
         aria-checked="false"
-        aria-label={ivoryLabel}
+        aria-label={pearlWhiteLabel}
     >
-        <strong>{ivoryLabel}</strong>
-        <div class="color ivory" aria-hidden="true"></div>
+        <strong>{pearlWhiteLabel}</strong>
+        <div class="color pearl-white" aria-hidden="true"></div>
     </button>
 
-    <!-- DARK BLUE GREEN -->
+    <!-- SKY BLUE -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--dark-blue-green"
+        data-color-css-var-key="--sky-blue"
         role="radio"
         aria-checked="false"
-        aria-label={darkBlueGreenLabel}
+        aria-label={skyBlueLabel}
     >
-        <strong>{darkBlueGreenLabel}</strong>
-        <div class="color dark-blue-green" aria-hidden="true"></div>
+        <strong>{skyBlueLabel}</strong>
+        <div class="color sky-blue" aria-hidden="true"></div>
     </button>
 
-    <!-- FUCHSIA -->
+    <!-- ZINC YELLOW -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--fuchsia"
+        data-color-css-var-key="--zinc-yellow"
         role="radio"
         aria-checked="false"
-        aria-label={fuchsiaLabel}
+        aria-label={zincYellowLabel}
     >
-        <strong>{fuchsiaLabel}</strong>
-        <div class="color fuchsia" aria-hidden="true"></div>
+        <strong>{zincYellowLabel}</strong>
+        <div class="color zinc-yellow" aria-hidden="true"></div>
+    </button>
+
+    <!-- SAND YELLOW -->
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--sand-yellow"
+        role="radio"
+        aria-checked="false"
+        aria-label={sandYellowLabel}
+    >
+        <strong>{sandYellowLabel}</strong>
+        <div class="color sand-yellow" aria-hidden="true"></div>
+    </button>
+
+    <!-- JET BLACK -->
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--jet-black"
+        role="radio"
+        aria-checked="false"
+        aria-label={jetBlackLabel}
+    >
+        <strong>{jetBlackLabel}</strong>
+        <div class="color jet-black" aria-hidden="true"></div>
     </button>
 </div>
