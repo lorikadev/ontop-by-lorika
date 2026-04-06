@@ -38,6 +38,7 @@ html,
 body {
     font-family: Archivo;
     font-weight: 300;
+    position: relative;
 }
 
 .container {
@@ -106,7 +107,7 @@ button.icon-for-button {
         border-radius: 70px;
         width: 50px !important;
         height: 50px !important;
-    }   
+    }
 }
 
 .button.icon-for-button>img,
@@ -140,6 +141,7 @@ button.secondary:hover {
 .w-100 {
     width: 100%;
 }
+
 /* !SECTION - SIZES */
 
 /* SECTION - TEXT */
@@ -152,86 +154,281 @@ button.secondary:hover {
 }
 
 /* SECTION - FONT WEIGHT */
-.fw-400 { font-weight: 400; }
-.fw-500 { font-weight: 500; }
-.fw-600 { font-weight: 600; }
-.fw-700 { font-weight: 700; }
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
 /* !SECTION - FONT WEIGHT */
 
 /* SECTION - LINE HEIGHT */
-.lh-05 { line-height: 0.5rem; }
-.lh-1  { line-height: 1rem; }
-.lh-15 { line-height: 1.5rem; }
-.lh-2  { line-height: 2rem; }
-.lh-25 { line-height: 2.5rem; }
-.lh-3  { line-height: 3rem; }
-.lh-35 { line-height: 3.5rem; }
-.lh-4  { line-height: 4rem; }
-.lh-45 { line-height: 4.5rem; }
-.lh-5  { line-height: 5rem; }
+.lh-05 {
+    line-height: 0.5rem;
+}
+
+.lh-1 {
+    line-height: 1rem;
+}
+
+.lh-15 {
+    line-height: 1.5rem;
+}
+
+.lh-2 {
+    line-height: 2rem;
+}
+
+.lh-25 {
+    line-height: 2.5rem;
+}
+
+.lh-3 {
+    line-height: 3rem;
+}
+
+.lh-35 {
+    line-height: 3.5rem;
+}
+
+.lh-4 {
+    line-height: 4rem;
+}
+
+.lh-45 {
+    line-height: 4.5rem;
+}
+
+.lh-5 {
+    line-height: 5rem;
+}
+
 /* !SECTION - LINE HEIGHT */
 
 /* SECTION - FONT SIZES */
-.fs-05 { font-size: clamp(0.35rem, 0.3rem + 0.3vw, 0.5rem); }
-.fs-1 { font-size: clamp(0.7rem, 0.65rem + 0.4vw, 1rem); }
-.fs-125 { font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.25rem); }
-.fs-15 { font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem); }
-.fs-2 { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem); }
-.fs-25 { font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem); }
-.fs-3 { font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem); }
-.fs-35 { font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem); }
-.fs-4 { font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem); }
-.fs-45 { font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem); }
-.fs-5 { font-size: clamp(3.5rem, 3rem + 2vw, 5rem); }
+.fs-05 {
+    font-size: clamp(0.35rem, 0.3rem + 0.3vw, 0.5rem);
+}
 
-.fs-h1 { font-size: clamp(1.75rem, 1.2rem + 4.5vw, 3rem); }
-.fs-h2 { font-size: clamp(1.375rem, 1rem + 3.2vw, 2.25rem); }
-.fs-h3 { font-size: clamp(1.125rem, 0.95rem + 2.0vw, 1.75rem); }
-.fs-h4 { font-size: clamp(1rem, 0.9rem + 1.2vw, 1.25rem); }
-.fs-h5 { font-size: 1rem; }
-.fs-h6 { font-size: 0.875rem; }
+.fs-1 {
+    font-size: clamp(0.7rem, 0.65rem + 0.4vw, 1rem);
+}
+
+.fs-125 {
+    font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.25rem);
+}
+
+.fs-15 {
+    font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem);
+}
+
+.fs-2 {
+    font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem);
+}
+
+.fs-25 {
+    font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+}
+
+.fs-3 {
+    font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem);
+}
+
+.fs-35 {
+    font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem);
+}
+
+.fs-4 {
+    font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem);
+}
+
+.fs-45 {
+    font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem);
+}
+
+.fs-5 {
+    font-size: clamp(3.5rem, 3rem + 2vw, 5rem);
+}
+
+.fs-h1 {
+    font-size: clamp(1.75rem, 1.2rem + 4.5vw, 3rem);
+}
+
+.fs-h2 {
+    font-size: clamp(1.375rem, 1rem + 3.2vw, 2.25rem);
+}
+
+.fs-h3 {
+    font-size: clamp(1.125rem, 0.95rem + 2.0vw, 1.75rem);
+}
+
+.fs-h4 {
+    font-size: clamp(1rem, 0.9rem + 1.2vw, 1.25rem);
+}
+
+.fs-h5 {
+    font-size: 1rem;
+}
+
+.fs-h6 {
+    font-size: 0.875rem;
+}
 
 /* tablet */
 @media (max-width: 1200px) {
-  .fs-05-tab { font-size: clamp(0.35rem, 0.3rem + 0.3vw, 0.5rem); }
-  .fs-1-tab { font-size: clamp(0.7rem, 0.65rem + 0.4vw, 1rem); }
-  .fs-125-tab { font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.25rem); }
-  .fs-15-tab { font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem); }
-  .fs-2-tab { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem); }
-  .fs-25-tab { font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem); }
-  .fs-3-tab { font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem); }
-  .fs-35-tab { font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem); }
-  .fs-4-tab { font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem); }
-  .fs-45-tab { font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem); }
-  .fs-5-tab { font-size: clamp(3.5rem, 3rem + 2vw, 5rem); }
+    .fs-05-tab {
+        font-size: clamp(0.35rem, 0.3rem + 0.3vw, 0.5rem);
+    }
+
+    .fs-1-tab {
+        font-size: clamp(0.7rem, 0.65rem + 0.4vw, 1rem);
+    }
+
+    .fs-125-tab {
+        font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.25rem);
+    }
+
+    .fs-15-tab {
+        font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem);
+    }
+
+    .fs-2-tab {
+        font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem);
+    }
+
+    .fs-25-tab {
+        font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+    }
+
+    .fs-3-tab {
+        font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem);
+    }
+
+    .fs-35-tab {
+        font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem);
+    }
+
+    .fs-4-tab {
+        font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem);
+    }
+
+    .fs-45-tab {
+        font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem);
+    }
+
+    .fs-5-tab {
+        font-size: clamp(3.5rem, 3rem + 2vw, 5rem);
+    }
 }
 
 /* mobile */
 @media (max-width: 700px) {
-  .fs-05-mob { font-size: clamp(0.35rem, 0.3rem + 0.3vw, 0.5rem); }
-  .fs-1-mob { font-size: clamp(0.7rem, 0.65rem + 0.4vw, 1rem); }
-  .fs-125-mob { font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.25rem); }
-  .fs-15-mob { font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem); }
-  .fs-2-mob { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem); }
-  .fs-25-mob { font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem); }
-  .fs-3-mob { font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem); }
-  .fs-35-mob { font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem); }
-  .fs-4-mob { font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem); }
-  .fs-45-mob { font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem); }
-  .fs-5-mob { font-size: clamp(3.5rem, 3rem + 2vw, 5rem); }
+    .fs-05-mob {
+        font-size: clamp(0.35rem, 0.3rem + 0.3vw, 0.5rem);
+    }
+
+    .fs-1-mob {
+        font-size: clamp(0.7rem, 0.65rem + 0.4vw, 1rem);
+    }
+
+    .fs-125-mob {
+        font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.25rem);
+    }
+
+    .fs-15-mob {
+        font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem);
+    }
+
+    .fs-2-mob {
+        font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem);
+    }
+
+    .fs-25-mob {
+        font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+    }
+
+    .fs-3-mob {
+        font-size: clamp(2.1rem, 1.8rem + 1.2vw, 3rem);
+    }
+
+    .fs-35-mob {
+        font-size: clamp(2.45rem, 2.1rem + 1.4vw, 3.5rem);
+    }
+
+    .fs-4-mob {
+        font-size: clamp(2.8rem, 2.4rem + 1.6vw, 4rem);
+    }
+
+    .fs-45-mob {
+        font-size: clamp(3.15rem, 2.7rem + 1.8vw, 4.5rem);
+    }
+
+    .fs-5-mob {
+        font-size: clamp(3.5rem, 3rem + 2vw, 5rem);
+    }
 }
 
 /* for buttons with bigger texts we need more rounding */
-.button.fs-05, button.fs-05 { border-radius: 0.5rem; }
-.button.fs-1,  button.fs-1  { border-radius: 1rem; }
-.button.fs-15, button.fs-15 { border-radius: 1.5rem; }
-.button.fs-2,  button.fs-2  { border-radius: 2rem; }
-.button.fs-25, button.fs-25 { border-radius: 2.5rem; }
-.button.fs-3,  button.fs-3  { border-radius: 3rem; }
-.button.fs-35, button.fs-35 { border-radius: 3.5rem; }
-.button.fs-4,  button.fs-4  { border-radius: 4rem; }
-.button.fs-45, button.fs-45 { border-radius: 4.5rem; }
-.button.fs-5,  button.fs-5  { border-radius: 5rem; }
+.button.fs-05,
+button.fs-05 {
+    border-radius: 0.5rem;
+}
+
+.button.fs-1,
+button.fs-1 {
+    border-radius: 1rem;
+}
+
+.button.fs-15,
+button.fs-15 {
+    border-radius: 1.5rem;
+}
+
+.button.fs-2,
+button.fs-2 {
+    border-radius: 2rem;
+}
+
+.button.fs-25,
+button.fs-25 {
+    border-radius: 2.5rem;
+}
+
+.button.fs-3,
+button.fs-3 {
+    border-radius: 3rem;
+}
+
+.button.fs-35,
+button.fs-35 {
+    border-radius: 3.5rem;
+}
+
+.button.fs-4,
+button.fs-4 {
+    border-radius: 4rem;
+}
+
+.button.fs-45,
+button.fs-45 {
+    border-radius: 4.5rem;
+}
+
+.button.fs-5,
+button.fs-5 {
+    border-radius: 5rem;
+}
+
 /* !SECTION - FONT SIZES */
 
 .t-justify {
@@ -250,34 +447,23 @@ button.secondary:hover {
 .t-a-end {
     text-align: end;
 }
+
 /* !SECTION - TEXT */
 
 /* SECTION - DISPLAY */
-.show-only-desktop {
-    display: inline-block;
-}
-
-.show-tab {
-    display: none;
-}
-
-.show-mob {
-    display: none;
-}
+.show-till-tab { display: inline-block; }
+.show-till-mob { display: inline-block; }
+.show-tab { display: none; }
+.show-mob { display: none; }
 
 @media (max-width: 1200px) {
-    .show-only-desktop {
-        display: none;
-    }
-
-    .show-tab {
-        display: inline-block;
-    }
+    .show-till-tab { display: none !important; }
+    .show-tab { display: inline-block; }
 }
 
 @media (max-width: 700px) {
-    .show-mob {
-        display: inline-block;
-    }
+    .show-till-mob { display: none !important; }
+    .show-mob { display: inline-block; }
 }
+
 /* !SECTION - DISPLAY */

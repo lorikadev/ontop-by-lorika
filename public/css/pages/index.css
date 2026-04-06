@@ -280,10 +280,6 @@
     border: 1px solid #312f2e;
 }
 
-#db-item-5 ul li {
-    font-size: 0.8rem;
-}
-
 @media (min-width: 1200px) {
     #bento-dark>div {
         min-height: 400px;

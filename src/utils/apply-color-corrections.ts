@@ -6,8 +6,8 @@
  */
 export const applyColorCorrections = (cssColorVarKey: string) => {
     //SECTION - ELEMENTS TO CORRECT
-    const navCtaShop = document.getElementById('nav-cta-shop') as HTMLAnchorElement;
-    const navCtaCartSvg = document.querySelector('#nav-cta-cart>svg') as SVGAElement;
+    const navCtaShop = document.querySelectorAll('.nav-cta-shop') as NodeListOf<HTMLAnchorElement>;
+    const navCtaCartSvg = document.querySelectorAll('.nav-cta-cart>svg') as NodeListOf<SVGAElement>;
     const primaryButtons = [
         ...document.querySelectorAll('button.primary'),
         ...document.querySelectorAll('.button.primary'),
@@ -19,7 +19,7 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
     const border = '1px solid rgb(46, 46, 46)';
     const usedBorder = cssColorVarKey === "--jet-black" ? border : '';
 
-    navCtaShop.style.border = usedBorder;
+    navCtaShop.forEach(ncs => ncs.style.border = usedBorder);
     primaryButtons.forEach(pb => pb.style.border = usedBorder);
     highlightedContainers.forEach(hc => hc.style.border = usedBorder);
 
@@ -30,8 +30,8 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
         cssColorVarKey === "--sand-yellow" ||
         cssColorVarKey === "--pearl-light-grey"
     ) {
-        navCtaShop.style.color = 'var(--dark-text-color)';
-        navCtaCartSvg.style.fill = 'var(--dark-text-color)';
+        navCtaShop.forEach(ncs => ncs.style.border = 'var(--dark-text-color)');
+        navCtaCartSvg.forEach(nccs => nccs.style.border = 'var(--dark-text-color)');
 
         primaryButtons.forEach(pb => pb.style.color = 'var(--dark-text-color)');
         highlightedContainers.forEach(hc => hc.style.color = 'var(--dark-text-color)');
@@ -39,15 +39,15 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
     }
     // DARK COLORS
     else {
-        navCtaShop.style.color = 'var(--light-text-color)';
-        navCtaCartSvg.style.fill = 'var(--light-text-color)';
+        navCtaShop.forEach(ncs => ncs.style.border = 'var(--light-text-color)');
+        navCtaCartSvg.forEach(nccs => nccs.style.border = 'var(--light-text-color)');
 
         primaryButtons.forEach(pb => pb.style.color = 'var(--light-text-color)');
         highlightedContainers.forEach(hc => hc.style.color = 'var(--light-text-color)');
 
         // jet black need border to be seen over dark bg
         if (cssColorVarKey === "--jet-black") {
-            navCtaShop.style.border = border;
+            navCtaShop.forEach(ncs => ncs.style.border = border);
             primaryButtons.forEach(pb => pb.style.border = border);
             highlightedContainers.forEach(hc => hc.style.border = border);
         }

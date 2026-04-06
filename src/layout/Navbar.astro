@@ -1,9 +1,19 @@
 ---
+import type { SanityDocument } from "sanity";
+import { sanityClient } from "sanity:client";
+
 //NOTE - the second values should always be the current page root
 /*
  *  /en/home -> ['en', 'home'] -> 'home'
  */
 const activeLinkPath = Astro.url.pathname.split("/")[2] ?? "";
+
+const NAVBAR_QUERY = `*[
+  _type == "navbar"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
+
+const navbar = await sanityClient.fetch<SanityDocument[]>(NAVBAR_QUERY);
 
 //OGGETTO PROXY PER SANITY
 const navContent = {
@@ -42,7 +52,17 @@ const navContent = {
         </div>
 
         <!-- MOBILE MENU BUTTON -->
-        <div id="mobile-menu-button-wrapper" class="show-mob">
+        <div id="mobile-menu-wrapper" class="show-mob">
+            <!-- CTA -->
+            <a
+                class="button primary fs-2-mob nav-cta-shop"
+                href={navContent.cta.shop.href}
+                aria-label={navContent.cta.shop.ariaLabel}
+                aria-current={activeLinkPath === "/shop" ? "page" : undefined}
+            >
+                {navContent.cta.shop.label}
+            </a>
+            <!-- SANDWICH -->
             <button id="mobile-menu-button">
                 <img src="/images/icons/menu.svg" alt="mobile menu button" />
             </button>
@@ -99,10 +119,9 @@ const navContent = {
         <!-- !SECTION - MAIN MENU -->
 
         <!-- CTA -->
-        <div id="nav-cta-wrapper">
+        <div class="nav-cta-wrapper show-till-mob">
             <a
-                id="nav-cta-shop"
-                class="button primary wide fs-2-mob"
+                class="button primary wide fs-2-mob nav-cta-shop"
                 href={navContent.cta.shop.href}
                 aria-label={navContent.cta.shop.ariaLabel}
                 aria-current={activeLinkPath === "/shop" ? "page" : undefined}
@@ -111,8 +130,7 @@ const navContent = {
             </a>
 
             <a
-                id="nav-cta-cart"
-                class="button primary icon-for-button"
+                class="button primary icon-for-button nav-cta-cart"
                 href={navContent.cta.cart.href}
                 aria-label={navContent.cta.cart.ariaLabel}
                 aria-current={activeLinkPath === "/cart" ? "page" : undefined}

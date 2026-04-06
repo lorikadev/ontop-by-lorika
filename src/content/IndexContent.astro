@@ -43,11 +43,11 @@ let {
     sectionLightAriaLabel = "prima sezione informativa prodotto",
     lItem2Content = `
         <h2 class="t-uppercase m-0 fs-h1">
-            <span class="fs-4 block">proteggi</span>
+            <span class="fs-4 block lh-3">proteggi</span>
             <b class="fs-2 block">quello che indossi</b>
             <span class="fs-2 lh-2 fw-400 block">senza appesantirlo</span>
         </h2>
-        <p class="fs-1">
+        <p>
             <span class="fw-500" style="line-height: 0px;">
                 Una cover progettata per difendere i tuoi smart glasses da urti, graffi e segni dell'uso quotidiano.
                 Una scocca rigida che copre montatura e aste senza aggiungere peso, senza cambiare la calzata.
@@ -91,7 +91,7 @@ let {
     sectionDarkAriaLabel = "seconda sezione informativa prodotto",
     dItem2Content = `
         <h2 class="fs-h4 mb-05">Ideata e realizzata in Italia.</h2>
-        <p class="fs-1">
+        <p>
             Dalla scelta dei materiali allo sviluppo delle colorazioni, ogni fase è seguita internamente.
             La cover è costruita in un polimero ad alta resistenza e peso contenuto - progettato per reggere gli urti
             e mantenere il colore nel tempo, senza cedere all'uso quotidiano.
@@ -109,16 +109,15 @@ let {
             <h3 class="mb-0 fs-h4">Ontop non è solo un prodotto.</h3>
             <p>
                 È anche l'accesso a una community riservata, pensata per chi vuole seguire l'evoluzione del progetto fin dall'inizio.
-            </p>
-            <p class="mt-05">
+                <br/>
                 Con il tuo acquisto avrai accesso a:
+                <ul class="pl-1 mt-0">
+                    <li>ANTEPRIME SUI NUOVI SVILUPPI</li>
+                    <li>SURVEY SULLE PROSSIME COMPATIBILITÀ</li>
+                    <li>AGGIORNAMENTI DEDICATI ALLA COMMUNITY</li>
+                    <li>CONTENUTI ESCLUSIVI</li>
+                </ul>
             </p>
-            <ul class="pl-1 mt-0">
-                <li>ANTEPRIME SUI NUOVI SVILUPPI</li>
-                <li>SURVEY SULLE PROSSIME COMPATIBILITÀ</li>
-                <li>AGGIORNAMENTI DEDICATI ALLA COMMUNITY</li>
-                <li>CONTENUTI ESCLUSIVI</li>
-            </ul>
         </div>
     `,
 
@@ -146,7 +145,7 @@ dItem5Content = cleanHtml(dItem5Content);
         <div id="hero-3d-wrapper">
             <!-- COLOR PICKER -->
             <div
-                class="show-only-desktop"
+                class="show-till-tab"
                 id="hero-color-picker-desktop-wrapper"
             >
                 <ColorPicker id="hero-color-picker-desktop" />
