@@ -2,7 +2,7 @@
 import { sanityClient } from "sanity:client";
 import IndexContent from "../../content/IndexContent.astro";
 import PageContainer from "../../layout/PageContainer.astro";
-import type { HomePage, SiteNavigators } from "../../models/types/sanity.types";
+import type { SiteNavigators, HomePage } from "../../../sanity-studio/studio-lorika-ontop/sanity.types";
 
 const SITE_NAVIGATORS_QUERY = `
     *[_type == "siteNavigators" && lang == "it"]`;
