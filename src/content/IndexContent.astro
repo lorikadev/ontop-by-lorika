@@ -1,137 +1,22 @@
 ---
 import ColorPicker from "../components/ColorPicker/ColorPicker.astro";
+import type { HomePage } from "../models/types/sanity.types";
 import { cleanHtml } from "../utils/clean-html";
+import { urlFor } from "../utils/sanity-client";
 
 interface Props {
-    // CMS
-    // HERO
-    heroTitle?: string;
-    mobileAds?: string;
-    buyNowLabel?: string;
-    buyNowAriaLabel?: string;
-    discoverLabel?: string;
-    discoverAriaLabel?: string;
-
-    //LIGHT SECTION
-    sectionLightAriaLabel?: string;
-    productPhotoAriaLabel?: string;
-    productPhotoAndModelsAriaLabel?: string;
-    lItem2Content?: string;
-    lItem5Content?: string;
-    lItem6Content?: string;
-
-    //DARK SECTION
-    sectionDarkAriaLabel?: string;
-    logoAriaLabel?: string;
-    dItem2Content?: string;
-    dItem3Content?: string;
-    dItem5Content?: string;
-    joinUsLabel?: string;
-    joinUsAriaLabel?: string;
+    homePageData: HomePage;
 }
 
-let {
-    // HERO
-    heroTitle = "FULL-FRAME COVER<br class='show-tab'/> FOR YOUR<br/> SMART GLASSES",
-    mobileAds = "Modello compatibile con Rayban | Meta Gen1 e Gen2",
-    buyNowLabel = "buy now",
-    buyNowAriaLabel = "Buy now - vai alla pagina di acquisto",
-    discoverLabel = "discover",
-    discoverAriaLabel = "Discover - scopri il prodotto",
+let { homePageData } = Astro.props;
 
-    //LIGHT SECTION
-    sectionLightAriaLabel = "prima sezione informativa prodotto",
-    lItem2Content = `
-        <h2 class="t-uppercase m-0 fs-h1">
-            <span class="fs-4 block lh-3">proteggi</span>
-            <b class="fs-2 block">quello che indossi</b>
-            <span class="fs-2 lh-2 fw-400 block">senza appesantirlo</span>
-        </h2>
-        <p>
-            <span class="fw-500" style="line-height: 0px;">
-                Una cover progettata per difendere i tuoi smart glasses da urti, graffi e segni dell'uso quotidiano.
-                Una scocca rigida che copre montatura e aste senza aggiungere peso, senza cambiare la calzata.
-            </span>
-            <b class="fw-600" style="display: block; margin-top: 0.25rem;">
-                Perché ciò che usi ogni giorno merita di durare.
-            </b>
-        </p>
-    `,
-    lItem5Content = `
-        <h2 class="t-uppercase fs-2 fs-3-mob m-0 p-0">Personalizza</h2>
-        <b class="block fs-125 fs-15-mob lh-15 my-05">
-            Cambia look in un secondo. <br /> 
-            Letteralmente.
-        </b>
-        <p class="fw-500 mb-1">
-            Una palette pensata per adattarsi a stili, momenti e occasioni diverse.
-            Puoi cambiare cover quando vuoi: per l'outfit, per l'occasione o semplicemente perché hai voglia di qualcosa di diverso.
-            <br />
-            Gli stessi occhiali, ogni volta diversi.
-        </p>
-    `,
-    lItem6Content = `
-        <h2 class="t-uppercase fs-2 fs-3-mob m-0 p-0">design</h2>
-        <b class="block fs-125 fs-15-mob lh-15 my-05">
-            Segue la forma originale, <br />
-            non la nasconde.
-        </b>
-        <p class="mb-1 fw-500">
-            Le linee restano pulite, la calzata è precisa e ogni dettaglio si integra perfettamente con la montatura.
-            Si applica e si rimuove in un attimo, con un semplice click.
-            <br />
-            Una cover che sembra parte degli occhiali, non un'aggiunta.
-        </p>
-        <small>
-            Modello compatibile con Rayban | Meta Gen1 e Gen2
-        </small>
-    `,
+const lItem2Content = cleanHtml(homePageData?.lItem2Content!);
+const lItem5Content = cleanHtml(homePageData?.lItem5Content!);
+const lItem6Content = cleanHtml(homePageData?.lItem6Content!);
 
-    //DARK SECTION
-    sectionDarkAriaLabel = "seconda sezione informativa prodotto",
-    dItem2Content = `
-        <h2 class="fs-h4 mb-05">Ideata e realizzata in Italia.</h2>
-        <p>
-            Dalla scelta dei materiali allo sviluppo delle colorazioni, ogni fase è seguita internamente.
-            La cover è costruita in un polimero ad alta resistenza e peso contenuto - progettato per reggere gli urti
-            e mantenere il colore nel tempo, senza cedere all'uso quotidiano.
-        </p>
-    `,
-    dItem3Content = `
-        <h2 class="t-uppercase t-a-center fs-h1 m-0">Made in italy</h2>
-        <p class="t-uppercase t-a-center">
-            <small>available worldwide</small>
-        </p>
-    `,
-    dItem5Content = `
-        <div>
-            <h2 class="t-uppercase m-0">secret club</h2>
-            <h3 class="mb-0 fs-h4">Ontop non è solo un prodotto.</h3>
-            <p>
-                È anche l'accesso a una community riservata, pensata per chi vuole seguire l'evoluzione del progetto fin dall'inizio.
-                <br/>
-                Con il tuo acquisto avrai accesso a:
-                <ul class="pl-1 mt-0">
-                    <li>ANTEPRIME SUI NUOVI SVILUPPI</li>
-                    <li>SURVEY SULLE PROSSIME COMPATIBILITÀ</li>
-                    <li>AGGIORNAMENTI DEDICATI ALLA COMMUNITY</li>
-                    <li>CONTENUTI ESCLUSIVI</li>
-                </ul>
-            </p>
-        </div>
-    `,
-
-    joinUsLabel = "JOIN US",
-    joinUsAriaLabel = "Join us - entra nella community",
-} = Astro.props;
-
-lItem2Content = cleanHtml(lItem2Content);
-lItem5Content = cleanHtml(lItem5Content);
-lItem6Content = cleanHtml(lItem6Content);
-
-dItem2Content = cleanHtml(dItem2Content);
-dItem3Content = cleanHtml(dItem3Content);
-dItem5Content = cleanHtml(dItem5Content);
+const dItem2Content = cleanHtml(homePageData?.dItem2Content!);
+const dItem3Content = cleanHtml(homePageData?.dItem3Content!);
+const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
 ---
 
 <!-- INDEX STYLE -->
@@ -144,10 +29,7 @@ dItem5Content = cleanHtml(dItem5Content);
         <!-- TODO -->
         <div id="hero-3d-wrapper">
             <!-- COLOR PICKER -->
-            <div
-                class="show-till-tab"
-                id="hero-color-picker-desktop-wrapper"
-            >
+            <div class="show-till-tab" id="hero-color-picker-desktop-wrapper">
                 <ColorPicker id="hero-color-picker-desktop" />
             </div>
             <div class="show-tab" id="hero-color-picker-tablet-wrapper">
@@ -160,20 +42,24 @@ dItem5Content = cleanHtml(dItem5Content);
         </div>
         <!-- HERO CTA -->
         <div id="hero-cta">
-            <h1 set:html={heroTitle} class="m-0 lh-35" />
+            <h1 set:html={homePageData?.heroTitle} class="m-0 lh-35" />
             <p class="show-tab fs-2 my-1">
-                {mobileAds}
+                {homePageData?.mobileAds}
             </p>
             <div id="hero-cta-buttons">
-                <a class="button primary" href="#" aria-label={buyNowAriaLabel}>
-                    {buyNowLabel}
+                <a
+                    class="button primary"
+                    href="#"
+                    aria-label={homePageData?.buyNowAriaLabel}
+                >
+                    {homePageData?.buyNowLabel}
                 </a>
                 <a
                     class="button secondary"
                     href="#"
-                    aria-label={discoverAriaLabel}
+                    aria-label={homePageData?.discoverAriaLabel}
                 >
-                    {discoverLabel}
+                    {homePageData?.discoverLabel}
                 </a>
             </div>
         </div>
@@ -182,14 +68,17 @@ dItem5Content = cleanHtml(dItem5Content);
 <!-- !SECTION - HERO -->
 
 <!-- SECTION - SECTION LIGHT -->
-<section id="section-light" aria-labelledby={sectionLightAriaLabel}>
+<section
+    id="section-light"
+    aria-labelledby={homePageData?.sectionLightAriaLabel}
+>
     <div class="container">
         <!-- BENTO LIGHT -->
         <div id="bento-light">
             <!-- ITEM-1 -->
             <div
                 id="lb-item-1"
-                style="background-image: url('/images/images/ontop-decomposto.jpg');"
+                style={`background-image: url('${urlFor(homePageData?.lItem1Image?.asset?._ref).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
@@ -201,7 +90,7 @@ dItem5Content = cleanHtml(dItem5Content);
             <!-- ITEM-3 -->
             <div
                 id="lb-item-3"
-                style="background-image: url('/images/images/coppia-modelli-ontop.jpg');"
+                style={`background-image: url('${urlFor(homePageData?.lItem3Image?.asset?._ref).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
@@ -209,7 +98,7 @@ dItem5Content = cleanHtml(dItem5Content);
             <!-- ITEM-4 -->
             <div
                 id="lb-item-4"
-                style="background-image: url('/images/images/ontop-prodotto-laterale-less-cover-zoom.jpg');"
+                style={`background-image: url('${urlFor(homePageData?.lItem4Image?.asset?._ref).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
@@ -233,14 +122,18 @@ dItem5Content = cleanHtml(dItem5Content);
     <!-- SUB HERO -->
     <img
         class="sub-hero"
-        src="/images/images/modella-close-up-ontop.jpg"
+        src={urlFor(homePageData?.lightSubHeroImage?.asset?._ref).url()}
         aria-hidden="true"
     />
 </section>
 <!-- !SECTION - SECTION LIGHT -->
 
 <!-- SECTION - SECTION DARK -->
-<section id="section-dark" class="pt-2" aria-labelledby={sectionDarkAriaLabel}>
+<section
+    id="section-dark"
+    class="pt-2"
+    aria-labelledby={homePageData?.sectionDarkAriaLabel}
+>
     <div class="container">
         <div id="bento-dark">
             <!-- ITEM 1 -->
@@ -261,7 +154,7 @@ dItem5Content = cleanHtml(dItem5Content);
             <!-- ITEM 4 -->
             <div
                 id="db-item-4"
-                style="background-image: url('/images/images/trio-modelli-ontop.jpg');"
+                style={`background-image: url('${urlFor(homePageData?.dItem4Image?.asset?._ref).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
@@ -277,9 +170,9 @@ dItem5Content = cleanHtml(dItem5Content);
                         target="_blank"
                         rel="noopener noreferrer"
                         class="button primary fs-1 fs-15-mob"
-                        aria-label={joinUsAriaLabel}
+                        aria-label={homePageData?.joinUsAriaLabel}
                     >
-                        {joinUsLabel}
+                        {homePageData?.joinUsLabel}
                     </a>
                 </div>
             </div>
@@ -290,7 +183,7 @@ dItem5Content = cleanHtml(dItem5Content);
         <img
             style="border-radius: 10px;"
             class="sub-hero"
-            src="/images/images/trio-blur-ontop.jpg"
+            src={urlFor(homePageData?.darkSubHeroImage?.asset?._ref).url()}
             aria-hidden="true"
         />
         <img

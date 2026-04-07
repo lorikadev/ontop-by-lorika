@@ -1,61 +1,73 @@
 ---
-import { cleanHtml } from '../utils/clean-html';
+import type { SiteNavigators } from "../models/types/sanity.types";
+import { cleanHtml } from "../utils/clean-html";
 
 interface Props {
-    companyBlockHtml?: string;
-    addressBlockHtml?: string;
-    followUsLabel?: string;
+    //SITE NAVIGATORS (NAVBAR & FOOTER)
+    siteNavigators: SiteNavigators;
 }
 
-//cms
 const {
-    companyBlockHtml = `
-        <b>LORIKA s.r.l.</b>
-        <br />
-        <b>ONTOP a product by LORIKA s.r.l.</b>
-    `,
-    addressBlockHtml = `
-        <b>ROMA, ITALIA</b>
-        <br />
-        <b>Via Flaminia 330</b>
-    `,
-    followUsLabel = "FOLLOW US ON:",
+    //SITE NAVIGATORS (NAVBAR & FOOTER)
+    siteNavigators,
 } = Astro.props;
----
 
+const footerData = siteNavigators.footer;
+---
 
 <footer class="pt-2 pb-5">
     <div class="container">
         <!-- OWNERS -->
-        <div set:html={cleanHtml(companyBlockHtml)}></div>
+        <div set:html={cleanHtml(footerData?.leftBlock!)} />
 
         <!-- ADDRESS -->
-        <div set:html={cleanHtml(addressBlockHtml)}></div>
-        
+        <div set:html={cleanHtml(footerData?.centerBlock!)} />
+
         <!-- SOCIAL -->
         <div>
-            <b> {followUsLabel} </b>
+            <b> {footerData?.rightBlock!} </b>
             <div id="socials-container" class="mt-05">
                 <a href="#TODO" class="social-button large-icon">
-                    <img src="/images/logo/socials/facebook.svg" alt="brand social logo" />
+                    <img
+                        src="/images/logo/socials/facebook.svg"
+                        alt="brand social logo"
+                    />
                 </a>
                 <a href="#TODO" class="social-button">
-                    <img src="/images/logo/socials/twitter-x.svg" alt="brand social logo" />
+                    <img
+                        src="/images/logo/socials/twitter-x.svg"
+                        alt="brand social logo"
+                    />
                 </a>
                 <a href="#TODO" class="social-button">
-                    <img src="/images/logo/socials/youtube.svg" alt="brand social logo" />
+                    <img
+                        src="/images/logo/socials/youtube.svg"
+                        alt="brand social logo"
+                    />
                 </a>
                 <a href="#TODO" class="social-button super-large-icon">
-                    <img src="/images/logo/socials/instagram.svg" alt="brand social logo" />
+                    <img
+                        src="/images/logo/socials/instagram.svg"
+                        alt="brand social logo"
+                    />
                 </a>
                 <a href="#TODO" class="social-button super-small-icon">
-                    <img src="/images/logo/socials/linkedin.svg" alt="brand social logo" />
+                    <img
+                        src="/images/logo/socials/linkedin.svg"
+                        alt="brand social logo"
+                    />
                 </a>
                 <a href="#TODO" class="social-button">
-                    <img src="/images/logo/socials/whatsapp.svg" alt="brand social logo" />
+                    <img
+                        src="/images/logo/socials/whatsapp.svg"
+                        alt="brand social logo"
+                    />
                 </a>
                 <a href="#TODO" class="social-button">
-                    <img src="/images/logo/socials/spotify.svg" alt="brand social logo" />
+                    <img
+                        src="/images/logo/socials/spotify.svg"
+                        alt="brand social logo"
+                    />
                 </a>
             </div>
         </div>

@@ -1,6 +1,18 @@
 ---
+import { sanityClient } from "sanity:client";
 import IndexContent from "../../content/IndexContent.astro";
 import PageContainer from "../../layout/PageContainer.astro";
+import type { HomePage, SiteNavigators } from "../../models/types/sanity.types";
+
+const SITE_NAVIGATORS_QUERY = `
+    *[_type == "siteNavigators" && lang == "en"]`;
+const siteNavigators = await sanityClient.fetch<SiteNavigators[]>(
+    SITE_NAVIGATORS_QUERY,
+);
+
+const HOME_PAGE_QUERY = `
+    *[_type == "homePage" && lang == "en"]`;
+const homePage = await sanityClient.fetch<HomePage[]>(HOME_PAGE_QUERY);
 ---
 
 <PageContainer
@@ -14,6 +26,7 @@ import PageContainer from "../../layout/PageContainer.astro";
     twitterCard="summary_large_image"
     twitterSite="@loremipsum"
     twitterCreator="@creatorlorem"
+    siteNavigators={siteNavigators[0]}
 >
-    <IndexContent />
+    <IndexContent homePageData={homePage[0]} />
 </PageContainer>

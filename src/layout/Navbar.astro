@@ -1,6 +1,6 @@
 ---
-import type { SanityDocument } from "sanity";
-import { sanityClient } from "sanity:client";
+import type { SiteNavigators } from "../models/types/sanity.types";
+import { urlFor } from "../utils/sanity-client";
 
 //NOTE - the second values should always be the current page root
 /*
@@ -8,46 +8,25 @@ import { sanityClient } from "sanity:client";
  */
 const activeLinkPath = Astro.url.pathname.split("/")[2] ?? "";
 
-const NAVBAR_QUERY = `*[
-  _type == "navbar"
-  && defined(slug.current)
-]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
+interface Props {
+    //SITE NAVIGATORS (NAVBAR & FOOTER)
+    siteNavigators: SiteNavigators;
+}
 
-const navbar = await sanityClient.fetch<SanityDocument[]>(NAVBAR_QUERY);
+const {
+    //SITE NAVIGATORS (NAVBAR & FOOTER)
+    siteNavigators,
+} = Astro.props;
 
-//OGGETTO PROXY PER SANITY
-const navContent = {
-    navAriaLabel: "Navigazione principale",
-    main: {
-        home: { href: "/", label: "home" },
-        chiSiamo: { href: "/chi-siamo", label: "chi siamo" },
-        ontopCover: { href: "/ontop-cover", label: "ontop cover" },
-        ambassadors: { href: "/ambassadors", label: "ambassadors" },
-    },
-    cta: {
-        shop: {
-            href: "/shop",
-            label: "shop",
-            ariaLabel: "vai alla pagina del negozio",
-        },
-        cart: {
-            href: "/cart",
-            ariaLabel: "vai alla pagina del carrello",
-            icon: "/images/icons/cart-white.svg",
-        },
-    },
-};
+const navData = siteNavigators.navbar;
 ---
 
-<nav aria-label={navContent.navAriaLabel}>
+<nav aria-label="navbar">
     <div id="top-navbar" data-mobile-menu-opened="closed">
         <!-- LOGO -->
         <div id="logo-link-wrapper">
-            <a id="logo-link" href="/" aria-label="home link">
-                <img
-                    src="/images/logo/logo-lorika-white.svg"
-                    alt="logo Lorika"
-                />
+            <a id="logo-link" href="/" aria-label={navData?.home + " link"}>
+                <img src={urlFor(navData?.logo?.asset?._ref).url()} alt="logo Lorika" />
             </a>
         </div>
 
@@ -56,11 +35,11 @@ const navContent = {
             <!-- CTA -->
             <a
                 class="button primary fs-2-mob nav-cta-shop"
-                href={navContent.cta.shop.href}
-                aria-label={navContent.cta.shop.ariaLabel}
+                href="/shop"
+                aria-label={navData?.shopAriaLabel}
                 aria-current={activeLinkPath === "/shop" ? "page" : undefined}
             >
-                {navContent.cta.shop.label}
+                {navData?.shop}
             </a>
             <!-- SANDWICH -->
             <button id="mobile-menu-button">
@@ -72,47 +51,47 @@ const navContent = {
         <ul class="fs-2-mob">
             <li>
                 <a
-                    href={navContent.main.home.href}
+                    href="/"
                     aria-current={activeLinkPath === "" ? "page" : undefined}
                     class:list={{ active: activeLinkPath === "" }}
                 >
-                    {navContent.main.home.label}
+                    {navData?.home}
                 </a>
             </li>
 
             <li>
                 <a
-                    href={navContent.main.chiSiamo.href}
+                    href="/chi-siamo"
                     aria-current={activeLinkPath === "/chi-siamo"
                         ? "page"
                         : undefined}
                     class:list={{ active: activeLinkPath === "/chi-siamo" }}
                 >
-                    {navContent.main.chiSiamo.label}
+                    {navData?.aboutUs}
                 </a>
             </li>
 
             <li>
                 <a
-                    href={navContent.main.ontopCover.href}
+                    href="/ontop-cover"
                     aria-current={activeLinkPath === "/ontop-cover"
                         ? "page"
                         : undefined}
                     class:list={{ active: activeLinkPath === "/ontop-cover" }}
                 >
-                    {navContent.main.ontopCover.label}
+                    {navData?.ontopCover}
                 </a>
             </li>
 
             <li>
                 <a
-                    href={navContent.main.ambassadors.href}
+                    href="/ambassadors"
                     aria-current={activeLinkPath === "/ambassadors"
                         ? "page"
                         : undefined}
                     class:list={{ active: activeLinkPath === "/ambassadors" }}
                 >
-                    {navContent.main.ambassadors.label}
+                    {navData?.ambassadors}
                 </a>
             </li>
         </ul>
@@ -122,17 +101,17 @@ const navContent = {
         <div class="nav-cta-wrapper show-till-mob">
             <a
                 class="button primary wide fs-2-mob nav-cta-shop"
-                href={navContent.cta.shop.href}
-                aria-label={navContent.cta.shop.ariaLabel}
+                href="/shop"
+                aria-label={navData?.shopAriaLabel}
                 aria-current={activeLinkPath === "/shop" ? "page" : undefined}
             >
-                {navContent.cta.shop.label}
+                {navData?.shop}
             </a>
 
             <a
                 class="button primary icon-for-button nav-cta-cart"
-                href={navContent.cta.cart.href}
-                aria-label={navContent.cta.cart.ariaLabel}
+                href="/cart"
+                aria-label={navData?.cartAriaLabel}
                 aria-current={activeLinkPath === "/cart" ? "page" : undefined}
             >
                 <!-- NOTE plain svg to change fill at run time with color picker -->
