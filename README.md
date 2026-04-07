@@ -28,6 +28,7 @@ The project is made with __Astro Js for the ssg__, __Sanity for the cms__, __Sho
     - __DOCS__: added comments, doc files or renamed variables to be more explicative.
     - __RFCT__: refactored the structure of code.
     - __RNM__: renamed files.
+    - __RM__: removed comments or files.
     - __TEST__: added tests to the repo.
 - I hope I'll be able to maintain what I said in the previous point.
 
