@@ -21,7 +21,7 @@ interface Props {
     twitterSite: string;
     twitterCreator?: string;
 
-    //SITE NAVIGATORS (NAVBAR & FOOTER) 
+    //SITE NAVIGATORS (NAVBAR & FOOTER)
     siteNavigators: SiteNavigators;
 
     // Accessibility
@@ -43,7 +43,7 @@ const {
     twitterSite,
     twitterCreator,
 
-    //SITE NAVIGATORS (NAVBAR & FOOTER) 
+    //SITE NAVIGATORS (NAVBAR & FOOTER)
     siteNavigators,
 
     lang = "en",
@@ -55,13 +55,31 @@ const {
     <!-- SECTION - HEAD -->
     <head>
         <!-- SECTION - FAVICONS -->
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
-        <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml" sizes="any">
-        <link rel="icon" href="/favicons/favicon.ico">
-        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
-        <link rel="manifest" href="/favicons/site.webmanifest">
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="/favicons/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            href="/favicons/favicon.svg"
+            type="image/svg+xml"
+            sizes="any"
+        />
+        <link rel="icon" href="/favicons/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+        <link rel="manifest" href="/favicons/site.webmanifest" />
+        <meta
+            name="theme-color"
+            content="#ffffff"
+            media="(prefers-color-scheme: light)"
+        />
+        <meta
+            name="theme-color"
+            content="#0f172a"
+            media="(prefers-color-scheme: dark)"
+        />
         <!-- !SECTION - FAVICONS -->
 
         <!-- SECTION - META -->
@@ -106,24 +124,17 @@ const {
     <!-- SECTION - BODY -->
     <body>
         <!-- SECTION - INITIALIZERS -->
-        <script type="module">
-            import { loadColorHighlight } from "/src/initializers/load-color-highlight";
-            import { initColorPickers } from "/src/initializers/init-color-picker";
-
-            //this one goes before init color pickers to set the active color
-            loadColorHighlight();
-            initColorPickers();
-        </script>
+        <script src="../initializers/fire-all-inits.ts"></script>
         <!-- !SECTION - INITIALIZERS -->
         <!-- NAVBAR -->
-        <Navbar siteNavigators={siteNavigators}/>
+        <Navbar siteNavigators={siteNavigators} />
         <!-- MAIN -->
         <main>
             <!-- PAGE CONTENT -->
             <slot />
         </main>
         <!-- FOOTER -->
-        <Footer siteNavigators={siteNavigators}/>
+        <Footer siteNavigators={siteNavigators} />
     </body>
     <!-- !SECTION - BODY -->
 </html>
