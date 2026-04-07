@@ -1,4 +1,4 @@
-# Frontend Lorika
+# Frontend Ontop by Lorika
 This project is the frontend for the Lorika website.
 <br/>
 A platform that show products in 3D and sells them.
