@@ -13,9 +13,9 @@ export const loadColorHighlight = () => {
         HIGHLIGHT_COLOR_CSS_VAR_KEY,
     );
     if (!activeColorKey) {
-        activeColorKey = "--bright-red-orange";
+        activeColorKey = "--RAL2008";
         //set active key in the localstorage
-        localStorage.setItem(HIGHLIGHT_COLOR_CSS_VAR_KEY, "--bright-red-orange");
+        localStorage.setItem(HIGHLIGHT_COLOR_CSS_VAR_KEY, "--RAL2008");
     }
 
     //set the highlight color using the key
