@@ -1,14 +1,18 @@
 ---
 import ColorPicker from "../components/ColorPicker/ColorPicker.astro";
-import type { HomePage } from "../../studio-lorika-ontop/sanity.types";
+import type {
+    ColorPicker as ColorPickerCMS,
+    HomePage,
+} from "../../studio-lorika-ontop/sanity.types";
 import { cleanHtml } from "../utils/clean-html";
 import { urlFor } from "../utils/sanity-client";
 
 interface Props {
     homePageData: HomePage;
+    colorPickerData: ColorPickerCMS;
 }
 
-let { homePageData } = Astro.props;
+let { homePageData, colorPickerData } = Astro.props;
 
 const lItem2Content = cleanHtml(homePageData?.lItem2Content!);
 const lItem5Content = cleanHtml(homePageData?.lItem5Content!);
@@ -30,13 +34,17 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
         <div id="hero-3d-wrapper">
             <!-- COLOR PICKER -->
             <div class="show-till-tab" id="hero-color-picker-desktop-wrapper">
-                <ColorPicker id="hero-color-picker-desktop" />
+                <ColorPicker
+                    id="hero-color-picker-desktop"
+                    colorPickerData={colorPickerData}
+                />
             </div>
             <div class="show-tab" id="hero-color-picker-tablet-wrapper">
                 <ColorPicker
                     id="hero-color-picker-tablet"
                     layout="horizontal"
                     size="big"
+                    colorPickerData={colorPickerData}
                 />
             </div>
         </div>
@@ -110,6 +118,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
                     id="white-bent-color-picker"
                     layout="horizontal"
                     displayLabel="hide"
+                    colorPickerData={colorPickerData}
                 />
             </div>
             <!-- ITEM-6 -->

@@ -15,6 +15,26 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
+export type ColorPicker = {
+  _id: string;
+  _type: "colorPicker";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  lang?: "it" | "en";
+  groupAriaLabel?: string;
+  RAL2008Label?: string;
+  RAL3002Label?: string;
+  RAL4006Label?: string;
+  RAL9022Label?: string;
+  RAL6037Label?: string;
+  RAL1013Label?: string;
+  RAL5015Label?: string;
+  RAL1018Label?: string;
+  RAL1002Label?: string;
+  RAL9005Label?: string;
+};
+
 export type SanityImageAssetReference = {
   _ref: string;
   _type: "reference";
@@ -241,5 +261,5 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImageAssetReference | HomePage | SanityImageCrop | SanityImageHotspot | SiteNavigators | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint | Slug;
+export type AllSanitySchemaTypes = ColorPicker | SanityImageAssetReference | HomePage | SanityImageCrop | SanityImageHotspot | SiteNavigators | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint | Slug;
 

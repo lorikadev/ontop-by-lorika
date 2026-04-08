@@ -150,16 +150,16 @@
     height: 2rem;
 }
 
-.color.carmine-red          { background-color: var(--carmine-red); } 
-.color.traffic-purple       { background-color: var(--traffic-purple); } 
-.color.pearl-light-grey     { background-color: var(--pearl-light-grey); } 
-.color.pure-green           { background-color: var(--pure-green); } 
-.color.bright-red-orange    { background-color: var(--bright-red-orange); } 
-.color.pearl-white          { background-color: var(--pearl-white); } 
-.color.sky-blue             { background-color: var(--sky-blue); } 
-.color.zinc-yellow          { background-color: var(--zinc-yellow); } 
-.color.sand-yellow          { background-color: var(--sand-yellow); } 
-.color.jet-black            { background-color: var(--jet-black); border: 1px solid rgb(76, 76, 76); }
+.color.RAL3002     { background-color: var(--RAL3002); } 
+.color.RAL4006     { background-color: var(--RAL4006); } 
+.color.RAL9022     { background-color: var(--RAL9022); } 
+.color.RAL6037     { background-color: var(--RAL6037); } 
+.color.RAL2008     { background-color: var(--RAL2008); } 
+.color.RAL1013     { background-color: var(--RAL1013); } 
+.color.RAL5015     { background-color: var(--RAL5015); } 
+.color.RAL1018     { background-color: var(--RAL1018); } 
+.color.RAL1002     { background-color: var(--RAL1002); } 
+.color.RAL9005     { background-color: var(--RAL9005); border: 1px solid rgb(76, 76, 76); }
 
 /* !SECTION - PICKER COLORS */
 
