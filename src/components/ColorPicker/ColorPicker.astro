@@ -1,4 +1,5 @@
 ---
+import type { ColorPicker } from "../../../studio-lorika-ontop/sanity.types";
 import "./color-picker.css";
 
 interface Props {
@@ -8,17 +9,7 @@ interface Props {
     size?: "normal" | "big";
 
     //CMS
-    groupAriaLabel?: string;
-    carmineRedLabel?: string;
-    trafficPurpleLabel?: string;
-    pearlLightGreyLabel?: string;
-    pureGreenLabel?: string;
-    brightRedOrangeLabel?: string;
-    pearlWhiteLabel?: string;
-    skyBlueLabel?: string;
-    zincYellowLabel?: string;
-    sandYellowLabel?: string;
-    jetBlackLabel?: string;
+    colorPickerData: ColorPicker
 }
 const {
     id,
@@ -27,17 +18,7 @@ const {
     size = "normal",
 
     //CMS
-    groupAriaLabel = "Select a color",
-    carmineRedLabel = "carmine red",
-    trafficPurpleLabel = "traffic purple",
-    pearlLightGreyLabel = "pearl light grey",
-    pureGreenLabel = "pure green",
-    brightRedOrangeLabel = "bright red orange",
-    pearlWhiteLabel = "pearl white",
-    skyBlueLabel = "sky blue",
-    zincYellowLabel = "zinc yellow",
-    sandYellowLabel = "sand yellow",
-    jetBlackLabel = "jet black",
+    colorPickerData: colorPicker
 } = Astro.props;
 ---
 
@@ -46,135 +27,134 @@ const {
     class:list={["color-picker-wrapper", layout, displayLabel, size]}
     id={id}
     role="radiogroup"
-    aria-label={groupAriaLabel}
+    aria-label={colorPicker.groupAriaLabel}
 >
-    <!-- BRIGHT RED ORANGE -->
+    <!-- RAL2008 -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--bright-red-orange"
+        data-color-css-var-key="--RAL2008"
         role="radio"
         aria-checked="false"
-        aria-label={brightRedOrangeLabel}
+        aria-label={colorPicker.RAL2008Label}
     >
-        <strong>{brightRedOrangeLabel}</strong>
-        <div class="color bright-red-orange" aria-hidden="true"></div>
+        <strong>{colorPicker.RAL2008Label}</strong>
+        <div class="color RAL2008" aria-hidden="true"></div>
+    </button>
+    <!-- RAL3002 -->
+    <button
+        type="button"
+        class="color-label"
+        data-color-css-var-key="--RAL3002"
+        role="radio"
+        aria-checked="false"
+        aria-label={colorPicker.RAL3002Label}
+    >
+        <strong>{colorPicker.RAL3002Label}</strong>
+        <div class="color RAL3002" aria-hidden="true"></div>
     </button>
 
-    <!-- CARMINE RED -->
+    <!-- RAL4006 -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--carmine-red"
+        data-color-css-var-key="--RAL4006"
         role="radio"
         aria-checked="false"
-        aria-label={carmineRedLabel}
+        aria-label={colorPicker.RAL4006Label}
     >
-        <strong>{carmineRedLabel}</strong>
-        <div class="color carmine-red" aria-hidden="true"></div>
+        <strong>{colorPicker.RAL4006Label}</strong>
+        <div class="color RAL4006" aria-hidden="true"></div>
     </button>
 
-    <!-- TRAFFIC PURPLE -->
+    <!-- RAL9022 -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--traffic-purple"
+        data-color-css-var-key="--RAL9022"
         role="radio"
         aria-checked="false"
-        aria-label={trafficPurpleLabel}
+        aria-label={colorPicker.RAL9022Label}
     >
-        <strong>{trafficPurpleLabel}</strong>
-        <div class="color traffic-purple" aria-hidden="true"></div>
+        <strong>{colorPicker.RAL9022Label}</strong>
+        <div class="color RAL9022" aria-hidden="true"></div>
     </button>
 
-    <!-- PEARL LIGHT GREY -->
+    <!-- RAL6037 -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--pearl-light-grey"
+        data-color-css-var-key="--RAL6037"
         role="radio"
         aria-checked="false"
-        aria-label={pearlLightGreyLabel}
+        aria-label={colorPicker.RAL6037Label}
     >
-        <strong>{pearlLightGreyLabel}</strong>
-        <div class="color pearl-light-grey" aria-hidden="true"></div>
+        <strong>{colorPicker.RAL6037Label}</strong>
+        <div class="color RAL6037" aria-hidden="true"></div>
     </button>
 
-    <!-- PURE GREEN -->
+    <!-- RAL1013 -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--pure-green"
+        data-color-css-var-key="--RAL1013"
         role="radio"
         aria-checked="false"
-        aria-label={pureGreenLabel}
+        aria-label={colorPicker.RAL1013Label}
     >
-        <strong>{pureGreenLabel}</strong>
-        <div class="color pure-green" aria-hidden="true"></div>
+        <strong>{colorPicker.RAL1013Label}</strong>
+        <div class="color RAL1013" aria-hidden="true"></div>
     </button>
 
-    <!-- PEARL WHITE -->
+    <!-- RAL5015 -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--pearl-white"
+        data-color-css-var-key="--RAL5015"
         role="radio"
         aria-checked="false"
-        aria-label={pearlWhiteLabel}
+        aria-label={colorPicker.RAL5015Label}
     >
-        <strong>{pearlWhiteLabel}</strong>
-        <div class="color pearl-white" aria-hidden="true"></div>
+        <strong>{colorPicker.RAL5015Label}</strong>
+        <div class="color RAL5015" aria-hidden="true"></div>
     </button>
 
-    <!-- SKY BLUE -->
+    <!-- RAL1018 -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--sky-blue"
+        data-color-css-var-key="--RAL1018"
         role="radio"
         aria-checked="false"
-        aria-label={skyBlueLabel}
+        aria-label={colorPicker.RAL1018Label}
     >
-        <strong>{skyBlueLabel}</strong>
-        <div class="color sky-blue" aria-hidden="true"></div>
+        <strong>{colorPicker.RAL1018Label}</strong>
+        <div class="color RAL1018" aria-hidden="true"></div>
     </button>
 
-    <!-- ZINC YELLOW -->
+    <!-- RAL1002 -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--zinc-yellow"
+        data-color-css-var-key="--RAL1002"
         role="radio"
         aria-checked="false"
-        aria-label={zincYellowLabel}
+        aria-label={colorPicker.RAL1002Label}
     >
-        <strong>{zincYellowLabel}</strong>
-        <div class="color zinc-yellow" aria-hidden="true"></div>
+        <strong>{colorPicker.RAL1002Label}</strong>
+        <div class="color RAL1002" aria-hidden="true"></div>
     </button>
 
-    <!-- SAND YELLOW -->
+    <!-- RAL9005 -->
     <button
         type="button"
         class="color-label"
-        data-color-css-var-key="--sand-yellow"
+        data-color-css-var-key="--RAL9005"
         role="radio"
         aria-checked="false"
-        aria-label={sandYellowLabel}
+        aria-label={colorPicker.RAL9005Label}
     >
-        <strong>{sandYellowLabel}</strong>
-        <div class="color sand-yellow" aria-hidden="true"></div>
-    </button>
-
-    <!-- JET BLACK -->
-    <button
-        type="button"
-        class="color-label"
-        data-color-css-var-key="--jet-black"
-        role="radio"
-        aria-checked="false"
-        aria-label={jetBlackLabel}
-    >
-        <strong>{jetBlackLabel}</strong>
-        <div class="color jet-black" aria-hidden="true"></div>
+        <strong>{colorPicker.RAL9005Label}</strong>
+        <div class="color RAL9005" aria-hidden="true"></div>
     </button>
 </div>
