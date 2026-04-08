@@ -76,6 +76,11 @@ nav {
     align-self: center;
 }
 
+.nav-cta-cart>svg {
+    width: 24px;
+    height: 24px;
+}
+
 /*  NOTE 
     this adjustment allow us to reach 700px 
     without breaking the navbar and 
