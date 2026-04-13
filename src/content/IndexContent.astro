@@ -33,13 +33,21 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
         <!-- TODO -->
         <div id="hero-3d-wrapper">
             <!-- COLOR PICKER -->
-            <div class="show-till-tab" id="hero-color-picker-desktop-wrapper">
+            <div
+                id="hero-color-picker-desktop-wrapper"
+                class="show-till-tab fade-from-right"
+                anim-on-scroll="fade-from-right"
+            >
                 <ColorPicker
                     id="hero-color-picker-desktop"
                     colorPickerData={colorPickerData}
                 />
             </div>
-            <div class="show-tab" id="hero-color-picker-tablet-wrapper">
+            <div
+                id="hero-color-picker-tablet-wrapper"
+                class="show-tab fade-in"
+                anim-on-scroll="fade-in"
+            >
                 <ColorPicker
                     id="hero-color-picker-tablet"
                     layout="horizontal"
@@ -49,7 +57,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
             </div>
         </div>
         <!-- HERO CTA -->
-        <div id="hero-cta">
+        <div id="hero-cta" class="fade-in" anim-on-scroll="fade-in">
             <h1 set:html={homePageData?.heroTitle} class="m-0 lh-35" />
             <p class="show-tab fs-2 my-1">
                 {homePageData?.mobileAds}
@@ -86,18 +94,22 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
             <!-- ITEM-1 -->
             <div
                 id="lb-item-1"
+                class="fade-from-left"
+                anim-on-scroll="fade-from-left"
                 style={`background-image: url('${urlFor(homePageData?.lItem1Image?.asset?._ref).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
             </div>
             <!-- ITEM-2 -->
-            <div id="lb-item-2">
+            <div id="lb-item-2" class="fade-in" anim-on-scroll="fade-in">
                 <div set:html={lItem2Content} />
             </div>
             <!-- ITEM-3 -->
             <div
                 id="lb-item-3"
+                class="fade-from-right"
+                anim-on-scroll="fade-from-right"
                 style={`background-image: url('${urlFor(homePageData?.lItem3Image?.asset?._ref).url()}')`}
                 role="img"
                 aria-hidden="true"
@@ -106,13 +118,19 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
             <!-- ITEM-4 -->
             <div
                 id="lb-item-4"
+                class="fade-from-left"
+                anim-on-scroll="fade-from-left"
                 style={`background-image: url('${urlFor(homePageData?.lItem4Image?.asset?._ref).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
             </div>
             <!-- ITEM-5 -->
-            <div id="lb-item-5" class="cromed text-light">
+            <div
+                id="lb-item-5"
+                class="cromed text-light fade-in"
+                anim-on-scroll="fade-in"
+            >
                 <div set:html={lItem5Content} />
                 <ColorPicker
                     id="white-bent-color-picker"
@@ -122,7 +140,11 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
                 />
             </div>
             <!-- ITEM-6 -->
-            <div id="lb-item-6" class="highlighted-container">
+            <div
+                id="lb-item-6"
+                class="highlighted-container fade-from-right"
+                anim-on-scroll="fade-from-right"
+            >
                 <div set:html={lItem6Content} />
             </div>
         </div>
@@ -146,15 +168,24 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
     <div class="container">
         <div id="bento-dark">
             <!-- ITEM 1 -->
-            <div id="db-item-1"></div>
+            <div
+                id="db-item-1"
+                class="fade-from-left"
+                anim-on-scroll="fade-from-left"
+            >
+            </div>
 
             <!-- ITEM 2 -->
-            <div id="db-item-2">
+            <div id="db-item-2" class="fade-in" anim-on-scroll="fade-in">
                 <div set:html={dItem2Content} />
             </div>
 
             <!-- ITEM 3 -->
-            <div id="db-item-3">
+            <div
+                id="db-item-3"
+                class="fade-from-right"
+                anim-on-scroll="fade-from-right"
+            >
                 <div set:html={dItem3Content} />
                 <!-- TODO -->
                 <div id="3d-world-wrapper"></div>
@@ -163,6 +194,8 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
             <!-- ITEM 4 -->
             <div
                 id="db-item-4"
+                class="fade-from-left"
+                anim-on-scroll="fade-from-left"
                 style={`background-image: url('${urlFor(homePageData?.dItem4Image?.asset?._ref).url()}')`}
                 role="img"
                 aria-hidden="true"
@@ -170,7 +203,11 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
             </div>
 
             <!-- ITEM 5 -->
-            <div id="db-item-5">
+            <div
+                id="db-item-5"
+                class="fade-from-right"
+                anim-on-scroll="fade-from-right"
+            >
                 <div set:html={dItem5Content} />
 
                 <div class="t-a-end mb-05">
