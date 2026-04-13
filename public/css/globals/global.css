@@ -102,6 +102,7 @@ button.icon-for-button {
 }
 
 @media (max-width: 700px) {
+
     .button.icon-for-button,
     button.icon-for-button {
         border-radius: 70px;
@@ -448,22 +449,48 @@ button.fs-5 {
     text-align: end;
 }
 
+.stay-in-line {
+    word-break: keep-all;
+    overflow-wrap: normal;
+}
+
 /* !SECTION - TEXT */
 
 /* SECTION - DISPLAY */
-.show-till-tab { display: inline-block; }
-.show-till-mob { display: inline-block; }
-.show-tab { display: none; }
-.show-mob { display: none; }
+.show-till-tab {
+    display: inline-block;
+}
+
+.show-till-mob {
+    display: inline-block;
+}
+
+.show-tab {
+    display: none;
+}
+
+.show-mob {
+    display: none;
+}
 
 @media (max-width: 1200px) {
-    .show-till-tab { display: none !important; }
-    .show-tab { display: inline-block; }
+    .show-till-tab {
+        display: none !important;
+    }
+
+    .show-tab {
+        display: inline-block;
+    }
 }
 
 @media (max-width: 700px) {
-    .show-till-mob { display: none !important; }
-    .show-mob { display: inline-block; }
+    .show-till-mob {
+        display: none !important;
+    }
+
+    .show-mob {
+        display: inline-block;
+    }
 }
 
 /* !SECTION - DISPLAY */
