@@ -14,9 +14,9 @@ const HOME_PAGE_QUERY = `
     *[_type == "homePage" && lang == "en"]`;
 const homePage = await sanityClient.fetch<HomePage[]>(HOME_PAGE_QUERY);
 
-const COLOR_PCIKER_QUERY = `
+const COLOR_PICKER_QUERY = `
     *[_type == "colorPicker" && lang == "en"]`;
-const colorPickerData = await sanityClient.fetch<ColorPicker[]>(COLOR_PCIKER_QUERY);
+const colorPickerData = await sanityClient.fetch<ColorPicker[]>(COLOR_PICKER_QUERY);
 ---
 
 <PageContainer
