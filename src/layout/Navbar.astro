@@ -2,10 +2,13 @@
 import type { SiteNavigators } from "../../studio-lorika-ontop/sanity.types";
 import { urlFor } from "../utils/sanity-client";
 
-//NOTE - the second values should always be the current page root
+//NOTE
 /*
- *  /en/home -> ['en', 'home'] -> 'home'
+ *  /en/home -> ['en', 'home'] 
+ *  1-> 'en'
+ *  2-> 'home'
  */
+const currentLang = Astro.url.pathname.split("/")[1] ?? "";
 const activeLinkPath = Astro.url.pathname.split("/")[2] ?? "";
 
 interface Props {
@@ -25,7 +28,7 @@ const navData = siteNavigators.navbar;
     <div id="top-navbar" data-mobile-menu-opened="closed">
         <!-- LOGO -->
         <div id="logo-link-wrapper">
-            <a id="logo-link" href="/" aria-label={navData?.home + " link"}>
+            <a id="logo-link" href={`/${currentLang}/`} aria-label={navData?.home + " link"}>
                 <img src={urlFor(navData?.logo?.asset?._ref).url()} alt="logo Lorika" />
             </a>
         </div>
@@ -50,7 +53,7 @@ const navData = siteNavigators.navbar;
         <ul class="fs-2-mob">
             <li>
                 <a
-                    href="/"
+                    href={`/${currentLang}/`}
                     aria-current={activeLinkPath === "" ? "page" : undefined}
                     class:list={{ active: activeLinkPath === "" }}
                 >
@@ -60,11 +63,11 @@ const navData = siteNavigators.navbar;
 
             <li>
                 <a
-                    href="/chi-siamo"
-                    aria-current={activeLinkPath === "/chi-siamo"
+                    href={`/${currentLang}/about-us`}
+                    aria-current={activeLinkPath === "about-us"
                         ? "page"
                         : undefined}
-                    class:list={{ active: activeLinkPath === "/chi-siamo" }}
+                    class:list={{ active: activeLinkPath === "about-us" }}
                 >
                     {navData?.aboutUs}
                 </a>
@@ -72,11 +75,11 @@ const navData = siteNavigators.navbar;
 
             <li>
                 <a
-                    href="/ontop-cover"
-                    aria-current={activeLinkPath === "/ontop-cover"
+                    href={`/${currentLang}/ontop-cover`}
+                    aria-current={activeLinkPath === "ontop-cover"
                         ? "page"
                         : undefined}
-                    class:list={{ active: activeLinkPath === "/ontop-cover" }}
+                    class:list={{ active: activeLinkPath === "ontop-cover" }}
                 >
                     {navData?.ontopCover}
                 </a>
@@ -84,11 +87,11 @@ const navData = siteNavigators.navbar;
 
             <li>
                 <a
-                    href="/ambassadors"
-                    aria-current={activeLinkPath === "/ambassadors"
+                    href={`/${currentLang}/ambassadors`}
+                    aria-current={activeLinkPath === "ambassadors"
                         ? "page"
                         : undefined}
-                    class:list={{ active: activeLinkPath === "/ambassadors" }}
+                    class:list={{ active: activeLinkPath === "ambassadors" }}
                 >
                     {navData?.ambassadors}
                 </a>
