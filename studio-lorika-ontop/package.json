@@ -10,16 +10,17 @@
     "deploy-graphql": "sanity graphql deploy",
     "dev": "sanity dev",
     "start": "sanity start",
-    "extract-schema": "npx sanity schema extract"
+    "extract-schema": "npx sanity schema extract",
+    "cmd-to-update-file":"THIS IS JUST AN EXAMPLE: npx sanity datasets import PATH-TO-JSON production"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@sanity/vision": "^5.20.0",
+    "@sanity/vision": "^5.21.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "sanity": "^5.20.0",
+    "sanity": "^5.21.0",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {

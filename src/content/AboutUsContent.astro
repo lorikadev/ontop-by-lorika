@@ -1,0 +1,132 @@
+---
+import type { AboutUs } from "../../studio-lorika-ontop/sanity.types";
+import { cleanHtml } from "../utils/clean-html";
+import { urlFor } from "../utils/sanity-client";
+
+interface Props {
+    AboutUsData: AboutUs;
+}
+
+let { AboutUsData } = Astro.props;
+---
+
+<!-- ABOUT STYLE -->
+<link rel="stylesheet" href="/css/pages/about-us.css" />
+
+<!-- SECTION - HERO -->
+<section id="hero-wrapper" class="lh-0">
+    <div id="hero-message-wrapper">
+        <div
+            id="hero-message"
+            class="fade-from-left"
+            anim-on-scroll="fade-from-left"
+        >
+            <h1 class="m-0 fs-4"
+            set:html={cleanHtml(AboutUsData.heroTitle!)}>
+                
+            </h1>
+            <p class="fs-15"
+            set:html={cleanHtml(AboutUsData.heroContent!)}>
+            </p>
+        </div>
+    </div>
+    <video id="hero-video" autoplay loop muted playsinline aria-hidden="true">
+        <source
+            src={(AboutUsData as any).heroVideoDesktopUrl}
+            src="/video/loop-about-us-desktop.mp4"
+            class="show-till-mob"
+            type="video/mp4"
+        />
+        <source
+            src={(AboutUsData as any).heroVideoDesktopUrl}
+            class="show-mob"
+            type="video/mp4"
+        />
+        Your browser does not support the video tag.
+    </video>
+</section>
+<!-- !SECTION - HERO -->
+
+<!-- SECTION - WHATE ARE WE -->
+<section id="what-are-we" class="py-3">
+    <div
+        class="fade-from-left"
+        anim-on-scroll="fade-from-left"
+        set:html={cleanHtml(AboutUsData.leftBlockContent!)}
+    />
+    <div
+        class="pl-3 pt-3 pb-4 fade-from-right"
+        anim-on-scroll="fade-from-right"
+    >
+        <p
+            class="fw-600"
+            set:html={cleanHtml(AboutUsData.rightBlockContent!)}
+        />
+        <img
+            src={urlFor(AboutUsData.rightBlockLogo?.asset?._ref).url()}
+            class="fade-from-right"
+            anim-on-scroll="fade-from-right"
+            anim-on-scroll-delay="0.2"
+            aria-hidden="true"
+        />
+    </div>
+</section>
+<!-- !SECTION - WHATE ARE WE -->
+
+<!-- SECTION - BEHIND -->
+<section
+    id="behind-hero"
+    style={`background-image: url('${urlFor(AboutUsData.behindContentBackground?.asset?._ref).url()}');`}
+>
+    <div id="behind-hero-message-wrapper" class="p-2">
+        <div class="show-till-mob" aria-hidden="true"></div>
+        <div
+            id="behind-hero-message"
+            class="fade-from-right"
+            anim-on-scroll="fade-from-right"
+            set:html={cleanHtml(AboutUsData.behindContent!)}
+        />
+    </div>
+</section>
+<!-- !SECTION - BEHIND -->
+
+<!-- SECTION - FIRST PRODUCT -->
+<section
+    id="first-product-hero"
+    style={`background-image: url('${urlFor(AboutUsData.firstProductContentBackground?.asset?._ref).url()}');`}
+>
+    <div id="first-product-hero-message-wrapper">
+        <div id="first-product-hero-message">
+            <img
+                src="/images/logo/logo-ontop-white-cropped.svg"
+                class="fade-from-left"
+                anim-on-scroll="fade-from-left"
+                alt="Ontop by Lorika logo"
+            />
+            <div set:html={cleanHtml(AboutUsData.firstProductContent!)} />
+        </div>
+        <div aria-hidden="true" class="show-till-mob"></div>
+    </div>
+</section>
+<!-- !SECTION - FIRST PRODUCT -->
+
+<!-- SECTION - OVER THE PRODUCT -->
+<section id="over-the-product-hero" class="container my-3">
+    <div
+        id="over-the-product-hero-message"
+        style={`background-image: url('${urlFor(AboutUsData.overTheProductContentBackgroundLeft?.asset?._ref).url()}');`}
+    >
+        <div
+            class="p-2 fade-from-left"
+            anim-on-scroll="fade-from-left"
+            set:html={cleanHtml(AboutUsData.overTheProductContent!)}
+        />
+    </div>
+    <div
+        class="show-till-mob"
+        style={`background-image: url('${urlFor(AboutUsData.overTheProductContentBackgroundRight?.asset?._ref).url()}');`}
+        aria-hidden="true"
+    >
+    </div>
+</section>
+<!-- !SECTION - OVER THE PRODUCT -->

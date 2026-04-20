@@ -174,12 +174,20 @@ button.secondary:hover {
 /* !SECTION - FONT WEIGHT */
 
 /* SECTION - LINE HEIGHT */
+.lh-0 {
+    line-height: 0;
+}
+
 .lh-05 {
     line-height: 0.5rem;
 }
 
 .lh-1 {
     line-height: 1rem;
+}
+
+.lh-125 {
+    line-height: 1.25rem;
 }
 
 .lh-15 {

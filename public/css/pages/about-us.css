@@ -1,0 +1,291 @@
+/* SECTION - HERO */
+#hero-wrapper {
+    width: 100%;
+    position: relative;
+    background-color: black;
+    display: flex;
+    justify-content: end;
+}
+
+#hero-video {
+    width: auto;
+    height: 70vh;
+}
+
+#hero-message-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 50%;
+    bottom: 0;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+}
+
+#hero-message {
+    color: var(--light-text-color);
+    width: fit-content;
+}
+
+#hero-message * {
+    text-shadow: 2px 2px 0px black;
+}
+
+@media (max-width:1200px) {
+    #hero-wrapper {
+        min-height: 40vh;
+    }
+
+    #hero-video {
+        width: 80%;
+        height: auto;
+    }
+}
+
+@media (max-width:700px) {
+    #hero-wrapper {
+        flex-direction: column-reverse;
+        justify-content: start;
+    }
+
+    #hero-message-wrapper {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin: 2rem 0;
+    }
+}
+
+/* !SECTION - HERO */
+
+/* SECTION - WHATE ARE WE */
+#what-are-we {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    background-color: #f9f9f9;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#what-are-we>div {
+    border-radius: 10px;
+    background-color: white;
+}
+
+/* LEFT DIV */
+#what-are-we>div:first-child {
+    max-width: 800px;
+    padding: 3rem 3rem 4rem 3rem;
+}
+
+/* RIGHT DIV */
+#what-are-we>div:last-child {
+    max-width: 720px;
+    position: relative;
+}
+
+#what-are-we>div:last-child>p {
+    width: 80%;
+}
+
+#what-are-we>div:last-child>img {
+    position: absolute;
+    right: -25%;
+    transform-origin: center;
+    top: -15%;
+    height: 130%;
+}
+
+/*  NOTE
+    this is not an usual break point in this project 
+    but now it's needed to have layout consistency 
+*/
+@media (max-width: 900px) {
+    #what-are-we {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* LEFT DIV */
+    #what-are-we>div:first-child {
+        max-width: 100%;
+    }
+
+    /* RIGHT DIV */
+    #what-are-we>div:last-child {
+        max-width: 100%;
+    }
+
+    #what-are-we>div:last-child>img {
+        right: -10%;
+    }
+}
+
+@media (max-width: 700px) {
+
+    /* LEFT DIV */
+    #what-are-we>div:first-child {
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    /* RIGHT DIV */
+    #what-are-we>div:last-child {
+        padding: 1rem;
+    }
+
+    #what-are-we>div:last-child>p {
+        width: 100%;
+    }
+
+    #what-are-we>div:last-child>img {
+        opacity: 0.05;
+        height: 100%;
+        top: 0%;
+        right: -25%;
+    }
+}
+
+/* !SECTION - WHATE ARE WE */
+
+/* SECTION - BEHIND */
+#behind-hero {
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+    background-position: left center;
+}
+
+#behind-hero-message-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+}
+
+#behind-hero-message {
+    color: var(--light-text-color);
+    max-width: 500px;
+    justify-self: center;
+    align-content: center;
+    height: 100%;
+}
+
+@media (max-width: 1200px) {
+    #behind-hero {
+        background-position: 25%;
+    }
+}
+
+@media (max-width: 700px) {
+    #behind-hero {
+        height: 400px;
+    }
+
+    #behind-hero-message {
+        text-shadow: 2px 2px 0px black;
+    }
+
+    #behind-hero-message-wrapper {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* !SECTION - BEHIND */
+
+/* SECTION - FIRST PRODUCT */
+#first-product-hero {
+    width: auto;
+    height: 750px;
+}
+
+#first-product-hero-message-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+}
+
+#first-product-hero-message {
+    color: var(--light-text-color);
+    max-width: 600px;
+    justify-self: center;
+    align-content: center;
+    height: 100%;
+    padding: 1rem;
+    text-shadow: 2px 2px 0px black;
+}
+
+#first-product-hero-message>img {
+    width: 275px;
+}
+
+#first-product-hero-message a {
+    width: fit-content;
+    text-shadow: none;
+}
+
+@media (max-width: 1200px) {
+    #first-product-hero {
+        background-position: 40%;
+    }
+
+    #first-product-hero-message-wrapper {
+        grid-template-columns: 60% 40%;
+    }
+}
+
+
+@media (max-width: 700px) {
+    #first-product-hero {
+        padding: 2rem 0;
+        background-position: center;
+    }
+
+    #first-product-hero-message-wrapper {
+        grid-template-columns: 100%;
+    }
+
+    #first-product-hero {
+        height: min-content;
+    }
+
+    #first-product-hero-message-wrapper {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* !SECTION - FIRST PRODUCT */
+
+/* SECTION - OVER THE PRODUCT */
+#over-the-product-hero {
+    display: flex;
+    gap: 1rem;
+}
+
+#over-the-product-hero>div:first-child,
+#over-the-product-hero>div:last-child {
+    border-radius: 1rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#over-the-product-hero>div:first-child {
+    flex: 8;
+    color: var(--light-text-color);
+    background-position: right 0%;
+}
+
+#over-the-product-hero>div:last-child {
+    flex: 2;
+}
+
+/* !SECTION - OVER THE PRODUCT */
