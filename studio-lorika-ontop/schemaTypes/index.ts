@@ -1,6 +1,7 @@
 import { aboutUsType } from "./aboutUseType";
 import { colorPickerType } from "./colorPickerType";
 import { homePageType } from "./homePageType";
+import { ontopCoverType } from "./ontopCoverType";
 import { siteNavigatorsType } from "./siteNavigatorsType";
 
 export const schemaTypes = [
@@ -11,5 +12,7 @@ export const schemaTypes = [
     //color picker labels and accessibility
     colorPickerType,
     //about us page
-    aboutUsType
+    aboutUsType,
+    //ontop cover page
+    ontopCoverType
 ];

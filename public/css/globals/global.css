@@ -52,6 +52,17 @@ body {
     }
 }
 
+.container-small {
+    width: 70%;
+    margin: auto;
+}
+
+@media (max-width: 1200px) {
+    .container-small {
+        width: 95%;
+    }
+}
+
 b,
 strong {
     font-family: Archivo;
@@ -500,5 +511,24 @@ button.fs-5 {
         display: inline-block;
     }
 }
-
 /* !SECTION - DISPLAY */
+
+.card {
+    border-radius: 1rem;
+    background-color: white;
+}
+
+ul > li{
+    margin-bottom: 0.5rem;
+}
+
+ul > li:last-child{
+    padding-bottom: 0;
+}
+
+
+.bullet-less {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

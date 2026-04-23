@@ -9,7 +9,7 @@ nav {
 
 /* navbar outer container */
 #top-navbar {
-    width: 65%;
+    width: 70%;
     display: grid;
     grid-template-columns: 20% 60% 20%;
     margin: auto;
@@ -37,12 +37,15 @@ nav {
 #top-navbar>ul {
     display: flex;
     justify-content: center;
+    align-content: center;
     padding-left: 0;
     gap: 2rem;
 }
 
 #top-navbar>ul>li {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 #top-navbar>ul>li>a {

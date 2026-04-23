@@ -1,0 +1,35 @@
+---
+import "./accordion.css";
+
+interface Props {
+    title: string;
+    name: string;
+    index: number;
+}
+const { title, name, index } = Astro.props;
+
+const id = `${name}-${index}`;
+---
+
+<div class="accordion" data-name={name}>
+    <button
+        class="accordion-header mb-05"
+        aria-expanded="false"
+        aria-controls={`${id}-content`}
+        id={`${id}-header`}
+    >
+        <span class="lh-0 fw-700 fs-125 fs-2-mob t-uppercase">
+            {title}
+        </span>
+        <img src="/images/icons/chevron-d.svg" aria-hidden="true" />
+    </button>
+
+    <div
+        class="accordion-content"
+        id={`${id}-content`}
+        role="region"
+        aria-labelledby={`${id}-header`}
+    >
+        <slot name="content" />
+    </div>
+</div>

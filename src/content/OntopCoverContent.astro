@@ -1,0 +1,89 @@
+---
+import ColorPicker from "../components/ColorPicker/ColorPicker.astro";
+import type {
+    ColorPicker as ColorPickerCMS,
+    OntopCover,
+} from "../../studio-lorika-ontop/sanity.types";
+import Accordion from "../components/Accordion/Accordion.astro";
+import { cleanHtml } from "../utils/clean-html";
+import { urlFor } from "../utils/sanity-client";
+
+interface Props {
+    colorPickerData: ColorPickerCMS;
+    ontopCoverData: OntopCover;
+}
+
+let { colorPickerData, ontopCoverData } = Astro.props;
+---
+
+<!-- ABOUT STYLE -->
+<link rel="stylesheet" href="/css/pages/ontop-cover.css" />
+
+<!-- ACCORDION LOGIC SCRIPT -->
+<script src="../utils/toggle-accordions.ts"></script>
+
+<div class="py-2" id="ontop-cover-page">
+    <div class="container-small" id="product-wrapper">
+        <!-- SECTION - PRODUCT GALLERY -->
+        <div id="product-gallery" aria-label={ontopCoverData.gallerySectionAriaLabel}>
+            <div id="product-gallery-main-img" class="mb-1">
+                <img
+                    src={urlFor(ontopCoverData.mainPhoto?.image?.asset?._ref).url()}
+                    alt={ontopCoverData.mainPhoto?.alternativeText}
+                />
+            </div>
+            <div id="product-gallery-second-imgs">
+                {
+                    ontopCoverData.secondaryPhotos?.map((photo) => (
+                        <img
+                            src={urlFor(photo.image?.asset?._ref).url()}
+                            alt={photo.alternativeText}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+        <!-- !SECTION - PRODUCT GALLERY -->
+
+        <!-- SECTION - PRODUCT INFO -->
+        <section
+            id="product-info"
+            aria-label={ontopCoverData.productInfoSectionAriaLabel}
+        >
+            <div id="product-info-data" class="card">
+                {
+                    ontopCoverData.infos?.map((info, index) => (
+                        <Accordion
+                            title={info.title!}
+                            name="product-info-data"
+                            index={index}
+                        >
+                            <div
+                                slot="content"
+                                set:html={cleanHtml(info.htmlContent!)}
+                            ></div>
+                        </Accordion>
+                    ))
+                }
+            </div>
+            <div id="product-info-colorpicker-wrapper" class="card w-100">
+                <ColorPicker
+                    colorPickerData={colorPickerData}
+                    id="product-info-colorpicker"
+                    layout="horizontal"
+                    size="dynamic"
+                    displayLabel="hide"
+                />
+            </div>
+            <a
+                class="button primary fs-15 w-100"
+                aria-label={ontopCoverData.buyNowCta?.ariaLabel}
+                href="https://lorika-8398.myshopify.com/products/ontop-preorder"
+                target="_blank"
+            >
+                {ontopCoverData.buyNowCta?.label}
+            </a>
+        </section>
+        <!-- !SECTION - PRODUCT INFO -->
+    </div>
+</div>

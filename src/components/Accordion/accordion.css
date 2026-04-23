@@ -1,0 +1,41 @@
+/* ACCORDION HEADER + BODY WRAPPER */
+.accordion {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px black solid;
+}
+
+/* ACCORDION HEADER, BUTTON */
+.accordion-header {
+    color: black;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    padding: 0;
+}
+
+/* ACCORDION HEADER, BUTTON ICONS */
+.accordion-header>img {
+    height: 1.25rem;
+    width: 1.25rem;
+    transition: transform 0.2s;
+}
+
+.accordion[open] .accordion-header>img {
+    transform: rotateX(180deg);
+}
+
+/* ACCORDION CONTENT */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s, padding 0.2s;
+}
+
+.accordion[open] .accordion-content {
+    max-height: 500px;
+    padding-bottom: 0.5rem;
+}
