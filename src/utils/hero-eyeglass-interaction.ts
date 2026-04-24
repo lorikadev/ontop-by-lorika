@@ -66,17 +66,27 @@ document.addEventListener("DOMContentLoaded", () => {
     //!SECTION - HDR
 
     //SECTION - COVER
+    const html = document.documentElement;
+    //apply new highlight color
+    const HIGHLIGHT_COLOR_CSS_VAR_KEY = "--highlight-color";
+    const colorCssKey = localStorage.getItem(HIGHLIGHT_COLOR_CSS_VAR_KEY);
+    if (!colorCssKey) {
+        console.error('hero-eyeglass-interacton \n colorCssKey not found');
+        return; //early return to avoid crash
+    }
+    let colorRgb = getComputedStyle(html).getPropertyValue(colorCssKey);
     let coverObjRef: null | Group<Object3DEventMap> = null;
-    //https://physicallybased.info/ -> search for plastic (pc)
+    //https://physicallybased.info/
     const coverMaterial = new MeshPhysicalMaterial({
-        color: new Color('#ff9900'),
-        attenuationColor: new Color('#ff9900'),
+        color: new Color(colorRgb),
+        attenuationColor: new Color(colorRgb),
         attenuationDistance: 1.5,
         metalness: 0,
         ior: 1.585,
         roughness: 0.02,
         clearcoat: 0.2,
     });
+
     const gltfLoader = new GLTFLoader();
     gltfLoader.load(
         '/3d/cover.glb',
@@ -95,6 +105,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             })
             scene.add(coverObjRef);
+            document.addEventListener('changedHighlightColor', (e) => {
+                const colorCssKey = localStorage.getItem(HIGHLIGHT_COLOR_CSS_VAR_KEY);
+                if (!colorCssKey) {
+                    console.error('hero-eyeglass-interacton \n colorCssKey not found');
+                    return; //early return to avoid crash
+                }
+                let colorRgb = getComputedStyle(html).getPropertyValue(colorCssKey);
+                coverMaterial.color.set(colorRgb);
+                coverMaterial.attenuationColor.set(colorRgb);
+            })
+            //add event listener to change color of cover
         },
         (onProgressData) => {
             console.log("PROGRESS", onProgressData)
@@ -107,13 +128,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //SECTION - EYEGLASSES
     let glassesObjRef: null | Group<Object3DEventMap> = null;
-    //https://physicallybased.info/ -> search for plastic (pc)
+    //https://physicallybased.info/
     const glassesPlasticMaterial = new MeshPhysicalMaterial({
-        color: 'black',
+        color: '#000000',
         metalness: 0,
         ior: 1.5,
-        roughness: 0.15,
-        clearcoat: 0.8,
+        roughness: 0.25,
         envMapIntensity: 1.8
     });
     const jointMaterial = new MeshPhysicalMaterial({
