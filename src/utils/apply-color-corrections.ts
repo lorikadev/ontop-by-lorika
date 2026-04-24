@@ -25,10 +25,9 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
 
     // LIGHT COLORS
     if (
-        cssColorVarKey === "--pearl-white" ||
-        cssColorVarKey === "--zinc-yellow" ||
-        cssColorVarKey === "--sand-yellow" ||
-        cssColorVarKey === "--pearl-light-grey"
+        cssColorVarKey === "--RAL1013" ||
+        cssColorVarKey === "--RAL1018" ||
+        cssColorVarKey === "--RAL1002"
     ) {
         navCtaShop.forEach(ncs => ncs.style.border = 'var(--dark-text-color)');
         navCtaCartSvg.forEach(nccs => nccs.style.border = 'var(--dark-text-color)');
@@ -46,7 +45,7 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
         highlightedContainers.forEach(hc => hc.style.color = 'var(--light-text-color)');
 
         // jet black need border to be seen over dark bg
-        if (cssColorVarKey === "--jet-black") {
+        if (cssColorVarKey === "--RAL9005") {
             navCtaShop.forEach(ncs => ncs.style.border = border);
             primaryButtons.forEach(pb => pb.style.border = border);
             highlightedContainers.forEach(hc => hc.style.border = border);
