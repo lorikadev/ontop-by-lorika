@@ -22,6 +22,7 @@
 /* SECTION - HERO */
 #hero-wrapper {
     background-color: black;
+    position: relative;
 }
 
 #hero {
@@ -35,7 +36,7 @@
     }
 }
 
-#hero-3d-wrapper {
+#hero-3d-ui-wrapper {
     background: url("/images/logo/logo-ontop-grey-bg-hero.svg");
     background-position: center center;
     background-repeat: no-repeat;
@@ -52,22 +53,25 @@
 #hero-3d-render {
     width: 100%;
     height: 100%;
+    position: absolute;
+    z-index: 2;
 }
 
 #hero-color-picker-desktop-wrapper {
     position: absolute;
     bottom: 0;
     right: 10px;
+    z-index: 3;
 }
 
 @media (max-width: 1200px) {
-    #hero-3d-wrapper {
+    #hero-3d-ui-wrapper {
         aspect-ratio: 4/3;
     }
 }
 
 @media (max-width: 700px) {
-    #hero-3d-wrapper {
+    #hero-3d-ui-wrapper {
         aspect-ratio: 4/4;
         background-position-y: 20%;
     }
@@ -78,6 +82,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 3;
 }
 
 #hero-cta {
@@ -85,6 +90,8 @@
     grid-template-columns: 80% 20%;
     margin-top: 1.85rem;
     color: white;
+    position: relative;
+    z-index: 3;
 }
 
 #hero-cta-buttons {

@@ -27,12 +27,12 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
 <link rel="stylesheet" href="/css/pages/index.css" />
 
 <!-- SECTION - HERO -->
-<div id="hero-wrapper" class="py-3">
-    <div id="hero">
+<div id="hero-wrapper">
+    <!-- 3D HERO RENDER -->
+    <canvas id="hero-3d-render"></canvas>
+    <div id="hero" class="pt-15 pb-3">
         <!-- 3D WRAPPER -->
-        <div id="hero-3d-wrapper">
-            <!-- 3D HERO RENDER -->
-            <canvas id="hero-3d-render"></canvas>
+        <div id="hero-3d-ui-wrapper">
             <!-- COLOR PICKER -->
             <div
                 id="hero-color-picker-desktop-wrapper"
