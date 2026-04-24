@@ -1,5 +1,8 @@
 import { applyColorCorrections } from "../utils/apply-color-corrections";
 
+/* event used to update complex data that rely on highlight color */
+const changedHighlightColorEvent = new Event("changedHighlightColor");
+
 /* 
     At this point, in the localstorage, a var should be setted with name "--highlight-color".
     This var contains the active color var key and when we select one color-label
@@ -39,6 +42,9 @@ const setNewHighlightColor = (e: MouseEvent) => {
 
     //save into storage
     localStorage.setItem(HIGHLIGHT_COLOR_CSS_VAR_KEY, targetCssVarKey);
+
+    //dispatch event
+    document.dispatchEvent(changedHighlightColorEvent);
 
     //remove class active from previous actives and apply it to the correct ones
     const colorLabels = document.querySelectorAll('.color-label') as NodeListOf<HTMLElement>;
