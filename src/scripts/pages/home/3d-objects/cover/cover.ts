@@ -1,4 +1,4 @@
-import { MeshPhysicalMaterial, Color, Mesh, Uniform, Vector2, Vector3, Object3D } from "three";
+import { MeshPhysicalMaterial, Color, Mesh, Uniform, Vector2, Vector3, Object3D, TextureLoader, RepeatWrapping, NearestFilter } from "three";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla';
 import vertexShader from './vertex.glsl?raw';
