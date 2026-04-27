@@ -8,58 +8,63 @@ import { GLTFLoader } from "three/examples/jsm/Addons.js";
  */
 export async function createEyeglass3DObject(gltfLoaderRef: GLTFLoader): Promise<Group<Object3DEventMap>> {
     const onLoadData = await gltfLoaderRef.loadAsync(
-        '/3d/glasses.glb'
+        '/3d/eyeglass.glb'
     );
 
     const glassesObjRef = onLoadData.scene;
     glassesObjRef.name = 'eyeglass';
 
     //https://physicallybased.info/
-    const glassesPlasticMaterial = new MeshPhysicalMaterial({
-        color: '#000000',
-        metalness: 0,
-        ior: 1.5,
-        roughness: 0.25,
-        envMapIntensity: 1.8
-    });
-    const jointMaterial = new MeshPhysicalMaterial({
-        color: new Color(0.91, 0.92, 0.92),
-        metalness: 1,
-        roughness: 0.3,
-        envMapIntensity: 1.2
-    });
-    const cameraMaterial = new MeshPhysicalMaterial({
-        color: new Color('#454545'),
-        metalness: 1,
-        roughness: 0.3,
-        envMapIntensity: 1.2,
-        reflectivity: 1
-    });
-    const lensMaterial = new MeshPhysicalMaterial({
-        color: new Color('#404245'),
-        metalness: 0,
-        roughness: 0.1,
-        transmission: 1,
-        ior: 1.5,
-        attenuationColor: new Color('#404245'),
-        attenuationDistance: 1.5,
-        envMapIntensity: 1.5
-    });
-
     glassesObjRef.traverse(child => {
         if ((child as any)?.isMesh) {
             switch (child.name) {
                 case "camera":
-                    (child as Mesh).material = cameraMaterial;
+                    (child as Mesh).material = new MeshPhysicalMaterial({
+                        color: new Color('#454545'),
+                        metalness: 1,
+                        roughness: 0.3,
+                        envMapIntensity: 1.2,
+                        reflectivity: 1
+                    });
                     break;
-                case "joint":
-                    (child as Mesh).material = jointMaterial;
+                case "obiettivo":
+                case "giunture":
+                    (child as Mesh).material = new MeshPhysicalMaterial({
+                        color: new Color(0.91, 0.92, 0.92),
+                        metalness: 1,
+                        roughness: 0.2,
+                        envMapIntensity: 1.3
+                    });
                     break;
-                case "lens":
-                    (child as Mesh).material = lensMaterial;
+                case "vetrino":
+                    (child as Mesh).material = new MeshPhysicalMaterial({
+                        color: new Color('#7f8388'),
+                        metalness: 0,
+                        roughness: 0,
+                        transmission: 1,
+                        opacity: 0.3,
+                        attenuationColor: new Color('#7f8388'),
+                        attenuationDistance: 1.5,
+                    });
+                    break;
+                case "lenti":
+                    (child as Mesh).material = new MeshPhysicalMaterial({
+                        color: new Color('#404245'),
+                        metalness: 0,
+                        roughness: 0,
+                        transmission: 1,
+                        attenuationColor: new Color('#404245'),
+                        attenuationDistance: 1.5,
+                    });
                     break;
                 default:
-                    (child as Mesh).material = glassesPlasticMaterial;
+                    (child as Mesh).material = new MeshPhysicalMaterial({
+                        color: '#000000',
+                        metalness: 0,
+                        ior: 1.5,
+                        roughness: 0.25,
+                        envMapIntensity: 1.8
+                    });
                     break;
             }
         }

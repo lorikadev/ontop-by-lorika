@@ -1,4 +1,4 @@
-import { AmbientLight, DirectionalLight, EquirectangularReflectionMapping, PerspectiveCamera, Scene, SRGBColorSpace, TextureLoader, Timer, WebGLRenderer } from "three";
+import { AmbientLight, CameraHelper, DirectionalLight, EquirectangularReflectionMapping, PerspectiveCamera, PointLight, PointLightHelper, Scene, SpotLight, SRGBColorSpace, TextureLoader, Timer, WebGLRenderer } from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { createHeroEyeglassEntity } from "./entities/hero-eyeglass";
 import { getIntroColorChangeEventHandler } from "./event-handler/intro-color-change";
@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         renderer.setClearColor(0x000000, 0);
         renderer.outputColorSpace = SRGBColorSpace;
         renderer.toneMappingExposure = 1.8;
-        renderer.shadowMap.enabled = true;
         renderer.render(scene, camera);
 
         //RESIZE HANDLING

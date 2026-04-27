@@ -13,7 +13,7 @@ import { HIGHLIGHT_COLOR_CSS_VAR_KEY } from "../../../../../const";
  */
 export async function createCover3DObject(gltfLoaderRef: GLTFLoader): Promise<Object3D> {
     const onLoadData = await gltfLoaderRef.loadAsync(
-        '/3d/cover_joined.glb'
+        '/3d/cover.glb'
     );
 
     const coverObjRef = onLoadData.scene;
@@ -53,16 +53,13 @@ export async function createCover3DObject(gltfLoaderRef: GLTFLoader): Promise<Ob
         //https://physicallybased.info/
         metalness: 0,
         ior: 1.585,
-        roughness: 0.02,
+        roughness: 0.01,
         clearcoat: 0.2,
         transparent: true,
     })
 
     coverObjRef.traverse(child => {
         if ((child as any)?.isMesh) {
-            child.receiveShadow = true;
-            child.castShadow = true;
-
             const geometry = (child as Mesh).geometry;
             geometry.computeBoundingBox();
             if (!geometry.boundingBox) throw new Error('bouding box not found');

@@ -69,7 +69,7 @@ export function createIntroTimeline(group: Object3D<Object3DEventMap>, coverObjR
             yoyo: true,
             // gsap count repetition after first animation, so 3 is 
             // default (first itaration) -> to (rep 1) -> default (rep 2)-> to (rep 3)-> default
-            repeat: 3,
+            repeat: 1,
             ease: 'sine.inOut'
         }, "first_translation+0.1")
             .add("after_pulse");
