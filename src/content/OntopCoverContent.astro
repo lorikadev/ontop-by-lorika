@@ -18,21 +18,29 @@ let { colorPickerData, ontopCoverData } = Astro.props;
 
 <!-- ABOUT STYLE -->
 <link rel="stylesheet" href="/css/pages/ontop-cover.css" />
-
+<link
+    rel="stylesheet"
+    href="/libraries/splide-4.1.3/css/splide-default.min.css"
+/>
 <!-- ACCORDION LOGIC SCRIPT -->
 <script src="../utils/toggle-accordions.ts"></script>
 
 <div class="py-2" id="ontop-cover-page">
     <div class="container-small" id="product-wrapper">
         <!-- SECTION - PRODUCT GALLERY -->
-        <div id="product-gallery" aria-label={ontopCoverData.gallerySectionAriaLabel}>
-            <div id="product-gallery-main-img" class="mb-1">
+        <div
+            id="product-gallery"
+            aria-label={ontopCoverData.gallerySectionAriaLabel}
+        >
+            <div id="product-gallery-main-img" class="mb-1 show-till-mob">
                 <img
-                    src={urlFor(ontopCoverData.mainPhoto?.image?.asset?._ref).url()}
+                    src={urlFor(
+                        ontopCoverData.mainPhoto?.image?.asset?._ref,
+                    ).url()}
                     alt={ontopCoverData.mainPhoto?.alternativeText}
                 />
             </div>
-            <div id="product-gallery-second-imgs">
+            <div id="product-gallery-second-imgs" class="show-till-mob">
                 {
                     ontopCoverData.secondaryPhotos?.map((photo) => (
                         <img
@@ -42,6 +50,57 @@ let { colorPickerData, ontopCoverData } = Astro.props;
                     ))
                 }
             </div>
+
+            <section id="mobile-gallery" class="splide show-mob" aria-hidden>
+                <div class="splide__track">
+                    <ul class="show-tab splide__list">
+                        <li class="splide__slide">
+                            <img
+                                src={urlFor(
+                                    ontopCoverData.mainPhoto?.image?.asset
+                                        ?._ref,
+                                ).url()}
+                                alt={ontopCoverData.mainPhoto?.alternativeText}
+                                class="w-100"
+                            />
+                        </li>
+                        {
+                            ontopCoverData.secondaryPhotos?.map((photo) => (
+                                <li class="splide__slide">
+                                    <img
+                                        src={urlFor(
+                                            photo.image?.asset?._ref,
+                                        ).url()}
+                                        alt={photo.alternativeText}
+                                        class="w-100"
+                                    />
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </section>
+
+            <ul id="mobile-thumbnails" class="thumbnails show-mob">
+                <li class="thumbnail">
+                    <img
+                        src={urlFor(
+                            ontopCoverData.mainPhoto?.image?.asset?._ref,
+                        ).url()}
+                        alt={ontopCoverData.mainPhoto?.alternativeText}
+                    />
+                </li>
+                {
+                    ontopCoverData.secondaryPhotos?.map((photo) => (
+                        <li class="thumbnail">
+                            <img
+                                src={urlFor(photo.image?.asset?._ref).url()}
+                                alt={photo.alternativeText}
+                            />
+                        </li>
+                    ))
+                }
+            </ul>
         </div>
         <!-- !SECTION - PRODUCT GALLERY -->
 
@@ -61,7 +120,7 @@ let { colorPickerData, ontopCoverData } = Astro.props;
                             <div
                                 slot="content"
                                 set:html={cleanHtml(info.htmlContent!)}
-                            ></div>
+                            />
                         </Accordion>
                     ))
                 }
@@ -87,3 +146,39 @@ let { colorPickerData, ontopCoverData } = Astro.props;
         <!-- !SECTION - PRODUCT INFO -->
     </div>
 </div>
+
+<script src="/libraries/splide-4.1.3/js/splide.min.js" is:inline></script>
+
+<script is:inline>
+    var splide = new Splide("#mobile-gallery", {
+        pagination: false,
+    });
+
+    var thumbnails = document.getElementsByClassName("thumbnail");
+    var current;
+
+    for (var i = 0; i < thumbnails.length; i++) {
+        initThumbnail(thumbnails[i], i);
+    }
+
+    function initThumbnail(thumbnail, index) {
+        thumbnail.addEventListener("click", function () {
+            splide.go(index);
+        });
+    }
+
+    splide.on("mounted move", function () {
+        var thumbnail = thumbnails[splide.index];
+
+        if (thumbnail) {
+            if (current) {
+                current.classList.remove("is-active");
+            }
+
+            thumbnail.classList.add("is-active");
+            current = thumbnail;
+        }
+    });
+
+    splide.mount();
+</script>

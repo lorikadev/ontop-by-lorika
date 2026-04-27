@@ -44,30 +44,40 @@
     row-gap: 1rem;
 }
 
-/* adapting images and wrappers to create an horizontal scroller in mobile  */
+#mobile-gallery {
+    width: 100%;
+}
+
+.thumbnails {
+    margin: 1rem auto 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.thumbnail {
+    width: 100px;
+    overflow: hidden;
+    list-style: none;
+    margin: 0 0.2rem;
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+.thumbnail.is-active {
+    opacity: 1;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: auto;
+}
+
 @media (max-width: 700px) {
-    #product-gallery {
-        overflow-x: auto;
-    }
-
-    #product-gallery-second-imgs {
-        column-gap: normal;
-    }
-
-    #product-gallery-second-imgs,
-    #product-gallery {
+    .thumbnails {
         display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
-        gap: 1rem;
-    }
-
-    #product-gallery img {
-        height: 150px;
-        width: auto;
     }
 }
+
 
 /* PRODUCT INFO - left column */
 #product-info-data,
