@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             let height = heroWrapper.clientHeight;
             if (width <= 1200) {
-                height = (width / 5) * 4;
+                height = (width / 10) * 9;
             }
 
             renderer.setSize(width, height, true);
@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         controls.enableZoom = false;
         controls.enableDamping = true;
         controls.rotateSpeed = 0.5;
-        controls.minPolarAngle = -Math.PI * 0.5;
-        controls.maxPolarAngle = Math.PI;
+        controls.minPolarAngle = Math.PI * 0.15;
+        controls.maxPolarAngle = Math.PI * 0.85;
         controls.enabled = false;
 
         //SECTION - LIGHTS
