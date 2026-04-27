@@ -32,7 +32,7 @@ export async function createHeroEyeglassEntity(): Promise<IHeroEyeglassEntity> {
     group.position.set(0, -3, 0);
 
     //CREATE TIMELINES
-    const tlIntro = createIntroTimeline(group);
+    const tlIntro = createIntroTimeline(group, coverObjRef);
     const tlUpdate = createUpdateTimeline(coverObjRef);
 
     return {

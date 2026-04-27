@@ -9,18 +9,8 @@ import type CustomShaderMaterial from "three-custom-shader-material/vanilla";
  * @summary takes in the group made of eyeglass and cover for 
  * the index page and creates the intro using the ref to the 3d objects
  */
-export function createIntroTimeline(group: Object3D<Object3DEventMap>) {
+export function createIntroTimeline(group: Object3D<Object3DEventMap>, coverObjRef: Object3D) {
     try {
-        let cover: null | Object3D = null;
-        group.traverse(child => {
-            if (child.name === 'cover') {
-                cover = child;
-            }
-        })
-
-        if (!cover)
-            throw new Error('createHero3dIntroTimeline \n cover object not found in group');
-
         const tl = gsap.timeline({
             paused: true
         });
@@ -28,7 +18,7 @@ export function createIntroTimeline(group: Object3D<Object3DEventMap>) {
 
         //FIRST TRANSLATION
         tl.to(group.position, {
-            y: 0,
+            y: 0.25,
             duration: 2,
             ease: 'power2.out'
         }, "first_translation");
@@ -41,35 +31,34 @@ export function createIntroTimeline(group: Object3D<Object3DEventMap>) {
         }, "first_translation+=0.8")
 
         //ANIMATE OPACITY AND COLOR UPDATE ON COVER
-        if (cover)
-            tl.to(
-                { progress: 0 },
-                {
-                    progress: 1,
-                    duration: 3,
-                    ease: 'sine.inOut',
-                    onUpdate() {
-                        const t = this.targets()[0].progress;
-                        cover!.traverse(child => {
-                            if ((child as any)?.isMesh) {
-                                ((child as Mesh).material as CustomShaderMaterial).uniforms.u_opacity.value = t;
-                                ((child as Mesh).material as CustomShaderMaterial).uniforms.u_progress.value = t;
-                            }
-                        })
-                    },
-                    onComplete() {
-                        //after animation is completed switch target color to current and reset progress to 0
-                        cover!.traverse(child => {
-                            if ((child as any)?.isMesh) {
-                                const meshUniforms = ((child as Mesh).material as CustomShaderMaterial).uniforms;
-                                meshUniforms.u_currentColor.value = (meshUniforms.u_targetColor.value as Color).clone();
-                                meshUniforms.u_progress.value = 0;
-                            }
-                        })
-                    }
+        tl.to(
+            { progress: 0 },
+            {
+                progress: 1,
+                duration: 3,
+                ease: 'sine.inOut',
+                onUpdate() {
+                    const t = this.targets()[0].progress;
+                    coverObjRef!.traverse(child => {
+                        if ((child as any)?.isMesh) {
+                            ((child as Mesh).material as CustomShaderMaterial).uniforms.u_opacity.value = t;
+                            ((child as Mesh).material as CustomShaderMaterial).uniforms.u_progress.value = t;
+                        }
+                    })
                 },
-                "first_translation+0.1"
-            )
+                onComplete() {
+                    //after animation is completed switch target color to current and reset progress to 0
+                    coverObjRef!.traverse(child => {
+                        if ((child as any)?.isMesh) {
+                            const meshUniforms = ((child as Mesh).material as CustomShaderMaterial).uniforms;
+                            meshUniforms.u_currentColor.value = (meshUniforms.u_targetColor.value as Color).clone();
+                            meshUniforms.u_progress.value = 0;
+                        }
+                    })
+                }
+            },
+            "first_translation+0.1"
+        )
 
         //POST TRANSLATION PULSE ZOOM
         tl.to(group.scale, {

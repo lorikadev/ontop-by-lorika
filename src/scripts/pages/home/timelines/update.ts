@@ -10,7 +10,7 @@ export function createUpdateTimeline(cover: Object3D) {
         { progress: 0 },
         {
             progress: 1,
-            duration: 3,
+            duration: 2,
             ease: 'sine.inOut',
             onUpdate() {
                 const t = this.targets()[0].progress;
