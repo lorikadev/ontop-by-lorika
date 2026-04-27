@@ -3,6 +3,8 @@ import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { createHeroEyeglassEntity } from "./entities/hero-eyeglass";
 import { HIGHLIGHT_COLOR_CSS_VAR_KEY } from "../../../const";
 import type CustomShaderMaterial from "three-custom-shader-material/vanilla";
+import { getIntroColorChangeEventHandler } from "./event-handler/intro-color-change";
+import { getInteractiveColorChangeEventHandler } from "./event-handler/interactive-color-change";
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
@@ -74,6 +76,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         scene.add(heroEyeglassEntity.groupRef);
         heroEyeglassEntity.timelines.intro.play(true);
 
+        //load event listener to change color during intro
+        const introColorChangeEventHandler = getIntroColorChangeEventHandler(heroEyeglassEntity.directRefs.cover);
+        document.addEventListener('changedHighlightColor', introColorChangeEventHandler);
+
         //CALC FRAMERATE DATA
         const fps = 120;
         let lastRenderTime = 0;
@@ -91,24 +97,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (heroEyeglassEntity.timelines.intro.isAnimationOver) {
 
                     //add event listener to change color of cover from colorpicker click
-                    document.addEventListener('changedHighlightColor', (e) => {
-                        const colorCssKey = localStorage.getItem(HIGHLIGHT_COLOR_CSS_VAR_KEY);
-                        if (!colorCssKey) {
-                            console.error('hero-eyeglass-interacton \n colorCssKey not found');
-                            return; //early return to avoid crash
-                        }
-                        const html = document.documentElement;
-                        let colorRgb = getComputedStyle(html).getPropertyValue(colorCssKey);
-                        //NOTE - not pretty but we know the object we are referencing
-                        heroEyeglassEntity.directRefs.cover.traverse(child => {
-                            if ((child as any)?.isMesh) {
-                                (((child as Mesh).material as CustomShaderMaterial).uniforms.u_targetColor.value as Color).set(colorRgb);
-                            }
-                        });
-
-                        //start update timeline animation that gets updated inside updateLogic (under here...)
-                        heroEyeglassEntity.timelines.update.play(true);
-                    })
+                    document.removeEventListener('changedHighlightColor', introColorChangeEventHandler);
+                    const interactiveColorChangeEventHandler = getInteractiveColorChangeEventHandler(heroEyeglassEntity);
+                    document.addEventListener('changedHighlightColor', interactiveColorChangeEventHandler);
 
                     //enables controls
                     controls.enabled = true;

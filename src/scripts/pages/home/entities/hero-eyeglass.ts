@@ -6,7 +6,7 @@ import { createIntroTimeline } from "../timelines/intro";
 import { createUpdateTimeline } from "../timelines/update";
 import { TimelineHandler } from "../../../../classes/timeline-handler";
 
-export interface IEyeglass3DEntity {
+export interface IHeroEyeglassEntity {
     groupRef: Group,
     directRefs: {
         cover: Object3D,
@@ -18,7 +18,7 @@ export interface IEyeglass3DEntity {
     }
 }
 
-export async function createHeroEyeglassEntity(): Promise<IEyeglass3DEntity> {
+export async function createHeroEyeglassEntity(): Promise<IHeroEyeglassEntity> {
     const gltfLoader = new GLTFLoader();
 
     //LOAD OBJECTS
