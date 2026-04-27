@@ -39,6 +39,11 @@ body {
     font-family: Archivo;
     font-weight: 300;
     position: relative;
+    /*  NOTE    
+        used to avoid issues with on scroll animated elems 
+        which starts from outside the view 
+    */
+    overflow-x: hidden;
 }
 
 .container {

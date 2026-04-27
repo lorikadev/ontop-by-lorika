@@ -1,16 +1,16 @@
-import { AmbientLight, Color, DirectionalLight, EquirectangularReflectionMapping, Material, Mesh, PerspectiveCamera, Scene, SRGBColorSpace, TextureLoader, Timer, WebGLRenderer } from "three";
+import { AmbientLight, DirectionalLight, EquirectangularReflectionMapping, PerspectiveCamera, Scene, SRGBColorSpace, TextureLoader, Timer, WebGLRenderer } from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { createHeroEyeglassEntity } from "./entities/hero-eyeglass";
-import { HIGHLIGHT_COLOR_CSS_VAR_KEY } from "../../../const";
-import type CustomShaderMaterial from "three-custom-shader-material/vanilla";
 import { getIntroColorChangeEventHandler } from "./event-handler/intro-color-change";
 import { getInteractiveColorChangeEventHandler } from "./event-handler/interactive-color-change";
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
+
+        const heroWrapper = document.getElementById("hero-wrapper") as HTMLDivElement | undefined
         const canvasElement = document.getElementById("hero-3d-render") as HTMLCanvasElement | undefined;
-        if (!canvasElement) {
-            console.error('hero-eyeglass-interacton \n canvasElement not found');
+        if (!canvasElement || !heroWrapper) {
+            console.error('hero-eyeglass-interacton \n canvasElement or heroWrapper not found');
             return; //early return to avoid crash
         }
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const scene = new Scene();
 
         //SETUP CAMERA
-        const camera = new PerspectiveCamera(20, canvasElement.clientWidth / canvasElement.clientHeight, 0.1, 20);
+        const camera = new PerspectiveCamera(20, canvasElement.clientWidth / canvasElement.clientHeight, 0.1, 25);
         camera.position.set(0, 0, 9);
         camera.lookAt(scene.position);
 
@@ -34,10 +34,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         //RESIZE HANDLING
         window.addEventListener('resize', () => {
-            camera.aspect = canvasElement.clientWidth / canvasElement.clientHeight;
-            camera.updateProjectionMatrix();
+            const width = heroWrapper.clientWidth;
 
-            renderer.setSize(canvasElement.clientWidth, canvasElement.clientHeight);
+            let height = heroWrapper.clientHeight;
+            if (width <= 1200) {
+                height = (width / 5) * 4;
+            }
+
+            renderer.setSize(width, height, true);
+
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
         })
 
         //ORBIT CONTROLS SETUP
