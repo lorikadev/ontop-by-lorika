@@ -21,7 +21,8 @@
     "gsap": "^3.15.0",
     "sanitize-html": "^2.17.2",
     "sanity": "^5.19.0",
-    "three": "^0.183.2"
+    "three": "^0.183.2",
+    "three-custom-shader-material": "6.3"
   },
   "devDependencies": {
     "@types/sanitize-html": "^2.16.1",

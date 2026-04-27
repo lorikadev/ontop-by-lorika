@@ -1,9 +1,8 @@
-import { AmbientLight, DirectionalLight, EquirectangularReflectionMapping, Group, Mesh, MeshPhysicalMaterial, PerspectiveCamera, Scene, SRGBColorSpace, TextureLoader, Timer, WebGLRenderer, type Object3DEventMap } from "three";
+import { AmbientLight, Color, DirectionalLight, EquirectangularReflectionMapping, Material, Mesh, PerspectiveCamera, Scene, SRGBColorSpace, TextureLoader, Timer, WebGLRenderer } from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { createCover3DObject } from "../3d-objects/cover";
-import { createEyeglass3DObject } from "../3d-objects/eye-glass";
-import { createHero3dTimeline } from "../timelines/hero-3d-timeline";
+import { createHeroEyeglassEntity } from "./entities/hero-eyeglass";
+import { HIGHLIGHT_COLOR_CSS_VAR_KEY } from "../../../const";
+import type CustomShaderMaterial from "three-custom-shader-material/vanilla";
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
@@ -71,30 +70,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
         //!SECTION - HDR
 
-        const gltfLoader = new GLTFLoader();
-
-        //SECTION - COVER
-        const coverRef = await createCover3DObject(gltfLoader);
-        //!SECTION - COVER
-
-        //SECTION - EYEGLASSES
-        const glassesObjRef = await createEyeglass3DObject(gltfLoader);
-        //!SECTION - EYEGLASSES
-
-        const group = new Group();
-        group.add(coverRef, glassesObjRef);
-        group.rotateX(Math.PI * 0.15); //-29 deg
-        group.position.set(0, -3, 0);
-        scene.add(group);
-
-
-        //INTRO ANIMATION
-        const tl = createHero3dTimeline(group); 
-        /** used to stop updating post animation */
-        const animationDuration = tl.duration();
-        /** time used for 3d initial animation */
-        let animationElapsed = 0;
-        let isAnimationOver = false;
+        const heroEyeglassEntity = await createHeroEyeglassEntity();
+        scene.add(heroEyeglassEntity.groupRef);
+        heroEyeglassEntity.timelines.intro.play(true);
 
         //CALC FRAMERATE DATA
         const fps = 120;
@@ -103,21 +81,47 @@ document.addEventListener("DOMContentLoaded", async () => {
         const timeBetweenFrames = 1000 / fps;
 
         function updateLogic(deltaTime: number) {
-            if (isAnimationOver === false) {
-                if (animationElapsed <= animationDuration)
-                    animationElapsed += deltaTime;
-                else {
-                    controls.enabled = true;
-                    isAnimationOver = true;
-                }
-            } else {
-                controls.update();
-            }
-        }
+            //CHECK IF INTRO ANIMATION SHOULD BE ANIMATED AND IS NOT OVER
+            if (heroEyeglassEntity.timelines.intro.shouldAnimate
+                && heroEyeglassEntity.timelines.intro.isAnimationOver === false) {
 
-        function updateAnimations(deltaTime: number) {
-            if (isAnimationOver === false && animationElapsed <= animationDuration)
-                tl.time(animationElapsed);
+                heroEyeglassEntity.timelines.intro.update(deltaTime);
+
+                //CHECK IF AFTER UPDATE ANIMATION IS OVER 
+                if (heroEyeglassEntity.timelines.intro.isAnimationOver) {
+
+                    //add event listener to change color of cover from colorpicker click
+                    document.addEventListener('changedHighlightColor', (e) => {
+                        const colorCssKey = localStorage.getItem(HIGHLIGHT_COLOR_CSS_VAR_KEY);
+                        if (!colorCssKey) {
+                            console.error('hero-eyeglass-interacton \n colorCssKey not found');
+                            return; //early return to avoid crash
+                        }
+                        const html = document.documentElement;
+                        let colorRgb = getComputedStyle(html).getPropertyValue(colorCssKey);
+                        //NOTE - not pretty but we know the object we are referencing
+                        heroEyeglassEntity.directRefs.cover.traverse(child => {
+                            if ((child as any)?.isMesh) {
+                                (((child as Mesh).material as CustomShaderMaterial).uniforms.u_targetColor.value as Color).set(colorRgb);
+                            }
+                        });
+
+                        //start update timeline animation that gets updated inside updateLogic (under here...)
+                        heroEyeglassEntity.timelines.update.play(true);
+                    })
+
+                    //enables controls
+                    controls.enabled = true;
+                }
+            }
+            //WHEN INTRO IS OVER UPDATE CONTROLS NORMALLY
+            else
+                controls.update();
+
+            if (heroEyeglassEntity.timelines.update.shouldAnimate &&
+                heroEyeglassEntity.timelines.update.isAnimationOver === false) {
+                heroEyeglassEntity.timelines.update.update(deltaTime);
+            }
         }
 
         //ANIMATION STEP
@@ -131,7 +135,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const deltaTime = timeSinceLastRender / 1000
                 lastRenderTime = currentTime;
                 updateLogic(deltaTime);
-                updateAnimations(deltaTime);
                 renderer.render(scene, camera);
             }
 

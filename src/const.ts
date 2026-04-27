@@ -1,0 +1,1 @@
+export const HIGHLIGHT_COLOR_CSS_VAR_KEY = "--highlight-color";

@@ -1,4 +1,4 @@
-import { Scene, Group, type Object3DEventMap, MeshPhysicalMaterial, Color, Mesh } from "three";
+import { Group, type Object3DEventMap, MeshPhysicalMaterial, Color, Mesh } from "three";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 /**
@@ -12,6 +12,7 @@ export async function createEyeglass3DObject(gltfLoaderRef: GLTFLoader): Promise
     );
 
     const glassesObjRef = onLoadData.scene;
+    glassesObjRef.name = 'eyeglass';
 
     //https://physicallybased.info/
     const glassesPlasticMaterial = new MeshPhysicalMaterial({

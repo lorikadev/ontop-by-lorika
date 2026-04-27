@@ -1,3 +1,4 @@
+import { HIGHLIGHT_COLOR_CSS_VAR_KEY } from "../const";
 import { applyColorCorrections } from "../utils/apply-color-corrections";
 
 /*
@@ -6,7 +7,6 @@ import { applyColorCorrections } from "../utils/apply-color-corrections";
     if not found we set it using default color (orange).
 */
 export const loadColorHighlight = () => {
-    const HIGHLIGHT_COLOR_CSS_VAR_KEY = "--highlight-color";
     const html = document.documentElement
 
     let activeColorKey = localStorage.getItem(

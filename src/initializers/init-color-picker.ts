@@ -1,3 +1,4 @@
+import { HIGHLIGHT_COLOR_CSS_VAR_KEY } from "../const";
 import { applyColorCorrections } from "../utils/apply-color-corrections";
 
 /* event used to update complex data that rely on highlight color */
@@ -11,8 +12,6 @@ const changedHighlightColorEvent = new Event("changedHighlightColor");
 
     Currently the var is setted in loadColorHighlight, a script that run before this one.
 */
-const HIGHLIGHT_COLOR_CSS_VAR_KEY = "--highlight-color";
-
 //click event callback used with color label click event in initColorPickers
 const setNewHighlightColor = (e: MouseEvent) => {
     const target = e.currentTarget as HTMLElement;
