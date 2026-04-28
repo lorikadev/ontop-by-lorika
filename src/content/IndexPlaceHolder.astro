@@ -1,8 +1,9 @@
 ---
 interface Prop {
     lang: string;
+    description: string;
 }
-const { lang } = Astro.props;
+const { lang, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -42,27 +43,24 @@ const { lang } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <!-- SEO base -->
-        <title>Ontop by Lorika</title>
-        <!-- <meta name="description" content={description} />
-        <meta name="robots" content={robots} />
-        {canonical && <link rel="canonical" href={canonical} />}
+        <title>Ontop by Lorika - Landing page</title>
+        <meta name="description" content={description} />
 
         <!-- Open Graph -->
-        <!-- <meta property="og:title" content={title} />
+        <meta property="og:title" content="Ontop by Lorika - Landing page" />
         <meta property="og:description" content={description} />
-        <meta property="og:type" content={ogType} />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:site_name" content={ogSiteName} />
-        <meta property="og:locale" content={ogLocale} /> -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content=https://ontop-by-lorika.netlify.app/ />
+        <meta property="og:image" content="https://ontop-by-lorika.netlify.app/images/logo/logo-ontop-lorika-cropped.svg" />
+        <meta property="og:site_name" content="Ontop by Lorika" />
+        <meta property="og:locale" content={lang} />
 
         <!-- Twitter -->
-        <!-- <meta name="twitter:card" content={twitterCard} />
-        <meta name="twitter:title" content={title} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Ontop by Lorika - Landing page" />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={ogImage} />
-        <meta name="twitter:site" content={twitterSite} />
-        <meta name="twitter:creator" content={twitterCreator} />  -->
+        <meta name="twitter:image" content="https://ontop-by-lorika.netlify.app/images/logo/logo-ontop-lorika-cropped.svg" />
+        <meta name="twitter:site" content="https://ontop-by-lorika.netlify.app/" />
         <!-- !SECTION - META -->
 
         <!-- SECTION - CSS -->
@@ -295,13 +293,13 @@ const { lang } = Astro.props;
             <!-- GUESS FORM -->
             <script is:inline>
                 const guessForm = document.getElementById("guess-form");
-                const guessInputs =
-                    guessForm.querySelectorAll("button, input");
+                const guessInputs = guessForm.querySelectorAll("button, input");
                 guessForm.addEventListener("submit", async (e) => {
                     e.preventDefault();
                     guessInputs.forEach((i) => (i.disabled = true));
                     try {
-                        const endpointSubUrl = "https://script.google.com/macros/s/AKfycbwsrz-RONzl846mqMRFvOAwdoQJ1toZrKpL8G7iCqx3u8yOJuS9YE1lR7sWXAuT8YB8/exec";
+                        const endpointSubUrl =
+                            "https://script.google.com/macros/s/AKfycbwsrz-RONzl846mqMRFvOAwdoQJ1toZrKpL8G7iCqx3u8yOJuS9YE1lR7sWXAuT8YB8/exec";
 
                         const data = Object.fromEntries(
                             new FormData(guessForm),
@@ -318,10 +316,7 @@ const { lang } = Astro.props;
                                 "error",
                             );
                         } else {
-                            showModal(
-                                "Thanks for your guess!",
-                                "success",
-                            );
+                            showModal("Thanks for your guess!", "success");
                             guessForm.reset();
                         }
                     } catch (error) {

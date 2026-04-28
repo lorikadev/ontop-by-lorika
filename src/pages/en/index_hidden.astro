@@ -1,0 +1,41 @@
+---
+import { sanityClient } from "sanity:client";
+import IndexContent from "../../content/IndexContent.astro";
+import PageContainer from "../../layout/PageContainer.astro";
+import type {
+    SiteNavigators,
+    HomePage,
+    ColorPicker,
+} from "../../../studio-lorika-ontop/sanity.types";
+
+const SITE_NAVIGATORS_QUERY = `
+    *[_type == "siteNavigators" && lang == "en"]`;
+const siteNavigators = await sanityClient.fetch<SiteNavigators[]>(
+    SITE_NAVIGATORS_QUERY,
+);
+
+const HOME_PAGE_QUERY = `
+    *[_type == "homePage" && lang == "en"]`;
+const homePage = await sanityClient.fetch<HomePage[]>(HOME_PAGE_QUERY);
+
+const COLOR_PICKER_QUERY = `
+    *[_type == "colorPicker" && lang == "en"]`;
+const colorPickerData =
+    await sanityClient.fetch<ColorPicker[]>(COLOR_PICKER_QUERY);
+---
+
+<PageContainer
+    title="Ontop by Lorika"
+    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    canonical="https://www.example.com/lorem-ipsum"
+    robots="index, follow"
+    ogImage="https://www.example.com/images/lorem-ipsum.jpg"
+    ogLocale="it_IT"
+    ogSiteName="Lorem Ipsum Site"
+    twitterCard="summary_large_image"
+    twitterSite="@loremipsum"
+    twitterCreator="@creatorlorem"
+    siteNavigators={siteNavigators[0]}
+>
+    <IndexContent homePageData={homePage[0]} colorPickerData={colorPickerData[0]}/>
+</PageContainer>
