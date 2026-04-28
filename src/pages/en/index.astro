@@ -2,7 +2,12 @@
 import { sanityClient } from "sanity:client";
 import IndexContent from "../../content/IndexContent.astro";
 import PageContainer from "../../layout/PageContainer.astro";
-import type { SiteNavigators, HomePage, ColorPicker } from "../../../studio-lorika-ontop/sanity.types";
+import type {
+    SiteNavigators,
+    HomePage,
+    ColorPicker,
+} from "../../../studio-lorika-ontop/sanity.types";
+import IndexPlaceHolder from "../../content/IndexPlaceHolder.astro";
 
 const SITE_NAVIGATORS_QUERY = `
     *[_type == "siteNavigators" && lang == "en"]`;
@@ -16,21 +21,23 @@ const homePage = await sanityClient.fetch<HomePage[]>(HOME_PAGE_QUERY);
 
 const COLOR_PICKER_QUERY = `
     *[_type == "colorPicker" && lang == "en"]`;
-const colorPickerData = await sanityClient.fetch<ColorPicker[]>(COLOR_PICKER_QUERY);
+const colorPickerData =
+    await sanityClient.fetch<ColorPicker[]>(COLOR_PICKER_QUERY);
 ---
 
-<PageContainer
+<!-- <PageContainer
     title="Ontop by Lorika"
     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     canonical="https://www.example.com/lorem-ipsum"
     robots="index, follow"
     ogImage="https://www.example.com/images/lorem-ipsum.jpg"
-    ogLocale="en_US"
+    ogLocale="it_IT"
     ogSiteName="Lorem Ipsum Site"
     twitterCard="summary_large_image"
     twitterSite="@loremipsum"
     twitterCreator="@creatorlorem"
     siteNavigators={siteNavigators[0]}
->
-    <IndexContent homePageData={homePage[0]} colorPickerData={colorPickerData[0]}/>
-</PageContainer>
+> -->
+    <!-- <IndexContent homePageData={homePage[0]} colorPickerData={colorPickerData[0]}/> -->
+     <IndexPlaceHolder lang="en">
+<!-- </PageContainer> -->

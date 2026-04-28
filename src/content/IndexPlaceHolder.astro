@@ -1,0 +1,490 @@
+---
+interface Prop {
+    lang: string;
+}
+const { lang } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+    <!-- SECTION - HEAD -->
+    <head>
+        <!-- SECTION - FAVICONS -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="/favicons/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            href="/favicons/favicon.svg"
+            type="image/svg+xml"
+            sizes="any"
+        />
+        <link rel="icon" href="/favicons/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+        <link rel="manifest" href="/favicons/site.webmanifest" />
+        <meta
+            name="theme-color"
+            content="#ffffff"
+            media="(prefers-color-scheme: light)"
+        />
+        <meta
+            name="theme-color"
+            content="#0f172a"
+            media="(prefers-color-scheme: dark)"
+        />
+        <!-- !SECTION - FAVICONS -->
+
+        <!-- SECTION - META -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- SEO base -->
+        <title>Ontop by Lorika</title>
+        <!-- <meta name="description" content={description} />
+        <meta name="robots" content={robots} />
+        {canonical && <link rel="canonical" href={canonical} />}
+
+        <!-- Open Graph -->
+        <!-- <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:site_name" content={ogSiteName} />
+        <meta property="og:locale" content={ogLocale} /> -->
+
+        <!-- Twitter -->
+        <!-- <meta name="twitter:card" content={twitterCard} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:site" content={twitterSite} />
+        <meta name="twitter:creator" content={twitterCreator} />  -->
+        <!-- !SECTION - META -->
+
+        <!-- SECTION - CSS -->
+        <link rel="stylesheet" href="/css/globals/reset.css" />
+        <link rel="stylesheet" href="/css/globals/vars.css" />
+        <link rel="stylesheet" href="/css/globals/font-size.css" />
+        <link rel="stylesheet" href="/css/globals/global.css" />
+        <link rel="stylesheet" href="/css/globals/spacing.css" />
+        <link rel="stylesheet" href="/css/globals/animations.css" />
+        <!-- !SECTION - CSS -->
+    </head>
+    <!-- !SECTION - HEAD -->
+    <!-- SECTION - BODY -->
+    <body>
+        <!-- SECTION - INITIALIZERS -->
+        <script src="../utils/on-scroll-anim.ts"></script>
+        <!-- !SECTION - INITIALIZERS -->
+        <!-- MAIN -->
+        <main>
+            <!-- PAGE CONTENT -->
+            <div id="logo-wrapper">
+                <img
+                    src="/images/logo/logo-ontop-lorika-cropped-white.svg"
+                    alt="logo ontop by lorika"
+                />
+            </div>
+            <div id="countdown-wrapper">
+                <div id="days" class="time-wrapper">
+                    <span class="time"></span>
+                    <span class="label">days</span>
+                </div>
+                <span class="separator">:</span>
+                <div id="hours" class="time-wrapper">
+                    <span class="time"></span>
+                    <span class="label">hours</span>
+                </div>
+                <span class="separator">:</span>
+                <div id="minutes" class="time-wrapper">
+                    <span class="time"></span>
+                    <span class="label">minutes</span>
+                </div>
+                <span class="separator">:</span>
+                <div id="seconds" class="time-wrapper">
+                    <span class="time"></span>
+                    <span class="label">seconds</span>
+                </div>
+            </div>
+            <!-- DISCOVER -->
+            <div id="discover-wrapper">
+                <h2 class="fw-700" class="mb-1">
+                    DISCOVER YOUR... <br /> CAN YOU GUESS WHAT IT IS?
+                </h2>
+                <!-- form -->
+                <form id="guess-form">
+                    <div class="input-button-wrapper w-100">
+                        <input
+                            placeholder="LEAVE YOUR GUESS"
+                            type="text"
+                            name="guess"
+                            required
+                        />
+                        <button class="orange" type="submit">></button>
+                    </div>
+                </form>
+            </div>
+            <!-- SUBSCRIBE -->
+            <div id="subscribe-wrapper">
+                <div id="subscribe-header" class="mb-1">
+                    <h2 class="m-0">SUBSCRIPTION |</h2>
+                    <p>
+                        <span class="red">*</span>
+                        <span class="grey">REQUIRED FIELDS</span>
+                    </p>
+                </div>
+                <!-- form -->
+                <form id="subscribe-form">
+                    <!-- first name -->
+                    <div class="input-button-wrapper">
+                        <input
+                            placeholder="FIRST NAME"
+                            type="text"
+                            name="first_name"
+                        />
+                        <button class="blue" type="submit">></button>
+                    </div>
+                    <!-- first name -->
+                    <div class="input-button-wrapper">
+                        <input
+                            placeholder="LAST NAME"
+                            type="text"
+                            name="last_name"
+                        />
+                        <button class="purple" type="submit">></button>
+                    </div>
+                    <!-- first name -->
+                    <div id="mail-input" class="input-button-wrapper">
+                        <span class="red">*</span>
+                        <input
+                            placeholder="E-MAIL"
+                            type="email"
+                            name="email"
+                            required
+                        />
+                        <button class="green" type="submit">></button>
+                    </div>
+                </form>
+                <div>
+                    <p class="fw-700 red">There was an error!</p>
+                    <p class="fw-700 green">Thanks for you subscription!</p>
+                </div>
+            </div>
+
+            <!-- COUNTDOWN TIMER -->
+            <script is:inline>
+                function startCountdown(targetDate) {
+                    const target = new Date(targetDate).getTime();
+
+                    const elements = {
+                        days: document.querySelector("#days .time"),
+                        hours: document.querySelector("#hours .time"),
+                        minutes: document.querySelector("#minutes .time"),
+                        seconds: document.querySelector("#seconds .time"),
+                    };
+
+                    function updateCountdown() {
+                        const now = new Date().getTime();
+                        const distance = target - now;
+
+                        if (distance <= 0) {
+                            clearInterval(interval);
+
+                            elements.days.textContent = "00";
+                            elements.hours.textContent = "00";
+                            elements.minutes.textContent = "00";
+                            elements.seconds.textContent = "00";
+
+                            return;
+                        }
+
+                        const days = Math.floor(
+                            distance / (1000 * 60 * 60 * 24),
+                        );
+                        const hours = Math.floor(
+                            (distance % (1000 * 60 * 60 * 24)) /
+                                (1000 * 60 * 60),
+                        );
+                        const minutes = Math.floor(
+                            (distance % (1000 * 60 * 60)) / (1000 * 60),
+                        );
+                        const seconds = Math.floor(
+                            (distance % (1000 * 60)) / 1000,
+                        );
+
+                        elements.days.textContent = String(days).padStart(
+                            2,
+                            "0",
+                        );
+                        elements.hours.textContent = String(hours).padStart(
+                            2,
+                            "0",
+                        );
+                        elements.minutes.textContent = String(minutes).padStart(
+                            2,
+                            "0",
+                        );
+                        elements.seconds.textContent = String(seconds).padStart(
+                            2,
+                            "0",
+                        );
+                    }
+
+                    updateCountdown();
+
+                    const interval = setInterval(updateCountdown, 1000);
+                }
+                startCountdown("2026-05-20T10:00:00");
+            </script>
+
+            <!-- SUBSCRIBE FORM -->
+            <script is:inline>
+                const subscribeForm = document.getElementById("subscribe-form");
+                subscribeForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    try {
+                        const endpointSubUrl = "/netlify/functions/subscribe";
+
+                        const data = Object.fromEntries(
+                            new FormData(subscribeForm),
+                        );
+
+                        const res = await fetch(endpointSubUrl, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(data),
+                        });
+
+                        if (!res.ok) {
+                            console.log("request error");
+                        } else {
+
+                        }
+                    } catch (error) {
+                        console.error(error);
+                    }
+                });
+            </script>
+
+            <!-- STYLE -->
+            <style>
+                html,
+                body {
+                    background: black;
+                }
+
+                main {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 3rem;
+                    padding: 2rem 0.25rem 2rem 0.25rem;
+                }
+
+                #logo-wrapper {
+                    text-align: center;
+                }
+
+                #logo-wrapper img {
+                    width: auto;
+                    max-height: 20vh;
+                }
+
+                #discover-wrapper > h2,
+                #subscribe-header > h2,
+                #countdown-wrapper {
+                    color: white !important;
+                }
+
+                .red {
+                    color: red;
+                }
+
+                .green {
+                    color: greenyellow;
+                }
+
+                .grey {
+                    color: #808080;
+                }
+
+                #countdown-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                }
+
+                .time-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    min-width: 70px;
+                }
+
+                .time-wrapper .label {
+                    font-weight: 400;
+                    font-size: 0.8rem;
+                }
+
+                .separator,
+                .time-wrapper .time {
+                    font-size: 2rem;
+                }
+
+                #subscribe-header,
+                #discover-wrapper > h2 {
+                    text-align: center;
+                }
+
+                #subscribe-header {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                }
+
+                #subscribe-header > * {
+                    display: inline;
+                }
+
+                /* INPUT STYLE */
+                button,
+                input {
+                    padding: 0.5rem 1rem;
+                    margin: 0;
+                }
+
+                button {
+                    border-radius: 0 1.5rem 1.5rem 0;
+                    color: white;
+                }
+
+                input {
+                    border-radius: 1.5rem;
+                    border: 1px solid white;
+                    padding-right: 3rem;
+                    background-color: transparent;
+                    width: 100%;
+                }
+
+                button.orange {
+                    background-color: #e84b0e;
+                    border: 1px solid #e84b0e;
+                }
+
+                button.blue {
+                    background-color: #2171b2;
+                    border: 1px solid #2171b2;
+                }
+
+                button.purple {
+                    background-color: #992472;
+                    border: 1px solid #992472;
+                }
+
+                button.green {
+                    background-color: #00ad2e;
+                    border: 1px solid #00ad2e;
+                }
+
+                .input-button-wrapper {
+                    position: relative;
+                }
+
+                .input-button-wrapper > button {
+                    position: absolute;
+                    right: 0;
+                }
+
+                #subscribe-form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                #mail-input span {
+                    position: absolute;
+                    top: 25%;
+                    left: -1rem;
+                }
+
+                /* UNTIL TABLET */
+                @media (min-width: 1200px) {
+                    main {
+                        row-gap: 2rem;
+                    }
+
+                    #logo-wrapper img {
+                        width: auto;
+                        max-height: 16vh;
+                    }
+
+                    #countdown-wrapper {
+                        width: 40%;
+                        margin: auto;
+                    }
+
+                    #discover-wrapper,
+                    #subscribe-wrapper {
+                        width: 50%;
+                        margin: auto;
+                    }
+
+                    #subscribe-form {
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        gap: 1rem;
+                        justify-content: space-between;
+                    }
+
+                    #subscribe-form > div:nth-child(1),
+                    #subscribe-form > div:nth-child(2) {
+                        width: 48%;
+                    }
+
+                    #subscribe-form > div:nth-child(3) {
+                        width: 100%;
+                    }
+                }
+
+                /* FROM DESKTOP TO TABLET */
+                @media (min-width: 700px) and (max-width: 1200px) {
+                    #countdown-wrapper,
+                    #discover-wrapper,
+                    #subscribe-wrapper {
+                        width: 70%;
+                        margin: auto;
+                    }
+                }
+
+                /* ONLY MOBILE */
+                @media (max-width: 700px) {
+                    main {
+                        padding: 1rem;
+                        padding-bottom: 2rem;
+                    }
+
+                    #mail-input span {
+                        position: absolute;
+                        top: 25%;
+                        left: -0.7rem;
+                    }
+                }
+
+                input {
+                    color: white;
+                }
+            </style>
+        </main>
+    </body>
+    <!-- !SECTION - BODY -->
+</html>
