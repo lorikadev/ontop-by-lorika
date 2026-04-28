@@ -318,6 +318,12 @@
 
 #db-item-3 {
     grid-area: item-3;
+    max-height: 500px;
+    overflow-y: hidden;
+}
+
+#world-3d-wrapper {
+    height: 600px;
 }
 
 #db-item-4 {
@@ -337,7 +343,6 @@
 }
 
 #db-item-2,
-#db-item-3,
 #db-item-5 {
     padding: 2rem;
 }
@@ -385,7 +390,6 @@
     }
 
     #db-item-2,
-    #db-item-3,
     #db-item-5 {
         padding: 1rem;
     }

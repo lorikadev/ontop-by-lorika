@@ -187,9 +187,10 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
                 class="fade-from-right"
                 anim-on-scroll="fade-from-right"
             >
-                <div set:html={dItem3Content} />
-                <!-- TODO -->
-                <div id="3d-world-wrapper"></div>
+                <div class="pt-2" set:html={dItem3Content} />
+                <div id="world-3d-wrapper">
+                    <canvas id="world-3d-render"></canvas>
+                </div>
             </div>
 
             <!-- ITEM 4 -->
@@ -245,4 +246,5 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
 
 <!-- SECTION - 3D ASSET SCRIPTS -->
 <script src="../scripts/pages/home/hero-eyeglass-interaction.ts"></script>
+<script src="../scripts/pages/home/world-interaction.ts"></script>
 <!-- !SECTION - 3D ASSET SCRIPTS -->
