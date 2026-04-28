@@ -304,7 +304,7 @@ const { lang } = Astro.props;
                         const endpointSubUrl = "https://script.google.com/macros/s/AKfycbwsrz-RONzl846mqMRFvOAwdoQJ1toZrKpL8G7iCqx3u8yOJuS9YE1lR7sWXAuT8YB8/exec";
 
                         const data = Object.fromEntries(
-                            new FormData(subscribeForm),
+                            new FormData(guessForm),
                         );
 
                         const res = await fetch(endpointSubUrl, {
@@ -322,7 +322,7 @@ const { lang } = Astro.props;
                                 "Thanks for your guess!",
                                 "success",
                             );
-                            subscribeForm.reset();
+                            guessForm.reset();
                         }
                     } catch (error) {
                         console.error(error);
