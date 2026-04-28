@@ -169,10 +169,11 @@ const { lang } = Astro.props;
                         <button class="green" type="submit">></button>
                     </div>
                 </form>
-                <div>
-                    <p class="fw-700 red">There was an error!</p>
-                    <p class="fw-700 green">Thanks for you subscription!</p>
-                </div>
+            </div>
+
+            <!-- RESPONSE MODAL -->
+            <div id="modal" class="modal hidden">
+                <div id="modal-content" class="modal-content"></div>
             </div>
 
             <!-- COUNTDOWN TIMER -->
@@ -241,6 +242,43 @@ const { lang } = Astro.props;
                 startCountdown("2026-05-20T10:00:00");
             </script>
 
+            <!-- MODAL HELPER -->
+            <script is:inline>
+                const modal = document.getElementById("modal");
+                const modalContent = document.getElementById("modal-content");
+
+                function showModal(message, type) {
+                    modalContent.textContent = message;
+                    modalContent.classList.remove("green");
+                    modalContent.classList.remove("red");
+                    let respClass = "";
+                    switch (type) {
+                        case "error":
+                            respClass = "red";
+                            break;
+                        case "success":
+                            respClass = "green";
+                            break;
+                        default:
+                            break;
+                    }
+                    modalContent.classList.add(respClass);
+                    modal.classList.remove("hidden");
+
+                    // force reflow per animazione
+                    requestAnimationFrame(() => {
+                        modal.classList.add("show");
+                    });
+
+                    setTimeout(() => {
+                        modal.classList.remove("show");
+
+                        setTimeout(() => {
+                            modal.classList.add("hidden");
+                        }, 300);
+                    }, 2500);
+                }
+            </script>
             <!-- SUBSCRIBE FORM -->
             <script is:inline>
                 const subscribeForm = document.getElementById("subscribe-form");
@@ -262,9 +300,15 @@ const { lang } = Astro.props;
                         });
 
                         if (!res.ok) {
-                            console.log("request error");
+                            showModal(
+                                "There was an error, try again later.",
+                                "error",
+                            );
                         } else {
-
+                            showModal(
+                                "Thanks for your subscription!",
+                                "success",
+                            );
                         }
                     } catch (error) {
                         console.error(error);
@@ -302,7 +346,7 @@ const { lang } = Astro.props;
                 }
 
                 .red {
-                    color: red;
+                    color: rgb(255, 62, 62);
                 }
 
                 .green {
@@ -393,6 +437,7 @@ const { lang } = Astro.props;
 
                 button.green {
                     background-color: #00ad2e;
+                    color: white;
                     border: 1px solid #00ad2e;
                 }
 
@@ -470,7 +515,7 @@ const { lang } = Astro.props;
                 @media (max-width: 700px) {
                     main {
                         padding: 1rem;
-                        padding-bottom: 2rem;
+                        padding-bottom: 4rem;
                     }
 
                     #mail-input span {
@@ -482,6 +527,44 @@ const { lang } = Astro.props;
 
                 input {
                     color: white;
+                }
+
+                /* RESPONSE MODAL */
+                .modal {
+                    position: fixed;
+                    inset: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(0, 0, 0, 0.6);
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity 0.3s ease;
+                    z-index: 9999;
+                }
+
+                .modal.show {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+
+                .modal-content {
+                    max-width: 600px;
+                    padding: 2rem 3rem;
+                    border-radius: 1rem;
+                    background: rgb(51, 51, 51);
+                    font-weight: 700;
+                    text-align: center;
+                    transform: scale(0.95);
+                    transition: transform 0.3s ease;
+                }
+
+                .modal.show .modal-content {
+                    transform: scale(1);
+                }
+
+                .hidden {
+                    display: none;
                 }
             </style>
         </main>
