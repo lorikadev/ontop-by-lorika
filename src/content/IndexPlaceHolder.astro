@@ -50,8 +50,14 @@ const { lang, description } = Astro.props;
         <meta property="og:title" content="Ontop by Lorika - Landing page" />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content=https://ontop-by-lorika.netlify.app/ />
-        <meta property="og:image" content="https://ontop-by-lorika.netlify.app/images/logo/logo-ontop-lorika-cropped.svg" />
+        <meta
+            property="og:url"
+            content="https://ontop-by-lorika.netlify.app/"
+        />
+        <meta
+            property="og:image"
+            content="https://ontop-by-lorika.netlify.app/images/logo/logo-ontop-lorika-cropped.svg"
+        />
         <meta property="og:site_name" content="Ontop by Lorika" />
         <meta property="og:locale" content={lang} />
 
@@ -59,8 +65,14 @@ const { lang, description } = Astro.props;
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Ontop by Lorika - Landing page" />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="https://ontop-by-lorika.netlify.app/images/logo/logo-ontop-lorika-cropped.svg" />
-        <meta name="twitter:site" content="https://ontop-by-lorika.netlify.app/" />
+        <meta
+            name="twitter:image"
+            content="https://ontop-by-lorika.netlify.app/images/logo/logo-ontop-lorika-cropped.svg"
+        />
+        <meta
+            name="twitter:site"
+            content="https://ontop-by-lorika.netlify.app/"
+        />
         <!-- !SECTION - META -->
 
         <!-- SECTION - CSS -->
@@ -296,14 +308,11 @@ const { lang, description } = Astro.props;
                 const guessInputs = guessForm.querySelectorAll("button, input");
                 guessForm.addEventListener("submit", async (e) => {
                     e.preventDefault();
+                    const data = Object.fromEntries(new FormData(guessForm));
                     guessInputs.forEach((i) => (i.disabled = true));
                     try {
                         const endpointSubUrl =
                             "https://script.google.com/macros/s/AKfycbwsrz-RONzl846mqMRFvOAwdoQJ1toZrKpL8G7iCqx3u8yOJuS9YE1lR7sWXAuT8YB8/exec";
-
-                        const data = Object.fromEntries(
-                            new FormData(guessForm),
-                        );
 
                         const res = await fetch(endpointSubUrl, {
                             method: "POST",
@@ -334,13 +343,12 @@ const { lang, description } = Astro.props;
                     subscribeForm.querySelectorAll("button, input");
                 subscribeForm.addEventListener("submit", async (e) => {
                     e.preventDefault();
+                    const data = Object.fromEntries(
+                        new FormData(subscribeForm),
+                    );
                     subscribeInputs.forEach((i) => (i.disabled = true));
                     try {
                         const endpointSubUrl = "/.netlify/functions/subscribe";
-
-                        const data = Object.fromEntries(
-                            new FormData(subscribeForm),
-                        );
 
                         const res = await fetch(endpointSubUrl, {
                             method: "POST",
