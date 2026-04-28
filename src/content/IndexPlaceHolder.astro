@@ -312,8 +312,7 @@ const { lang, description } = Astro.props;
                     guessInputs.forEach((i) => (i.disabled = true));
                     try {
                         const endpointSubUrl =
-                            "https://script.google.com/macros/s/AKfycbwsrz-RONzl846mqMRFvOAwdoQJ1toZrKpL8G7iCqx3u8yOJuS9YE1lR7sWXAuT8YB8/exec";
-
+                            "https://script.google.com/macros/s/AKfycbweESkh0Kz4fED09CllE4IAQlhyrLmyKPdKDr2WnaXQcrJypV3nXoTMmy3vYPyazICj/exec";
                         const res = await fetch(endpointSubUrl, {
                             method: "POST",
                             body: JSON.stringify(data),
