@@ -285,7 +285,7 @@ const { lang } = Astro.props;
                 subscribeForm.addEventListener("submit", async (e) => {
                     e.preventDefault();
                     try {
-                        const endpointSubUrl = "/netlify/functions/subscribe";
+                        const endpointSubUrl = "/.netlify/functions/subscribe";
 
                         const data = Object.fromEntries(
                             new FormData(subscribeForm),
