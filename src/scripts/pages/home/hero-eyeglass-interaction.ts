@@ -121,6 +121,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         }
 
+        let animationFrameId: number | null = null;
+
         //ANIMATION STEP
         function animate() {
             timer.update();
@@ -136,10 +138,29 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             //LOOP THE ANIMATION STEP
-            requestAnimationFrame(animate);
+            animationFrameId = requestAnimationFrame(animate);
         }
 
-        animate();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    timer.connect(document);
+                    controls.enabled = true;
+                    animate();
+                } else {
+                    if (animationFrameId)
+                        cancelAnimationFrame(animationFrameId);
+                    controls.enabled = false;
+                    timer.disconnect();
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0,
+            rootMargin: "300px 0px 300px 0px"
+        });
+
+        observer.observe(canvasElement);
     } catch (error) {
         console.error(error);
     }
