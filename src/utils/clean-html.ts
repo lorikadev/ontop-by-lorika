@@ -20,7 +20,9 @@ allowedTags.forEach(tag => {
         "aria-label",
         "anim-on-scroll",
         "anim-on-scroll-delay",
-        "aria-hidden"
+        "aria-hidden",
+        "href",
+        "target"
     ];
 });
 
