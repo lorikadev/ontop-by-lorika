@@ -309,9 +309,6 @@ const { lang } = Astro.props;
 
                         const res = await fetch(endpointSubUrl, {
                             method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
                             body: JSON.stringify(data),
                         });
 
