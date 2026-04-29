@@ -125,7 +125,7 @@
 }
 
 /* bold for ui, the info that uses this style come from sanity cms */
-ul>li {
+#product-info-data ul>li {
     font-weight: 500;
 }
 /* !SECTION - PRODUCT INFO */
