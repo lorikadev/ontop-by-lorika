@@ -67,12 +67,12 @@ export function createIntroTimeline(group: Object3D<Object3DEventMap>, coverObjR
         //ROTATE TO PLACE
         tl.to(group.rotation, {
             y: -Math.PI * 0.4, //72 deg
-            duration: 1,
+            duration: 0.7,
             ease: 'power2.inOut'
         }, "after_pulse");
         tl.to(group.rotation, {
             x: 0,
-            duration: 0.8,
+            duration: 0.5,
             ease: 'power2.inOut',
             onComplete() {
                 //after animation is completed switch target color to current and reset progress to 0
