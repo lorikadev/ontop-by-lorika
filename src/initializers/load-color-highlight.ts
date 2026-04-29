@@ -12,11 +12,8 @@ export const loadColorHighlight = () => {
     let activeColorKey = localStorage.getItem(
         HIGHLIGHT_COLOR_CSS_VAR_KEY,
     );
-    if (!activeColorKey) {
-        activeColorKey = "--RAL2008";
-        //set active key in the localstorage
-        localStorage.setItem(HIGHLIGHT_COLOR_CSS_VAR_KEY, "--RAL2008");
-    }
+    
+    if (!activeColorKey) return;
 
     //set the highlight color using the key
     html.style
