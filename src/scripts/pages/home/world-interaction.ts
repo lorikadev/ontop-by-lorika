@@ -97,12 +97,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    timer.connect(document);
-                    controls.enabled = true;
-                    animate();
+                    if (animationFrameId === null) {
+                        timer.connect(document);
+                        controls.enabled = true;
+                        animate();
+                    }
                 } else {
                     if (animationFrameId)
                         cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
                     controls.enabled = false;
                     timer.disconnect();
                 }
