@@ -46,7 +46,6 @@ let { homePageData, colorPickerData } = Astro.props;
                 <ColorPicker
                     id="hero-color-picker-tablet"
                     layout="horizontal"
-                    size="big"
                     colorPickerData={colorPickerData}
                 />
             </div>
@@ -127,12 +126,14 @@ let { homePageData, colorPickerData } = Astro.props;
                 anim-on-scroll="fade-in"
             >
                 <div set:html={cleanHtml(homePageData?.lItem5Content!)} />
-                <ColorPicker
-                    id="white-bent-color-picker"
-                    layout="horizontal"
-                    displayLabel="hide"
-                    colorPickerData={colorPickerData}
-                />
+                <div id="light-bento-color-picker-wrapper">
+                    <ColorPicker
+                        id="light-bento-color-picker"
+                        layout="horizontal"
+                        displayLabel="hide"
+                        colorPickerData={colorPickerData}
+                    />
+                </div>
             </div>
             <!-- ITEM-6 -->
             <div
@@ -181,7 +182,10 @@ let { homePageData, colorPickerData } = Astro.props;
                 class="fade-from-right"
                 anim-on-scroll="fade-from-right"
             >
-                <div class="pt-2" set:html={cleanHtml(homePageData?.dItem3Content!)} />
+                <div
+                    class="pt-2"
+                    set:html={cleanHtml(homePageData?.dItem3Content!)}
+                />
                 <div id="world-3d-wrapper">
                     <canvas id="world-3d-render"></canvas>
                 </div>

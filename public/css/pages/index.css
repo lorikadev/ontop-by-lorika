@@ -55,6 +55,8 @@
     bottom: 0;
     right: 10px;
     z-index: 3;
+    height: 300px;
+    width: 40px;
 }
 
 #hero-color-picker-tablet-wrapper {
@@ -63,6 +65,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
+    width: min(90%, 600px);
 }
 
 #hero-cta {
@@ -180,6 +183,11 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 35%;
+}
+
+#light-bento-color-picker-wrapper {
+    width: 100%;
+    height: 40px;
 }
 
 #lb-item-4 {
@@ -436,4 +444,5 @@
         font-size: 0.9rem;
     }
 }
+
 /* !SECTION - SECTION DARK */

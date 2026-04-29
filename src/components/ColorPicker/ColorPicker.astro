@@ -6,7 +6,6 @@ interface Props {
     id: string;
     layout?: "horizontal" | "vertical";
     displayLabel?: "show" | "hide";
-    size?: "normal" | "big" | "dynamic";
 
     //CMS
     colorPickerData: ColorPicker
@@ -15,7 +14,6 @@ const {
     id,
     layout = "vertical",
     displayLabel = true,
-    size = "normal",
 
     //CMS
     colorPickerData: colorPicker
@@ -24,7 +22,7 @@ const {
 
 <!-- NOTE - the initialization of the click functionalities of this color picker is made inside color-picker.ts -->
 <div
-    class:list={["color-picker-wrapper", layout, displayLabel, size]}
+    class:list={["color-picker-wrapper", layout, displayLabel]}
     id={id}
     role="radiogroup"
     aria-label={colorPicker.groupAriaLabel}
