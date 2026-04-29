@@ -8,6 +8,10 @@ import Accordion from "../components/Accordion/Accordion.astro";
 import { cleanHtml } from "../utils/clean-html";
 import { urlFor } from "../utils/sanity-client";
 
+//SECTION - CSS
+import "../../public/css/pages/ontop-cover.css";
+//!SECTION - CSS
+
 interface Props {
     colorPickerData: ColorPickerCMS;
     ontopCoverData: OntopCover;
@@ -15,10 +19,6 @@ interface Props {
 
 let { colorPickerData, ontopCoverData } = Astro.props;
 ---
-
-<!-- ABOUT-US STYLE -->
-<link rel="stylesheet" href="/css/pages/ontop-cover.css" />
-<!-- SPLIDE STYLE -->
 <link
     rel="stylesheet"
     href="/libraries/splide-4.1.3/css/splide-default.min.css"

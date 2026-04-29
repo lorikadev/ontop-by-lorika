@@ -7,6 +7,10 @@ import type {
 import { cleanHtml } from "../utils/clean-html";
 import { urlFor } from "../utils/sanity-client";
 
+//SECTION - CSS
+import "../../public/css/pages/index.css";
+//!SECTION - CSS
+
 interface Props {
     homePageData: HomePage;
     colorPickerData: ColorPickerCMS;
@@ -14,9 +18,6 @@ interface Props {
 
 let { homePageData, colorPickerData } = Astro.props;
 ---
-
-<!-- INDEX STYLE -->
-<link rel="stylesheet" href="/css/pages/index.css" />
 
 <!-- SECTION - HERO -->
 <div id="hero-wrapper">

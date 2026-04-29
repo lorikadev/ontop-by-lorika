@@ -3,15 +3,16 @@ import type { AboutUs } from "../../studio-lorika-ontop/sanity.types";
 import { cleanHtml } from "../utils/clean-html";
 import { urlFor } from "../utils/sanity-client";
 
+//SECTION - CSS
+import "../../public/css/pages/about-us.css";
+//!SECTION - CSS
+
 interface Props {
     AboutUsData: AboutUs;
 }
 
 let { AboutUsData } = Astro.props;
 ---
-
-<!-- ABOUT US STYLE -->
-<link rel="stylesheet" href="/css/pages/about-us.css" />
 
 <!-- SECTION - HERO -->
 <section id="hero-wrapper" class="lh-0">

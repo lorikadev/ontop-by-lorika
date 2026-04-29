@@ -3,6 +3,15 @@ import type { SiteNavigators } from "../../studio-lorika-ontop/sanity.types";
 import Footer from "./Footer.astro";
 import Navbar from "./Navbar.astro";
 
+import '../../public/css/globals/reset.css';
+import '../../public/css/globals/vars.css';
+import '../../public/css/globals/font-size.css';
+import '../../public/css/globals/global.css';
+import '../../public/css/globals/spacing.css';
+import '../../public/css/globals/navbar.css';
+import '../../public/css/globals/footer.css';
+import '../../public/css/globals/animations.css';
+
 interface Props {
     // Base SEO
     title: string;
@@ -109,17 +118,6 @@ const {
         <meta name="twitter:site" content={twitterSite} />
         <meta name="twitter:creator" content={twitterCreator} />
         <!-- !SECTION - META -->
-
-        <!-- SECTION - CSS -->
-        <link rel="stylesheet" href="/css/globals/reset.css" />
-        <link rel="stylesheet" href="/css/globals/vars.css" />
-        <link rel="stylesheet" href="/css/globals/font-size.css" />
-        <link rel="stylesheet" href="/css/globals/global.css" />
-        <link rel="stylesheet" href="/css/globals/spacing.css" />
-        <link rel="stylesheet" href="/css/globals/navbar.css" />
-        <link rel="stylesheet" href="/css/globals/footer.css" />
-        <link rel="stylesheet" href="/css/globals/animations.css" />
-        <!-- !SECTION - CSS -->
     </head>
     <!-- !SECTION - HEAD -->
     <!-- SECTION - BODY -->

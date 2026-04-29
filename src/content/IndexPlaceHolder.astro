@@ -1,5 +1,15 @@
 ---
 const origin = Astro.url.origin;
+
+// SECTION - CSS
+import "../../public/css/globals/reset.css";
+import "../../public/css/globals/vars.css";
+import "../../public/css/globals/font-size.css";
+import "../../public/css/globals/global.css";
+import "../../public/css/globals/spacing.css";
+import "../../public/css/globals/animations.css";
+import "../../public/css/pages/index-placeholder.css";
+//!SECTION - CSS
 ---
 
 <!doctype html>
@@ -73,18 +83,6 @@ const origin = Astro.url.origin;
         />
         <meta name="twitter:site" content={origin} />
         <!-- !SECTION - META -->
-
-        <!-- SECTION - CSS -->
-        <link rel="stylesheet" href="/css/globals/reset.css" />
-        <link rel="stylesheet" href="/css/globals/vars.css" />
-        <link rel="stylesheet" href="/css/globals/font-size.css" />
-        <link rel="stylesheet" href="/css/globals/global.css" />
-        <link rel="stylesheet" href="/css/globals/spacing.css" />
-        <link rel="stylesheet" href="/css/globals/animations.css" />
-
-        <!-- INDEX PLACEHOLDER STYLE -->
-        <link rel="stylesheet" href="/css/pages/index-placeholder.css" />
-        <!-- !SECTION - CSS -->
     </head>
     <!-- !SECTION - HEAD -->
     <!-- SECTION - BODY -->
