@@ -7,7 +7,7 @@ import type CustomShaderMaterial from "three-custom-shader-material/vanilla";
  * @param group with the cover object inside
  * @returns intro timeline for hero in index page
  * @summary takes in the group made of eyeglass and cover for 
- * the index page and creates the intro using the ref to the 3d objects
+ * the index page and creates the intro animation timeline using the ref to the 3d objects
  */
 export function createIntroTimeline(group: Object3D<Object3DEventMap>, coverObjRef: Object3D) {
     try {

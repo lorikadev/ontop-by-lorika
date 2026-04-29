@@ -13,14 +13,6 @@ interface Props {
 }
 
 let { homePageData, colorPickerData } = Astro.props;
-
-const lItem2Content = cleanHtml(homePageData?.lItem2Content!);
-const lItem5Content = cleanHtml(homePageData?.lItem5Content!);
-const lItem6Content = cleanHtml(homePageData?.lItem6Content!);
-
-const dItem2Content = cleanHtml(homePageData?.dItem2Content!);
-const dItem3Content = cleanHtml(homePageData?.dItem3Content!);
-const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
 ---
 
 <!-- INDEX STYLE -->
@@ -34,6 +26,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
         <!-- 3D WRAPPER -->
         <div id="hero-3d-ui-wrapper">
             <!-- COLOR PICKER -->
+            <!-- DESKTOP -->
             <div
                 id="hero-color-picker-desktop-wrapper"
                 class="show-till-tab fade-from-right"
@@ -44,6 +37,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
                     colorPickerData={colorPickerData}
                 />
             </div>
+            <!-- FROM TABLET -->
             <div
                 id="hero-color-picker-tablet-wrapper"
                 class="show-tab fade-in"
@@ -104,7 +98,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
             </div>
             <!-- ITEM-2 -->
             <div id="lb-item-2" class="fade-in" anim-on-scroll="fade-in">
-                <div set:html={lItem2Content} />
+                <div set:html={cleanHtml(homePageData?.lItem2Content!)} />
             </div>
             <!-- ITEM-3 -->
             <div
@@ -132,7 +126,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
                 class="cromed text-light fade-in"
                 anim-on-scroll="fade-in"
             >
-                <div set:html={lItem5Content} />
+                <div set:html={cleanHtml(homePageData?.lItem5Content!)} />
                 <ColorPicker
                     id="white-bent-color-picker"
                     layout="horizontal"
@@ -146,7 +140,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
                 class="highlighted-container fade-from-right"
                 anim-on-scroll="fade-from-right"
             >
-                <div set:html={lItem6Content} />
+                <div set:html={cleanHtml(homePageData?.lItem6Content!)} />
             </div>
         </div>
     </div>
@@ -178,7 +172,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
 
             <!-- ITEM 2 -->
             <div id="db-item-2" class="fade-in" anim-on-scroll="fade-in">
-                <div set:html={dItem2Content} />
+                <div set:html={cleanHtml(homePageData?.dItem2Content!)} />
             </div>
 
             <!-- ITEM 3 -->
@@ -187,7 +181,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
                 class="fade-from-right"
                 anim-on-scroll="fade-from-right"
             >
-                <div class="pt-2" set:html={dItem3Content} />
+                <div class="pt-2" set:html={cleanHtml(homePageData?.dItem3Content!)} />
                 <div id="world-3d-wrapper">
                     <canvas id="world-3d-render"></canvas>
                 </div>
@@ -210,7 +204,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
                 class="fade-from-right"
                 anim-on-scroll="fade-from-right"
             >
-                <div set:html={dItem5Content} />
+                <div set:html={cleanHtml(homePageData?.dItem5Content!)} />
 
                 <div class="t-a-end mb-05">
                     <a
@@ -244,7 +238,7 @@ const dItem5Content = cleanHtml(homePageData?.dItem5Content!);
 </section>
 <!-- !SECTION - DARK SECTION -->
 
-<!-- SECTION - 3D ASSET SCRIPTS -->
+<!-- HERO EYEGLASS INTERACTION SCRIPT -->
 <script src="../scripts/pages/home/hero-eyeglass-interaction.ts"></script>
+<!-- WORLD INTERACTION SCRIPT -->
 <script src="../scripts/pages/home/world-interaction.ts"></script>
-<!-- !SECTION - 3D ASSET SCRIPTS -->

@@ -16,14 +16,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    right: 50%;
     bottom: 0;
+    right: 50%;
     z-index: 1;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     background-color: transparent;
 }
 
@@ -36,6 +34,7 @@
     text-shadow: 2px 2px 0px black;
 }
 
+/* TABLET */
 @media (max-width:1200px) {
     #hero-wrapper {
         min-height: 40vh;
@@ -47,6 +46,7 @@
     }
 }
 
+/* MOBILE */
 @media (max-width:700px) {
     #hero-wrapper {
         flex-direction: column-reverse;
@@ -62,7 +62,6 @@
         margin: 2rem 0;
     }
 }
-
 /* !SECTION - HERO */
 
 /* SECTION - WHATE ARE WE */
@@ -80,13 +79,13 @@
     background-color: white;
 }
 
-/* LEFT DIV */
+/* LEFT BLOCK */
 #what-are-we>div:first-child {
     max-width: 800px;
     padding: 3rem 3rem 4rem 3rem;
 }
 
-/* RIGHT DIV */
+/* RIGHT BLOCK */
 #what-are-we>div:last-child {
     max-width: 720px;
     position: relative;
@@ -116,12 +115,12 @@
         flex-direction: column;
     }
 
-    /* LEFT DIV */
+    /* LEFT BLOCK */
     #what-are-we>div:first-child {
         max-width: 100%;
     }
 
-    /* RIGHT DIV */
+    /* RIGHT BLOCK */
     #what-are-we>div:last-child {
         max-width: 100%;
     }
@@ -131,15 +130,16 @@
     }
 }
 
+/* MOBILE */
 @media (max-width: 700px) {
 
-    /* LEFT DIV */
+    /* LEFT BLOCK */
     #what-are-we>div:first-child {
         max-width: 100%;
         padding: 1rem;
     }
 
-    /* RIGHT DIV */
+    /* RIGHT BLOCK */
     #what-are-we>div:last-child {
         padding: 1rem;
     }
@@ -155,7 +155,6 @@
         right: -25%;
     }
 }
-
 /* !SECTION - WHATE ARE WE */
 
 /* SECTION - BEHIND */
@@ -180,12 +179,14 @@
     height: 100%;
 }
 
+/* MOBILE */
 @media (max-width: 1200px) {
     #behind-hero {
         background-position: 25%;
     }
 }
 
+/* TABLET */
 @media (max-width: 700px) {
     #behind-hero {
         height: 400px;
@@ -233,6 +234,7 @@
     text-shadow: none;
 }
 
+/* TABLET */
 @media (max-width: 1200px) {
     #first-product-hero {
         background-position: 40%;
@@ -243,15 +245,11 @@
     }
 }
 
-
+/* MOBILE */
 @media (max-width: 700px) {
     #first-product-hero {
         padding: 2rem 0;
         background-position: center;
-    }
-
-    #first-product-hero-message-wrapper {
-        grid-template-columns: 100%;
     }
 
     #first-product-hero {
@@ -287,5 +285,4 @@
 #over-the-product-hero>div:last-child {
     flex: 2;
 }
-
 /* !SECTION - OVER THE PRODUCT */

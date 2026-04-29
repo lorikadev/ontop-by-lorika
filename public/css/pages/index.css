@@ -30,25 +30,18 @@
     margin: auto;
 }
 
-@media (max-width: 1200px) {
-    #hero {
-        width: 95%;
-    }
-}
-
 #hero-3d-ui-wrapper {
     background: url("/images/logo/logo-ontop-grey-bg-hero.svg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
-    /*  Used to make aspect ratio of div as the image.
-        the numbers are the width and height of the background image */
-    /* NOTE - without this the height would crop the logo */
+    /*  NOTE - Used to make aspect ratio of div as the image.
+        the numbers are the width and height of the background image.
+        without this the height would crop the background image */
     aspect-ratio: 4/2;
 
     position: relative;
 }
-
 
 #hero-3d-render {
     width: 100%;
@@ -62,24 +55,6 @@
     bottom: 0;
     right: 10px;
     z-index: 3;
-}
-
-@media (max-width: 1200px) {
-    #hero-3d-ui-wrapper {
-        aspect-ratio: 4/3;
-    }
-
-    #hero-3d-render {
-        height: auto;
-        aspect-ratio: 10/9;
-    }
-}
-
-@media (max-width: 700px) {
-    #hero-3d-ui-wrapper {
-        aspect-ratio: 4/4;
-        background-position-y: 20%;
-    }
 }
 
 #hero-color-picker-tablet-wrapper {
@@ -111,7 +86,21 @@
     width: fit-content;
 }
 
+/* TABLET */
 @media (max-width: 1200px) {
+    #hero {
+        width: 95%;
+    }
+
+    #hero-3d-ui-wrapper {
+        aspect-ratio: 4/3;
+    }
+
+    #hero-3d-render {
+        height: auto;
+        aspect-ratio: 10/9;
+    }
+
     #hero-cta {
         display: grid;
         grid-template-columns: 100%;
@@ -126,6 +115,14 @@
     }
 }
 
+/* MOBILE */
+@media (max-width: 700px) {
+    #hero-3d-ui-wrapper {
+        aspect-ratio: 4/4;
+        background-position-y: 20%;
+    }
+}
+
 /* !SECTION - HERO */
 
 /* SECTION - SECTION LIGHT */
@@ -134,7 +131,6 @@
 }
 
 /* BENTO LIGHT */
-/* DESKTOP */
 #bento-light {
     padding: 2rem 0;
     display: grid;
@@ -160,16 +156,6 @@
     border-radius: 10px;
 }
 
-/* break word to no go over width inside bento squares */
-#lb-item-1,
-#lb-item-2,
-#lb-item-3,
-#lb-item-4,
-#lb-item-5,
-#lb-item-6 {
-    overflow-wrap: break-word;
-}
-
 /* DIV WITH TEXTS */
 #lb-item-2,
 #lb-item-5,
@@ -177,7 +163,6 @@
     padding: 2rem;
 }
 
-/* BENTO ITEM MICRO HANDLING */
 #lb-item-1 {
     background-repeat: no-repeat;
     background-size: cover;
@@ -210,6 +195,16 @@
 
 #lb-item-6 {
     grid-area: item-6;
+}
+
+/* NOTE - break word to not go over width inside bento squares */
+#lb-item-1,
+#lb-item-2,
+#lb-item-3,
+#lb-item-4,
+#lb-item-5,
+#lb-item-6 {
+    overflow-wrap: break-word;
 }
 
 /* TABLET */
@@ -251,7 +246,6 @@
             "item-6";
     }
 
-    /* DIV WITH BG */
     #lb-item-1 {
         background-size: 175%;
     }
@@ -296,13 +290,6 @@
     border-radius: 10px;
     border: 1px solid #312f2e;
 }
-
-@media (min-width: 1200px) {
-    #bento-dark>div {
-        min-height: 400px;
-    }
-}
-
 
 #db-item-1 {
     grid-area: item-1;
@@ -385,6 +372,10 @@
             "item-5 item-5 item-5 item-5";
     }
 
+    #bento-dark>div {
+        min-height: 400px;
+    }
+
     #db-item-1 {
         background-image: url('/images/logo/logo-ontop-white-cropped-rotated.png');
     }
@@ -445,5 +436,4 @@
         font-size: 0.9rem;
     }
 }
-
 /* !SECTION - SECTION DARK */

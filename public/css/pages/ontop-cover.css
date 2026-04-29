@@ -1,15 +1,19 @@
+/* WHOLE PAGE WRAPPER */
 #ontop-cover-page {
     background-color: #f9f9f9;
 }
 
-/* PRODUCT WRAPPER - wrapper for 2 main items */
+/* PRODUCT WRAPPER */
 #product-wrapper {
     display: grid;
     grid-template-columns: 68% 30%;
     gap: 2%;
 }
 
-/* resize for text consistency */
+/*  NOTE
+    this is not an usual break point in this project 
+    but now it's needed to have layout consistency 
+*/
 @media (min-width: 700px) and (max-width: 1500px) {
     #product-wrapper {
         display: grid;
@@ -18,6 +22,7 @@
     }
 }
 
+/* MOBILE */
 @media (max-width: 700px) {
     #product-wrapper {
         grid-template-rows: 1fr;
@@ -26,7 +31,7 @@
     }
 }
 
-/* PRODUCT GALLERY */
+/* SECTION - PRODUCT GALLERY */
 /* images aspect */
 #product-gallery-second-imgs img,
 #product-gallery-main-img img {
@@ -72,14 +77,18 @@
     height: auto;
 }
 
+/* MOBILE */
 @media (max-width: 700px) {
+    /* NOTE - do not remove, currently on thumbnails there is 'show-mob', 
+    if we change the display before the mobile
+    break point the thumbnails will be shown outside the mobile range */
     .thumbnails {
         display: flex;
     }
 }
+/* !SECTION - PRODUCT GALLERY */
 
-
-/* PRODUCT INFO - left column */
+/* SECTION - PRODUCT INFO */
 #product-info-data,
 #product-info {
     display: flex;
@@ -87,7 +96,6 @@
     gap: 1rem;
 }
 
-/* info holder */
 #product-info-data {
     /* NOTE - used to avoid page wobble dut to height change on accordion opening*/
     height: 33rem;
@@ -116,7 +124,8 @@
     margin: auto;
 }
 
-/* bold for ui */
+/* bold for ui, the info that uses this style come from sanity cms */
 ul>li {
     font-weight: 500;
 }
+/* !SECTION - PRODUCT INFO */

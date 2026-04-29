@@ -10,26 +10,23 @@ interface Props {
 let { AboutUsData } = Astro.props;
 ---
 
-<!-- ABOUT STYLE -->
+<!-- ABOUT US STYLE -->
 <link rel="stylesheet" href="/css/pages/about-us.css" />
 
 <!-- SECTION - HERO -->
 <section id="hero-wrapper" class="lh-0">
+    <!-- HERO MESSAGE -->
     <div id="hero-message-wrapper">
         <div
             id="hero-message"
             class="fade-from-left"
             anim-on-scroll="fade-from-left"
         >
-            <h1 class="m-0 fs-4"
-            set:html={cleanHtml(AboutUsData.heroTitle!)}>
-                
-            </h1>
-            <p class="fs-15"
-            set:html={cleanHtml(AboutUsData.heroContent!)}>
-            </p>
+            <h1 class="m-0 fs-4" set:html={cleanHtml(AboutUsData.heroTitle!)} />
+            <p class="fs-15" set:html={cleanHtml(AboutUsData.heroContent!)} />
         </div>
     </div>
+    <!-- HERO VIDEO -->
     <video id="hero-video" autoplay loop muted playsinline aria-hidden="true">
         <source
             src={(AboutUsData as any).heroVideoDesktopUrl}
@@ -49,11 +46,13 @@ let { AboutUsData } = Astro.props;
 
 <!-- SECTION - WHATE ARE WE -->
 <section id="what-are-we" class="py-3">
+    <!-- LEFT BLOCK -->
     <div
         class="fade-from-left"
         anim-on-scroll="fade-from-left"
         set:html={cleanHtml(AboutUsData.leftBlockContent!)}
     />
+    <!-- RIGHT BLOCK -->
     <div
         class="pl-3 pt-3 pb-4 fade-from-right"
         anim-on-scroll="fade-from-right"
@@ -62,6 +61,7 @@ let { AboutUsData } = Astro.props;
             class="fw-600"
             set:html={cleanHtml(AboutUsData.rightBlockContent!)}
         />
+        <!-- LOGO -->
         <img
             src={urlFor(AboutUsData.rightBlockLogo?.asset?._ref).url()}
             class="fade-from-right"
@@ -79,6 +79,7 @@ let { AboutUsData } = Astro.props;
     style={`background-image: url('${urlFor(AboutUsData.behindContentBackground?.asset?._ref).url()}');`}
 >
     <div id="behind-hero-message-wrapper" class="p-2">
+        <!-- NOTE - this empty div exist to make it easier to push the message to right in desktop/tablet view -->
         <div class="show-till-mob" aria-hidden="true"></div>
         <div
             id="behind-hero-message"
@@ -105,6 +106,7 @@ let { AboutUsData } = Astro.props;
             />
             <div set:html={cleanHtml(AboutUsData.firstProductContent!)} />
         </div>
+        <!-- NOTE - this empty div exist to make it easier to push the message to left in desktop/tablet view -->
         <div aria-hidden="true" class="show-till-mob"></div>
     </div>
 </section>
@@ -122,6 +124,7 @@ let { AboutUsData } = Astro.props;
             set:html={cleanHtml(AboutUsData.overTheProductContent!)}
         />
     </div>
+    <!-- NOTE - this empty div exist for ui purpose -->
     <div
         class="show-till-mob"
         style={`background-image: url('${urlFor(AboutUsData.overTheProductContentBackgroundRight?.asset?._ref).url()}');`}

@@ -1,4 +1,4 @@
-import { AmbientLight, CameraHelper, DirectionalLight, EquirectangularReflectionMapping, PerspectiveCamera, PointLight, PointLightHelper, Scene, SpotLight, SRGBColorSpace, TextureLoader, Timer, WebGLRenderer } from "three";
+import { AmbientLight, DirectionalLight, EquirectangularReflectionMapping, PerspectiveCamera, Scene, SRGBColorSpace, TextureLoader, Timer, WebGLRenderer } from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { createHeroEyeglassEntity } from "./entities/hero-eyeglass";
 import { getIntroColorChangeEventHandler } from "./event-handler/intro-color-change";
@@ -6,7 +6,6 @@ import { getInteractiveColorChangeEventHandler } from "./event-handler/interacti
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-
         const heroWrapper = document.getElementById("hero-wrapper") as HTMLDivElement | undefined
         const canvasElement = document.getElementById("hero-3d-render") as HTMLCanvasElement | undefined;
         if (!canvasElement || !heroWrapper) {
@@ -141,6 +140,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             animationFrameId = requestAnimationFrame(animate);
         }
 
+        //NOTE - this stops the rendering when the user is far from seeing it, enables it back when near or in front 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {

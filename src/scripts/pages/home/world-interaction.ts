@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             animationFrameId = requestAnimationFrame(animate);
         }
 
+        //NOTE - this stops the rendering when the user is far from seeing it, enables it back when near or in front 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
