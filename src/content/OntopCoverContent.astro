@@ -5,8 +5,8 @@ import type {
     OntopCover,
 } from "../../studio-lorika-ontop/sanity.types";
 import Accordion from "../components/Accordion/Accordion.astro";
-import { cleanHtml } from "../utils/clean-html";
-import { urlFor } from "../utils/sanity-client";
+import { cleanHtml } from "../scripts/globals/clean-html";
+import { urlFor } from "../scripts/globals/sanity-client";
 
 //SECTION - CSS
 import "../../public/css/pages/ontop-cover.css";
@@ -152,7 +152,7 @@ let { colorPickerData, ontopCoverData } = Astro.props;
 </div>
 
 <!-- ACCORDION SCRIPT -->
-<script src="../utils/toggle-accordions.ts"></script>
+<script src="../scripts/globals/toggle-accordions.ts"></script>
 <!-- SPLIDE SCRIPT -->
 <script src="/libraries/splide-4.1.3/js/splide.min.js" is:inline></script>
 <!-- SPLIDE INIT SCRIPT -->

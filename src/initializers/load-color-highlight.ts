@@ -1,5 +1,5 @@
 import { HIGHLIGHT_COLOR_CSS_VAR_KEY } from "../const";
-import { applyColorCorrections } from "../utils/apply-color-corrections";
+import { applyColorCorrections } from "../scripts/globals/apply-color-corrections";
 
 /*
     Here we handle the initial set of the highlight color.

@@ -1,5 +1,5 @@
 import { HIGHLIGHT_COLOR_CSS_VAR_KEY } from "../const";
-import { applyColorCorrections } from "../utils/apply-color-corrections";
+import { applyColorCorrections } from "../scripts/globals/apply-color-corrections";
 
 /* event used to update complex data that rely on highlight color */
 const changedHighlightColorEvent = new Event("changedHighlightColor");
