@@ -45,16 +45,6 @@ export function createIntroTimeline(group: Object3D<Object3DEventMap>, coverObjR
                             ((child as Mesh).material as CustomShaderMaterial).uniforms.u_progress.value = t;
                         }
                     })
-                },
-                onComplete() {
-                    //after animation is completed switch target color to current and reset progress to 0
-                    coverObjRef!.traverse(child => {
-                        if ((child as any)?.isMesh) {
-                            const meshUniforms = ((child as Mesh).material as CustomShaderMaterial).uniforms;
-                            meshUniforms.u_currentColor.value = (meshUniforms.u_targetColor.value as Color).clone();
-                            meshUniforms.u_progress.value = 0;
-                        }
-                    })
                 }
             },
             "first_translation+0.1"
@@ -83,7 +73,17 @@ export function createIntroTimeline(group: Object3D<Object3DEventMap>, coverObjR
         tl.to(group.rotation, {
             x: 0,
             duration: 0.8,
-            ease: 'power2.inOut'
+            ease: 'power2.inOut',
+            onComplete() {
+                //after animation is completed switch target color to current and reset progress to 0
+                coverObjRef!.traverse(child => {
+                    if ((child as any)?.isMesh) {
+                        const meshUniforms = ((child as Mesh).material as CustomShaderMaterial).uniforms;
+                        meshUniforms.u_currentColor.value = (meshUniforms.u_targetColor.value as Color).clone();
+                        meshUniforms.u_progress.value = 0;
+                    }
+                })
+            }
         }, "after_pulse+=0.2");
 
         return tl;
