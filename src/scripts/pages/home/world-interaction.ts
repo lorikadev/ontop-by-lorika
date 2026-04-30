@@ -32,10 +32,7 @@ export async function loadWorldInteraction() {
         let isSceneContentLoaded = false;
 
         // FPS CONTROL
-        const fps = 120;
-        let lastRenderTime = 0;
         const timer = new Timer();
-        const timeBetweenFrames = 1000 / fps;
 
         function updateLogic(deltaTime: number) {
             if (worldObject)
@@ -46,20 +43,12 @@ export async function loadWorldInteraction() {
 
         function animate() {
             timer.update();
-
-            const currentTime = timer.getElapsed() * 1000;
-            const timeSinceLastRender = currentTime - lastRenderTime;
-
-            if (timeSinceLastRender >= timeBetweenFrames) {
-                const deltaTime = timeSinceLastRender / 1000;
-                lastRenderTime = currentTime;
-
-                updateLogic(deltaTime);
-                renderer.render(scene, camera);
-            }
-
-            animationFrameId = requestAnimationFrame(animate);
+            updateLogic(timer.getDelta());
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
         }
+
+        animationFrameId = requestAnimationFrame(animate);
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(async entry => {
