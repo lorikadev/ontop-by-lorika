@@ -4,13 +4,13 @@ import { createHeroEyeglassEntity } from "./entities/hero-eyeglass";
 import { getIntroColorChangeEventHandler } from "./event-handler/intro-color-change";
 import { getInteractiveColorChangeEventHandler } from "./event-handler/interactive-color-change";
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function loadHeroEyeglassInteraction() {
     try {
         const heroWrapper = document.getElementById("hero-wrapper") as HTMLDivElement | undefined
         const canvasElement = document.getElementById("hero-3d-render") as HTMLCanvasElement | undefined;
         if (!canvasElement || !heroWrapper) {
             console.error('hero-eyeglass-interacton \n canvasElement or heroWrapper not found');
-            return; //early return to avoid crash
+            return;
         }
 
         //SETUP SCENE
@@ -167,4 +167,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
         console.error(error);
     }
-});
+}
+
+loadHeroEyeglassInteraction();

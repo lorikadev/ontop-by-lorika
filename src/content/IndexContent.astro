@@ -243,7 +243,22 @@ let { homePageData, colorPickerData } = Astro.props;
 </section>
 <!-- !SECTION - DARK SECTION -->
 
-<!-- HERO EYEGLASS INTERACTION SCRIPT -->
-<script src="../scripts/pages/home/hero-eyeglass-interaction.ts"></script>
-<!-- WORLD INTERACTION SCRIPT -->
-<script src="../scripts/pages/home/world-interaction.ts"></script>
+<script>
+    function load3D() {
+        import("../scripts/pages/home/hero-eyeglass-interaction.ts");
+        import("../scripts/pages/home/world-interaction.ts");
+    }
+
+    // Use requestIdleCallback when available to run 3D interaction after the browser loaded the page.
+    if ("requestIdleCallback" in window) {
+        requestIdleCallback(load3D);
+    } else {
+        // Fallback for browsers (e.g. Safari) uses requestAnimationFrame + setTimeout:
+        // - requestAnimationFrame waits for the next frame (after layout/paint)
+        // - setTimeout(..., 0) defers execution to the next macrotask
+        // This ensures the work runs right after the initial render, without blocking it.
+        requestAnimationFrame(() => {
+            setTimeout(load3D, 0);
+        });
+    }
+</script>

@@ -1,10 +1,11 @@
 import { AmbientLight, Mesh, MeshBasicMaterial, PerspectiveCamera, Scene, SRGBColorSpace, Timer, WebGLRenderer } from "three";
 import { GLTFLoader, OrbitControls } from "three/examples/jsm/Addons.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
+const canvasElement = document.getElementById("world-3d-render") as HTMLCanvasElement | undefined;
+
+async function loadWorldInteraction() {
     try {
         const worldWrapper = document.getElementById("world-3d-wrapper") as HTMLDivElement | undefined
-        const canvasElement = document.getElementById("world-3d-render") as HTMLCanvasElement | undefined;
         if (!canvasElement || !worldWrapper) {
             console.error('world-interacton \n canvasElement or heroWrworldWrapperapper not found');
             return; //early return to avoid crash
@@ -120,4 +121,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
         console.error(error);
     }
+}
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            loadWorldInteraction();
+            observer.unobserve(canvasElement!);
+        }
+    });
+}, {
+    root: null,
+    threshold: 0,
+    rootMargin: "600px 0px 600px 0px"
 });
+
+if (canvasElement)
+    observer.observe(canvasElement);
