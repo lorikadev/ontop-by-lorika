@@ -244,12 +244,36 @@ let { homePageData, colorPickerData } = Astro.props;
 <!-- !SECTION - DARK SECTION -->
 
 <script>
-    function load3D() {
-        import("../scripts/pages/home/hero-eyeglass-interaction.ts");
-        import("../scripts/pages/home/world-interaction.ts");
+    //function that should be called when the browser has ended the initial loading
+    async function load3D() {
+        //first we setup the lazy loading of the 3D world interaction that is fired only when near it
+        const canvasElement = document.getElementById("world-3d-render");
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(async (entry) => {
+                    if (entry.isIntersecting) {
+                        const { loadWorldInteraction } =
+                            await import("../scripts/pages/home/world-interaction.ts");
+                        await loadWorldInteraction();
+                        observer.unobserve(canvasElement!);
+                    }
+                });
+            },
+            {
+                root: null,
+                threshold: 0,
+                rootMargin: "600px 0px 600px 0px",
+            },
+        );
+        if (canvasElement) observer.observe(canvasElement);
+
+        //then we lazy load the hero interaction
+        const { loadHeroEyeglassInteraction } =
+            await import("../scripts/pages/home/hero-eyeglass-interaction.ts");
+        await loadHeroEyeglassInteraction();
     }
 
-    // Use requestIdleCallback when available to run 3D interaction after the browser loaded the page.
+    // Use requestIdleCallback when available to run 3D interaction loading after the browser loaded the page.
     if ("requestIdleCallback" in window) {
         requestIdleCallback(load3D);
     } else {

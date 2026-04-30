@@ -1,111 +1,83 @@
-import { AmbientLight, Mesh, MeshBasicMaterial, PerspectiveCamera, Scene, SRGBColorSpace, Timer, WebGLRenderer } from "three";
-import { GLTFLoader, OrbitControls } from "three/examples/jsm/Addons.js";
+import {
+    AmbientLight,
+    Mesh,
+    MeshBasicMaterial,
+    Object3D,
+    PerspectiveCamera,
+    Scene,
+    SRGBColorSpace,
+    Timer,
+    WebGLRenderer
+} from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-const canvasElement = document.getElementById("world-3d-render") as HTMLCanvasElement | undefined;
-
-async function loadWorldInteraction() {
+export async function loadWorldInteraction() {
     try {
-        const worldWrapper = document.getElementById("world-3d-wrapper") as HTMLDivElement | undefined
+        const canvasElement = document.getElementById("world-3d-render") as HTMLCanvasElement | undefined;
+        const worldWrapper = document.getElementById("world-3d-wrapper") as HTMLDivElement | undefined;
+
         if (!canvasElement || !worldWrapper) {
-            console.error('world-interacton \n canvasElement or heroWrworldWrapperapper not found');
-            return; //early return to avoid crash
+            console.error('world-interaction \n canvasElement or worldWrapper not found');
+            return;
         }
 
-        //SETUP SCENE
-        const scene = new Scene();
+        const { scene, camera, renderer, controls } = setupScene(canvasElement, worldWrapper);
 
-        //SETUP CAMERA
-        const camera = new PerspectiveCamera(30, worldWrapper.clientWidth / worldWrapper.clientHeight, 0.1, 25);
-        camera.position.set(2.5, 2, -2.5);
-        camera.lookAt(scene.position);
-
-        const loader = new GLTFLoader();
-        const globo = (await loader.loadAsync('/3d/mondo.glb')).scene;
-        globo.traverse(obj => {
-            if (!(obj as any).isMesh) return;
-            const map = ((obj as Mesh).material as MeshBasicMaterial).map;
-            if (!map) return
-            map.colorSpace = SRGBColorSpace;
-            map.anisotropy = 5;
-            ((obj as Mesh).material as MeshBasicMaterial).color.setScalar(1.5);
-        });
-        scene.add(globo);
-
-        //SETUP RENDERER
-        const renderer = new WebGLRenderer({ canvas: canvasElement, antialias: true });
-        renderer.setSize(worldWrapper.clientWidth, worldWrapper.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 3));
-        renderer.setClearColor(0x000000, 0);
-        renderer.outputColorSpace = SRGBColorSpace;
-
-        //RESIZE HANDLING
-        window.addEventListener('resize', () => {
-            const width = worldWrapper.clientWidth;
-            const height = worldWrapper.clientHeight;
-
-            renderer.setSize(width, height, true);
-
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-        })
-
-        //ORBIT CONTROLS SETUP
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enablePan = false;
-        controls.enableZoom = false;
-        controls.enableDamping = true;
-        controls.rotateSpeed = 0.5;
-        controls.autoRotate = true;
-        controls.minPolarAngle = Math.PI * 0.15;
-        controls.maxPolarAngle = Math.PI * 0.85;
-
-        //SECTION - LIGHTS
+        // LIGHTS
         const ambientLight = new AmbientLight('#ffffff', 10);
         scene.add(ambientLight);
-        //!SECTION - LIGHTS
 
-        //CALC FRAMERATE DATA
+        let worldObject: Object3D | null = null;
+        let isSceneContentLoaded = false;
+
+        // FPS CONTROL
         const fps = 120;
         let lastRenderTime = 0;
         const timer = new Timer();
         const timeBetweenFrames = 1000 / fps;
 
         function updateLogic(deltaTime: number) {
-            controls.update();
+            if (worldObject)
+                controls.update(deltaTime);
         }
 
         let animationFrameId: number | null = null;
 
-        //ANIMATION STEP
         function animate() {
             timer.update();
+
             const currentTime = timer.getElapsed() * 1000;
             const timeSinceLastRender = currentTime - lastRenderTime;
 
-            //GETTING INSIDE IF AND RUNNING RENDERING + LOGIC IF INSIDE A FRAME WINDOW
             if (timeSinceLastRender >= timeBetweenFrames) {
-                const deltaTime = timeSinceLastRender / 1000
+                const deltaTime = timeSinceLastRender / 1000;
                 lastRenderTime = currentTime;
+
                 updateLogic(deltaTime);
                 renderer.render(scene, camera);
             }
 
-            //LOOP THE ANIMATION STEP
             animationFrameId = requestAnimationFrame(animate);
         }
 
-        //NOTE - this stops the rendering when the user is far from seeing it, enables it back when near or in front 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach(async entry => {
                 if (entry.isIntersecting) {
                     if (animationFrameId === null) {
                         timer.connect(document);
                         controls.enabled = true;
                         animate();
                     }
+
+                    if (!isSceneContentLoaded) {
+                        worldObject = await loadWorldAssets(scene);
+                        isSceneContentLoaded = true;
+                    }
                 } else {
                     if (animationFrameId)
                         cancelAnimationFrame(animationFrameId);
+
                     animationFrameId = null;
                     controls.enabled = false;
                     timer.disconnect();
@@ -118,23 +90,81 @@ async function loadWorldInteraction() {
         });
 
         observer.observe(canvasElement);
+
     } catch (error) {
         console.error(error);
     }
 }
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            loadWorldInteraction();
-            observer.unobserve(canvasElement!);
-        }
-    });
-}, {
-    root: null,
-    threshold: 0,
-    rootMargin: "600px 0px 600px 0px"
-});
+/**
+ * @param scene 
+ * @returns the world object3D
+ */
+async function loadWorldAssets(scene: Scene) {
+    const loader = new GLTFLoader();
+    const world = (await loader.loadAsync('/3d/mondo.glb')).scene;
 
-if (canvasElement)
-    observer.observe(canvasElement);
+    world.traverse(obj => {
+        if (!(obj as any).isMesh) return;
+
+        const mesh = obj as Mesh;
+        const material = mesh.material as MeshBasicMaterial;
+        const map = material.map;
+
+        if (!map) return;
+
+        map.colorSpace = SRGBColorSpace;
+        map.anisotropy = 5;
+        material.color.setScalar(1.5);
+    });
+
+    scene.add(world);
+
+    return world;
+}
+
+/**
+ * @param canvasElement 
+ * @param heroWrapper 
+ * @returns scene obj, renderer, camera and controls of the scene 
+ */
+function setupScene(canvasElement: HTMLCanvasElement, wrapper: HTMLDivElement) {
+    const scene = new Scene();
+
+    const camera = new PerspectiveCamera(
+        30,
+        canvasElement.clientWidth / canvasElement.clientHeight,
+        0.1,
+        25
+    );
+    camera.position.set(2.5, 2, -2.5);
+    camera.lookAt(scene.position);
+
+    const renderer = new WebGLRenderer({ canvas: canvasElement, antialias: true });
+    renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    renderer.outputColorSpace = SRGBColorSpace;
+
+    window.addEventListener('resize', () => {
+        const width = wrapper.clientWidth;
+        const height = wrapper.clientHeight;
+
+        renderer.setSize(width, height, true);
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    });
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enablePan = false;
+    controls.enableZoom = false;
+    controls.enableDamping = true;
+    controls.rotateSpeed = 0.5;
+    controls.autoRotate = true;
+    controls.minPolarAngle = Math.PI * 0.15;
+    controls.maxPolarAngle = Math.PI * 0.85;
+    controls.enabled = false;
+
+    return { scene, camera, renderer, controls };
+}

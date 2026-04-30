@@ -22,8 +22,12 @@ export async function createHeroEyeglassEntity(): Promise<IHeroEyeglassEntity> {
     const gltfLoader = new GLTFLoader();
 
     //LOAD OBJECTS
-    const coverObjRef = await createCover3DObject(gltfLoader);
-    const eyeglassObjRef = await createEyeglass3DObject(gltfLoader);
+    const [coverObjRef, eyeglassObjRef] = await Promise.all(
+        [
+            createCover3DObject(gltfLoader),
+            createEyeglass3DObject(gltfLoader)
+        ]
+    );
 
     //CREATE GROUP AND SET TRANSFORM
     const group = new Group();
