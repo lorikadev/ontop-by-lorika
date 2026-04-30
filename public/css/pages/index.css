@@ -380,10 +380,6 @@
             "item-5 item-5 item-5 item-5";
     }
 
-    #bento-dark>div {
-        min-height: 400px;
-    }
-
     #db-item-1 {
         background-image: url('/images/logo/logo-ontop-white-cropped-rotated.png');
     }
@@ -391,6 +387,10 @@
     #db-item-2,
     #db-item-5 {
         padding: 1rem;
+    }
+
+    #db-item-3 {
+        min-height: 300px;
     }
 
     #db-item-5 ul {
@@ -429,6 +429,10 @@
         height: 150px;
         background-size: contain;
         background-image: url('/images/logo/logo-ontop-white-cropped.svg');
+    }
+
+    #db-item-3 {
+        min-height: 200px;
     }
 
     #db-item-4 {
