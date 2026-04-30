@@ -45,16 +45,21 @@ export async function loadWorldInteraction() {
             timer.update();
             updateLogic(timer.getDelta());
             renderer.render(scene, camera);
-            requestAnimationFrame(animate);
+
+            //LOOP THE ANIMATION STEP
+            animationFrameId = requestAnimationFrame(animate);
         }
 
         animationFrameId = requestAnimationFrame(animate);
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(async entry => {
+                //START / RESUME ANIMATION
                 if (entry.isIntersecting) {
                     if (animationFrameId === null) {
                         timer.connect(document);
+                        //reset cumulated time
+                        timer.update();
                         controls.enabled = true;
                         animate();
                     }
@@ -63,7 +68,9 @@ export async function loadWorldInteraction() {
                         worldObject = await loadWorldAssets(scene);
                         isSceneContentLoaded = true;
                     }
-                } else {
+                } 
+                //STOP ANIMATION
+                else {
                     if (animationFrameId)
                         cancelAnimationFrame(animationFrameId);
 

@@ -66,9 +66,12 @@ export async function loadHeroEyeglassInteraction() {
         //NOTE - this stops the rendering when the user is far from seeing it, enables it back when near or in front 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(async entry => {
+                //START / RESUME ANIMATION
                 if (entry.isIntersecting) {
                     if (animationFrameId === null) {
                         timer.connect(document);
+                        //reset cumulated time
+                        timer.update();
                         animate();
                         if (heroEyeglassEntity?.timelines.intro.isAnimationOver)
                             controls.enabled = true;
@@ -78,7 +81,9 @@ export async function loadHeroEyeglassInteraction() {
                         heroEyeglassEntity = await loadHeroEyeglassAssets(heroEyeglassEntity, scene);
                         isSceneContentLoaded = true;
                     }
-                } else {
+                } 
+                //STOP ANIMATION
+                else {
                     if (animationFrameId)
                         cancelAnimationFrame(animationFrameId);
                     animationFrameId = null;
