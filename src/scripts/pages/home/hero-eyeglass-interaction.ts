@@ -41,10 +41,7 @@ export async function loadHeroEyeglassInteraction() {
         let introColorChangeEventHandler: (() => void) | null = null;
 
         //CALC FRAMERATE DATA
-        const fps = 120;
-        let lastRenderTime = 0;
         const timer = new Timer();
-        const timeBetweenFrames = 1000 / fps;
 
         function updateLogic(deltaTime: number) {
             if (heroEyeglassEntity)
@@ -56,16 +53,9 @@ export async function loadHeroEyeglassInteraction() {
         //ANIMATION STEP
         function animate() {
             timer.update();
-            const currentTime = timer.getElapsed() * 1000;
-            const timeSinceLastRender = currentTime - lastRenderTime;
 
-            //GETTING INSIDE IF AND RUNNING RENDERING + LOGIC IF INSIDE A FRAME WINDOW
-            if (timeSinceLastRender >= timeBetweenFrames) {
-                const deltaTime = timeSinceLastRender / 1000
-                lastRenderTime = currentTime;
-                updateLogic(deltaTime);
-                renderer.render(scene, camera);
-            }
+            updateLogic(timer.getDelta());
+            renderer.render(scene, camera);
 
             //LOOP THE ANIMATION STEP
             animationFrameId = requestAnimationFrame(animate);
@@ -79,8 +69,9 @@ export async function loadHeroEyeglassInteraction() {
                 if (entry.isIntersecting) {
                     if (animationFrameId === null) {
                         timer.connect(document);
-                        controls.enabled = true;
                         animate();
+                        if (heroEyeglassEntity?.timelines.intro.isAnimationOver)
+                            controls.enabled = true;
                     }
                     //load scene once render is setted and we are watching the scene or near it
                     if (isSceneContentLoaded === false) {

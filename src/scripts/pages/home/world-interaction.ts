@@ -122,7 +122,7 @@ function setupScene(canvasElement: HTMLCanvasElement, wrapper: HTMLDivElement) {
 
     const camera = new PerspectiveCamera(
         30,
-        canvasElement.clientWidth / canvasElement.clientHeight,
+        wrapper.clientWidth / wrapper.clientHeight,
         0.1,
         25
     );
