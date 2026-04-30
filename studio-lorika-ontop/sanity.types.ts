@@ -158,9 +158,9 @@ export type ColorPicker = {
   RAL2008Label?: string;
   RAL3002Label?: string;
   RAL4006Label?: string;
-  RAL9022Label?: string;
+  RAL7036Label?: string;
   RAL6037Label?: string;
-  RAL1013Label?: string;
+  RAL9001Label?: string;
   RAL5015Label?: string;
   RAL1018Label?: string;
   RAL1002Label?: string;

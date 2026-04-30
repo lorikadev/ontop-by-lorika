@@ -25,7 +25,7 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
 
     // LIGHT COLORS
     if (
-        cssColorVarKey === "--RAL1013" ||
+        cssColorVarKey === "--RAL9001" ||
         cssColorVarKey === "--RAL1018" ||
         cssColorVarKey === "--RAL1002"
     ) {

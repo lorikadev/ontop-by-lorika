@@ -895,7 +895,7 @@
         },
         "optional": true
       },
-      "RAL9022Label": {
+      "RAL7036Label": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
@@ -909,7 +909,7 @@
         },
         "optional": true
       },
-      "RAL1013Label": {
+      "RAL9001Label": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

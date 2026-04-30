@@ -63,9 +63,9 @@ export const colorPickerType = defineType({
             group: GROUPS.COLORS
         }),
         defineField({
-            name: 'RAL9022Label',
+            name: 'RAL7036Label',
             type: 'string',
-            title: 'RAL9022 Label',
+            title: 'RAL7036 Label',
             validation: (rule) => rule.required(),
             group: GROUPS.COLORS
         }),
@@ -77,9 +77,9 @@ export const colorPickerType = defineType({
             group: GROUPS.COLORS
         }),
         defineField({
-            name: 'RAL1013Label',
+            name: 'RAL9001Label',
             type: 'string',
-            title: 'RAL1013 Label',
+            title: 'RAL9001 Label',
             validation: (rule) => rule.required(),
             group: GROUPS.COLORS
         }),
