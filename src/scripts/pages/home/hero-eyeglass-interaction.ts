@@ -1,23 +1,35 @@
-import { AmbientLight, DirectionalLight, EquirectangularReflectionMapping, PerspectiveCamera, Scene, SRGBColorSpace, TextureLoader, Timer, WebGLRenderer } from "three";
+import {
+    AmbientLight,
+    DirectionalLight,
+    EquirectangularReflectionMapping,
+    PerspectiveCamera,
+    Scene,
+    SRGBColorSpace,
+    TextureLoader,
+    Timer,
+    WebGLRenderer
+} from "three";
+
 import { createHeroEyeglassEntity, type IHeroEyeglassEntity } from "./entities/hero-eyeglass";
 import { getIntroColorChangeEventHandler } from "./event-handler/intro-color-change";
 import { getInteractiveColorChangeEventHandler } from "./event-handler/interactive-color-change";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { nextFrame } from "../../globals/next-frame";
 
-export async function loadHeroEyeglassInteraction() {
+export function loadHeroEyeglassInteraction() {
     try {
-        const heroWrapper = document.getElementById("hero-wrapper") as HTMLDivElement | undefined
-        const canvasElement = document.getElementById("hero-3d-render") as HTMLCanvasElement | undefined;
+        const heroWrapper = document.getElementById("hero-wrapper") as HTMLDivElement | null;
+        const canvasElement = document.getElementById("hero-3d-render") as HTMLCanvasElement | null;
+
         if (!canvasElement || !heroWrapper) {
-            console.error('hero-eyeglass-interacton \n canvasElement or heroWrapper not found');
+            console.error('hero-eyeglass-interaction: missing elements');
             return;
         }
 
         const { scene, camera, renderer, controls } = setupScene(canvasElement, heroWrapper);
 
-        //SECTION - LIGHTS
-        const ambientLight = new AmbientLight('#ffffff', 0.5);
-        scene.add(ambientLight);
+        // LIGHTS
+        scene.add(new AmbientLight('#ffffff', 0.5));
 
         const keyLight = new DirectionalLight('#ffffff', 0.8);
         keyLight.position.set(3, 4, 5);
@@ -26,66 +38,108 @@ export async function loadHeroEyeglassInteraction() {
         const rimLight = new DirectionalLight('#ffffff', 0.4);
         rimLight.position.set(0, 2, -6);
         scene.add(rimLight);
-        //!SECTION - LIGHTS
 
-        //SECTION - HDR
-        const textureLoader = new TextureLoader();
-        textureLoader.load('/3d/hdr.jpg', (hdr) => {
+        new TextureLoader().load('/3d/hdr.jpg', (hdr) => {
             hdr.mapping = EquirectangularReflectionMapping;
             scene.environment = hdr;
             scene.environmentRotation.set(0, 0.6, 0);
         });
-        //!SECTION - HDR
 
         let heroEyeglassEntity: IHeroEyeglassEntity | null = null;
         let introColorChangeEventHandler: (() => void) | null = null;
 
-        //CALC FRAMERATE DATA
         const timer = new Timer();
-
-        function updateLogic(deltaTime: number) {
-            if (heroEyeglassEntity)
-                handleHeroEyeglassInteraction(heroEyeglassEntity, deltaTime, introColorChangeEventHandler, controls);
-        }
-
         let animationFrameId: number | null = null;
 
-        //ANIMATION STEP
+        function updateLogic(deltaTime: number) {
+            if (heroEyeglassEntity) {
+                handleHeroEyeglassInteraction(
+                    heroEyeglassEntity,
+                    deltaTime,
+                    introColorChangeEventHandler,
+                    controls
+                );
+            }
+        }
+
         function animate() {
             timer.update();
-
             updateLogic(timer.getDelta());
             renderer.render(scene, camera);
-
-            //LOOP THE ANIMATION STEP
             animationFrameId = requestAnimationFrame(animate);
         }
 
-        let isSceneContentLoaded = false;
+        let entityPromise: Promise<IHeroEyeglassEntity> | null = null;
 
-        //NOTE - this stops the rendering when the user is far from seeing it, enables it back when near or in front 
+        // Use requestIdleCallback when available to run 3D interaction loading after the browser loaded the page.
+        if ("requestIdleCallback" in window) {
+            entityPromise = createHeroEyeglassEntity();
+
+        } else {
+            // Fallback for browsers (e.g. Safari) uses requestAnimationFrame + setTimeout:
+            // - requestAnimationFrame waits for the next frame (after layout/paint)
+            // - setTimeout(..., 0) defers execution to the next macrotask
+            // This ensures the work runs right after the initial render, without blocking it.
+            requestAnimationFrame(() => {
+                entityPromise = createHeroEyeglassEntity();
+            });
+        }
+
+        let isSceneReady = false;
+
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(async entry => {
-                //START / RESUME ANIMATION
+            entries.forEach(async (entry) => {
+
                 if (entry.isIntersecting) {
+                    // LOAD + ATTACH SOLO QUANDO SERVE
+                    if (!isSceneReady && entityPromise) {
+                        heroEyeglassEntity = await entityPromise;
+
+                        await nextFrame();
+
+                        // add as invisible
+                        heroEyeglassEntity.groupRef.visible = false;
+                        scene.add(heroEyeglassEntity.groupRef);
+
+                        await nextFrame();
+
+                        // warmup shader
+                        renderer.compile(scene, camera);
+
+                        await nextFrame();
+
+                        heroEyeglassEntity!.groupRef.visible = true;
+
+                        await nextFrame();
+
+                        // EVENTS
+                        introColorChangeEventHandler =
+                            getIntroColorChangeEventHandler(heroEyeglassEntity!.directRefs.cover);
+
+                        document.addEventListener(
+                            'changedHighlightColor',
+                            introColorChangeEventHandler
+                        );
+
+                        heroEyeglassEntity!.timelines.intro.play(true);
+                        isSceneReady = true;
+                    }
+
+                    if (heroEyeglassEntity?.timelines.intro.isAnimationOver) {
+                        controls.enabled = true;
+                    }
+
+                    // START LOOP
                     if (animationFrameId === null) {
                         timer.connect(document);
-                        //reset cumulated time
                         timer.update();
                         animate();
-                        if (heroEyeglassEntity?.timelines.intro.isAnimationOver)
-                            controls.enabled = true;
                     }
-                    //load scene once render is setted and we are watching the scene or near it
-                    if (isSceneContentLoaded === false) {
-                        heroEyeglassEntity = await loadHeroEyeglassAssets(heroEyeglassEntity, scene);
-                        isSceneContentLoaded = true;
-                    }
-                } 
-                //STOP ANIMATION
-                else {
-                    if (animationFrameId)
+                } else {
+                    // STOP LOOP
+                    if (animationFrameId) {
                         cancelAnimationFrame(animationFrameId);
+                    }
                     animationFrameId = null;
                     controls.enabled = false;
                     timer.disconnect();
@@ -94,31 +148,27 @@ export async function loadHeroEyeglassInteraction() {
         }, {
             root: null,
             threshold: 0,
-            rootMargin: "300px 0px 300px 0px"
+            rootMargin: "300px 0px"
         });
 
-        observer.observe(canvasElement);
+
+        // Use requestIdleCallback when available to run 3D interaction loading after the browser loaded the page.
+        if ("requestIdleCallback" in window) {
+            observer.observe(canvasElement);
+        } else {
+            // Fallback for browsers (e.g. Safari) uses requestAnimationFrame + setTimeout:
+            // - requestAnimationFrame waits for the next frame (after layout/paint)
+            // - setTimeout(..., 0) defers execution to the next macrotask
+            // This ensures the work runs right after the initial render, without blocking it.
+            requestAnimationFrame(() => {
+                observer.observe(canvasElement);
+
+            });
+        }
     } catch (error) {
         console.error(error);
     }
 }
-
-/**
- * @param heroEyeglassEntity 
- * @param scene 
- * @returns the eyeglass entity
- * @notes this function sets the changedHighlightColor event listening and the intro timeline start
- */
-async function loadHeroEyeglassAssets(heroEyeglassEntity: IHeroEyeglassEntity | null, scene: Scene) {
-    heroEyeglassEntity = await createHeroEyeglassEntity();
-    scene.add(heroEyeglassEntity.groupRef);
-    heroEyeglassEntity.timelines.intro.play(true);
-    //load event listener to change color during intro
-    const introColorChangeEventHandler = getIntroColorChangeEventHandler(heroEyeglassEntity.directRefs.cover);
-    document.addEventListener('changedHighlightColor', introColorChangeEventHandler);
-    return heroEyeglassEntity;
-}
-
 /**
  * @param canvasElement 
  * @param heroWrapper 

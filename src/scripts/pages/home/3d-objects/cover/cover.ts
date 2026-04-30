@@ -29,14 +29,12 @@ export async function createCover3DObject(gltfLoaderRef: GLTFLoader): Promise<Ob
 
     //CUSTOM SHADER MATERIAL
     const uniforms = {
-        u_time: { value: 0 },
-        u_progress: { value: 0 },
-        u_size: {
-            value: new Vector2(
-                0,
-                0
-            )
-        },
+        u_time: new Uniform(0),
+        u_progress: new Uniform(0),
+        u_size: new Uniform(new Vector2(
+            0,
+            0
+        )),
         u_opacity: new Uniform(0),
         u_currentColor: { value: new Color('black') },
         u_targetColor: { value: new Color(colorRgb) },
@@ -68,7 +66,6 @@ export async function createCover3DObject(gltfLoaderRef: GLTFLoader): Promise<Ob
             const geometrySize = new Vector3();
             geometryBB.getSize(geometrySize);
 
-            //NOTE the uniform is one but the geometries are 3, should check if we can unify (doubt)
             uniforms.u_size.value.set(geometrySize.x, geometrySize.y);
             (child as Mesh).material = coverMaterial;
         }

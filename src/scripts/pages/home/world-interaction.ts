@@ -56,6 +56,11 @@ export async function loadWorldInteraction() {
             entries.forEach(async entry => {
                 //START / RESUME ANIMATION
                 if (entry.isIntersecting) {
+                    if (!isSceneContentLoaded) {
+                        worldObject = await loadWorldAssets(scene);
+                        isSceneContentLoaded = true;
+                    }
+
                     if (animationFrameId === null) {
                         timer.connect(document);
                         //reset cumulated time
@@ -63,12 +68,7 @@ export async function loadWorldInteraction() {
                         controls.enabled = true;
                         animate();
                     }
-
-                    if (!isSceneContentLoaded) {
-                        worldObject = await loadWorldAssets(scene);
-                        isSceneContentLoaded = true;
-                    }
-                } 
+                }
                 //STOP ANIMATION
                 else {
                     if (animationFrameId)
@@ -85,8 +85,19 @@ export async function loadWorldInteraction() {
             rootMargin: "300px 0px 300px 0px"
         });
 
-        observer.observe(canvasElement);
+        // Use requestIdleCallback when available to run 3D interaction loading after the browser loaded the page.
+        if ("requestIdleCallback" in window) {
+            observer.observe(canvasElement);
+        } else {
+            // Fallback for browsers (e.g. Safari) uses requestAnimationFrame + setTimeout:
+            // - requestAnimationFrame waits for the next frame (after layout/paint)
+            // - setTimeout(..., 0) defers execution to the next macrotask
+            // This ensures the work runs right after the initial render, without blocking it.
+            requestAnimationFrame(() => {
+                observer.observe(canvasElement);
 
+            });
+        }
     } catch (error) {
         console.error(error);
     }
