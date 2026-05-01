@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { SEO_GROUP, SEO_TITLE, seoFields } from "../genericSchemaTypes/seoType";
 
 const GROUPS = {
     LANG: 'lang',
@@ -13,6 +14,7 @@ export const ontopCoverType = defineType({
 
     groups: [
         { name: GROUPS.LANG, title: 'Language' },
+        { name: SEO_GROUP, title: SEO_TITLE },
         { name: GROUPS.GALLERY, title: "gallery" },
         { name: GROUPS.INFO, title: "info" },
     ],
@@ -32,7 +34,8 @@ export const ontopCoverType = defineType({
             validation: (rule) => rule.required(),
             group: GROUPS.LANG
         }),
-
+        //SEO
+        defineField(seoFields),
         //GALLERY
         defineField({
             name: 'gallerySectionAriaLabel',

@@ -64,7 +64,7 @@ let { AboutUsData } = Astro.props;
         />
         <!-- LOGO -->
         <img
-            src={urlFor(AboutUsData.rightBlockLogo?.asset?._ref).url()}
+            src={urlFor(AboutUsData.rightBlockLogo?.asset?._ref!).url()}
             class="fade-from-right"
             anim-on-scroll="fade-from-right"
             anim-on-scroll-delay="0.2"
@@ -77,7 +77,7 @@ let { AboutUsData } = Astro.props;
 <!-- SECTION - BEHIND -->
 <section
     id="behind-hero"
-    style={`background-image: url('${urlFor(AboutUsData.behindContentBackground?.asset?._ref).url()}');`}
+    style={`background-image: url('${urlFor(AboutUsData.behindContentBackground?.asset?._ref!).url()}');`}
 >
     <div id="behind-hero-message-wrapper" class="p-2">
         <!-- NOTE - this empty div exist to make it easier to push the message to right in desktop/tablet view -->
@@ -95,7 +95,7 @@ let { AboutUsData } = Astro.props;
 <!-- SECTION - FIRST PRODUCT -->
 <section
     id="first-product-hero"
-    style={`background-image: url('${urlFor(AboutUsData.firstProductContentBackground?.asset?._ref).url()}');`}
+    style={`background-image: url('${urlFor(AboutUsData.firstProductContentBackground?.asset?._ref!).url()}');`}
 >
     <div id="first-product-hero-message-wrapper">
         <div id="first-product-hero-message">
@@ -117,7 +117,7 @@ let { AboutUsData } = Astro.props;
 <section id="over-the-product-hero" class="container-small my-3">
     <div
         id="over-the-product-hero-message"
-        style={`background-image: url('${urlFor(AboutUsData.overTheProductContentBackgroundLeft?.asset?._ref).url()}');`}
+        style={`background-image: url('${urlFor(AboutUsData.overTheProductContentBackgroundLeft?.asset?._ref!).url()}');`}
     >
         <div
             class="p-2 fade-from-left"
@@ -128,7 +128,7 @@ let { AboutUsData } = Astro.props;
     <!-- NOTE - this empty div exist for ui purpose -->
     <div
         class="show-till-mob"
-        style={`background-image: url('${urlFor(AboutUsData.overTheProductContentBackgroundRight?.asset?._ref).url()}');`}
+        style={`background-image: url('${urlFor(AboutUsData.overTheProductContentBackgroundRight?.asset?._ref!).url()}');`}
         aria-hidden="true"
     >
     </div>

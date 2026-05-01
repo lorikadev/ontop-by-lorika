@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { SEO_GROUP, SEO_TITLE, seoFields } from '../genericSchemaTypes/seoType'
 
 const GROUPS = {
     LANG: 'lang',
@@ -13,6 +14,7 @@ export const homePageType = defineType({
     title: 'Home Page',
     groups: [
         { name: GROUPS.LANG, title: 'Language' },
+        { name: SEO_GROUP, title: SEO_TITLE },
         { name: GROUPS.HERO, title: 'Hero Section' },
         { name: GROUPS.LIGHT, title: 'Light Section' },
         { name: GROUPS.DARK, title: 'Dark Section' },
@@ -32,6 +34,8 @@ export const homePageType = defineType({
             validation: (rule) => rule.required(),
             group: GROUPS.LANG
         }),
+        //SEO
+        defineField(seoFields),
         // HERO
         defineField({
             name: 'heroTitle',

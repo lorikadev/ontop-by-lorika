@@ -25,17 +25,12 @@ const colorPickerData =
 ---
 
 <PageContainer
-    title="Ontop by Lorika"
-    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    canonical="https://www.example.com/lorem-ipsum"
-    robots="index, follow"
-    ogImage="https://www.example.com/images/lorem-ipsum.jpg"
-    ogLocale="it_IT"
-    ogSiteName="Lorem Ipsum Site"
-    twitterCard="summary_large_image"
-    twitterSite="@loremipsum"
-    twitterCreator="@creatorlorem"
+    seo={homePage[0].seo!}
+    lang="en"
     siteNavigators={siteNavigators[0]}
 >
-    <IndexContent homePageData={homePage[0]} colorPickerData={colorPickerData[0]}/>
+    <IndexContent
+        homePageData={homePage[0]}
+        colorPickerData={colorPickerData[0]}
+    />
 </PageContainer>

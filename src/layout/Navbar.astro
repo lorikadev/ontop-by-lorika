@@ -29,7 +29,7 @@ const navData = siteNavigators.navbar;
         <!-- LOGO -->
         <div id="logo-link-wrapper">
             <a id="logo-link" href={`/${currentLang}/`} aria-label={navData?.home + " link"}>
-                <img src={urlFor(navData?.logo?.asset?._ref).url()} alt="logo Lorika" />
+                <img src={urlFor(navData?.logo?.asset?._ref!).url()} alt="logo Lorika" />
             </a>
         </div>
 

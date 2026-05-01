@@ -20,20 +20,13 @@ const colorPickerData =
     await sanityClient.fetch<ColorPicker[]>(COLOR_PICKER_QUERY);
 
 const ONTOP_COVER_QUERY = `*[_type == "ontopCover" && lang == "it"]`;
-const ontopCoverData = await sanityClient.fetch<OntopCover[]>(ONTOP_COVER_QUERY);
+const ontopCoverData =
+    await sanityClient.fetch<OntopCover[]>(ONTOP_COVER_QUERY);
 ---
 
 <PageContainer
-    title="Ontop by Lorika"
-    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    canonical="https://www.example.com/lorem-ipsum"
-    robots="index, follow"
-    ogImage="https://www.example.com/images/lorem-ipsum.jpg"
-    ogLocale="it_IT"
-    ogSiteName="Lorem Ipsum Site"
-    twitterCard="summary_large_image"
-    twitterSite="@loremipsum"
-    twitterCreator="@creatorlorem"
+    seo={ontopCoverData[0].seo!}
+    lang="it"
     siteNavigators={siteNavigators[0]}
 >
     <OntopCoverContent

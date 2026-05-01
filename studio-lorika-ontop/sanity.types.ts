@@ -15,11 +15,30 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
+export type Seo = {
+  title?: string;
+  description?: string;
+  robots?: "index, follow" | "noindex, follow" | "index, nofollow" | "noindex, nofollow";
+  shareImage?: ShareImage;
+  ogType?: "website";
+  ogSiteName?: string;
+  twitterCard?: "summary_large_image" | "summary";
+};
+
 export type SanityImageAssetReference = {
   _ref: string;
   _type: "reference";
   _weak?: boolean;
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
+export type ShareImage = {
+  asset?: SanityImageAssetReference;
+  media?: unknown // Unable to locate the referenced type "media" in schema
+;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  _type: "image";
 };
 
 export type OntopCover = {
@@ -29,6 +48,7 @@ export type OntopCover = {
   _updatedAt: string;
   _rev: string;
   lang?: "it" | "en";
+  seo?: Seo;
   gallerySectionAriaLabel?: string;
   mainPhoto?: {
     image?: {
@@ -93,6 +113,7 @@ export type AboutUs = {
   _updatedAt: string;
   _rev: string;
   lang?: "it" | "en";
+  seo?: Seo;
   heroTitle?: string;
   heroContent?: string;
   heroVideoDesktop?: {
@@ -174,6 +195,7 @@ export type HomePage = {
   _updatedAt: string;
   _rev: string;
   lang?: "it" | "en";
+  seo?: Seo;
   heroTitle?: string;
   mobileAds?: string;
   buyNowLabel?: string;
@@ -370,5 +392,5 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImageAssetReference | OntopCover | SanityImageCrop | SanityImageHotspot | SanityFileAssetReference | AboutUs | ColorPicker | HomePage | SiteNavigators | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint | Slug;
+export type AllSanitySchemaTypes = Seo | SanityImageAssetReference | ShareImage | OntopCover | SanityImageCrop | SanityImageHotspot | SanityFileAssetReference | AboutUs | ColorPicker | HomePage | SiteNavigators | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint | Slug;
 

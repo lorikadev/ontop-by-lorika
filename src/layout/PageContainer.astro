@@ -1,5 +1,8 @@
 ---
-import type { SiteNavigators } from "../../studio-lorika-ontop/sanity.types";
+import type {
+    Seo,
+    SiteNavigators,
+} from "../../studio-lorika-ontop/sanity.types";
 import Footer from "./Footer.astro";
 import Navbar from "./Navbar.astro";
 
@@ -11,52 +14,29 @@ import "../../public/css/globals/spacing.css";
 import "../../public/css/globals/navbar.css";
 import "../../public/css/globals/footer.css";
 import "../../public/css/globals/animations.css";
+import { getLocaleFromLang } from "../scripts/globals/get-locale-from-lang";
+import { urlFor } from "../scripts/globals/sanity-client";
+
+const canonical = Astro.url.href;
 
 interface Props {
-    // Base SEO
-    title: string;
-    description: string;
-    canonical: string;
-    robots: string;
-
-    // Open Graph
-    ogImage: string;
-    ogType?: "website";
-    ogLocale: string;
-    ogSiteName: string;
-
-    // Twitter
-    twitterCard?: "summary_large_image";
-    twitterSite: string;
-    twitterCreator?: string;
-
+    //SEO
+    seo: Seo;
     //SITE NAVIGATORS (NAVBAR & FOOTER)
     siteNavigators: SiteNavigators;
-
-    // Accessibility
-    lang?: string;
+    lang: string;
 }
 
 const {
-    title,
-    description,
-    canonical,
-    robots = "index, follow",
-
-    ogImage,
-    ogType = "website",
-    ogLocale = "en_US",
-    ogSiteName,
-
-    twitterCard = "summary_large_image",
-    twitterSite,
-    twitterCreator,
-
+    //SEO
+    seo,
     //SITE NAVIGATORS (NAVBAR & FOOTER)
     siteNavigators,
-
     lang = "en",
 } = Astro.props;
+
+//NOTE - the images are required
+const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
 ---
 
 <!doctype html>
@@ -114,27 +94,25 @@ const {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <!-- SEO base -->
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="robots" content={robots} />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="robots" content={seo.robots} />
         {canonical && <link rel="canonical" href={canonical} />}
 
         <!-- Open Graph -->
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:type" content={ogType} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:type" content={seo.ogType} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:site_name" content={ogSiteName} />
-        <meta property="og:locale" content={ogLocale} />
+        <meta property="og:image" content={thumbnailUrl} />
+        <meta property="og:site_name" content={seo.ogSiteName} />
+        <meta property="og:locale" content={getLocaleFromLang(lang)} />
 
         <!-- Twitter -->
-        <meta name="twitter:card" content={twitterCard} />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={ogImage} />
-        <meta name="twitter:site" content={twitterSite} />
-        <meta name="twitter:creator" content={twitterCreator} />
+        <meta name="twitter:card" content={seo.twitterCard} />
+        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:description" content={seo.description} />
+        <meta name="twitter:image" content={thumbnailUrl} />
         <!-- !SECTION - META -->
     </head>
     <!-- !SECTION - HEAD -->

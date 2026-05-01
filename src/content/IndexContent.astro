@@ -91,7 +91,7 @@ let { homePageData, colorPickerData } = Astro.props;
                 id="lb-item-1"
                 class="fade-from-left"
                 anim-on-scroll="fade-from-left"
-                style={`background-image: url('${urlFor(homePageData?.lItem1Image?.asset?._ref).url()}')`}
+                style={`background-image: url('${urlFor(homePageData?.lItem1Image?.asset?._ref!).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
@@ -105,7 +105,7 @@ let { homePageData, colorPickerData } = Astro.props;
                 id="lb-item-3"
                 class="fade-from-right"
                 anim-on-scroll="fade-from-right"
-                style={`background-image: url('${urlFor(homePageData?.lItem3Image?.asset?._ref).url()}')`}
+                style={`background-image: url('${urlFor(homePageData?.lItem3Image?.asset?._ref!).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
@@ -115,7 +115,7 @@ let { homePageData, colorPickerData } = Astro.props;
                 id="lb-item-4"
                 class="fade-from-left"
                 anim-on-scroll="fade-from-left"
-                style={`background-image: url('${urlFor(homePageData?.lItem4Image?.asset?._ref).url()}')`}
+                style={`background-image: url('${urlFor(homePageData?.lItem4Image?.asset?._ref!).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
@@ -150,7 +150,7 @@ let { homePageData, colorPickerData } = Astro.props;
     <!-- SUB HERO -->
     <img
         class="sub-hero"
-        src={urlFor(homePageData?.lightSubHeroImage?.asset?._ref).url()}
+        src={urlFor(homePageData?.lightSubHeroImage?.asset?._ref!).url()}
         aria-hidden="true"
     />
 </section>
@@ -197,7 +197,7 @@ let { homePageData, colorPickerData } = Astro.props;
                 id="db-item-4"
                 class="fade-from-left"
                 anim-on-scroll="fade-from-left"
-                style={`background-image: url('${urlFor(homePageData?.dItem4Image?.asset?._ref).url()}')`}
+                style={`background-image: url('${urlFor(homePageData?.dItem4Image?.asset?._ref!).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
@@ -230,7 +230,7 @@ let { homePageData, colorPickerData } = Astro.props;
         <img
             style="border-radius: 10px;"
             class="sub-hero"
-            src={urlFor(homePageData?.darkSubHeroImage?.asset?._ref).url()}
+            src={urlFor(homePageData?.darkSubHeroImage?.asset?._ref!).url()}
             aria-hidden="true"
         />
         <img

@@ -31,7 +31,7 @@ let { colorPickerData, ontopCoverData } = Astro.props;
             <div id="product-gallery-main-img" class="mb-1 show-till-mob">
                 <img
                     src={urlFor(
-                        ontopCoverData.mainPhoto?.image?.asset?._ref,
+                        ontopCoverData.mainPhoto?.image?.asset?._ref!,
                     ).url()}
                     alt={ontopCoverData.mainPhoto?.alternativeText}
                 />
@@ -41,7 +41,7 @@ let { colorPickerData, ontopCoverData } = Astro.props;
                 {
                     ontopCoverData.secondaryPhotos?.map((photo) => (
                         <img
-                            src={urlFor(photo.image?.asset?._ref).url()}
+                            src={urlFor(photo.image?.asset?._ref!).url()}
                             alt={photo.alternativeText}
                         />
                     ))
@@ -56,7 +56,7 @@ let { colorPickerData, ontopCoverData } = Astro.props;
                             <img
                                 src={urlFor(
                                     ontopCoverData.mainPhoto?.image?.asset
-                                        ?._ref,
+                                        ?._ref!,
                                 ).url()}
                                 alt={ontopCoverData.mainPhoto?.alternativeText}
                                 class="w-100"
@@ -67,7 +67,7 @@ let { colorPickerData, ontopCoverData } = Astro.props;
                                 <li class="splide__slide">
                                     <img
                                         src={urlFor(
-                                            photo.image?.asset?._ref,
+                                            photo.image?.asset?._ref!,
                                         ).url()}
                                         alt={photo.alternativeText}
                                         class="w-100"
@@ -83,7 +83,7 @@ let { colorPickerData, ontopCoverData } = Astro.props;
                 <li class="thumbnail">
                     <img
                         src={urlFor(
-                            ontopCoverData.mainPhoto?.image?.asset?._ref,
+                            ontopCoverData.mainPhoto?.image?.asset?._ref!,
                         ).url()}
                         alt={ontopCoverData.mainPhoto?.alternativeText}
                     />
@@ -92,7 +92,7 @@ let { colorPickerData, ontopCoverData } = Astro.props;
                     ontopCoverData.secondaryPhotos?.map((photo) => (
                         <li class="thumbnail">
                             <img
-                                src={urlFor(photo.image?.asset?._ref).url()}
+                                src={urlFor(photo.image?.asset?._ref!).url()}
                                 alt={photo.alternativeText}
                             />
                         </li>
