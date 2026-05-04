@@ -29,14 +29,14 @@ export function loadHeroEyeglassInteraction() {
         const { scene, camera, renderer, controls } = setupScene(canvasElement, heroWrapper);
 
         // LIGHTS
-        scene.add(new AmbientLight('#ffffff', 0.5));
+        scene.add(new AmbientLight('#ffffff', 0.4));
 
-        const keyLight = new DirectionalLight('#ffffff', 0.8);
-        keyLight.position.set(3, 4, 5);
+        const keyLight = new DirectionalLight('#ffffff', 0.6);
+        keyLight.position.set(3.2, -0.2, 5);
         scene.add(keyLight);
 
         const rimLight = new DirectionalLight('#ffffff', 0.4);
-        rimLight.position.set(0, 2, -6);
+        rimLight.position.set(-1, 0, -6);
         scene.add(rimLight);
 
         new TextureLoader().load('/3d/hdr.jpg', (hdr) => {

@@ -9,7 +9,7 @@ uniform float u_opacity;
 //the pixel in a 0 - 1 scale locally at the object size
 varying vec2 v_localPosNormalized;
 
-const float DEG45 = PI * 0.25;
+const float DEG = -PI * 0.75;
 
 //SECTION - UTILS
 /**
@@ -24,7 +24,7 @@ vec2 rotatePos(vec2 pos, float angle) {
 
 void main() {
     //rotate normalized horizontal position of the mesh to make animation diagonal
-    vec2 rotatedPos = rotatePos(v_localPosNormalized, DEG45);
+    vec2 rotatedPos = rotatePos(v_localPosNormalized, DEG);
 
     //calculates "wave" seen in animation and multiply them to make them irregular
     float mainWave = cos(rotatedPos.y * PI * 2. + 2.) * 0.1;
