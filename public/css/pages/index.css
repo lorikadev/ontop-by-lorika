@@ -314,7 +314,7 @@
 #db-item-3 {
     grid-area: item-3;
     max-height: 500px;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 #world-3d-wrapper {

@@ -65,9 +65,10 @@ export async function loadWorldInteraction() {
                         timer.connect(document);
                         //reset cumulated time
                         timer.update();
-                        controls.enabled = true;
                         animate();
                     }
+
+                    controls.enabled = true;
                 }
                 //STOP ANIMATION
                 else {
