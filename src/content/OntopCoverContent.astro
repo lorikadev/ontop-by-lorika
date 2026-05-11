@@ -1,12 +1,11 @@
 ---
 import ColorPicker from "../components/ColorPicker/ColorPicker.astro";
 import type {
-    ColorPicker as ColorPickerCMS,
-    OntopCover,
+  ColorPicker as ColorPickerCMS,
+  OntopCover,
 } from "../../studio-lorika-ontop/sanity.types";
 import Accordion from "../components/Accordion/Accordion.astro";
 import { cleanHtml } from "../scripts/globals/clean-html";
-import { urlFor } from "../scripts/globals/sanity-client";
 
 //SECTION - CSS
 import "../../public/css/pages/ontop-cover.css";
@@ -14,183 +13,79 @@ import "../../public/libraries/splide-4.1.3/css/splide-default.min.css";
 //!SECTION - CSS
 
 interface Props {
-    colorPickerData: ColorPickerCMS;
-    ontopCoverData: OntopCover;
+  colorPickerData: ColorPickerCMS;
+  ontopCoverData: OntopCover;
 }
 
 let { colorPickerData, ontopCoverData } = Astro.props;
 ---
+
 <div class="py-2" id="ontop-cover-page">
-    <div class="container-small" id="product-wrapper">
-        <!-- SECTION - PRODUCT GALLERY -->
-        <div
-            id="product-gallery"
-            aria-label={ontopCoverData.gallerySectionAriaLabel}
-        >
-            <!-- MAIN IMAGE -->
-            <div id="product-gallery-main-img" class="mb-1 show-till-mob">
-                <img
-                    src={urlFor(
-                        ontopCoverData.mainPhoto?.image?.asset?._ref!,
-                    ).url()}
-                    alt={ontopCoverData.mainPhoto?.alternativeText}
-                />
-            </div>
-            <!-- SECONDARY IMAGES -->
-            <div id="product-gallery-second-imgs" class="show-till-mob">
-                {
-                    ontopCoverData.secondaryPhotos?.map((photo) => (
-                        <img
-                            src={urlFor(photo.image?.asset?._ref!).url()}
-                            alt={photo.alternativeText}
-                        />
-                    ))
-                }
-            </div>
+  <div class="container-small" id="product-wrapper">
+    <!-- SECTION - PRODUCT GALLERY -->
+    <div
+      id="product-gallery"
+      aria-label={ontopCoverData.gallerySectionAriaLabel}
+    >
+      <!-- MAIN IMAGE -->
+      <div id="product-gallery-main-img" class="mb-1 show-till-mob"></div>
+      <!-- SECONDARY IMAGES -->
+      <div id="product-gallery-second-imgs" class="show-till-mob"></div>
 
-            <!-- MOBILE GALLERY -->
-            <section id="mobile-gallery" class="splide show-mob" aria-hidden>
-                <div class="splide__track">
-                    <ul class="show-tab splide__list">
-                        <li class="splide__slide">
-                            <img
-                                src={urlFor(
-                                    ontopCoverData.mainPhoto?.image?.asset
-                                        ?._ref!,
-                                ).url()}
-                                alt={ontopCoverData.mainPhoto?.alternativeText}
-                                class="w-100"
-                            />
-                        </li>
-                        {
-                            ontopCoverData.secondaryPhotos?.map((photo) => (
-                                <li class="splide__slide">
-                                    <img
-                                        src={urlFor(
-                                            photo.image?.asset?._ref!,
-                                        ).url()}
-                                        alt={photo.alternativeText}
-                                        class="w-100"
-                                    />
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div>
-            </section>
-            <!-- MOBILE GALLERY THUMBNAILS -->
-            <ul id="mobile-thumbnails" class="thumbnails show-mob">
-                <li class="thumbnail">
-                    <img
-                        src={urlFor(
-                            ontopCoverData.mainPhoto?.image?.asset?._ref!,
-                        ).url()}
-                        alt={ontopCoverData.mainPhoto?.alternativeText}
-                    />
-                </li>
-                {
-                    ontopCoverData.secondaryPhotos?.map((photo) => (
-                        <li class="thumbnail">
-                            <img
-                                src={urlFor(photo.image?.asset?._ref!).url()}
-                                alt={photo.alternativeText}
-                            />
-                        </li>
-                    ))
-                }
-            </ul>
+      <!-- MOBILE GALLERY -->
+      <section id="mobile-gallery" class="splide show-mob" aria-hidden>
+        <div class="splide__track">
+          <ul class="show-tab splide__list"></ul>
         </div>
-        <!-- !SECTION - PRODUCT GALLERY -->
-
-        <!-- SECTION - PRODUCT INFO -->
-        <section
-            id="product-info"
-            aria-label={ontopCoverData.productInfoSectionAriaLabel}
-        >
-            <!-- INFO IN ACCORDION -->
-            <div id="product-info-data" class="card">
-                {
-                    ontopCoverData.infos?.map((info, index) => (
-                        <Accordion
-                            title={info.title!}
-                            name="product-info-data"
-                            index={index}
-                        >
-                            <div
-                                slot="content"
-                                set:html={cleanHtml(info.htmlContent!)}
-                            />
-                        </Accordion>
-                    ))
-                }
-            </div>
-            <!-- COLOR PICKER -->
-            <div id="product-info-colorpicker-wrapper" class="card w-100">
-                <ColorPicker
-                    colorPickerData={colorPickerData}
-                    id="product-info-colorpicker"
-                    layout="horizontal"
-                    displayLabel="hide"
-                />
-            </div>
-            <!-- CTA -->
-            <a
-                class="button primary fs-15 w-100"
-                aria-label={ontopCoverData.buyNowCta?.ariaLabel}
-                href="https://lorika-8398.myshopify.com/products/ontop-preorder"
-                target="_blank"
-            >
-                {ontopCoverData.buyNowCta?.label}
-            </a>
-        </section>
-        <!-- !SECTION - PRODUCT INFO -->
+      </section>
+      <!-- MOBILE GALLERY THUMBNAILS -->
+      <ul id="mobile-thumbnails" class="thumbnails show-mob"></ul>
     </div>
+    <!-- !SECTION - PRODUCT GALLERY -->
+
+    <!-- SECTION - PRODUCT INFO -->
+    <section
+      id="product-info"
+      aria-label={ontopCoverData.productInfoSectionAriaLabel}
+    >
+      <!-- INFO IN ACCORDION -->
+      <div id="product-info-data" class="card">
+        {
+          ontopCoverData.infos?.map((info, index) => (
+            <Accordion
+              title={info.title!}
+              name="product-info-data"
+              index={index}
+            >
+              <div slot="content" set:html={cleanHtml(info.htmlContent!)} />
+            </Accordion>
+          ))
+        }
+      </div>
+      <!-- COLOR PICKER -->
+      <div id="product-info-colorpicker-wrapper" class="card w-100">
+        <ColorPicker
+          colorPickerData={colorPickerData}
+          id="product-info-colorpicker"
+          layout="horizontal"
+          displayLabel="hide"
+        />
+      </div>
+      <!-- CTA -->
+      <a
+        class="button primary fs-15 w-100"
+        aria-label={ontopCoverData.buyNowCta?.ariaLabel}
+        href="https://lorika-8398.myshopify.com/products/ontop-preorder"
+        target="_blank"
+      >
+        {ontopCoverData.buyNowCta?.label}
+      </a>
+    </section>
+    <!-- !SECTION - PRODUCT INFO -->
+  </div>
 </div>
 
 <!-- ACCORDION SCRIPT -->
 <script src="../scripts/globals/toggle-accordions.ts"></script>
-<!-- SPLIDE SCRIPT -->
-<script src="/libraries/splide-4.1.3/js/splide.min.js" is:inline></script>
-<!-- SPLIDE INIT SCRIPT -->
-<script is:inline>
-    //init splide object
-    let splide = new Splide("#mobile-gallery", {
-        pagination: false,
-    });
-
-    let thumbnails = document.getElementsByClassName("thumbnail");
-    let activeThumbnail = null;
-
-    //init thumbnails navigation
-    for (let i = 0; i < thumbnails.length; i++) {
-        initThumbnail(thumbnails[i], i);
-    }
-
-    /**
-     * @thumbnail thumbnail html element where the event get attached
-     * @index indec representing the thumbnail original photo position in the gallery
-     * attach splide navigation to thumbnails
-     */
-    function initThumbnail(thumbnail, index) {
-        thumbnail.addEventListener("click", function () {
-            splide.go(index);
-        });
-    }
-
-    //update active thumbnail on splide gallery updates
-    splide.on("mounted move", function () {
-        let thumbnail = thumbnails[splide.index];
-
-        if (thumbnail) {
-            if (activeThumbnail) {
-                activeThumbnail.classList.remove("is-active");
-            }
-
-            thumbnail.classList.add("is-active");
-            activeThumbnail = thumbnail;
-        }
-    });
-
-    //start splide gallery
-    splide.mount();
-</script>
+<!-- load images corrisponding to curr ral and load splide for mobile gallery -->
+<script src="../scripts/pages/ontop-cover/main.ts"></script>
