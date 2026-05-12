@@ -4,13 +4,27 @@ import {
     MeshBasicMaterial,
     Object3D,
     PerspectiveCamera,
+    RawShaderMaterial,
     Scene,
     SRGBColorSpace,
     Timer,
+    Uniform,
     WebGLRenderer
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import vertexShader from './3d-objects/globe/vertex.glsl?raw';
+import fragmentShader from './3d-objects/globe/fragment.glsl?raw';
+import gsap from 'gsap';
+
+/** uniforms used by the globe shader */
+const globe_uniforms = {
+    u_tailProgress: new Uniform(0),
+    u_headProgress: new Uniform(0)
+}
+
+/** timeline used to animate the globe shader */
+let tl: gsap.core.Timeline | null = null;
 
 export async function loadWorldInteraction() {
     try {
@@ -52,6 +66,7 @@ export async function loadWorldInteraction() {
 
         animationFrameId = requestAnimationFrame(animate);
 
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(async entry => {
                 //START / RESUME ANIMATION
@@ -59,6 +74,7 @@ export async function loadWorldInteraction() {
                     if (!isSceneContentLoaded) {
                         worldObject = await loadWorldAssets(scene);
                         isSceneContentLoaded = true;
+                        tl?.play();
                     }
 
                     if (animationFrameId === null) {
@@ -66,6 +82,7 @@ export async function loadWorldInteraction() {
                         //reset cumulated time
                         timer.update();
                         animate();
+                        tl?.resume();
                     }
 
                     controls.enabled = true;
@@ -78,6 +95,7 @@ export async function loadWorldInteraction() {
                     animationFrameId = null;
                     controls.enabled = false;
                     timer.disconnect();
+                    tl?.pause();
                 }
             });
         }, {
@@ -96,7 +114,6 @@ export async function loadWorldInteraction() {
             // This ensures the work runs right after the initial render, without blocking it.
             requestAnimationFrame(() => {
                 observer.observe(canvasElement);
-
             });
         }
     } catch (error) {
@@ -109,6 +126,40 @@ export async function loadWorldInteraction() {
  * @returns the world object3D
  */
 async function loadWorldAssets(scene: Scene) {
+    //load timeline
+    tl = gsap.timeline();
+    tl.to(
+        { progress: 0 },
+        {
+            progress: 1,
+            duration: 3,
+            ease: 'sine.inOut',
+            onUpdate() {
+                const t = this.targets()[0].progress;
+                globe_uniforms.u_headProgress.value = t
+            },
+        },
+        "head"
+    );
+    tl.to(
+        { progress: 0 },
+        {
+            progress: 1,
+            duration: 3,
+            ease: 'sine.inOut',
+            onUpdate() {
+                const t = this.targets()[0].progress;
+                globe_uniforms.u_tailProgress.value = t
+            },
+            onComplete() {
+                globe_uniforms.u_headProgress.value = 0;
+                globe_uniforms.u_tailProgress.value = 0;
+                tl!.restart();
+            }
+        },
+        "head+=1"
+    )
+
     const loader = new GLTFLoader();
     const world = (await loader.loadAsync('/3d/mondo.glb')).scene;
 
@@ -116,14 +167,29 @@ async function loadWorldAssets(scene: Scene) {
         if (!(obj as any).isMesh) return;
 
         const mesh = obj as Mesh;
-        const material = mesh.material as MeshBasicMaterial;
-        const map = material.map;
+        switch (obj.name) {
+            case 'frecce':
+                mesh.material = new RawShaderMaterial({
+                    vertexShader: vertexShader,
+                    fragmentShader: fragmentShader,
+                    uniforms: globe_uniforms,
+                    transparent: true,
+                    depthWrite: false
+                })
+                break;
 
-        if (!map) return;
+            default:
 
-        map.colorSpace = SRGBColorSpace;
-        map.anisotropy = 5;
-        material.color.setScalar(1.5);
+                const material = mesh.material as MeshBasicMaterial;
+                const map = material.map;
+
+                if (!map) return;
+
+                map.colorSpace = SRGBColorSpace;
+                map.anisotropy = 5;
+                material.color.setScalar(1.5);
+                break;
+        }
     });
 
     scene.add(world);
@@ -145,7 +211,7 @@ function setupScene(canvasElement: HTMLCanvasElement, wrapper: HTMLDivElement) {
         0.1,
         25
     );
-    camera.position.set(2.5, 2, -2.5);
+    camera.position.set(5, 2, -2.5);
     camera.lookAt(scene.position);
 
     const renderer = new WebGLRenderer({ canvas: canvasElement, antialias: true });
