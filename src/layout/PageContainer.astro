@@ -1,7 +1,7 @@
 ---
 import type {
-    Seo,
-    SiteNavigators,
+  Seo,
+  SiteNavigators,
 } from "../../studio-lorika-ontop/sanity.types";
 import Footer from "./Footer.astro";
 import Navbar from "./Navbar.astro";
@@ -20,19 +20,19 @@ import { urlFor } from "../scripts/globals/sanity-client";
 const canonical = Astro.url.href;
 
 interface Props {
-    //SEO
-    seo: Seo;
-    //SITE NAVIGATORS (NAVBAR & FOOTER)
-    siteNavigators: SiteNavigators;
-    lang: string;
+  //SEO
+  seo: Seo;
+  //SITE NAVIGATORS (NAVBAR & FOOTER)
+  siteNavigators: SiteNavigators;
+  lang: string;
 }
 
 const {
-    //SEO
-    seo,
-    //SITE NAVIGATORS (NAVBAR & FOOTER)
-    siteNavigators,
-    lang = "en",
+  //SEO
+  seo,
+  //SITE NAVIGATORS (NAVBAR & FOOTER)
+  siteNavigators,
+  lang = "en",
 } = Astro.props;
 
 //NOTE - the images are required
@@ -41,88 +41,128 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
 
 <!doctype html>
 <html lang={lang}>
-    <!-- SECTION - HEAD -->
-    <head>
-        <!-- SECTION - FAVICONS -->
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="96x96"
-            href="/favicons/favicon-96x96.png"
-        />
-        <link
-            rel="icon"
-            href="/favicons/favicon.svg"
-            type="image/svg+xml"
-            sizes="any"
-        />
-        <link rel="icon" href="/favicons/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
-        <link rel="manifest" href="/favicons/site.webmanifest" />
-        <meta
-            name="theme-color"
-            content="#ffffff"
-            media="(prefers-color-scheme: light)"
-        />
-        <meta
-            name="theme-color"
-            content="#0f172a"
-            media="(prefers-color-scheme: dark)"
-        />
-        <!-- !SECTION - FAVICONS -->
+  <!-- SECTION - HEAD -->
+  <head>
+    <!-- SECTION - FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      href="/favicons/favicon.svg"
+      type="image/svg+xml"
+      sizes="any"
+    />
+    <link rel="icon" href="/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#0f172a"
+      media="(prefers-color-scheme: dark)"
+    />
+    <!-- !SECTION - FAVICONS -->
 
-        <!-- SECTION - META -->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SECTION - META -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- SEO base -->
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-        <meta name="robots" content={seo.robots} />
-        {canonical && <link rel="canonical" href={canonical} />}
+    <!-- SEO base -->
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <meta name="robots" content={seo.robots} />
+    {canonical && <link rel="canonical" href={canonical} />}
 
-        <!-- Open Graph -->
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.description} />
-        <meta property="og:type" content={seo.ogType} />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:image" content={thumbnailUrl} />
-        <meta property="og:site_name" content={seo.ogSiteName} />
-        <meta property="og:locale" content={getLocaleFromLang(lang)} />
+    <!-- Open Graph -->
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:type" content={seo.ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={thumbnailUrl} />
+    <meta property="og:site_name" content={seo.ogSiteName} />
+    <meta property="og:locale" content={getLocaleFromLang(lang)} />
 
-        <!-- Twitter -->
-        <meta name="twitter:card" content={seo.twitterCard} />
-        <meta name="twitter:title" content={seo.title} />
-        <meta name="twitter:description" content={seo.description} />
-        <meta name="twitter:image" content={thumbnailUrl} />
-        <!-- !SECTION - META -->
-    </head>
-    <!-- !SECTION - HEAD -->
-    <!-- SECTION - Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC"></script>
+    <!-- Twitter -->
+    <meta name="twitter:card" content={seo.twitterCard} />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={thumbnailUrl} />
+    <!-- !SECTION - META -->
+    <!-- SECTION - Facebook Pixel Code -->
     <script is:inline>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-GRKTDM70WC');
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1787167239334670");
+      fbq("track", "PageView");
     </script>
-    <!-- !SECTION - Google tag (gtag.js) -->
-    <!-- SECTION - BODY -->
-    <body>
-        <!-- SECTION - INITIALIZERS -->
-        <script src="../initializers/fire-color-inits.ts"></script>
-        <script src="../scripts/globals/on-scroll-anim.ts"></script>
-        <!-- !SECTION - INITIALIZERS -->
-        <!-- NAVBAR -->
-        <Navbar siteNavigators={siteNavigators} />
-        <!-- MAIN -->
-        <main>
-            <!-- PAGE CONTENT -->
-            <slot />
-        </main>
-        <!-- FOOTER -->
-        <Footer siteNavigators={siteNavigators} />
-    </body>
-    <!-- !SECTION - BODY -->
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        src="https://www.facebook.com/tr?id=1787167239334670&ev=PageView
+        &noscript=1"
+      />
+    </noscript>
+    <!-- !SECTION - Facebook Pixel Code -->
+  </head>
+  <!-- !SECTION - HEAD -->
+  <!-- SECTION - Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC"
+  ></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-GRKTDM70WC");
+  </script>
+  <!-- !SECTION - Google tag (gtag.js) -->
+  <!-- SECTION - BODY -->
+  <body>
+    <!-- SECTION - INITIALIZERS -->
+    <script src="../initializers/fire-color-inits.ts"></script>
+    <script src="../scripts/globals/on-scroll-anim.ts"></script>
+    <!-- !SECTION - INITIALIZERS -->
+    <!-- NAVBAR -->
+    <Navbar siteNavigators={siteNavigators} />
+    <!-- MAIN -->
+    <main>
+      <!-- PAGE CONTENT -->
+      <slot />
+    </main>
+    <!-- FOOTER -->
+    <Footer siteNavigators={siteNavigators} />
+  </body>
+  <!-- !SECTION - BODY -->
 </html>

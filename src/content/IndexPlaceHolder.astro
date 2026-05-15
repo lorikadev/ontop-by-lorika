@@ -14,414 +14,409 @@ import "../../public/css/pages/index-placeholder.css";
 
 <!doctype html>
 <html lang="en">
-    <!-- SECTION - HEAD -->
-    <head>
-        <!-- SECTION - FAVICONS -->
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="96x96"
-            href="/favicons/favicon-96x96.png"
-        />
-        <link
-            rel="icon"
-            href="/favicons/favicon.svg"
-            type="image/svg+xml"
-            sizes="any"
-        />
-        <link rel="icon" href="/favicons/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
-        <link rel="manifest" href="/favicons/site.webmanifest" />
-        <meta
-            name="theme-color"
-            content="#ffffff"
-            media="(prefers-color-scheme: light)"
-        />
-        <meta
-            name="theme-color"
-            content="#0f172a"
-            media="(prefers-color-scheme: dark)"
-        />
-        <!-- !SECTION - FAVICONS -->
+  <!-- SECTION - HEAD -->
+  <head>
+    <!-- SECTION - FAVICONS -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      href="/favicons/favicon.svg"
+      type="image/svg+xml"
+      sizes="any"
+    />
+    <link rel="icon" href="/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#0f172a"
+      media="(prefers-color-scheme: dark)"
+    />
+    <!-- !SECTION - FAVICONS -->
 
-        <!-- SECTION - META -->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SECTION - META -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- SEO base -->
-        <title>Ontop by Lorika - Landing page</title>
-        <meta
-            name="description"
-            content="A new mystery product is about to launch. Follow the countdown, submit your clue, and sign up to be notified when it's released."
-        />
+    <!-- SEO base -->
+    <title>Ontop by Lorika - Landing page</title>
+    <meta
+      name="description"
+      content="A new mystery product is about to launch. Follow the countdown, submit your clue, and sign up to be notified when it's released."
+    />
 
-        <!-- Open Graph -->
-        <meta property="og:title" content="Ontop by Lorika - Landing page" />
-        <meta
-            property="og:description"
-            content="A new mystery product is about to launch. Follow the countdown, submit your clue, and sign up to be notified when it's released."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={origin} />
-        <meta
-            property="og:image"
-            content={`${origin}/images/logo/logo-ontop-lorika-cropped-white.jpg`}
-        />
-        <meta property="og:site_name" content="Ontop by Lorika" />
-        <meta property="og:locale" content="en_US" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ontop by Lorika - Landing page" />
+    <meta
+      property="og:description"
+      content="A new mystery product is about to launch. Follow the countdown, submit your clue, and sign up to be notified when it's released."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={origin} />
+    <meta
+      property="og:image"
+      content={`${origin}/images/logo/logo-ontop-lorika-cropped-white.jpg`}
+    />
+    <meta property="og:site_name" content="Ontop by Lorika" />
+    <meta property="og:locale" content="en_US" />
 
-        <!-- Twitter -->
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Ontop by Lorika - Landing page" />
-        <meta
-            name="twitter:description"
-            content="A new mystery product is about to launch. Follow the countdown, submit your clue, and sign up to be notified when it's released."
-        />
-        <meta
-            name="twitter:image"
-            content={`${origin}/images/logo/logo-ontop-lorika-cropped-white.jpg`}
-        />
-        <!-- !SECTION - META -->
-    </head>
-    <!-- !SECTION - HEAD -->
-    <!-- SECTION - Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC"></script>
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Ontop by Lorika - Landing page" />
+    <meta
+      name="twitter:description"
+      content="A new mystery product is about to launch. Follow the countdown, submit your clue, and sign up to be notified when it's released."
+    />
+    <meta
+      name="twitter:image"
+      content={`${origin}/images/logo/logo-ontop-lorika-cropped-white.jpg`}
+    />
+    <!-- !SECTION - META -->
+    <!-- SECTION - Facebook Pixel Code -->
     <script is:inline>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-GRKTDM70WC');
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1787167239334670");
+      fbq("track", "PageView");
     </script>
-    <!-- !SECTION - Google tag (gtag.js) -->
-    <!-- SECTION - BODY -->
-    <body>
-        <!-- MAIN -->
-        <main>
-            <!-- PAGE CONTENT -->
-            <div id="logo-wrapper">
-                <img
-                    src="/images/logo/logo-ontop-lorika-cropped-white.svg"
-                    alt="logo ontop by lorika"
-                />
-            </div>
-            <div
-                id="countdown-wrapper"
-                class="fade-in"
-                anim-on-scroll="fade-in"
-            >
-                <div id="days" class="time-wrapper">
-                    <span class="time"></span>
-                    <span class="label">days</span>
-                </div>
-                <span class="separator">:</span>
-                <div id="hours" class="time-wrapper">
-                    <span class="time"></span>
-                    <span class="label">hours</span>
-                </div>
-                <span class="separator">:</span>
-                <div id="minutes" class="time-wrapper">
-                    <span class="time"></span>
-                    <span class="label">minutes</span>
-                </div>
-                <span class="separator">:</span>
-                <div id="seconds" class="time-wrapper">
-                    <span class="time"></span>
-                    <span class="label">seconds</span>
-                </div>
-            </div>
-            <!-- DISCOVER -->
-            <div
-                id="discover-wrapper"
-                class="fade-in"
-                anim-on-scroll="fade-in"
-                anim-on-scroll-delay="0.15"
-            >
-                <h2 class="fw-700" class="mb-1">
-                    DISCOVER YOUR... <br /> CAN YOU GUESS WHAT IT IS?
-                </h2>
-                <!-- form -->
-                <form id="guess-form">
-                    <div class="input-button-wrapper w-100">
-                        <input
-                            placeholder="LEAVE YOUR GUESS"
-                            type="text"
-                            name="guess"
-                            required
-                        />
-                        <button class="orange" type="submit">
-                            <span class="normal">></span>
-                            <div class="custom-loader"></div>
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <!-- SUBSCRIBE -->
-            <div
-                id="subscribe-wrapper"
-                class="fade-in"
-                anim-on-scroll="fade-in"
-                anim-on-scroll-delay="0.3"
-            >
-                <div id="subscribe-header" class="mb-1">
-                    <h2 class="m-0">SUBSCRIPTION |</h2>
-                    <p>
-                        <span class="red">*</span>
-                        <span class="grey">REQUIRED FIELDS</span>
-                    </p>
-                </div>
-                <!-- form -->
-                <form id="subscribe-form">
-                    <!-- first name -->
-                    <div class="input-button-wrapper">
-                        <input
-                            placeholder="FIRST NAME"
-                            type="text"
-                            name="first_name"
-                        />
-                        <button class="blue" type="submit">
-                            <span class="normal">></span>
-                            <div class="custom-loader"></div>
-                        </button>
-                    </div>
-                    <!-- first name -->
-                    <div class="input-button-wrapper">
-                        <input
-                            placeholder="LAST NAME"
-                            type="text"
-                            name="last_name"
-                        />
-                        <button class="purple" type="submit">
-                            <span class="normal">></span>
-                            <div class="custom-loader"></div>
-                        </button>
-                    </div>
-                    <!-- first name -->
-                    <div id="mail-input" class="input-button-wrapper">
-                        <span class="red input-asterisk">*</span>
-                        <input
-                            placeholder="E-MAIL"
-                            type="email"
-                            name="email"
-                            required
-                        />
-                        <button class="green" type="submit">
-                            <span class="normal">></span>
-                            <div class="custom-loader"></div>
-                        </button>
-                    </div>
-                </form>
-            </div>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        src="https://www.facebook.com/tr?id=1787167239334670&ev=PageView
+        &noscript=1"
+      />
+    </noscript>
+    <!-- !SECTION - Facebook Pixel Code -->
+  </head>
+  <!-- !SECTION - HEAD -->
 
-            <!-- RESPONSE MODAL -->
-            <div id="modal" class="modal hidden">
-                <div id="modal-content" class="modal-content"></div>
-            </div>
+  <!-- SECTION - Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC"
+  ></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-            <!-- ON SCROL ANIMATION SCRIPT -->
-            <script src="../scripts/globals/on-scroll-anim.ts"></script>
+    gtag("config", "G-GRKTDM70WC");
+  </script>
+  <!-- !SECTION - Google tag (gtag.js) -->
+  <!-- SECTION - BODY -->
+  <body>
+    <!-- MAIN -->
+    <main>
+      <!-- PAGE CONTENT -->
+      <div id="logo-wrapper">
+        <img
+          src="/images/logo/logo-ontop-lorika-cropped-white.svg"
+          alt="logo ontop by lorika"
+        />
+      </div>
+      <div id="countdown-wrapper" class="fade-in" anim-on-scroll="fade-in">
+        <div id="days" class="time-wrapper">
+          <span class="time"></span>
+          <span class="label">days</span>
+        </div>
+        <span class="separator">:</span>
+        <div id="hours" class="time-wrapper">
+          <span class="time"></span>
+          <span class="label">hours</span>
+        </div>
+        <span class="separator">:</span>
+        <div id="minutes" class="time-wrapper">
+          <span class="time"></span>
+          <span class="label">minutes</span>
+        </div>
+        <span class="separator">:</span>
+        <div id="seconds" class="time-wrapper">
+          <span class="time"></span>
+          <span class="label">seconds</span>
+        </div>
+      </div>
+      <!-- DISCOVER -->
+      <div
+        id="discover-wrapper"
+        class="fade-in"
+        anim-on-scroll="fade-in"
+        anim-on-scroll-delay="0.15"
+      >
+        <h2 class="fw-700" class="mb-1">
+          DISCOVER YOUR... <br /> CAN YOU GUESS WHAT IT IS?
+        </h2>
+        <!-- form -->
+        <form id="guess-form">
+          <div class="input-button-wrapper w-100">
+            <input
+              placeholder="LEAVE YOUR GUESS"
+              type="text"
+              name="guess"
+              required
+            />
+            <button class="orange" type="submit">
+              <span class="normal">></span>
+              <div class="custom-loader"></div>
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- SUBSCRIBE -->
+      <div
+        id="subscribe-wrapper"
+        class="fade-in"
+        anim-on-scroll="fade-in"
+        anim-on-scroll-delay="0.3"
+      >
+        <div id="subscribe-header" class="mb-1">
+          <h2 class="m-0">SUBSCRIPTION |</h2>
+          <p>
+            <span class="red">*</span>
+            <span class="grey">REQUIRED FIELDS</span>
+          </p>
+        </div>
+        <!-- form -->
+        <form id="subscribe-form">
+          <!-- first name -->
+          <div class="input-button-wrapper">
+            <input placeholder="FIRST NAME" type="text" name="first_name" />
+            <button class="blue" type="submit">
+              <span class="normal">></span>
+              <div class="custom-loader"></div>
+            </button>
+          </div>
+          <!-- first name -->
+          <div class="input-button-wrapper">
+            <input placeholder="LAST NAME" type="text" name="last_name" />
+            <button class="purple" type="submit">
+              <span class="normal">></span>
+              <div class="custom-loader"></div>
+            </button>
+          </div>
+          <!-- first name -->
+          <div id="mail-input" class="input-button-wrapper">
+            <span class="red input-asterisk">*</span>
+            <input placeholder="E-MAIL" type="email" name="email" required />
+            <button class="green" type="submit">
+              <span class="normal">></span>
+              <div class="custom-loader"></div>
+            </button>
+          </div>
+        </form>
+      </div>
 
-            <!-- COUNTDOWN TIMER SCRIPT -->
-            <script is:inline>
-                /**
-                 * @param targetDate data to the countdown as a string in iso format
-                 * @summary init countdown settings and fires the automatic update
-                 */
-                function startCountdown(targetDate) {
-                    const target = new Date(targetDate).getTime();
+      <!-- RESPONSE MODAL -->
+      <div id="modal" class="modal hidden">
+        <div id="modal-content" class="modal-content"></div>
+      </div>
 
-                    //html elements where the data will be displayed
-                    const elements = {
-                        days: document.querySelector("#days .time"),
-                        hours: document.querySelector("#hours .time"),
-                        minutes: document.querySelector("#minutes .time"),
-                        seconds: document.querySelector("#seconds .time"),
-                    };
+      <!-- ON SCROL ANIMATION SCRIPT -->
+      <script src="../scripts/globals/on-scroll-anim.ts"></script>
 
-                    /**
-                     * function that updates the view with countdown data
-                     */
-                    function updateCountdown() {
-                        const now = new Date().getTime();
-                        const distance = target - now;
+      <!-- COUNTDOWN TIMER SCRIPT -->
+      <script is:inline>
+        /**
+         * @param targetDate data to the countdown as a string in iso format
+         * @summary init countdown settings and fires the automatic update
+         */
+        function startCountdown(targetDate) {
+          const target = new Date(targetDate).getTime();
 
-                        if (distance <= 0) {
-                            clearInterval(interval);
+          //html elements where the data will be displayed
+          const elements = {
+            days: document.querySelector("#days .time"),
+            hours: document.querySelector("#hours .time"),
+            minutes: document.querySelector("#minutes .time"),
+            seconds: document.querySelector("#seconds .time"),
+          };
 
-                            elements.days.textContent = "00";
-                            elements.hours.textContent = "00";
-                            elements.minutes.textContent = "00";
-                            elements.seconds.textContent = "00";
+          /**
+           * function that updates the view with countdown data
+           */
+          function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = target - now;
 
-                            return;
-                        }
+            if (distance <= 0) {
+              clearInterval(interval);
 
-                        //GET THE 'MODULO' OF THE DATE FOR A TIME UNIT
-                        const days = Math.floor(
-                            distance / (1000 * 60 * 60 * 24),
-                        );
-                        const hours = Math.floor(
-                            (distance % (1000 * 60 * 60 * 24)) /
-                                (1000 * 60 * 60),
-                        );
-                        const minutes = Math.floor(
-                            (distance % (1000 * 60 * 60)) / (1000 * 60),
-                        );
-                        const seconds = Math.floor(
-                            (distance % (1000 * 60)) / 1000,
-                        );
+              elements.days.textContent = "00";
+              elements.hours.textContent = "00";
+              elements.minutes.textContent = "00";
+              elements.seconds.textContent = "00";
 
-                        //DISPLAY THE DATE COUNTDOWN PIECES
-                        elements.days.textContent = String(days).padStart(
-                            2,
-                            "0",
-                        );
-                        elements.hours.textContent = String(hours).padStart(
-                            2,
-                            "0",
-                        );
-                        elements.minutes.textContent = String(minutes).padStart(
-                            2,
-                            "0",
-                        );
-                        elements.seconds.textContent = String(seconds).padStart(
-                            2,
-                            "0",
-                        );
-                    }
-                    //FIRES UPDATE COUNTDOWN
-                    updateCountdown();
-                    //FIRES UPDATE COUNTDOWN EVERY SECOND
-                    const interval = setInterval(updateCountdown, 1000);
-                }
+              return;
+            }
 
-                //INIT COUNTDOWN
-                startCountdown("2026-06-13T10:00:00");
-            </script>
+            //GET THE 'MODULO' OF THE DATE FOR A TIME UNIT
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(
+              (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+            );
+            const minutes = Math.floor(
+              (distance % (1000 * 60 * 60)) / (1000 * 60),
+            );
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            <!-- MODAL HELPER SCRIPT -->
-            <script is:inline>
-                const modal = document.getElementById("modal");
-                const modalContent = document.getElementById("modal-content");
+            //DISPLAY THE DATE COUNTDOWN PIECES
+            elements.days.textContent = String(days).padStart(2, "0");
+            elements.hours.textContent = String(hours).padStart(2, "0");
+            elements.minutes.textContent = String(minutes).padStart(2, "0");
+            elements.seconds.textContent = String(seconds).padStart(2, "0");
+          }
+          //FIRES UPDATE COUNTDOWN
+          updateCountdown();
+          //FIRES UPDATE COUNTDOWN EVERY SECOND
+          const interval = setInterval(updateCountdown, 1000);
+        }
 
-                /**
-                 * @param message string of the content of the message
-                 * @param type type of message, currently works with error or success, fallback to green color
-                 */
-                function showModal(message, type) {
-                    modalContent.textContent = message;
+        //INIT COUNTDOWN
+        startCountdown("2026-06-13T10:00:00");
+      </script>
 
-                    //update the color of the content of the modal
-                    //default is green
-                    modalContent.classList.remove("green");
-                    modalContent.classList.remove("red");
-                    let respClass = "";
-                    switch (type) {
-                        case "error":
-                            respClass = "red";
-                            break;
-                        case "success":
-                        default:
-                            respClass = "green";
-                            break;
-                    }
-                    modalContent.classList.add(respClass);
-                    modal.classList.remove("hidden");
+      <!-- MODAL HELPER SCRIPT -->
+      <script is:inline>
+        const modal = document.getElementById("modal");
+        const modalContent = document.getElementById("modal-content");
 
-                    // force reflow to fire animation
-                    requestAnimationFrame(() => {
-                        modal.classList.add("show");
-                    });
+        /**
+         * @param message string of the content of the message
+         * @param type type of message, currently works with error or success, fallback to green color
+         */
+        function showModal(message, type) {
+          modalContent.textContent = message;
 
-                    //automatic disappear for the modal
-                    setTimeout(() => {
-                        modal.classList.remove("show");
+          //update the color of the content of the modal
+          //default is green
+          modalContent.classList.remove("green");
+          modalContent.classList.remove("red");
+          let respClass = "";
+          switch (type) {
+            case "error":
+              respClass = "red";
+              break;
+            case "success":
+            default:
+              respClass = "green";
+              break;
+          }
+          modalContent.classList.add(respClass);
+          modal.classList.remove("hidden");
 
-                        setTimeout(() => {
-                            modal.classList.add("hidden");
-                        }, 300);
-                    }, 2500);
-                }
-            </script>
+          // force reflow to fire animation
+          requestAnimationFrame(() => {
+            modal.classList.add("show");
+          });
 
-            <!-- GUESS FORM SCRIPT -->
-            <script is:inline>
-                const guessForm = document.getElementById("guess-form");
-                const guessInputs = guessForm.querySelectorAll("button, input");
-                guessForm.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-                    //get data before the disable
-                    const data = Object.fromEntries(new FormData(guessForm));
-                    guessInputs.forEach((i) => (i.disabled = true));
-                    try {
-                        const endpointSubUrl =
-                            "https://script.google.com/macros/s/AKfycbweESkh0Kz4fED09CllE4IAQlhyrLmyKPdKDr2WnaXQcrJypV3nXoTMmy3vYPyazICj/exec";
-                        const res = await fetch(endpointSubUrl, {
-                            method: "POST",
-                            body: JSON.stringify(data),
-                        });
+          //automatic disappear for the modal
+          setTimeout(() => {
+            modal.classList.remove("show");
 
-                        if (!res.ok) {
-                            showModal(
-                                "There was an error, try again later.",
-                                "error",
-                            );
-                        } else {
-                            showModal("Thanks for your guess!", "success");
-                            guessForm.reset();
-                        }
-                    } catch (error) {
-                        console.error(error);
-                    } finally {
-                        guessInputs.forEach((i) => (i.disabled = false));
-                    }
-                });
-            </script>
+            setTimeout(() => {
+              modal.classList.add("hidden");
+            }, 300);
+          }, 2500);
+        }
+      </script>
 
-            <!-- SUBSCRIBE FORM SCRIPT -->
-            <script is:inline>
-                const subscribeForm = document.getElementById("subscribe-form");
-                const subscribeInputs =
-                    subscribeForm.querySelectorAll("button, input");
+      <!-- GUESS FORM SCRIPT -->
+      <script is:inline>
+        const guessForm = document.getElementById("guess-form");
+        const guessInputs = guessForm.querySelectorAll("button, input");
+        guessForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          //get data before the disable
+          const data = Object.fromEntries(new FormData(guessForm));
+          guessInputs.forEach((i) => (i.disabled = true));
+          try {
+            const endpointSubUrl =
+              "https://script.google.com/macros/s/AKfycbweESkh0Kz4fED09CllE4IAQlhyrLmyKPdKDr2WnaXQcrJypV3nXoTMmy3vYPyazICj/exec";
+            const res = await fetch(endpointSubUrl, {
+              method: "POST",
+              body: JSON.stringify(data),
+            });
 
-                subscribeForm.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-                    //get data before the disable
-                    const data = Object.fromEntries(
-                        new FormData(subscribeForm),
-                    );
-                    subscribeInputs.forEach((i) => (i.disabled = true));
-                    try {
-                        const endpointSubUrl = "/.netlify/functions/subscribe";
+            if (!res.ok) {
+              showModal("There was an error, try again later.", "error");
+            } else {
+              showModal("Thanks for your guess!", "success");
+              guessForm.reset();
+            }
+          } catch (error) {
+            console.error(error);
+          } finally {
+            guessInputs.forEach((i) => (i.disabled = false));
+          }
+        });
+      </script>
 
-                        const res = await fetch(endpointSubUrl, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(data),
-                        });
+      <!-- SUBSCRIBE FORM SCRIPT -->
+      <script is:inline>
+        const subscribeForm = document.getElementById("subscribe-form");
+        const subscribeInputs = subscribeForm.querySelectorAll("button, input");
 
-                        if (!res.ok) {
-                            showModal(
-                                "There was an error, try again later.",
-                                "error",
-                            );
-                        } else {
-                            showModal(
-                                "Thanks for your subscription!",
-                                "success",
-                            );
-                            subscribeForm.reset();
-                        }
-                    } catch (error) {
-                        console.error(error);
-                    } finally {
-                        subscribeInputs.forEach((i) => (i.disabled = false));
-                    }
-                });
-            </script>
-        </main>
-    </body>
-    <!-- !SECTION - BODY -->
+        subscribeForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          //get data before the disable
+          const data = Object.fromEntries(new FormData(subscribeForm));
+          subscribeInputs.forEach((i) => (i.disabled = true));
+          try {
+            const endpointSubUrl = "/.netlify/functions/subscribe";
+
+            const res = await fetch(endpointSubUrl, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            });
+
+            if (!res.ok) {
+              showModal("There was an error, try again later.", "error");
+            } else {
+              showModal("Thanks for your subscription!", "success");
+              subscribeForm.reset();
+            }
+          } catch (error) {
+            console.error(error);
+          } finally {
+            subscribeInputs.forEach((i) => (i.disabled = false));
+          }
+        });
+      </script>
+    </main>
+  </body>
+  <!-- !SECTION - BODY -->
 </html>
