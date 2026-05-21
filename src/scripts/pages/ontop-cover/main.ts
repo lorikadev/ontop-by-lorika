@@ -13,7 +13,7 @@ function appendToDesktopGallery(currentRal: string) {
             throw new Error('mainProductImageEl or secondaryProductImagesEl is missing');
 
         //load main image
-        const currBaseRal = baseUrl.replace('{{RAL}}', currentRal) + '1.png';
+        const currBaseRal = baseUrl.replace('{{RAL}}', currentRal) + '1.webp';
         const mainImgElString = `
             <div class='skeleton'>
                 <img id='desktop-product-img-1' src='${currBaseRal}' class="w-100"/>
@@ -26,7 +26,7 @@ function appendToDesktopGallery(currentRal: string) {
 
         //load secondary
         for (let i = 2; i <= QTA_OF_PHOTO; i++) {
-            const currBaseRal = baseUrl.replace('{{RAL}}', currentRal) + `${i}.png`;
+            const currBaseRal = baseUrl.replace('{{RAL}}', currentRal) + `${i}.webp`;
             const secondaryImgElString = `
                 <div class='skeleton'>
                     <img id='desktop-product-img-${i}' src='${currBaseRal}'/>
@@ -53,7 +53,7 @@ function appendToMobileGallery(currentRal: string) {
 
         //load images
         for (let i = 1; i <= QTA_OF_PHOTO; i++) {
-            const currBaseRal = baseUrl.replace('{{RAL}}', currentRal) + `${i}.png`;
+            const currBaseRal = baseUrl.replace('{{RAL}}', currentRal) + `${i}.webp`;
 
             //append to main splide gallery
             const liSplideElString = `
@@ -155,7 +155,7 @@ document.addEventListener('changedHighlightColor', (_: any) => {
                 throw new Error(`html el with id desktop-product-img-${i} is missing`);
 
             desktopImgEl.src =
-                baseUrl.replace('{{RAL}}', currentRal) + `${i}.png`;
+                baseUrl.replace('{{RAL}}', currentRal) + `${i}.webp`;
         }
 
         //mobile gallery images
@@ -166,7 +166,7 @@ document.addEventListener('changedHighlightColor', (_: any) => {
                 throw new Error(`html el with id mobile-product-img-${i} is missing`);
 
             mobileImgEl.src =
-                baseUrl.replace('{{RAL}}', currentRal) + `${i}.png`;
+                baseUrl.replace('{{RAL}}', currentRal) + `${i}.webp`;
         }
 
         //mobile thumbnails
@@ -180,7 +180,7 @@ document.addEventListener('changedHighlightColor', (_: any) => {
 
             if (mobileThumbnailImgEl) {
                 mobileThumbnailImgEl.src =
-                    baseUrl.replace('{{RAL}}', currentRal) + `${i}.png`;
+                    baseUrl.replace('{{RAL}}', currentRal) + `${i}.webp`;
             }
         }
     } catch (error) {
