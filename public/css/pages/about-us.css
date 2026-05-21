@@ -99,8 +99,10 @@
     position: absolute;
     right: -25%;
     transform-origin: center;
-    top: -15%;
+    top: 50%;
+    transform: translateY(-50%) !important;
     height: 130%;
+    max-height: 470px;
 }
 
 /*  NOTE
@@ -150,9 +152,6 @@
 
     #what-are-we>div:last-child>img {
         opacity: 0.05;
-        height: 100%;
-        top: 0%;
-        right: -25%;
     }
 }
 /* !SECTION - WHATE ARE WE */
