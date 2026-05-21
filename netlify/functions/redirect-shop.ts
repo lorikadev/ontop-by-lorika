@@ -2,7 +2,7 @@ import { SHOPIFY_URL } from "../../src/const";
 import type { Handler } from "@netlify/functions";
 
 export const handler: Handler = async (event) => {
-    const country = event.headers["x-nf-country"] || "";
+    const country = event.headers["x-country"] || "";
 
     const shopifyCountries = new Set([
         "US", "CA",
