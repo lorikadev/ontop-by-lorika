@@ -137,20 +137,17 @@ import "../../public/css/pages/index-placeholder.css";
       }
 
       function initTracking() {
-        const purposes = window._iub?.cs?.csPurposes || [];
-
-        const hasAnalytics = purposes.includes(3);
-        const hasMarketing = purposes.includes(2);
+        const purposes = window._iub?.cs?.consent?.purposes || [];
+        const hasAnalytics = purposes["3"] === true;
+        const hasMarketing = purposes["4"] === true;
 
         if (hasAnalytics) loadGA();
         if (hasMarketing) loadMetaPixel();
       }
 
       window.addEventListener("load", () => {
-        initTracking();
-
         const interval = setInterval(() => {
-          if (window._iub?.cs?.csPurposes) {
+          if (window._iub?.cs?.consent?.purposes) {
             clearInterval(interval);
             initTracking();
           }

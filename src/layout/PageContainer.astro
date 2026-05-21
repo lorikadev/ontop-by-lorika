@@ -103,8 +103,24 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
   <meta name="twitter:image" content={thumbnailUrl} />
   <!-- !SECTION - META -->
 
-  <!-- SECTION - Facebook Pixel Code -->
+  <!-- SECTION - META + PIXEL + GA LOADER -->
   <script is:inline>
+    function loadGA() {
+      const s = document.createElement("script");
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC";
+      s.async = true;
+      document.head.appendChild(s);
+
+      s.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-GRKTDM70WC");
+      };
+    }
+
     function loadMetaPixel() {
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
@@ -133,64 +149,26 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
       fbq("init", "1787167239334670");
       fbq("track", "PageView");
     }
-  </script>
 
-  <noscript>
-    <img
-      height="1"
-      width="1"
-      src="https://www.facebook.com/tr?id=1787167239334670&ev=PageView&noscript=1"
-    />
-  </noscript>
-  <!-- !SECTION - Facebook Pixel Code -->
-
-  <!-- !SECTION - HEAD -->
-
-  <!-- SECTION - Google tag (gtag.js) -->
-  <script is:inline>
-    function loadGA() {
-      const s = document.createElement("script");
-      s.src = "https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC";
-      s.async = true;
-      document.head.appendChild(s);
-
-      s.onload = () => {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
-        gtag("config", "G-GRKTDM70WC");
-      };
-    }
-  </script>
-  <!-- !SECTION - Google tag (gtag.js) -->
-
-  <!-- CONSENT BOOTSTRAP -->
-  <script is:inline>
-    function initTrackingByConsent() {
-      const iub = window._iub;
-      const purposes = iub?.cs?.csPurposes || [];
-
-      const hasAnalytics = purposes.includes(3);
-      const hasMarketing = purposes.includes(2);
+    function initTracking() {
+      const purposes = window._iub?.cs?.consent?.purposes || [];
+      const hasAnalytics = purposes["3"] === true;
+      const hasMarketing = purposes["4"] === true;
 
       if (hasAnalytics) loadGA();
       if (hasMarketing) loadMetaPixel();
     }
 
     window.addEventListener("load", () => {
-      initTrackingByConsent();
-
-      // ricalcolo dopo interazione cookie
       const interval = setInterval(() => {
-        if (window._iub?.cs?.csPurposes) {
+        if (window._iub?.cs?.consent?.purposes) {
           clearInterval(interval);
-          initTrackingByConsent();
+          initTracking();
         }
       }, 1000);
     });
   </script>
+  <!-- !SECTION - META + PIXEL + GA LOADER -->
 
   <!-- SECTION - BODY -->
   <body>
