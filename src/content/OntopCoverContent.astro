@@ -10,7 +10,7 @@ import { cleanHtml } from "../scripts/globals/clean-html";
 //SECTION - CSS
 import "../../public/css/pages/ontop-cover.css";
 import "../../public/libraries/splide-4.1.3/css/splide-default.min.css";
-import { SHOPIFY_URL } from "../const";
+import { SHOP_REDIRECT_URL } from "../const";
 //!SECTION - CSS
 
 interface Props {
@@ -76,7 +76,7 @@ let { colorPickerData, ontopCoverData } = Astro.props;
       <a
         class="button primary fs-15 w-100"
         aria-label={ontopCoverData.buyNowCta?.ariaLabel}
-        href={SHOPIFY_URL}
+        href={SHOP_REDIRECT_URL}
         target="_blank"
       >
         {ontopCoverData.buyNowCta?.label}

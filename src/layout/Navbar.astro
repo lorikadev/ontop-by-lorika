@@ -1,6 +1,6 @@
 ---
 import type { SiteNavigators } from "../../studio-lorika-ontop/sanity.types";
-import { SHOPIFY_URL } from "../const";
+import { SHOP_REDIRECT_URL } from "../const";
 import { urlFor } from "../scripts/globals/sanity-client";
 
 //NOTE
@@ -39,7 +39,7 @@ const navData = siteNavigators.navbar;
             <!-- CTA -->
             <a
                 class="button primary fs-2-mob nav-cta-shop"
-                href={SHOPIFY_URL}
+                href={SHOP_REDIRECT_URL}
                 aria-label={navData?.shopAriaLabel}
             >
                 {navData?.shop}
@@ -104,7 +104,7 @@ const navData = siteNavigators.navbar;
         <div class="nav-cta-wrapper show-till-mob">
             <a
                 class="button primary wide fs-2-mob nav-cta-shop"
-                href={SHOPIFY_URL}
+                href={SHOP_REDIRECT_URL}
                 aria-label={navData?.shopAriaLabel}
             >
                 {navData?.shop}
@@ -112,7 +112,7 @@ const navData = siteNavigators.navbar;
 
             <a
                 class="button primary icon-for-button nav-cta-cart"
-                href={SHOPIFY_URL}
+                href={SHOP_REDIRECT_URL}
                 aria-label={navData?.cartAriaLabel}
                 aria-current={activeLinkPath === "/cart" ? "page" : undefined}
             >
