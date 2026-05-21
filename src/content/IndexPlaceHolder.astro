@@ -88,65 +88,78 @@ import "../../public/css/pages/index-placeholder.css";
       content={`${origin}/images/logo/logo-ontop-lorika-cropped-white.jpg`}
     />
     <!-- !SECTION - META -->
-    <!-- SECTION - Facebook Pixel Code -->
-    <script type="text/plain" class="iubenda-cs-activate" data-iub-purposes="2">
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
+
+    <!-- SECTION - META + PIXEL + GA LOADER -->
+    <script is:inline>
+      function loadGA() {
+        const s = document.createElement("script");
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC";
+        s.async = true;
+        document.head.appendChild(s);
+
+        s.onload = () => {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", "G-GRKTDM70WC");
         };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js",
-      );
+      }
 
-      fbq("init", "1787167239334670");
-      fbq("track", "PageView");
+      function loadMetaPixel() {
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod
+              ? n.callMethod.apply(n, arguments)
+              : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = "2.0";
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(
+          window,
+          document,
+          "script",
+          "https://connect.facebook.net/en_US/fbevents.js",
+        );
+
+        fbq("init", "1787167239334670");
+        fbq("track", "PageView");
+      }
+
+      function initTracking() {
+        const purposes = window._iub?.cs?.csPurposes || [];
+
+        const hasAnalytics = purposes.includes(3);
+        const hasMarketing = purposes.includes(2);
+
+        if (hasAnalytics) loadGA();
+        if (hasMarketing) loadMetaPixel();
+      }
+
+      window.addEventListener("load", () => {
+        initTracking();
+
+        const interval = setInterval(() => {
+          if (window._iub?.cs?.csPurposes) {
+            clearInterval(interval);
+            initTracking();
+          }
+        }, 1000);
+      });
     </script>
-
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        src="https://www.facebook.com/tr?id=1787167239334670&ev=PageView&noscript=1"
-      />
-    </noscript>
-    <!-- !SECTION - Facebook Pixel Code -->
+    <!-- !SECTION - META + PIXEL + GA LOADER -->
   </head>
   <!-- !SECTION - HEAD -->
-
-  <!-- SECTION - Google tag (gtag.js) -->
-  <script
-    type="text/plain"
-    class="iubenda-cs-activate"
-    data-iub-purposes="3"
-    src="https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC"></script>
-
-  <script type="text/plain" class="iubenda-cs-activate" data-iub-purposes="3">
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag("js", new Date());
-
-    gtag("config", "G-GRKTDM70WC");
-  </script>
-  <!-- !SECTION - Google tag (gtag.js) -->
   <!-- SECTION - BODY -->
   <body>
     <!-- MAIN -->

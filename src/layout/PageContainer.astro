@@ -104,32 +104,35 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
   <!-- !SECTION - META -->
 
   <!-- SECTION - Facebook Pixel Code -->
-  <script type="text/plain" class="iubenda-cs-activate" data-iub-purposes="2">
-    !(function (f, b, e, v, n, t, s) {
-      if (f.fbq) return;
-      n = f.fbq = function () {
-        n.callMethod
-          ? n.callMethod.apply(n, arguments)
-          : n.queue.push(arguments);
-      };
-      if (!f._fbq) f._fbq = n;
-      n.push = n;
-      n.loaded = !0;
-      n.version = "2.0";
-      n.queue = [];
-      t = b.createElement(e);
-      t.async = !0;
-      t.src = v;
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
-    })(
-      window,
-      document,
-      "script",
-      "https://connect.facebook.net/en_US/fbevents.js",
-    );
-    fbq("init", "1787167239334670");
-    fbq("track", "PageView");
+  <script is:inline>
+    function loadMetaPixel() {
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+
+      fbq("init", "1787167239334670");
+      fbq("track", "PageView");
+    }
   </script>
 
   <noscript>
@@ -144,22 +147,50 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
   <!-- !SECTION - HEAD -->
 
   <!-- SECTION - Google tag (gtag.js) -->
-  <script
-    type="text/plain"
-    class="iubenda-cs-activate"
-    data-iub-purposes="3"
-    src="https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC"></script>
+  <script is:inline>
+    function loadGA() {
+      const s = document.createElement("script");
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC";
+      s.async = true;
+      document.head.appendChild(s);
 
-  <script type="text/plain" class="iubenda-cs-activate" data-iub-purposes="3">
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
+      s.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-GRKTDM70WC");
+      };
     }
-    gtag("js", new Date());
-
-    gtag("config", "G-GRKTDM70WC");
   </script>
   <!-- !SECTION - Google tag (gtag.js) -->
+
+  <!-- CONSENT BOOTSTRAP -->
+  <script is:inline>
+    function initTrackingByConsent() {
+      const iub = window._iub;
+      const purposes = iub?.cs?.csPurposes || [];
+
+      const hasAnalytics = purposes.includes(3);
+      const hasMarketing = purposes.includes(2);
+
+      if (hasAnalytics) loadGA();
+      if (hasMarketing) loadMetaPixel();
+    }
+
+    window.addEventListener("load", () => {
+      initTrackingByConsent();
+
+      // ricalcolo dopo interazione cookie
+      const interval = setInterval(() => {
+        if (window._iub?.cs?.csPurposes) {
+          clearInterval(interval);
+          initTrackingByConsent();
+        }
+      }, 1000);
+    });
+  </script>
 
   <!-- SECTION - BODY -->
   <body>
