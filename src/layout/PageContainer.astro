@@ -42,105 +42,115 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
 <!doctype html>
 <html lang={lang}>
   <!-- IUBENDA -->
-  <script type="text/javascript" src="https://embeds.iubenda.com/widgets/d27f647b-9e2f-42fd-9a32-00219f8c402f.js"></script>
-  <!-- SECTION - HEAD -->
-  <head>
-    <!-- SECTION - FAVICONS -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="/favicons/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      href="/favicons/favicon.svg"
-      type="image/svg+xml"
-      sizes="any"
-    />
-    <link rel="icon" href="/favicons/favicon.ico" />
-    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
-    <link rel="manifest" href="/favicons/site.webmanifest" />
-    <meta
-      name="theme-color"
-      content="#ffffff"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#0f172a"
-      media="(prefers-color-scheme: dark)"
-    />
-    <!-- !SECTION - FAVICONS -->
-
-    <!-- SECTION - META -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO base -->
-    <title>{seo.title}</title>
-    <meta name="description" content={seo.description} />
-    <meta name="robots" content={seo.robots} />
-    {canonical && <link rel="canonical" href={canonical} />}
-
-    <!-- Open Graph -->
-    <meta property="og:title" content={seo.title} />
-    <meta property="og:description" content={seo.description} />
-    <meta property="og:type" content={seo.ogType} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={thumbnailUrl} />
-    <meta property="og:site_name" content={seo.ogSiteName} />
-    <meta property="og:locale" content={getLocaleFromLang(lang)} />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content={seo.twitterCard} />
-    <meta name="twitter:title" content={seo.title} />
-    <meta name="twitter:description" content={seo.description} />
-    <meta name="twitter:image" content={thumbnailUrl} />
-    <!-- !SECTION - META -->
-    <!-- SECTION - Facebook Pixel Code -->
-    <script is:inline>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js",
-      );
-      fbq("init", "1787167239334670");
-      fbq("track", "PageView");
-    </script>
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        src="https://www.facebook.com/tr?id=1787167239334670&ev=PageView
-        &noscript=1"
-      />
-    </noscript>
-    <!-- !SECTION - Facebook Pixel Code -->
-  </head>
-  <!-- !SECTION - HEAD -->
-  <!-- SECTION - Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC"
+  <script
+    type="text/javascript"
+    src="https://embeds.iubenda.com/widgets/d27f647b-9e2f-42fd-9a32-00219f8c402f.js"
   ></script>
-  <script is:inline>
+
+  <!-- SECTION - HEAD -->
+
+  <!-- SECTION - FAVICONS -->
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="96x96"
+    href="/favicons/favicon-96x96.png"
+  />
+  <link
+    rel="icon"
+    href="/favicons/favicon.svg"
+    type="image/svg+xml"
+    sizes="any"
+  />
+  <link rel="icon" href="/favicons/favicon.ico" />
+  <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+  <link rel="manifest" href="/favicons/site.webmanifest" />
+  <meta
+    name="theme-color"
+    content="#ffffff"
+    media="(prefers-color-scheme: light)"
+  />
+  <meta
+    name="theme-color"
+    content="#0f172a"
+    media="(prefers-color-scheme: dark)"
+  />
+  <!-- !SECTION - FAVICONS -->
+
+  <!-- SECTION - META -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO base -->
+  <title>{seo.title}</title>
+  <meta name="description" content={seo.description} />
+  <meta name="robots" content={seo.robots} />
+  {canonical && <link rel="canonical" href={canonical} />}
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={seo.title} />
+  <meta property="og:description" content={seo.description} />
+  <meta property="og:type" content={seo.ogType} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={thumbnailUrl} />
+  <meta property="og:site_name" content={seo.ogSiteName} />
+  <meta property="og:locale" content={getLocaleFromLang(lang)} />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content={seo.twitterCard} />
+  <meta name="twitter:title" content={seo.title} />
+  <meta name="twitter:description" content={seo.description} />
+  <meta name="twitter:image" content={thumbnailUrl} />
+  <!-- !SECTION - META -->
+
+  <!-- SECTION - Facebook Pixel Code -->
+  <script type="text/plain" class="iubenda-cs-activate" data-iub-purposes="4">
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(
+      window,
+      document,
+      "script",
+      "https://connect.facebook.net/en_US/fbevents.js",
+    );
+    fbq("init", "1787167239334670");
+    fbq("track", "PageView");
+  </script>
+
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      src="https://www.facebook.com/tr?id=1787167239334670&ev=PageView&noscript=1"
+    />
+  </noscript>
+  <!-- !SECTION - Facebook Pixel Code -->
+
+  <!-- !SECTION - HEAD -->
+
+  <!-- SECTION - Google tag (gtag.js) -->
+  <script
+    type="text/plain"
+    class="iubenda-cs-activate"
+    data-iub-purposes="3"
+    src="https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC"></script>
+
+  <script type="text/plain" class="iubenda-cs-activate" data-iub-purposes="3">
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
@@ -150,6 +160,7 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
     gtag("config", "G-GRKTDM70WC");
   </script>
   <!-- !SECTION - Google tag (gtag.js) -->
+
   <!-- SECTION - BODY -->
   <body>
     <!-- SECTION - INITIALIZERS -->

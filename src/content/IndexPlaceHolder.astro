@@ -17,7 +17,11 @@ import "../../public/css/pages/index-placeholder.css";
   <!-- SECTION - HEAD -->
   <head>
     <!-- IUBENDA -->
-    <script type="text/javascript" src="https://embeds.iubenda.com/widgets/d27f647b-9e2f-42fd-9a32-00219f8c402f.js"></script>
+    <script
+      type="text/javascript"
+      src="https://embeds.iubenda.com/widgets/d27f647b-9e2f-42fd-9a32-00219f8c402f.js"
+    ></script>
+
     <!-- SECTION - FAVICONS -->
     <link
       rel="icon"
@@ -85,7 +89,7 @@ import "../../public/css/pages/index-placeholder.css";
     />
     <!-- !SECTION - META -->
     <!-- SECTION - Facebook Pixel Code -->
-    <script is:inline>
+    <script type="text/plain" class="iubenda-cs-activate" data-iub-purposes="4">
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
         n = f.fbq = function () {
@@ -109,15 +113,16 @@ import "../../public/css/pages/index-placeholder.css";
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
+
       fbq("init", "1787167239334670");
       fbq("track", "PageView");
     </script>
+
     <noscript>
       <img
         height="1"
         width="1"
-        src="https://www.facebook.com/tr?id=1787167239334670&ev=PageView
-        &noscript=1"
+        src="https://www.facebook.com/tr?id=1787167239334670&ev=PageView&noscript=1"
       />
     </noscript>
     <!-- !SECTION - Facebook Pixel Code -->
@@ -125,13 +130,18 @@ import "../../public/css/pages/index-placeholder.css";
   <!-- !SECTION - HEAD -->
 
   <!-- SECTION - Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC"
-  ></script>
-  <script is:inline>
+  <script
+    type="text/plain"
+    class="iubenda-cs-activate"
+    data-iub-purposes="3"
+    src="https://www.googletagmanager.com/gtag/js?id=G-GRKTDM70WC"></script>
+
+  <script type="text/plain" class="iubenda-cs-activate" data-iub-purposes="3">
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
     }
+
     gtag("js", new Date());
 
     gtag("config", "G-GRKTDM70WC");
