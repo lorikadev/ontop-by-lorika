@@ -29,7 +29,7 @@ export function loadHeroEyeglassInteraction() {
         const { scene, camera, renderer, controls } = setupScene(canvasElement, heroWrapper);
 
         // LIGHTS
-        scene.add(new AmbientLight('#ffffff', 0.4));
+        scene.add(new AmbientLight('#ffffff', 1));
 
         const keyLight = new DirectionalLight('#ffffff', 0.6);
         keyLight.position.set(3.2, -0.2, 5);

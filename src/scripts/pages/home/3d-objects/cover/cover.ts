@@ -49,8 +49,8 @@ export async function createCover3DObject(gltfLoaderRef: GLTFLoader): Promise<Ob
 
         // MeshPhysicalMaterial
         //https://physicallybased.info/
-        metalness: 0,
-        ior: 1.585,
+        metalness: 0.05,
+        ior: 1.5,
         roughness: 0.01,
         clearcoat: 0.2,
         transparent: true,
