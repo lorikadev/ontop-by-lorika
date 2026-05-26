@@ -115,7 +115,6 @@ let { homePageData, colorPickerData } = Astro.props;
                 id="lb-item-4"
                 class="fade-from-left"
                 anim-on-scroll="fade-from-left"
-                style={`background-image: url('${urlFor(homePageData?.lItem4Image?.asset?._ref!).url()}')`}
                 role="img"
                 aria-hidden="true"
             >
@@ -286,3 +285,4 @@ let { homePageData, colorPickerData } = Astro.props;
         });
     }
 </script>
+<script src="../scripts/pages/home/change-photo-with-highlight-color.ts"></script>
