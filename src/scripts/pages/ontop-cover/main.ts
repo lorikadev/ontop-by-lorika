@@ -1,7 +1,7 @@
 import Splide from '@splidejs/splide';
 
 const baseUrl = '/images/images/ontop-cover/{{RAL}}/';
-const QTA_OF_PHOTO = 3;
+const QTA_OF_PHOTO = 4;
 
 /** append images to desktop gallery */
 function appendToDesktopGallery(currentRal: string) {
