@@ -198,6 +198,17 @@ button.secondary:hover {
   );
 }
 
+.button.red,
+button.red {
+  background-color: red;
+  color: white;
+}
+
+.button.red:hover,
+button.red:hover {
+  background-color: color-mix(in srgb, red 80%, black 20%);
+}
+
 /* !SECTION - BUTTONS */
 
 /* SECTION - SIZES */
@@ -605,3 +616,267 @@ ul > li:last-child {
   display: block;
 }
 /* !SECTION -  SKELETON */
+
+#floating-band {
+  width: 100%;
+  position: fixed;
+  border-radius: 0;
+  bottom: -4rem;
+  background-color: var(--highlight-color);
+  z-index: 4;
+  cursor: pointer;
+  border-top: 1px solid black;
+  transition: background-color 0.2s;
+  animation: slide-in-from-below 0.5s 1.5s ease-out forwards;
+}
+
+@keyframes slide-in-from-below {
+  0% {
+    bottom: -4rem;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+#floating-band:hover {
+  background-color: color-mix(in srgb, var(--highlight-color) 80%, white 20%);
+}
+
+#floating-band:active {
+  background-color: color-mix(in srgb, var(--highlight-color) 70%, white 30%);
+}
+
+#floating-band > h4 {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transition:
+    transform 0.2s,
+    color 0.2s;
+}
+
+#floating-band:hover > h4 {
+  transform: scale(1.1);
+}
+
+#floating-band:active > h4 {
+  transform: scale(1.05);
+}
+
+dialog {
+  border: 0;
+  padding: 0;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: none;
+}
+
+dialog[open] {
+  opacity: 1;
+  transform: scale(1);
+  animation: fadeInScale 0.3s ease-out forwards;
+}
+
+dialog[open]::backdrop {
+  animation: backdropFade 0.3s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes backdropFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+dialog .dialog-header {
+  width: 100%;
+  background-color: var(--highlight-color);
+  border: 1px solid black;
+  text-align: end;
+}
+
+dialog .dialog-header button {
+  border-radius: 0;
+}
+
+dialog .dialog-body {
+  background-color: var(--dark-text-color);
+  color: var(--light-text-color);
+}
+
+dialog .dialog-body a {
+  color: white;
+}
+
+/* SECTION - FORM */
+form button,
+form input {
+  padding: 0.5rem 1rem;
+  margin: 0;
+  color: white;
+}
+
+form input {
+  border-radius: 1.5rem;
+  border: 1px solid white;
+  padding-right: 3rem;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+form input:active,
+form input:focus {
+  box-shadow: inset 0px 0px 10px white;
+}
+
+form button {
+  border-radius: 0 1.5rem 1.5rem 0 !important;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+form button .normal {
+  /* NOTE - done this way so the button have the same size when disabled and the spinner appear */
+  width: 25px;
+  height: 25px;
+  border: 4px solid transparent;
+}
+
+form .input-button-wrapper {
+  position: relative;
+}
+
+form .input-button-wrapper > button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+form button:disabled,
+form input:disabled {
+  opacity: 0.75;
+}
+
+form button:disabled .normal {
+  display: none;
+}
+
+/* SPINNING LOADER */
+.custom-loader {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 4px solid;
+  border-color: #d6d6df;
+  border-right-color: #f4f4f4;
+  animation: s2 2s infinite linear;
+  display: none;
+}
+
+form button:disabled .custom-loader {
+  display: inline-block;
+}
+
+@keyframes s2 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+/* !SECTION - FORM */
+
+#countdown-wrapper {
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+}
+
+.time-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-wrapper .label {
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.separator,
+.time-wrapper .time {
+  font-size: 1rem;
+}
+
+/* SECTION - RESPONSE MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  max-width: 600px;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  background: rgb(51, 51, 51);
+  font-weight: 700;
+  text-align: center;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+.hidden {
+  display: none;
+}
+
+/* !SECTION - RESPONSE MODAL */
+
+/* SECTION - CONTENT COLORS */
+.red {
+  color: rgb(255, 62, 62);
+}
+
+.green {
+  color: greenyellow;
+}
+
+.grey {
+  color: #808080;
+}

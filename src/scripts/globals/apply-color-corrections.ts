@@ -13,6 +13,7 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
         ...document.querySelectorAll('.button.primary'),
     ] as HTMLElement[];
     const highlightedContainers = document.querySelectorAll('.highlighted-container') as NodeListOf<HTMLElement>;
+    const floatingBandTitle = document.querySelector('#floating-band > h4') as HTMLDivElement;
     //!SECTION - ELEMENTS TO CORRECT
 
     // handle border (jet black need a border to be seen over dark bg)
@@ -38,6 +39,8 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
         primaryButtons.forEach(pb => pb.style.color = 'var(--dark-text-color)');
         highlightedContainers.forEach(hc => hc.style.color = 'var(--dark-text-color)');
 
+        if(floatingBandTitle) 
+            floatingBandTitle.style.color = 'var(--dark-text-color)'
     }
     // DARK COLORS
     else {
@@ -49,6 +52,9 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
         
         primaryButtons.forEach(pb => pb.style.color = 'var(--light-text-color)');
         highlightedContainers.forEach(hc => hc.style.color = 'var(--light-text-color)');
+
+        if(floatingBandTitle) 
+            floatingBandTitle.style.color = 'var(--light-text-color)'
 
         // jet black need border to be seen over dark bg
         if (cssColorVarKey === "--RAL9005") {
