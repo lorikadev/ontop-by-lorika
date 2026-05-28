@@ -37,13 +37,13 @@ const navData = siteNavigators.navbar;
         <!-- MOBILE MENU BUTTON -->
         <div id="mobile-menu-wrapper" class="show-mob">
             <!-- CTA -->
-            <a
+            <!-- <a
                 class="button primary fs-2-mob nav-cta-shop"
                 href={SHOP_REDIRECT_URL}
                 aria-label={navData?.shopAriaLabel}
             >
                 {navData?.shop}
-            </a>
+            </a> -->
             <!-- SANDWICH -->
             <button id="mobile-menu-button">
                 <img src="/images/icons/menu.svg" alt="mobile menu button" />
@@ -102,21 +102,21 @@ const navData = siteNavigators.navbar;
 
         <!-- CTA -->
         <div class="nav-cta-wrapper show-till-mob">
-            <a
+            <!-- <a
                 class="button primary wide fs-2-mob nav-cta-shop"
                 href={SHOP_REDIRECT_URL}
                 aria-label={navData?.shopAriaLabel}
             >
                 {navData?.shop}
-            </a>
+            </a> -->
 
-            <a
+            <!-- NOTE plain svg to change fill at run time with color picker -->
+            <!-- <a
                 class="button primary icon-for-button nav-cta-cart"
                 href={SHOP_REDIRECT_URL}
                 aria-label={navData?.cartAriaLabel}
                 aria-current={activeLinkPath === "/cart" ? "page" : undefined}
             >
-                <!-- NOTE plain svg to change fill at run time with color picker -->
                 <svg
                     fill="#ffffff"
                     viewBox="0 0 512 512"
@@ -138,7 +138,7 @@ const navData = siteNavigators.navbar;
                         ></path>
                     </g>
                 </svg>
-            </a>
+            </a> -->
         </div>
     </div>
 </nav>
