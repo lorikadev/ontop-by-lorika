@@ -1,0 +1,226 @@
+---
+import { sanityClient } from "sanity:client";
+import type {
+  HomePage,
+  Seo,
+  SiteNavigators,
+} from "../../../studio-lorika-ontop/sanity.types";
+import PrivacyContent from "../../content/PrivacyContent.astro";
+import PageContainer from "../../layout/PageContainer.astro";
+
+const SITE_NAVIGATORS_QUERY = `
+    *[_type == "siteNavigators" && lang == "it"]`;
+const siteNavigators = await sanityClient.fetch<SiteNavigators[]>(
+  SITE_NAVIGATORS_QUERY,
+);
+
+const HOME_PAGE_QUERY = `
+    *[_type == "homePage" && lang == "it"]`;
+const homePage = await sanityClient.fetch<HomePage[]>(HOME_PAGE_QUERY);
+
+const seo: Seo = {
+  ...homePage[0].seo,
+  title: "Lorika - Pagina Privacy",
+  description: "Questa e' la pagina della privacy",
+};
+---
+
+<PageContainer seo={seo} siteNavigators={siteNavigators[0]} lang="it">
+  <PrivacyContent>
+    <section aria-labelledby="intro">
+      <h2 id="intro">Introduzione</h2>
+      <p>
+        Il sito web www.lorikacover.com e i servizi digitali ad esso collegati,
+        inclusi eventuali marketplace, applicazioni software, strumenti di
+        configurazione personalizzata, simulazione virtuale, modellazione 3D e
+        servizi di vendita online, sono gestiti da LORIKA Società a
+        Responsabilità Limitata, con sede legale in Roma, Piazza Annibaliano 18,
+        CAP 00198, Codice Fiscale e Partita IVA 18506711003, PEC
+        lorikasrl@legalmail.it, in qualità di titolare del trattamento dei dati
+        personali.
+      </p>
+      <p>
+        La presente informativa descrive le modalità con cui LORIKA S.R.L.
+        raccoglie e tratta i dati personali degli utenti in conformità al
+        Regolamento UE 2016/679 (GDPR) e al D.Lgs. 196/2003 come modificato.
+      </p>
+    </section>
+
+    <section aria-labelledby="uso-dati">
+      <h2 id="uso-dati">1. Come utilizziamo i dati personali</h2>
+      <p>
+        I dati personali sono trattati per navigazione del sito, registrazione,
+        gestione ordini, assistenza clienti, personalizzazione prodotti e invio
+        di comunicazioni operative e promozionali (previo consenso ove
+        richiesto).
+      </p>
+      <p>
+        Il trattamento avviene nel rispetto dei principi di liceità,
+        correttezza, trasparenza, minimizzazione, esattezza e integrità.
+      </p>
+    </section>
+
+    <section aria-labelledby="categorie-dati">
+      <h2 id="categorie-dati">2. Dati personali raccolti</h2>
+
+      <h3>2.a Dati forniti dall’utente</h3>
+      <ul>
+        <li>Nome e cognome</li>
+        <li>Indirizzo e-mail</li>
+        <li>Numero di telefono</li>
+        <li>Indirizzi di spedizione e fatturazione</li>
+        <li>Dati account e credenziali</li>
+        <li>Dati relativi ad acquisti e preferenze</li>
+        <li>Contenuti inviati tramite moduli o richieste</li>
+        <li>Immagini, misure o dati tecnici per personalizzazione prodotti</li>
+      </ul>
+
+      <h3>2.b Dati di pagamento</h3>
+      <p>
+        I dati di pagamento sono trattati da provider terzi. LORIKA S.R.L. non
+        conserva i dati completi delle carte.
+      </p>
+
+      <h3>2.c Dati tecnici e di navigazione</h3>
+      <ul>
+        <li>Indirizzo IP</li>
+        <li>Dispositivo e browser</li>
+        <li>Pagine visitate e interazioni</li>
+        <li>Data e ora accesso</li>
+        <li>Cookie e tecnologie simili</li>
+      </ul>
+
+      <h3>2.d Servizi 3D e personalizzazione</h3>
+      <p>
+        Possono essere trattati immagini, configurazioni e parametri tecnici
+        necessari alla fornitura dei servizi.
+      </p>
+    </section>
+
+    <section aria-labelledby="finalita">
+      <h2 id="finalita">3. Finalità del trattamento</h2>
+
+      <h3>3.1 Finalità contrattuali</h3>
+      <ul>
+        <li>Gestione account e ordini</li>
+        <li>Fornitura servizi e prodotti</li>
+        <li>Assistenza clienti</li>
+        <li>Gestione pagamenti e spedizioni</li>
+      </ul>
+
+      <h3>3.2 Obblighi di legge</h3>
+      <p>Adempimenti fiscali, contabili e normativi.</p>
+
+      <h3>3.3 Marketing (previo consenso)</h3>
+      <ul>
+        <li>Newsletter</li>
+        <li>Comunicazioni promozionali</li>
+        <li>Offerte personalizzate</li>
+      </ul>
+
+      <h3>3.4 Soft spam</h3>
+      <p>
+        Invio comunicazioni su prodotti simili a quelli già acquistati, con
+        possibilità di opposizione.
+      </p>
+
+      <h3>3.5 Profilazione</h3>
+      <p>
+        Analisi preferenze e comportamento per personalizzazione contenuti e
+        servizi (previo consenso ove richiesto).
+      </p>
+
+      <h3>3.6 Legittimo interesse</h3>
+      <p>
+        Sicurezza, prevenzione frodi, miglioramento servizi, difesa dei diritti.
+      </p>
+    </section>
+
+    <section aria-labelledby="modalita">
+      <h2 id="modalita">4. Modalità del trattamento</h2>
+      <p>
+        I dati sono trattati con strumenti elettronici e manuali con misure di
+        sicurezza adeguate.
+      </p>
+    </section>
+
+    <section aria-labelledby="comunicazione">
+      <h2 id="comunicazione">5. Comunicazione dei dati</h2>
+      <p>
+        I dati possono essere comunicati a fornitori IT, logistica, consulenti,
+        autorità e partner tecnici.
+      </p>
+    </section>
+
+    <section aria-labelledby="trasferimento">
+      <h2 id="trasferimento">6. Trasferimento dati extra UE</h2>
+      <p>
+        Eventuali trasferimenti avvengono nel rispetto degli articoli 44 e
+        seguenti del GDPR con adeguate garanzie.
+      </p>
+    </section>
+
+    <section aria-labelledby="conservazione">
+      <h2 id="conservazione">7. Conservazione dei dati</h2>
+      <p>
+        I dati sono conservati per il tempo necessario alle finalità indicate e
+        secondo obblighi di legge.
+      </p>
+    </section>
+
+    <section aria-labelledby="diritti">
+      <h2 id="diritti">8. Diritti dell’interessato</h2>
+      <ul>
+        <li>Accesso</li>
+        <li>Rettifica</li>
+        <li>Cancellazione</li>
+        <li>Limitazione</li>
+        <li>Opposizione</li>
+        <li>Portabilità</li>
+        <li>Revoca consenso</li>
+        <li>Reclamo al Garante</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="contatti">
+      <h2 id="contatti">Contatti</h2>
+      <address>
+        LORIKA S.R.L.<br />
+        Piazza Annibaliano 18, 00198 Roma<br />
+        PEC: lorikasrl@legalmail.it
+      </address>
+    </section>
+
+    <section aria-labelledby="titolare">
+      <h2 id="titolare">10. Titolare del trattamento</h2>
+      <p>
+        LORIKA Società a Responsabilità Limitata<br />
+        CF e P.IVA 18506711003
+      </p>
+    </section>
+
+    <section aria-labelledby="dpo">
+      <h2 id="dpo">11. Responsabile protezione dati</h2>
+      <p>
+        Non nominato, salvo diversa indicazione. In alternativa: contatto
+        indicato per il DPO.
+      </p>
+    </section>
+
+    <section aria-labelledby="cookie">
+      <h2 id="cookie">12. Cookie</h2>
+      <ul>
+        <li>Cookie tecnici</li>
+        <li>Cookie analitici</li>
+        <li>Cookie di profilazione</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="modifiche">
+      <h2 id="modifiche">13. Modifiche</h2>
+      <p>
+        La presente informativa può essere aggiornata e pubblicata sul sito.
+      </p>
+    </section>
+  </PrivacyContent>
+</PageContainer>

@@ -1,0 +1,250 @@
+---
+import { sanityClient } from "sanity:client";
+import type {
+  HomePage,
+  Seo,
+  SiteNavigators,
+} from "../../../studio-lorika-ontop/sanity.types";
+import PrivacyContent from "../../content/PrivacyContent.astro";
+import PageContainer from "../../layout/PageContainer.astro";
+
+const SITE_NAVIGATORS_QUERY = `
+    *[_type == "siteNavigators" && lang == "en"]`;
+const siteNavigators = await sanityClient.fetch<SiteNavigators[]>(
+  SITE_NAVIGATORS_QUERY,
+);
+
+const HOME_PAGE_QUERY = `
+    *[_type == "homePage" && lang == "en"]`;
+const homePage = await sanityClient.fetch<HomePage[]>(HOME_PAGE_QUERY);
+
+const seo: Seo = {
+  ...homePage[0].seo,
+  title: "Lorika - Privacy Page",
+  description: "This is the privacy page",
+};
+---
+
+<PageContainer seo={seo} siteNavigators={siteNavigators[0]} lang="en">
+  <PrivacyContent>
+    <section aria-labelledby="intro">
+      <h2 id="intro">Introduction</h2>
+      <p>
+        The website www.lorikacover.com and its connected digital services,
+        including any marketplaces, software applications, custom configuration
+        tools, virtual simulation, 3D modeling, and online sales services, are
+        operated by LORIKA Società a Responsabilità Limitata, with registered
+        office in Rome, Piazza Annibaliano 18, 00198, Tax Code and VAT number
+        18506711003, certified email lorikasrl@legalmail.it, acting as data
+        controller.
+      </p>
+      <p>
+        This notice describes how LORIKA S.R.L. collects and processes personal
+        data of users in compliance with Regulation (EU) 2016/679 (“GDPR”) and
+        Italian Legislative Decree 196/2003 as amended by Legislative Decree
+        101/2018.
+      </p>
+    </section>
+
+    <section aria-labelledby="data-use">
+      <h2 id="data-use">1. How we use your personal data</h2>
+      <p>
+        Personal data is processed to enable website browsing, platform
+        registration, product configuration and customization, order management,
+        sales of products and services, customer support, operational
+        communications, and, where required, promotional communications and
+        newsletters.
+      </p>
+      <p>
+        Data may also be processed to improve user experience, optimize digital
+        services, develop technological features, prevent fraud or misuse, and
+        comply with legal obligations.
+      </p>
+      <p>
+        Processing is carried out in accordance with the principles of
+        lawfulness, fairness, transparency, data minimization, accuracy, storage
+        limitation, integrity, and confidentiality.
+      </p>
+    </section>
+
+    <section aria-labelledby="data-categories">
+      <h2 id="data-categories">2. Personal data we collect</h2>
+
+      <h3>2.a Data provided directly by the user</h3>
+      <ul>
+        <li>First and last name</li>
+        <li>Email address</li>
+        <li>Phone number</li>
+        <li>Shipping and billing address</li>
+        <li>Account creation data</li>
+        <li>Login credentials (if applicable)</li>
+        <li>Order, purchase, and preference data</li>
+        <li>Information submitted via contact or support forms</li>
+        <li>Voluntary data provided for customization requests</li>
+        <li>
+          Images, measurements, technical parameters, or other data used for
+          product customization
+        </li>
+      </ul>
+
+      <h3>2.b Payment-related data</h3>
+      <p>
+        Payment data is processed by third-party payment providers. LORIKA
+        S.R.L. does not store full credit card details, except where strictly
+        necessary and permitted by law.
+      </p>
+
+      <h3>2.c Technical and browsing data</h3>
+      <ul>
+        <li>IP address</li>
+        <li>Device identifiers</li>
+        <li>Browser and operating system</li>
+        <li>Pages visited</li>
+        <li>Date and time of access</li>
+        <li>Referring URL</li>
+        <li>User interactions</li>
+        <li>Cart and product view data</li>
+        <li>Cookies and similar technologies</li>
+      </ul>
+
+      <h3>2.d 3D and personalization services data</h3>
+      <p>
+        When using customization, simulation, or virtual try-on tools, data such
+        as uploaded images, configurations, technical parameters, and aesthetic
+        preferences may be processed solely to provide the requested service.
+      </p>
+    </section>
+
+    <section aria-labelledby="purposes">
+      <h2 id="purposes">3. Purposes of processing</h2>
+
+      <h3>3.1 Contractual and pre-contractual purposes</h3>
+      <ul>
+        <li>Website and account management</li>
+        <li>Order and service management</li>
+        <li>Customer support</li>
+        <li>Payments, invoicing, and shipping</li>
+        <li>Provision of digital services and applications</li>
+      </ul>
+
+      <h3>3.2 Legal obligations</h3>
+      <p>Compliance with tax, accounting, regulatory, and legal obligations.</p>
+
+      <h3>3.3 Marketing (with consent)</h3>
+      <ul>
+        <li>Newsletters</li>
+        <li>Promotional communications</li>
+        <li>Product and service updates</li>
+      </ul>
+
+      <h3>3.4 Soft spam</h3>
+      <p>
+        Commercial communications regarding similar products or services already
+        purchased, unless the user objects.
+      </p>
+
+      <h3>3.5 Profiling and personalization</h3>
+      <p>
+        Analysis of preferences, browsing behavior, and purchase history to
+        personalize content and improve services, based on consent where
+        required.
+      </p>
+
+      <h3>3.6 Legitimate interest</h3>
+      <p>
+        Security, fraud prevention, service improvement, technical maintenance,
+        and legal defense.
+      </p>
+    </section>
+
+    <section aria-labelledby="processing-methods">
+      <h2 id="processing-methods">4. Processing methods</h2>
+      <p>
+        Data is processed using electronic and manual tools with appropriate
+        technical and organizational security measures.
+      </p>
+    </section>
+
+    <section aria-labelledby="recipients">
+      <h2 id="recipients">5. Data recipients</h2>
+      <p>
+        Data may be shared with IT providers, hosting services, logistics
+        operators, consultants, and authorities.
+      </p>
+    </section>
+
+    <section aria-labelledby="transfers">
+      <h2 id="transfers">6. International data transfers</h2>
+      <p>
+        Data may be transferred outside the European Economic Area only in
+        compliance with Articles 44 and following of the GDPR, using adequacy
+        decisions or standard contractual clauses.
+      </p>
+    </section>
+
+    <section aria-labelledby="retention">
+      <h2 id="retention">7. Data retention</h2>
+      <p>
+        Data is retained only for as long as necessary for the purposes
+        described or as required by law.
+      </p>
+    </section>
+
+    <section aria-labelledby="rights">
+      <h2 id="rights">8. Data subject rights</h2>
+      <ul>
+        <li>Right of access</li>
+        <li>Right to rectification</li>
+        <li>Right to erasure</li>
+        <li>Right to restriction of processing</li>
+        <li>Right to object</li>
+        <li>Right to data portability</li>
+        <li>Right to withdraw consent</li>
+        <li>Right to lodge a complaint with the supervisory authority</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="contact">
+      <h2 id="contact">Contact information</h2>
+      <address>
+        LORIKA S.R.L.<br />
+        Piazza Annibaliano 18, 00198 Rome, Italy<br />
+        PEC: lorikasrl@legalmail.it
+      </address>
+    </section>
+
+    <section aria-labelledby="controller">
+      <h2 id="controller">10. Data controller</h2>
+      <p>
+        LORIKA Società a Responsabilità Limitata<br />
+        Tax Code and VAT number: 18506711003
+      </p>
+    </section>
+
+    <section aria-labelledby="dpo">
+      <h2 id="dpo">11. Data Protection Officer</h2>
+      <p>
+        No Data Protection Officer has been appointed unless otherwise
+        specified. If appointed, contact details will be provided separately.
+      </p>
+    </section>
+
+    <section aria-labelledby="cookies">
+      <h2 id="cookies">12. Cookies</h2>
+      <ul>
+        <li>Technical cookies</li>
+        <li>Analytics cookies</li>
+        <li>Profiling cookies</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="changes">
+      <h2 id="changes">13. Changes to this notice</h2>
+      <p>
+        This notice may be updated to reflect legal, technical, or
+        organizational changes. The updated version will be published on the
+        website.
+      </p>
+    </section>
+  </PrivacyContent>
+</PageContainer>
