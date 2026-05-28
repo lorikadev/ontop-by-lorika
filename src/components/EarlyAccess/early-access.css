@@ -2,7 +2,7 @@
   width: 100%;
   position: fixed;
   border-radius: 0;
-  bottom: -4rem;
+  bottom: -200px;
   background-color: var(--highlight-color);
   z-index: 4;
   cursor: pointer;
@@ -13,7 +13,7 @@
 
 @keyframes slide-in-from-below {
   0% {
-    bottom: -4rem;
+    bottom: -200px;
   }
   100% {
     bottom: 0;

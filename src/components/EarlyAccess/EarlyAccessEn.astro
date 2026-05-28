@@ -1,6 +1,7 @@
 ---
 import "./early-access.css";
 ---
+
 <!-- FLOATING BAND -->
 <button
   id="floating-band"
@@ -8,7 +9,7 @@ import "./early-access.css";
   commandfor="priority-access-dialog"
 >
   <h4>
-    EARLY ACCESS STARTS SOON: GET PRIORITY ACCESS
+    CLICK TO GET EARLY ACCESS TO THE STORE
     <div id="countdown-wrapper">
       <div id="days" class="time-wrapper">
         <span class="time"></span>
@@ -217,4 +218,37 @@ import "./early-access.css";
       }, 300);
     }, 2500);
   }
+</script>
+<script is:inline>
+  (() => {
+    const COOKIE_NAME = "early-access-pop-up-seen";
+    const dialog = document.getElementById("priority-access-dialog");
+
+    /**
+     * Check if a cookie exists
+     */
+    function hasCookie(name) {
+      return document.cookie
+        .split("; ")
+        .some((cookie) => cookie.startsWith(`${name}=`));
+    }
+
+    /**
+     * Set a cookie with very long expiration
+     */
+    function setCookieForever(name, value) {
+      const expires = new Date("9999-12-31T23:59:59Z").toUTCString();
+
+      document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
+    }
+
+    // Open dialog only the first time
+    if (!hasCookie(COOKIE_NAME)) {
+      if (dialog && typeof dialog.showModal === "function") {
+        dialog.showModal();
+      }
+
+      setCookieForever(COOKIE_NAME, "true");
+    }
+  })();
 </script>
