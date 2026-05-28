@@ -1,8 +1,8 @@
 ---
 import ColorPicker from "../components/ColorPicker/ColorPicker.astro";
 import type {
-    ColorPicker as ColorPickerCMS,
-    HomePage,
+  ColorPicker as ColorPickerCMS,
+  HomePage,
 } from "../../studio-lorika-ontop/sanity.types";
 import { cleanHtml } from "../scripts/globals/clean-html";
 import { urlFor } from "../scripts/globals/sanity-client";
@@ -12,8 +12,8 @@ import "../../public/css/pages/index.css";
 //!SECTION - CSS
 
 interface Props {
-    homePageData: HomePage;
-    colorPickerData: ColorPickerCMS;
+  homePageData: HomePage;
+  colorPickerData: ColorPickerCMS;
 }
 
 let { homePageData, colorPickerData } = Astro.props;
@@ -21,196 +21,193 @@ let { homePageData, colorPickerData } = Astro.props;
 
 <!-- SECTION - HERO -->
 <div id="hero-wrapper">
-    <!-- 3D HERO RENDER -->
-    <canvas id="hero-3d-render"></canvas>
-    <div id="hero" class="pt-15 pb-3">
-        <!-- 3D WRAPPER -->
-        <div id="hero-3d-ui-wrapper">
-            <!-- COLOR PICKER -->
-            <!-- DESKTOP -->
-            <div
-                id="hero-color-picker-desktop-wrapper"
-                class="show-till-tab fade-from-right"
-                anim-on-scroll="fade-from-right"
-            >
-                <ColorPicker
-                    id="hero-color-picker-desktop"
-                    colorPickerData={colorPickerData}
-                />
-            </div>
-            <!-- FROM TABLET -->
-            <div
-                id="hero-color-picker-tablet-wrapper"
-                class="show-tab fade-in"
-                anim-on-scroll="fade-in"
-            >
-                <ColorPicker
-                    id="hero-color-picker-tablet"
-                    layout="horizontal"
-                    colorPickerData={colorPickerData}
-                />
-            </div>
-        </div>
-        <!-- HERO CTA -->
-        <div id="hero-cta" class="fade-in" anim-on-scroll="fade-in">
-            <h1 set:html={homePageData?.heroTitle} class="m-0 lh-35" />
-            <p class="show-tab fs-2 my-1">
-                {homePageData?.mobileAds}
-            </p>
-            <div id="hero-cta-buttons">
-                <a
-                    class="button primary"
-                    href="./ontop-cover"
-                    aria-label={homePageData?.buyNowAriaLabel}
-                >
-                    {homePageData?.buyNowLabel}
-                </a>
-                <a
-                    class="button secondary"
-                    href="./about-us"
-                    aria-label={homePageData?.discoverAriaLabel}
-                >
-                    {homePageData?.discoverLabel}
-                </a>
-            </div>
-        </div>
+  <!-- 3D HERO RENDER -->
+  <canvas id="hero-3d-render"></canvas>
+  <div id="hero" class="pt-15 pb-3">
+    <!-- 3D WRAPPER -->
+    <div id="hero-3d-ui-wrapper">
+      <!-- COLOR PICKER -->
+      <!-- DESKTOP -->
+      <div
+        id="hero-color-picker-desktop-wrapper"
+        class="show-till-tab fade-from-right"
+        anim-on-scroll="fade-from-right"
+      >
+        <ColorPicker
+          id="hero-color-picker-desktop"
+          colorPickerData={colorPickerData}
+        />
+      </div>
+      <!-- FROM TABLET -->
+      <div
+        id="hero-color-picker-tablet-wrapper"
+        class="show-tab fade-in"
+        anim-on-scroll="fade-in"
+      >
+        <ColorPicker
+          id="hero-color-picker-tablet"
+          layout="horizontal"
+          colorPickerData={colorPickerData}
+        />
+      </div>
     </div>
+    <!-- HERO CTA -->
+    <div id="hero-cta" class="fade-in" anim-on-scroll="fade-in">
+      <h1 set:html={homePageData?.heroTitle} class="m-0 lh-35" />
+      <p class="show-tab fs-2 my-1">
+        {homePageData?.mobileAds}
+      </p>
+      <div id="hero-cta-buttons">
+        <!-- <a
+          class="button primary"
+          href="./ontop-cover"
+          aria-label={homePageData?.buyNowAriaLabel}
+        >
+          {homePageData?.buyNowLabel}
+        </a> -->
+        <a
+          class="button secondary"
+          href="./about-us"
+          aria-label={homePageData?.discoverAriaLabel}
+        >
+          {homePageData?.discoverLabel}
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- !SECTION - HERO -->
 
 <!-- SECTION - SECTION LIGHT -->
 <section
-    id="section-light"
-    aria-labelledby={homePageData?.sectionLightAriaLabel}
+  id="section-light"
+  aria-labelledby={homePageData?.sectionLightAriaLabel}
 >
-    <div class="container">
-        <!-- BENTO LIGHT -->
-        <div id="bento-light">
-            <!-- ITEM-1 -->
-            <div
-                id="lb-item-1"
-                class="fade-from-left"
-                anim-on-scroll="fade-from-left"
-                style={`background-image: url('${urlFor(homePageData?.lItem1Image?.asset?._ref!).url()}')`}
-                role="img"
-                aria-hidden="true"
-            >
-            </div>
-            <!-- ITEM-2 -->
-            <div id="lb-item-2" class="fade-in" anim-on-scroll="fade-in">
-                <div set:html={cleanHtml(homePageData?.lItem2Content!)} />
-            </div>
-            <!-- ITEM-3 -->
-            <div
-                id="lb-item-3"
-                class="fade-from-right"
-                anim-on-scroll="fade-from-right"
-                style={`background-image: url('${urlFor(homePageData?.lItem3Image?.asset?._ref!).url()}')`}
-                role="img"
-                aria-hidden="true"
-            >
-            </div>
-            <!-- ITEM-4 -->
-            <div
-                id="lb-item-4"
-                class="fade-from-left"
-                anim-on-scroll="fade-from-left"
-                role="img"
-                aria-hidden="true"
-            >
-            </div>
-            <!-- ITEM-5 -->
-            <div
-                id="lb-item-5"
-                class="cromed text-light fade-in"
-                anim-on-scroll="fade-in"
-            >
-                <div set:html={cleanHtml(homePageData?.lItem5Content!)} />
-                <div id="light-bento-color-picker-wrapper">
-                    <ColorPicker
-                        id="light-bento-color-picker"
-                        layout="horizontal"
-                        displayLabel="hide"
-                        colorPickerData={colorPickerData}
-                    />
-                </div>
-            </div>
-            <!-- ITEM-6 -->
-            <div
-                id="lb-item-6"
-                class="highlighted-container fade-from-right"
-                anim-on-scroll="fade-from-right"
-            >
-                <div set:html={cleanHtml(homePageData?.lItem6Content!)} />
-            </div>
-        </div>
-    </div>
-
-    <!-- SUB HERO -->
-    <img
-        class="sub-hero"
-        src={urlFor(homePageData?.lightSubHeroImage?.asset?._ref!).url()}
+  <div class="container">
+    <!-- BENTO LIGHT -->
+    <div id="bento-light">
+      <!-- ITEM-1 -->
+      <div
+        id="lb-item-1"
+        class="fade-from-left"
+        anim-on-scroll="fade-from-left"
+        style={`background-image: url('${urlFor(homePageData?.lItem1Image?.asset?._ref!).url()}')`}
+        role="img"
         aria-hidden="true"
-    />
+      >
+      </div>
+      <!-- ITEM-2 -->
+      <div id="lb-item-2" class="fade-in" anim-on-scroll="fade-in">
+        <div set:html={cleanHtml(homePageData?.lItem2Content!)} />
+      </div>
+      <!-- ITEM-3 -->
+      <div
+        id="lb-item-3"
+        class="fade-from-right"
+        anim-on-scroll="fade-from-right"
+        style={`background-image: url('${urlFor(homePageData?.lItem3Image?.asset?._ref!).url()}')`}
+        role="img"
+        aria-hidden="true"
+      >
+      </div>
+      <!-- ITEM-4 -->
+      <div
+        id="lb-item-4"
+        class="fade-from-left"
+        anim-on-scroll="fade-from-left"
+        role="img"
+        aria-hidden="true"
+      >
+      </div>
+      <!-- ITEM-5 -->
+      <div
+        id="lb-item-5"
+        class="cromed text-light fade-in"
+        anim-on-scroll="fade-in"
+      >
+        <div set:html={cleanHtml(homePageData?.lItem5Content!)} />
+        <div id="light-bento-color-picker-wrapper">
+          <ColorPicker
+            id="light-bento-color-picker"
+            layout="horizontal"
+            displayLabel="hide"
+            colorPickerData={colorPickerData}
+          />
+        </div>
+      </div>
+      <!-- ITEM-6 -->
+      <div
+        id="lb-item-6"
+        class="highlighted-container fade-from-right"
+        anim-on-scroll="fade-from-right"
+      >
+        <div set:html={cleanHtml(homePageData?.lItem6Content!)} />
+      </div>
+    </div>
+  </div>
+
+  <!-- SUB HERO -->
+  <img
+    class="sub-hero"
+    src={urlFor(homePageData?.lightSubHeroImage?.asset?._ref!).url()}
+    aria-hidden="true"
+  />
 </section>
 <!-- !SECTION - SECTION LIGHT -->
 
 <!-- SECTION - SECTION DARK -->
 <section
-    id="section-dark"
-    class="pt-2"
-    aria-labelledby={homePageData?.sectionDarkAriaLabel}
+  id="section-dark"
+  class="pt-2"
+  aria-labelledby={homePageData?.sectionDarkAriaLabel}
 >
-    <div class="container">
-        <div id="bento-dark">
-            <!-- ITEM 1 -->
-            <div
-                id="db-item-1"
-                class="fade-from-left"
-                anim-on-scroll="fade-from-left"
-            >
-            </div>
+  <div class="container">
+    <div id="bento-dark">
+      <!-- ITEM 1 -->
+      <div
+        id="db-item-1"
+        class="fade-from-left"
+        anim-on-scroll="fade-from-left"
+      >
+      </div>
 
-            <!-- ITEM 2 -->
-            <div id="db-item-2" class="fade-in" anim-on-scroll="fade-in">
-                <div set:html={cleanHtml(homePageData?.dItem2Content!)} />
-            </div>
+      <!-- ITEM 2 -->
+      <div id="db-item-2" class="fade-in" anim-on-scroll="fade-in">
+        <div set:html={cleanHtml(homePageData?.dItem2Content!)} />
+      </div>
 
-            <!-- ITEM 3 -->
-            <div
-                id="db-item-3"
-                class="fade-from-right"
-                anim-on-scroll="fade-from-right"
-            >
-                <div
-                    class="pt-2"
-                    set:html={cleanHtml(homePageData?.dItem3Content!)}
-                />
-                <div id="world-3d-wrapper">
-                    <canvas id="world-3d-render"></canvas>
-                </div>
-            </div>
+      <!-- ITEM 3 -->
+      <div
+        id="db-item-3"
+        class="fade-from-right"
+        anim-on-scroll="fade-from-right"
+      >
+        <div class="pt-2" set:html={cleanHtml(homePageData?.dItem3Content!)} />
+        <div id="world-3d-wrapper">
+          <canvas id="world-3d-render"></canvas>
+        </div>
+      </div>
 
-            <!-- ITEM 4 -->
-            <div
-                id="db-item-4"
-                class="fade-from-left"
-                anim-on-scroll="fade-from-left"
-                style={`background-image: url('${urlFor(homePageData?.dItem4Image?.asset?._ref!).url()}')`}
-                role="img"
-                aria-hidden="true"
-            >
-            </div>
+      <!-- ITEM 4 -->
+      <div
+        id="db-item-4"
+        class="fade-from-left"
+        anim-on-scroll="fade-from-left"
+        style={`background-image: url('${urlFor(homePageData?.dItem4Image?.asset?._ref!).url()}')`}
+        role="img"
+        aria-hidden="true"
+      >
+      </div>
 
-            <!-- ITEM 5 -->
-            <div
-                id="db-item-5"
-                class="fade-from-right"
-                anim-on-scroll="fade-from-right"
-            >
-                <div set:html={cleanHtml(homePageData?.dItem5Content!)} />
+      <!-- ITEM 5 -->
+      <div
+        id="db-item-5"
+        class="fade-from-right"
+        anim-on-scroll="fade-from-right"
+      >
+        <div set:html={cleanHtml(homePageData?.dItem5Content!)} />
 
-                <!-- <div class="t-a-end mb-05">
+        <!-- <div class="t-a-end mb-05">
                     <a
                         href="#TODO"
                         target="_blank"
@@ -221,68 +218,69 @@ let { homePageData, colorPickerData } = Astro.props;
                         {homePageData?.joinUsLabel}
                     </a>
                 </div> -->
-            </div>
-        </div>
+      </div>
     </div>
-    <!-- SUB HERO -->
-    <div id="dark-sub-hero" style="position: relative;">
-        <img
-            style="border-radius: 10px;"
-            class="sub-hero"
-            src={urlFor(homePageData?.darkSubHeroImage?.asset?._ref!).url()}
-            aria-hidden="true"
-        />
-        <img
-            id="logo-over-image"
-            src="/images/logo/logo-ontop-lorika-white.svg"
-            alt="Ontop by Lorika logo"
-            aria-hidden="true"
-        />
-    </div>
+  </div>
+  <!-- SUB HERO -->
+  <div id="dark-sub-hero" style="position: relative;">
+    <img
+      style="border-radius: 10px;"
+      class="sub-hero"
+      src={urlFor(homePageData?.darkSubHeroImage?.asset?._ref!).url()}
+      aria-hidden="true"
+    />
+    <img
+      id="logo-over-image"
+      src="/images/logo/logo-ontop-lorika-white.svg"
+      alt="Ontop by Lorika logo"
+      aria-hidden="true"
+    />
+  </div>
 </section>
 <!-- !SECTION - DARK SECTION -->
 
 <script>
-    //function that should be called when the browser has ended the initial loading
-    async function load3D() {
-        //first we setup the lazy loading of the 3D world interaction that is fired only when near it
-        const canvasElement = document.getElementById("world-3d-render");
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(async (entry) => {
-                    if (entry.isIntersecting) {
-                        const { loadWorldInteraction } =
-                            await import("../scripts/pages/home/world-interaction.ts");
-                        await loadWorldInteraction();
-                        observer.unobserve(canvasElement!);
-                    }
-                });
-            },
-            {
-                root: null,
-                threshold: 0,
-                rootMargin: "600px 0px 600px 0px",
-            },
-        );
-        if (canvasElement) observer.observe(canvasElement);
-
-        //then we lazy load the hero interaction
-        const { loadHeroEyeglassInteraction } =
-            await import("../scripts/pages/home/hero-eyeglass-interaction.ts");
-        await loadHeroEyeglassInteraction();
-    }
-
-    // Use requestIdleCallback when available to run 3D interaction loading after the browser loaded the page.
-    if ("requestIdleCallback" in window) {
-        requestIdleCallback(load3D);
-    } else {
-        // Fallback for browsers (e.g. Safari) uses requestAnimationFrame + setTimeout:
-        // - requestAnimationFrame waits for the next frame (after layout/paint)
-        // - setTimeout(..., 0) defers execution to the next macrotask
-        // This ensures the work runs right after the initial render, without blocking it.
-        requestAnimationFrame(() => {
-            setTimeout(load3D, 0);
+  //function that should be called when the browser has ended the initial loading
+  async function load3D() {
+    //first we setup the lazy loading of the 3D world interaction that is fired only when near it
+    const canvasElement = document.getElementById("world-3d-render");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(async (entry) => {
+          if (entry.isIntersecting) {
+            const { loadWorldInteraction } =
+              await import("../scripts/pages/home/world-interaction.ts");
+            await loadWorldInteraction();
+            observer.unobserve(canvasElement!);
+          }
         });
-    }
+      },
+      {
+        root: null,
+        threshold: 0,
+        rootMargin: "600px 0px 600px 0px",
+      },
+    );
+    if (canvasElement) observer.observe(canvasElement);
+
+    //then we lazy load the hero interaction
+    const { loadHeroEyeglassInteraction } =
+      await import("../scripts/pages/home/hero-eyeglass-interaction.ts");
+    await loadHeroEyeglassInteraction();
+  }
+
+  // Use requestIdleCallback when available to run 3D interaction loading after the browser loaded the page.
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(load3D);
+  } else {
+    // Fallback for browsers (e.g. Safari) uses requestAnimationFrame + setTimeout:
+    // - requestAnimationFrame waits for the next frame (after layout/paint)
+    // - setTimeout(..., 0) defers execution to the next macrotask
+    // This ensures the work runs right after the initial render, without blocking it.
+    requestAnimationFrame(() => {
+      setTimeout(load3D, 0);
+    });
+  }
 </script>
-<script src="../scripts/pages/home/change-photo-with-highlight-color.ts"></script>
+<script src="../scripts/pages/home/change-photo-with-highlight-color.ts"
+></script>
