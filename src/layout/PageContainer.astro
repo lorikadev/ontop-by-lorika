@@ -16,6 +16,8 @@ import "../../public/css/globals/footer.css";
 import "../../public/css/globals/animations.css";
 import { getLocaleFromLang } from "../scripts/globals/get-locale-from-lang";
 import { urlFor } from "../scripts/globals/sanity-client";
+import EarlyAccessIt from "../components/EarlyAccess/EarlyAccessIt.astro";
+import EarlyAccessEn from "../components/EarlyAccess/EarlyAccessEn.astro";
 
 const canonical = Astro.url.href;
 
@@ -178,227 +180,14 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
     <!-- !SECTION - INITIALIZERS -->
     <!-- NAVBAR -->
     <Navbar siteNavigators={siteNavigators} />
-    <button
-      id="floating-band"
-      command="show-modal"
-      commandfor="priority-access-dialog"
-    >
-      <h4>
-        EARLY ACCESS STARTS SOON: GET PRIORITY ACCESS
-        <div id="countdown-wrapper">
-          <div id="days" class="time-wrapper">
-            <span class="time"></span>
-            <span class="label">days</span>
-          </div>
-          <span class="separator">:</span>
-          <div id="hours" class="time-wrapper">
-            <span class="time"></span>
-            <span class="label">hours</span>
-          </div>
-          <span class="separator">:</span>
-          <div id="minutes" class="time-wrapper">
-            <span class="time"></span>
-            <span class="label">minutes</span>
-          </div>
-          <span class="separator">:</span>
-          <div id="seconds" class="time-wrapper">
-            <span class="time"></span>
-            <span class="label">seconds</span>
-          </div>
-        </div>
-      </h4>
-    </button>
     <!-- MAIN -->
     <main style="position: relative;">
       <!-- PAGE CONTENT -->
       <slot />
+      {lang === "it" ? <EarlyAccessIt /> : <EarlyAccessEn />}
     </main>
     <!-- FOOTER -->
     <Footer siteNavigators={siteNavigators} />
-    <!-- PRIORTY ACCESS DIALOG -->
-    <dialog id="priority-access-dialog">
-      <div class="dialog-header p-1">
-        <button
-          class="button red"
-          commandfor="priority-access-dialog"
-          command="close"
-        >
-          x
-        </button>
-      </div>
-      <div class="dialog-body p-1">
-        <p>
-          The first release is coming soon!
-          <br />
-          Join the priority list to access the store before public launch and receive
-          exclusive updates from Ontop.
-          <br />
-          Early access includes:
-          <ul>
-            <li>Priority access to the first production batch</li>
-            <li>Access before public launch</li>
-            <li>Access to future drops and limited colorways</li>
-            <li>Updates from the Ontop Club</li>
-          </ul>
-          Enter your email and get access first.
-        </p>
-        <form class="mt-1" id="subscribe-form">
-          <div class="input-button-wrapper">
-            <input placeholder="E-MAIL" type="email" name="email" required />
-            <button class="button primary" type="submit">join the list</button>
-          </div>
-          <small>
-            <i>
-              By clicking "join the list" you agree to our
-              <a target="_blank" href="./privacy">privacy policy</a>
-            </i>
-          </small>
-        </form>
-      </div>
-    </dialog>
-    <!-- RESPONSE MODAL -->
-    <div id="modal" class="modal hidden">
-      <div id="modal-content" class="modal-content"></div>
-    </div>
   </body>
   <!-- !SECTION - BODY -->
-  <!-- COUNTDOWN TIMER SCRIPT -->
-  <script is:inline>
-    /**
-     * @param targetDate data to the countdown as a string in iso format
-     * @summary init countdown settings and fires the automatic update
-     */
-    function startCountdown(targetDate) {
-      const target = new Date(targetDate).getTime();
-
-      //html elements where the data will be displayed
-      const elements = {
-        days: document.querySelector("#days .time"),
-        hours: document.querySelector("#hours .time"),
-        minutes: document.querySelector("#minutes .time"),
-        seconds: document.querySelector("#seconds .time"),
-      };
-
-      /**
-       * function that updates the view with countdown data
-       */
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = target - now;
-
-        if (distance <= 0) {
-          clearInterval(interval);
-
-          elements.days.textContent = "00";
-          elements.hours.textContent = "00";
-          elements.minutes.textContent = "00";
-          elements.seconds.textContent = "00";
-
-          return;
-        }
-
-        //GET THE 'MODULO' OF THE DATE FOR A TIME UNIT
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        //DISPLAY THE DATE COUNTDOWN PIECES
-        elements.days.textContent = String(days).padStart(2, "0");
-        elements.hours.textContent = String(hours).padStart(2, "0");
-        elements.minutes.textContent = String(minutes).padStart(2, "0");
-        elements.seconds.textContent = String(seconds).padStart(2, "0");
-      }
-      //FIRES UPDATE COUNTDOWN
-      updateCountdown();
-      //FIRES UPDATE COUNTDOWN EVERY SECOND
-      const interval = setInterval(updateCountdown, 1000);
-    }
-
-    //INIT COUNTDOWN
-    startCountdown("2026-06-22T10:00:00");
-  </script>
-  <!-- SUBSCRIBE FORM SCRIPT -->
-  <script is:inline>
-    const subscribeForm = document.getElementById("subscribe-form");
-    const subscribeInputs = subscribeForm.querySelectorAll("button, input");
-    const dialog = document.getElementById("priority-access-dialog");
-
-    subscribeForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      //get data before the disable
-      const data = Object.fromEntries(new FormData(subscribeForm));
-      subscribeInputs.forEach((i) => (i.disabled = true));
-      try {
-        const endpointSubUrl = "/.netlify/functions/subscribe";
-
-        const res = await fetch(endpointSubUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-
-        if (dialog) dialog.close();
-
-        if (!res.ok) {
-          showModal("There was an error, try again later.", "error");
-        } else {
-          showModal("Thanks for your subscription!", "success");
-          subscribeForm.reset();
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        subscribeInputs.forEach((i) => (i.disabled = false));
-      }
-    });
-  </script>
-  <!-- MODAL HELPER SCRIPT -->
-  <script is:inline>
-    const modal = document.getElementById("modal");
-    const modalContent = document.getElementById("modal-content");
-
-    /**
-     * @param message string of the content of the message
-     * @param type type of message, currently works with error or success, fallback to green color
-     */
-    function showModal(message, type) {
-      modalContent.textContent = message;
-
-      //update the color of the content of the modal
-      //default is green
-      modalContent.classList.remove("green");
-      modalContent.classList.remove("red");
-      let respClass = "";
-      switch (type) {
-        case "error":
-          respClass = "red";
-          break;
-        case "success":
-        default:
-          respClass = "green";
-          break;
-      }
-      modalContent.classList.add(respClass);
-      modal.classList.remove("hidden");
-
-      // force reflow to fire animation
-      requestAnimationFrame(() => {
-        modal.classList.add("show");
-      });
-
-      //automatic disappear for the modal
-      setTimeout(() => {
-        modal.classList.remove("show");
-
-        setTimeout(() => {
-          modal.classList.add("hidden");
-        }, 300);
-      }, 2500);
-    }
-  </script>
 </html>
