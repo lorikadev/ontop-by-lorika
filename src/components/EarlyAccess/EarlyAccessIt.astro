@@ -241,12 +241,19 @@ import "./early-access.css";
     document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
   }
 
-  // Open dialog only the first time
-  if (!hasCookie(COOKIE_NAME)) {
-    if (dialog && typeof dialog.showModal === "function") {
-      dialog.showModal();
-    }
+  window.addEventListener("load", () => {
+    const popupInterval = setInterval(() => {
+      if (window._iub?.cs?.consent?.purposes) {
+        clearInterval(popupInterval);
+        // Open dialog only the first time
+        if (!hasCookie(COOKIE_NAME)) {
+          if (dialog && typeof dialog.showModal === "function") {
+            dialog.showModal();
+          }
 
-    setCookieForever(COOKIE_NAME, "true");
-  }
+          setCookieForever(COOKIE_NAME, "true");
+        }
+      }
+    }, 1000);
+  });
 </script>
