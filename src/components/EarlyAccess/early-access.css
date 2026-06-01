@@ -158,6 +158,7 @@ form .input-button-wrapper > button {
 form button:disabled,
 form input:disabled {
   opacity: 0.75;
+  cursor: not-allowed;
 }
 
 form button:disabled .normal {
