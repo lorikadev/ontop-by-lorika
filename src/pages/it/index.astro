@@ -1,5 +1,36 @@
 ---
-import IndexPlaceHolder from "../../content/IndexPlaceHolder.astro";
+import { sanityClient } from "sanity:client";
+import IndexContent from "../../content/IndexContent.astro";
+import PageContainer from "../../layout/PageContainer.astro";
+import type {
+    SiteNavigators,
+    HomePage,
+    ColorPicker,
+} from "../../../studio-lorika-ontop/sanity.types";
+
+const SITE_NAVIGATORS_QUERY = `
+    *[_type == "siteNavigators" && lang == "it"]`;
+const siteNavigators = await sanityClient.fetch<SiteNavigators[]>(
+    SITE_NAVIGATORS_QUERY,
+);
+
+const HOME_PAGE_QUERY = `
+    *[_type == "homePage" && lang == "it"]`;
+const homePage = await sanityClient.fetch<HomePage[]>(HOME_PAGE_QUERY);
+
+const COLOR_PICKER_QUERY = `
+    *[_type == "colorPicker" && lang == "it"]`;
+const colorPickerData =
+    await sanityClient.fetch<ColorPicker[]>(COLOR_PICKER_QUERY);
 ---
 
-<IndexPlaceHolder />
+<PageContainer
+    seo={homePage[0].seo!}
+    lang="it"
+    siteNavigators={siteNavigators[0]}
+>
+    <IndexContent
+        homePageData={homePage[0]}
+        colorPickerData={colorPickerData[0]}
+    />
+</PageContainer>
