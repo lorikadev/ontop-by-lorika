@@ -6,7 +6,7 @@ export const handler: Handler = async (event) => {
   }
 
   try {
-    const { email, first_name, last_name } = JSON.parse(event.body || "{}");
+    const { email } = JSON.parse(event.body || "{}");
 
     if (!email) {
       return { statusCode: 400, body: "Email required" };
@@ -28,10 +28,6 @@ export const handler: Handler = async (event) => {
       body: JSON.stringify({
         email_address: email,
         status: "subscribed",
-        merge_fields: {
-          first_name: first_name || "",
-          last_name: last_name || "",
-        },
       }),
     });
 
