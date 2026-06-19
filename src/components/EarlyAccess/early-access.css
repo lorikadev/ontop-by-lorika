@@ -155,6 +155,26 @@ form .input-button-wrapper > button {
   bottom: 0;
 }
 
+/* mobile */
+@media (max-width: 700px) {
+  form .input-button-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  form input {
+    padding-right: 1rem;
+  }
+
+  form .input-button-wrapper > button {
+    position: relative;
+    border-radius: 1rem !important;
+    margin-left: auto;
+  }
+}
+
 form button:disabled,
 form input:disabled {
   opacity: 0.75;
