@@ -27,15 +27,11 @@ export const handler: Handler = async (event) => {
 
     const isShopify = shopifyCountries.has(country);
 
-    if (isShopify)
-        return {
-            statusCode: 302,
-            headers: {
-                Location: SHOPIFY_URL
-            }
-        };
-    else
-        return {
-            statusCode: 200,
-        };
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            canUseShopify: isShopify,
+            url: isShopify ? SHOPIFY_URL : ''
+        })
+    };
 };
