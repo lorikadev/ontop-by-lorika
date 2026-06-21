@@ -1,54 +1,3 @@
-#floating-band {
-  width: 100%;
-  position: fixed;
-  border-radius: 0;
-  bottom: -200px;
-  background-color: var(--highlight-color);
-  z-index: 4;
-  cursor: pointer;
-  border-top: 1px solid black;
-  transition: background-color 0.2s;
-  animation: slide-in-from-below 0.5s 1.5s ease-out forwards;
-}
-
-@keyframes slide-in-from-below {
-  0% {
-    bottom: -200px;
-  }
-  100% {
-    bottom: 0;
-  }
-}
-
-#floating-band:hover {
-  background-color: color-mix(in srgb, var(--highlight-color) 80%, white 20%);
-}
-
-#floating-band:active {
-  background-color: color-mix(in srgb, var(--highlight-color) 70%, white 30%);
-}
-
-#floating-band > h4 {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  transition:
-    transform 0.2s,
-    color 0.2s;
-}
-
-#floating-band:hover > h4 {
-  transform: scale(1.1);
-}
-
-#floating-band:active > h4 {
-  transform: scale(1.05);
-}
-
 dialog {
   border: 0;
   padding: 0;
@@ -108,14 +57,14 @@ dialog .dialog-body a {
 }
 
 /* SECTION - FORM */
-form button,
-form input {
+dialog form button,
+dialog form input {
   padding: 0.5rem 1rem;
   margin: 0;
   color: white;
 }
 
-form input {
+dialog form input {
   border-radius: 1.5rem;
   border: 1px solid white;
   padding-right: 3rem;
@@ -124,12 +73,12 @@ form input {
   width: 100%;
 }
 
-form input:active,
-form input:focus {
+dialog form input:active,
+dialog form input:focus {
   box-shadow: inset 0px 0px 10px white;
 }
 
-form button {
+dialog form button {
   border-radius: 0 1.5rem 1.5rem 0 !important;
 
   transition:
@@ -137,51 +86,52 @@ form button {
     border-color 0.2s ease;
 }
 
-form button .normal {
+dialog form button .normal {
   /* NOTE - done this way so the button have the same size when disabled and the spinner appear */
   width: 25px;
   height: 25px;
   border: 4px solid transparent;
 }
 
-form .input-button-wrapper {
+dialog form .input-button-wrapper {
   position: relative;
 }
 
-form .input-button-wrapper > button {
+dialog form .input-button-wrapper > button {
   position: absolute;
   right: 0;
   top: 0;
   bottom: 0;
+  width: auto;
 }
 
 /* mobile */
 @media (max-width: 700px) {
-  form .input-button-wrapper {
+  dialog form .input-button-wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1rem;
   }
 
-  form input {
+  dialog form input {
     padding-right: 1rem;
   }
 
-  form .input-button-wrapper > button {
+  dialog form .input-button-wrapper > button {
     position: relative;
     border-radius: 1rem !important;
     margin-left: auto;
   }
 }
 
-form button:disabled,
-form input:disabled {
+dialog form button:disabled,
+dialog form input:disabled {
   opacity: 0.75;
   cursor: not-allowed;
 }
 
-form button:disabled .normal {
+dialog form button:disabled .normal {
   display: none;
 }
 
@@ -207,25 +157,3 @@ form button:disabled .custom-loader {
   }
 }
 /* !SECTION - FORM */
-
-#countdown-wrapper {
-  display: flex;
-  flex-direction: row;
-  text-transform: uppercase;
-}
-
-.time-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.time-wrapper .label {
-  font-weight: 400;
-  font-size: 0.8rem;
-}
-
-.separator,
-.time-wrapper .time {
-  font-size: 1rem;
-}

@@ -251,10 +251,10 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
 
       if (res.status === 302) {
         const location = res.headers.get("Location");
-        window.location.href = location!;
-        return;
+        if (location) window.open(location, "_blank");
       } else {
-        alert("bingus");
+        const dialogElem = document.getElementById("priority-access-dialog") as HTMLDialogElement;
+        if (dialogElem) dialogElem.showModal();
       }
     }
 

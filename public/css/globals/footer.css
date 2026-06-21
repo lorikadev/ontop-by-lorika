@@ -93,7 +93,7 @@ form button .normal {
   border: 4px solid transparent;
 }
 
-form .input-button-wrapper > button {
+footer form .input-button-wrapper > button {
   border-radius: 1rem !important;
   width: 100%;
 }
