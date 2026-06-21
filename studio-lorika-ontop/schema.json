@@ -1762,6 +1762,50 @@
                 "type": "string"
               },
               "optional": true
+            },
+            "subscription": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "object",
+                "attributes": {
+                  "title": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    },
+                    "optional": true
+                  },
+                  "formButton": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    },
+                    "optional": true
+                  },
+                  "privacyTip": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    },
+                    "optional": true
+                  },
+                  "success": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    },
+                    "optional": true
+                  },
+                  "error": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    },
+                    "optional": true
+                  }
+                }
+              },
+              "optional": true
             }
           }
         },

@@ -1,6 +1,5 @@
 ---
 import type { SiteNavigators } from "../../studio-lorika-ontop/sanity.types";
-import { SHOP_REDIRECT_URL } from "../const";
 import { urlFor } from "../scripts/globals/sanity-client";
 
 //NOTE
@@ -37,13 +36,12 @@ const navData = siteNavigators.navbar;
         <!-- MOBILE MENU BUTTON -->
         <div id="mobile-menu-wrapper" class="show-mob">
             <!-- CTA -->
-            <!-- <a
-                class="button primary fs-2-mob nav-cta-shop"
-                href={SHOP_REDIRECT_URL}
+            <a
+                class="button primary fs-2-mob nav-cta-shop shop-redirect"
                 aria-label={navData?.shopAriaLabel}
             >
                 {navData?.shop}
-            </a> -->
+            </a>
             <!-- SANDWICH -->
             <button id="mobile-menu-button">
                 <img src="/images/icons/menu.svg" alt="mobile menu button" />
@@ -102,18 +100,16 @@ const navData = siteNavigators.navbar;
 
         <!-- CTA -->
         <div class="nav-cta-wrapper show-till-mob">
-            <!-- <a
-                class="button primary wide fs-2-mob nav-cta-shop"
-                href={SHOP_REDIRECT_URL}
+            <a
+                class="button primary wide fs-2-mob nav-cta-shop shop-redirect" 
                 aria-label={navData?.shopAriaLabel}
             >
                 {navData?.shop}
-            </a> -->
+            </a>
 
             <!-- NOTE plain svg to change fill at run time with color picker -->
-            <!-- <a
-                class="button primary icon-for-button nav-cta-cart"
-                href={SHOP_REDIRECT_URL}
+            <a
+                class="button primary icon-for-button nav-cta-cart shop-redirect"
                 aria-label={navData?.cartAriaLabel}
                 aria-current={activeLinkPath === "/cart" ? "page" : undefined}
             >
@@ -138,7 +134,7 @@ const navData = siteNavigators.navbar;
                         ></path>
                     </g>
                 </svg>
-            </a> -->
+            </a>
         </div>
     </div>
 </nav>

@@ -11,16 +11,31 @@ export const handler: Handler = async (event) => {
         "LV", "LT", "LU", "MT", "CY", "IS", "LI", "UA", "GB"
     ]);
 
-    const amazonUrl = "https://www.amazon.com";
+    // const amazonUrl = "https://www.amazon.com";
 
-    const target = shopifyCountries.has(country)
-        ? SHOPIFY_URL
-        : amazonUrl;
+    // const target = shopifyCountries.has(country)
+    //     ? SHOPIFY_URL
+    //     : amazonUrl;
 
-    return {
-        statusCode: 302,
-        headers: {
-            Location: target
-        }
-    };
+    // return {
+    //     statusCode: 302,
+    //     headers: {
+    //         Location: target
+    //     }
+    // };
+
+
+    const isShopify = shopifyCountries.has(country);
+
+    if (isShopify)
+        return {
+            statusCode: 302,
+            headers: {
+                Location: SHOPIFY_URL
+            }
+        };
+    else
+        return {
+            statusCode: 200,
+        };
 };

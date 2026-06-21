@@ -1,39 +1,3 @@
----
-import "./early-access.css";
----
-
-<!-- FLOATING BAND -->
-<button
-  id="floating-band"
-  command="show-modal"
-  commandfor="priority-access-dialog"
->
-  <h4>
-    CLICK TO GET EARLY ACCESS TO THE STORE
-    <div id="countdown-wrapper">
-      <div id="days" class="time-wrapper">
-        <span class="time"></span>
-        <span class="label">days</span>
-      </div>
-      <span class="separator">:</span>
-      <div id="hours" class="time-wrapper">
-        <span class="time"></span>
-        <span class="label">hours</span>
-      </div>
-      <span class="separator">:</span>
-      <div id="minutes" class="time-wrapper">
-        <span class="time"></span>
-        <span class="label">minutes</span>
-      </div>
-      <span class="separator">:</span>
-      <div id="seconds" class="time-wrapper">
-        <span class="time"></span>
-        <span class="label">seconds</span>
-      </div>
-    </div>
-  </h4>
-</button>
-
 <!-- PRIORTY ACCESS DIALOG -->
 <dialog id="priority-access-dialog">
   <div class="dialog-header p-1">
@@ -47,19 +11,11 @@ import "./early-access.css";
   </div>
   <div class="dialog-body p-1">
     <p>
-      The first release is coming soon!
+      Your area is not yet covered by the service. We don't currently ship to
+      your region, but we're expanding rapidly.
       <br />
-      Join the priority list to access the store before public launch and receive
-      exclusive updates from Ontop.
-      <br />
-      Early access includes:
-      <ul>
-        <li>Priority access to the first production batch</li>
-        <li>Access before public launch</li>
-        <li>Access to future drops and limited colorways</li>
-        <li>Updates from the Ontop Club</li>
-      </ul>
-      Enter your email and get access first.
+      Join the priority list to be the first to know when the service is available
+      in your area.
     </p>
     <form class="mt-1" id="subscribe-form">
       <div class="input-button-wrapper">
@@ -68,76 +24,14 @@ import "./early-access.css";
       </div>
       <small>
         <i>
-          By clicking "join the list" you agree to our
-          <a target="_blank" href="/en/privacy">privacy policy</a>
+          By clicking on "join the list" you accept ours
+          <a target="_blank" href="/it/privacy">privacy policy</a>
         </i>
       </small>
     </form>
   </div>
 </dialog>
-<!-- RESPONSE MODAL -->
-<div id="modal" class="modal hidden">
-  <div id="modal-content" class="modal-content"></div>
-</div>
 
-<!-- COUNTDOWN TIMER SCRIPT -->
-<script is:inline>
-  /**
-   * @param targetDate data to the countdown as a string in iso format
-   * @summary init countdown settings and fires the automatic update
-   */
-  function startCountdown(targetDate) {
-    const target = new Date(targetDate).getTime();
-
-    //html elements where the data will be displayed
-    const elements = {
-      days: document.querySelector("#days .time"),
-      hours: document.querySelector("#hours .time"),
-      minutes: document.querySelector("#minutes .time"),
-      seconds: document.querySelector("#seconds .time"),
-    };
-
-    /**
-     * function that updates the view with countdown data
-     */
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = target - now;
-
-      if (distance <= 0) {
-        clearInterval(interval);
-
-        elements.days.textContent = "00";
-        elements.hours.textContent = "00";
-        elements.minutes.textContent = "00";
-        elements.seconds.textContent = "00";
-
-        return;
-      }
-
-      //GET THE 'MODULO' OF THE DATE FOR A TIME UNIT
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      //DISPLAY THE DATE COUNTDOWN PIECES
-      elements.days.textContent = String(days).padStart(2, "0");
-      elements.hours.textContent = String(hours).padStart(2, "0");
-      elements.minutes.textContent = String(minutes).padStart(2, "0");
-      elements.seconds.textContent = String(seconds).padStart(2, "0");
-    }
-    //FIRES UPDATE COUNTDOWN
-    updateCountdown();
-    //FIRES UPDATE COUNTDOWN EVERY SECOND
-    const interval = setInterval(updateCountdown, 1000);
-  }
-
-  //INIT COUNTDOWN
-  startCountdown("2026-06-22T10:00:00");
-</script>
 <!-- SUBSCRIBE FORM SCRIPT -->
 <script is:inline>
   const subscribeForm = document.getElementById("subscribe-form");
@@ -173,86 +67,5 @@ import "./early-access.css";
     } finally {
       subscribeInputs.forEach((i) => (i.disabled = false));
     }
-  });
-</script>
-<!-- MODAL HELPER SCRIPT -->
-<script is:inline>
-  const modal = document.getElementById("modal");
-  const modalContent = document.getElementById("modal-content");
-
-  /**
-   * @param message string of the content of the message
-   * @param type type of message, currently works with error or success, fallback to green color
-   */
-  function showModal(message, type) {
-    modalContent.textContent = message;
-
-    //update the color of the content of the modal
-    //default is green
-    modalContent.classList.remove("green");
-    modalContent.classList.remove("red");
-    let respClass = "";
-    switch (type) {
-      case "error":
-        respClass = "red";
-        break;
-      case "success":
-      default:
-        respClass = "green";
-        break;
-    }
-    modalContent.classList.add(respClass);
-    modal.classList.remove("hidden");
-
-    // force reflow to fire animation
-    requestAnimationFrame(() => {
-      modal.classList.add("show");
-    });
-
-    //automatic disappear for the modal
-    setTimeout(() => {
-      modal.classList.remove("show");
-
-      setTimeout(() => {
-        modal.classList.add("hidden");
-      }, 300);
-    }, 2500);
-  }
-</script>
-<script is:inline data-iub-purposes="essential">
-  const COOKIE_NAME = "early-access-pop-up-seen";
-
-  /**
-   * Check if a cookie exists
-   */
-  function hasCookie(name) {
-    return document.cookie
-      .split("; ")
-      .some((cookie) => cookie.startsWith(`${name}=`));
-  }
-
-  /**
-   * Set a cookie with very long expiration
-   */
-  function setCookieForever(name, value) {
-    const expires = new Date("9999-12-31T23:59:59Z").toUTCString();
-
-    document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
-  }
-
-  window.addEventListener("load", () => {
-    const popupInterval = setInterval(() => {
-      if (window._iub?.cs?.consent?.purposes) {
-        clearInterval(popupInterval);
-        // Open dialog only the first time
-        if (!hasCookie(COOKIE_NAME)) {
-          if (dialog && typeof dialog.showModal === "function") {
-            dialog.showModal();
-          }
-
-          setCookieForever(COOKIE_NAME, "true");
-        }
-      }
-    }, 1000);
   });
 </script>

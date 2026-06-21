@@ -16,8 +16,8 @@ import "../../public/css/globals/footer.css";
 import "../../public/css/globals/animations.css";
 import { getLocaleFromLang } from "../scripts/globals/get-locale-from-lang";
 import { urlFor } from "../scripts/globals/sanity-client";
-import EarlyAccessIt from "../components/EarlyAccess/EarlyAccessIt.astro";
 import EarlyAccessEn from "../components/EarlyAccess/EarlyAccessEn.astro";
+import EarlyAccessIt from "../components/EarlyAccess/EarlyAccessIt.astro";
 
 const canonical = Astro.url.href;
 
@@ -174,6 +174,57 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
 
   <!-- SECTION - BODY -->
   <body>
+    <!-- SECTION - RESPONSE MODAL -->
+    <!-- MODAL -->
+    <div id="modal" class="modal hidden">
+      <div id="modal-content" class="modal-content"></div>
+    </div>
+    <!-- HELPER SCRIPT -->
+    <script is:inline>
+      const modal = document.getElementById("modal");
+      const modalContent = document.getElementById("modal-content");
+
+      /**
+       * @param message string of the content of the message
+       * @param type type of message, currently works with error or success, fallback to green color
+       */
+      function showModal(message, type) {
+        modalContent.textContent = message;
+
+        //update the color of the content of the modal
+        //default is green
+        modalContent.classList.remove("green");
+        modalContent.classList.remove("red");
+        let respClass = "";
+        switch (type) {
+          case "error":
+            respClass = "red";
+            break;
+          case "success":
+          default:
+            respClass = "green";
+            break;
+        }
+        modalContent.classList.add(respClass);
+        modal.classList.remove("hidden");
+
+        // force reflow to fire animation
+        requestAnimationFrame(() => {
+          modal.classList.add("show");
+        });
+
+        //automatic disappear for the modal
+        setTimeout(() => {
+          modal.classList.remove("show");
+
+          setTimeout(() => {
+            modal.classList.add("hidden");
+          }, 300);
+        }, 2500);
+      }
+    </script>
+    <!-- !SECTION - RESPONSE MODAL -->
+
     <!-- SECTION - INITIALIZERS -->
     <script src="../initializers/fire-color-inits.ts"></script>
     <script src="../scripts/globals/on-scroll-anim.ts"></script>
@@ -184,10 +235,32 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
     <main style="position: relative;">
       <!-- PAGE CONTENT -->
       <slot />
-      {lang === "it" ? <EarlyAccessIt /> : <EarlyAccessEn />}
     </main>
     <!-- FOOTER -->
-    <Footer siteNavigators={siteNavigators} />
+    <Footer siteNavigators={siteNavigators} lang={lang} />
   </body>
   <!-- !SECTION - BODY -->
+  {lang == "en" ? <EarlyAccessEn /> : <EarlyAccessIt />}
+  <script>
+    import { SHOP_REDIRECT_URL } from "../const";
+
+    async function handleShopClick(e: Event) {
+      e.preventDefault();
+
+      const res = await fetch(SHOP_REDIRECT_URL);
+
+      if (res.status === 302) {
+        const location = res.headers.get("Location");
+        window.location.href = location!;
+        return;
+      } else {
+        alert("bingus");
+      }
+    }
+
+    const shopButtons = document.querySelectorAll(".shop-redirect");
+    shopButtons.forEach((btn) => {
+      (btn as HTMLElement).addEventListener("click", handleShopClick);
+    });
+  </script>
 </html>

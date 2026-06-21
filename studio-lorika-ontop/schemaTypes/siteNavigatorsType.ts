@@ -119,6 +119,44 @@ export const siteNavigatorsType = defineType({
           type: 'text',
           validation: (rule) => rule.required(),
         }),
+        defineField({
+          name: 'subscription',
+          title: 'Subscription',
+          type: 'object',
+          fields: [
+            {
+              name: 'title',
+              title: 'title',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'formButton',
+              title: 'form button',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'privacyTip',
+              title: 'privacy tip',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'success',
+              title: 'success message',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'error',
+              title: 'error message',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+          ],
+          validation: (rule) => rule.required(),
+        }),
       ]
     })
   ],

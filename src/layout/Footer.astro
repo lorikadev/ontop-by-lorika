@@ -3,49 +3,128 @@ import type { SiteNavigators } from "../../studio-lorika-ontop/sanity.types";
 import { cleanHtml } from "../scripts/globals/clean-html";
 
 interface Props {
-    //SITE NAVIGATORS (NAVBAR & FOOTER)
-    siteNavigators: SiteNavigators;
+  //SITE NAVIGATORS (NAVBAR & FOOTER)
+  siteNavigators: SiteNavigators;
+  lang: string;
 }
 
 const {
-    //SITE NAVIGATORS (NAVBAR & FOOTER)
-    siteNavigators,
+  //SITE NAVIGATORS (NAVBAR & FOOTER)
+  siteNavigators,
+  lang = "en",
 } = Astro.props;
 
 const footerData = siteNavigators.footer;
 ---
 
 <footer class="pt-2 pb-5">
-    <div class="container">
-        <!-- OWNERS -->
-        <div set:html={cleanHtml(footerData?.leftBlock!)} />
-
-        <!-- ADDRESS -->
-        <div set:html={cleanHtml(footerData?.centerBlock!)} />
-
-        <!-- SOCIAL -->
-        <div>
-            <b> {footerData?.rightBlock!} </b>
-            <div id="socials-container" class="mt-05">
-                <a href="https://www.facebook.com/profile.php?id=61589012020864" class="social-button large-icon">
-                    <img
-                        src="/images/logo/socials/facebook.svg"
-                        alt="brand social logo"
-                    />
-                </a>
-                <a href="https://www.instagram.com/ontop_by_lorika/" class="social-button super-large-icon">
-                    <img
-                        src="/images/logo/socials/instagram.svg"
-                        alt="brand social logo"
-                    />
-                </a>
-                <a href="https://www.tiktok.com/@ontopbylorika?_r=1&_t=ZN-96NYKUYgGeM" class="social-button super-small-icon">
-                    <img
-                        src="/images/logo/socials/tiktok.svg"
-                        alt="brand social logo"
-                    />
-                </a>
-            </div>
-        </div>
+  <div class="container">
+    <!-- OWNERS -->
+    <div>
+      <div set:html={cleanHtml(footerData?.leftBlock!)} />
+      <p>
+        <a target="_blank" href="/files/PRIVACY_POLICY_rev_21_06_2026_eng.pdf">Privacy Policy</a>
+        <br />
+        <a target="_blank" href="/files/RETURN_POLICY_AND_RIGHT_OF_WITHDRAWAL_rev_21_06_2026_eng.pdf">Return Policy and Right of Withdrawal</a>
+        <br />
+        <a target="_blank" href="/files/TERMS_AND_CONDITIONS_OF_SALE_rev_22_06_2026_eng.pdf">Terms and Conditions of Sale</a>
+      </p>
     </div>
+
+    <!-- ADDRESS -->
+    <div set:html={cleanHtml(footerData?.centerBlock!)} />
+
+    <!-- SOCIAL -->
+    <div>
+      <b> {footerData?.rightBlock!} </b>
+      <div id="socials-container" class="mt-05">
+        <a
+          href="https://www.facebook.com/profile.php?id=61589012020864"
+          class="social-button large-icon"
+        >
+          <img
+            src="/images/logo/socials/facebook.svg"
+            alt="brand social logo"
+          />
+        </a>
+        <a
+          href="https://www.instagram.com/ontop_by_lorika/"
+          class="social-button super-large-icon"
+        >
+          <img
+            src="/images/logo/socials/instagram.svg"
+            alt="brand social logo"
+          />
+        </a>
+        <a
+          href="https://www.tiktok.com/@ontopbylorika?_r=1&_t=ZN-96NYKUYgGeM"
+          class="social-button super-small-icon"
+        >
+          <img src="/images/logo/socials/tiktok.svg" alt="brand social logo" />
+        </a>
+      </div>
+      <div class="mt-1">
+        <b> {footerData?.subscription?.title} </b>
+        <form
+          class="mt-05"
+          id="footer-subscribe-form"
+          data-success={footerData?.subscription?.success}
+          data-error={footerData?.subscription?.error}
+        >
+          <div class="input-button-wrapper">
+            <input placeholder="E-MAIL" type="email" name="email" required />
+            <button class="button primary" type="submit"
+              >{footerData?.subscription?.formButton}</button
+            >
+          </div>
+          <small>
+            <i>
+              {footerData?.subscription?.privacyTip}
+              <a target="_blank" href={`/${lang}/privacy`}> privacy</a>
+            </i>
+          </small>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBSCRIBE FORM SCRIPT -->
+  <script is:inline>
+    const footerSubscribeForm = document.getElementById(
+      "footer-subscribe-form",
+    );
+    const footerSubscribeInputs =
+      footerSubscribeForm.querySelectorAll("button, input");
+    const SUCCESS_MESSAGE = footerSubscribeForm.dataset.success;
+    const ERROR_MESSAGE = footerSubscribeForm.dataset.error;
+
+    footerSubscribeForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      //get data before the disable
+      const data = Object.fromEntries(new FormData(footerSubscribeForm));
+      footerSubscribeInputs.forEach((i) => (i.disabled = true));
+      try {
+        const endpointSubUrl = "/.netlify/functions/subscribe";
+
+        const res = await fetch(endpointSubUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (!res.ok) {
+          showModal(ERROR_MESSAGE, "error");
+        } else {
+          showModal(SUCCESS_MESSAGE, "success");
+          footerSubscribeForm.reset();
+        }
+      } catch (error) {
+        showModal(ERROR_MESSAGE, "error");
+      } finally {
+        footerSubscribeInputs.forEach((i) => (i.disabled = false));
+      }
+    });
+  </script>
 </footer>

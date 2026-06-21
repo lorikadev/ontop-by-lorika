@@ -1,57 +1,132 @@
 footer {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 footer .container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 #socials-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .social-button {
-    display: inline-block;
-    height: 2rem;
-    width: 2rem;
-    border: 2px solid black;
-    border-radius: 8px;
-    display: flex;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  border: 2px solid black;
+  border-radius: 8px;
+  display: flex;
 }
 
-.social-button>img {
-    width: 80%;
-    height: auto;
-    margin: auto;
+.social-button > img {
+  width: 80%;
+  height: auto;
+  margin: auto;
 }
 
-.social-button.super-large-icon>img {
-    width: 95%;
+.social-button.super-large-icon > img {
+  width: 95%;
 }
 
-.social-button.large-icon>img {
-    width: 90%;
+.social-button.large-icon > img {
+  width: 90%;
 }
 
-.social-button.small-icon>img {
-    width: 70%;
+.social-button.small-icon > img {
+  width: 70%;
 }
 
-.social-button.super-small-icon>img {
-    width: 65%;
+.social-button.super-small-icon > img {
+  width: 65%;
 }
 
 @media (max-width: 700px) {
-    footer .container {
-        gap: 1.5rem;
-        grid-template-columns: repeat(1, 1fr);
-    }
+  footer .container {
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
 
-    #socials-container {
-        gap: 0.5rem;
-    }
+  #socials-container {
+    gap: 0.5rem;
+  }
+}
+
+/* SECTION - FORM */
+form button,
+form input {
+  padding: 0.5rem 0.75rem;
+  margin: 0;
+  color: white;
+}
+
+form input {
+  border-radius: 1.5rem;
+  border: 1px solid rgb(0, 0, 0);
+  background-color: transparent;
+  padding-right: 1rem;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+form input:active,
+form input:focus {
+  box-shadow: inset 0px 0px 10px white;
+}
+
+form button {
+  border-radius: 0 1.5rem 1.5rem 0 !important;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+form button .normal {
+  /* NOTE - done this way so the button have the same size when disabled and the spinner appear */
+  width: 25px;
+  height: 25px;
+  border: 4px solid transparent;
+}
+
+form .input-button-wrapper > button {
+  border-radius: 1rem !important;
+  width: 100%;
+}
+
+form .input-button-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+form button:disabled,
+form input:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+form button:disabled .normal {
+  display: none;
+}
+
+/* SPINNING LOADER */
+.custom-loader {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 4px solid;
+  border-color: #d6d6df;
+  border-right-color: #f4f4f4;
+  animation: s2 2s infinite linear;
+  display: none;
+}
+
+form button:disabled .custom-loader {
+  display: inline-block;
 }

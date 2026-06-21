@@ -286,6 +286,13 @@ export type SiteNavigators = {
     leftBlock?: string;
     centerBlock?: string;
     rightBlock?: string;
+    subscription?: {
+      title?: string;
+      formButton?: string;
+      privacyTip?: string;
+      success?: string;
+      error?: string;
+    };
   };
 };
 
