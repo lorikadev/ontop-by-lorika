@@ -25,9 +25,9 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
     highlightedContainers.forEach(hc => hc.style.border = usedBorder);
 
     // LIGHT COLORS
+    // cssColorVarKey === "--RAL1018" ||
     if (
         cssColorVarKey === "--RAL9001" ||
-        cssColorVarKey === "--RAL1018" ||
         cssColorVarKey === "--RAL1002"
     ) {
         navCtaShop.forEach(ncs => ncs.style.border = 'var(--dark-text-color)');
