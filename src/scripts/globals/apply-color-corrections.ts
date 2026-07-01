@@ -25,10 +25,10 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
     highlightedContainers.forEach(hc => hc.style.border = usedBorder);
 
     // LIGHT COLORS
+    // cssColorVarKey === "--RAL1002"
     if (
         cssColorVarKey === "--RAL9001" ||
-        cssColorVarKey === "--RAL1018" ||
-        cssColorVarKey === "--RAL1002"
+        cssColorVarKey === "--RAL1018"
     ) {
         navCtaShop.forEach(ncs => ncs.style.border = 'var(--dark-text-color)');
         navCtaCartSvg.forEach(nccs => {
@@ -39,7 +39,7 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
         primaryButtons.forEach(pb => pb.style.color = 'var(--dark-text-color)');
         highlightedContainers.forEach(hc => hc.style.color = 'var(--dark-text-color)');
 
-        if(floatingBandTitle) 
+        if (floatingBandTitle)
             floatingBandTitle.style.color = 'var(--dark-text-color)'
     }
     // DARK COLORS
@@ -49,11 +49,11 @@ export const applyColorCorrections = (cssColorVarKey: string) => {
             nccs.style.border = 'var(--light-text-color)';
             nccs.style.fill = 'var(--light-text-color)';
         });
-        
+
         primaryButtons.forEach(pb => pb.style.color = 'var(--light-text-color)');
         highlightedContainers.forEach(hc => hc.style.color = 'var(--light-text-color)');
 
-        if(floatingBandTitle) 
+        if (floatingBandTitle)
             floatingBandTitle.style.color = 'var(--light-text-color)'
 
         // jet black need border to be seen over dark bg
