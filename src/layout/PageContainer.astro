@@ -241,26 +241,4 @@ const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
   </body>
   <!-- !SECTION - BODY -->
   {lang == "en" ? <EarlyAccessEn /> : <EarlyAccessIt />}
-  <script>
-    import { SHOP_REDIRECT_URL } from "../const";
-
-    async function handleShopClick(e: Event) {
-      e.preventDefault();
-
-      const res = await fetch(SHOP_REDIRECT_URL);
-      const data = await res.json();
-      if (data.canUseShopify) window.open(data.url, "_blank");
-      else {
-        const dialogElem = document.getElementById(
-          "priority-access-dialog",
-        ) as HTMLDialogElement;
-        if (dialogElem) dialogElem.showModal();
-      }
-    }
-
-    const shopButtons = document.querySelectorAll(".shop-redirect");
-    shopButtons.forEach((btn) => {
-      (btn as HTMLElement).addEventListener("click", handleShopClick);
-    });
-  </script>
 </html>

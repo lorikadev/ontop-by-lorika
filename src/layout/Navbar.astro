@@ -4,7 +4,7 @@ import { urlFor } from "../scripts/globals/sanity-client";
 
 //NOTE
 /*
- *  /en/home -> ['en', 'home'] 
+ *  /en/home -> ['en', 'home']
  *  1-> 'en'
  *  2-> 'home'
  */
@@ -12,79 +12,84 @@ const currentLang = Astro.url.pathname.split("/")[1] ?? "";
 const activeLinkPath = Astro.url.pathname.split("/")[2] ?? "";
 
 interface Props {
-    //SITE NAVIGATORS (NAVBAR & FOOTER)
-    siteNavigators: SiteNavigators;
+  //SITE NAVIGATORS (NAVBAR & FOOTER)
+  siteNavigators: SiteNavigators;
 }
 
 const {
-    //SITE NAVIGATORS (NAVBAR & FOOTER)
-    siteNavigators,
+  //SITE NAVIGATORS (NAVBAR & FOOTER)
+  siteNavigators,
 } = Astro.props;
 
 const navData = siteNavigators.navbar;
 ---
 
 <nav aria-label="navbar">
-    <div id="top-navbar" data-mobile-menu-opened="closed">
-        <!-- LOGO -->
-        <div id="logo-link-wrapper">
-            <a id="logo-link" href={`/${currentLang}/`} aria-label={navData?.home + " link"}>
-                <img src={urlFor(navData?.logo?.asset?._ref!).url()} alt="logo Lorika" />
-            </a>
-        </div>
+  <div id="top-navbar" data-mobile-menu-opened="closed">
+    <!-- LOGO -->
+    <div id="logo-link-wrapper">
+      <a
+        id="logo-link"
+        href={`/${currentLang}/`}
+        aria-label={navData?.home + " link"}
+      >
+        <img
+          src={urlFor(navData?.logo?.asset?._ref!).url()}
+          alt="logo Lorika"
+        />
+      </a>
+    </div>
 
-        <!-- MOBILE MENU BUTTON -->
-        <div id="mobile-menu-wrapper" class="show-mob">
-            <!-- CTA -->
-            <a
-                class="button primary fs-2-mob nav-cta-shop shop-redirect"
-                aria-label={navData?.shopAriaLabel}
-            >
-                {navData?.shop}
-            </a>
-            <!-- SANDWICH -->
-            <button id="mobile-menu-button">
-                <img src="/images/icons/menu.svg" alt="mobile menu button" />
-            </button>
-        </div>
+    <!-- MOBILE MENU BUTTON -->
+    <div id="mobile-menu-wrapper" class="show-mob">
+      <!-- CTA -->
+      <a
+        class="button primary fs-2-mob nav-cta-shop shop-redirect"
+        href="https://lorika-8398.myshopify.com/"
+        target="_blank"
+        aria-label={navData?.shopAriaLabel}
+      >
+        {navData?.shop}
+      </a>
+      <!-- SANDWICH -->
+      <button id="mobile-menu-button">
+        <img src="/images/icons/menu.svg" alt="mobile menu button" />
+      </button>
+    </div>
 
-        <!-- SECTION - MAIN MENU -->
-        <ul class="fs-2-mob">
-            <li>
-                <a
-                    href={`/${currentLang}/`}
-                    aria-current={activeLinkPath === "" ? "page" : undefined}
-                    class:list={{ active: activeLinkPath === "" }}
-                >
-                    {navData?.home}
-                </a>
-            </li>
+    <!-- SECTION - MAIN MENU -->
+    <ul class="fs-2-mob">
+      <li>
+        <a
+          href={`/${currentLang}/`}
+          aria-current={activeLinkPath === "" ? "page" : undefined}
+          class:list={{ active: activeLinkPath === "" }}
+        >
+          {navData?.home}
+        </a>
+      </li>
 
-            <li>
-                <a
-                    href={`/${currentLang}/about-us`}
-                    aria-current={activeLinkPath === "about-us"
-                        ? "page"
-                        : undefined}
-                    class:list={{ active: activeLinkPath === "about-us" }}
-                >
-                    {navData?.aboutUs}
-                </a>
-            </li>
+      <li>
+        <a
+          href={`/${currentLang}/about-us`}
+          aria-current={activeLinkPath === "about-us" ? "page" : undefined}
+          class:list={{ active: activeLinkPath === "about-us" }}
+        >
+          {navData?.aboutUs}
+        </a>
+      </li>
 
-            <li>
-                <a
-                    href={`/${currentLang}/ontop-cover`}
-                    aria-current={activeLinkPath === "ontop-cover"
-                        ? "page"
-                        : undefined}
-                    class:list={{ active: activeLinkPath === "ontop-cover" }}
-                >
-                    {navData?.ontopCover}
-                </a>
-            </li>
+      <li>
+        <a
+          href={`/${currentLang}/ontop-cover`}
+          aria-current={activeLinkPath === "ontop-cover" ? "page" : undefined}
+          class:list={{ active: activeLinkPath === "ontop-cover" }}
+        >
+          {navData?.ontopCover}
+        </a>
+      </li>
 
-            <!-- <li>
+      <!-- <li>
                 <a
                     href={`/${currentLang}/ambassadors`}
                     aria-current={activeLinkPath === "ambassadors"
@@ -95,21 +100,25 @@ const navData = siteNavigators.navbar;
                     {navData?.ambassadors}
                 </a>
             </li> -->
-        </ul>
-        <!-- !SECTION - MAIN MENU -->
+    </ul>
+    <!-- !SECTION - MAIN MENU -->
 
-        <!-- CTA -->
-        <div class="nav-cta-wrapper show-till-mob">
-            <a
-                class="button primary wide fs-2-mob nav-cta-shop shop-redirect" 
-                aria-label={navData?.shopAriaLabel}
-            >
-                {navData?.shop}
-            </a>
+    <!-- CTA -->
+    <div class="nav-cta-wrapper show-till-mob">
+      <a
+        class="button primary wide fs-2-mob nav-cta-shop shop-redirect"
+        href="https://lorika-8398.myshopify.com/"
+        target="_blank"
+        aria-label={navData?.shopAriaLabel}
+      >
+        {navData?.shop}
+      </a>
 
-            <!-- NOTE plain svg to change fill at run time with color picker -->
-            <!-- <a
+      <!-- NOTE plain svg to change fill at run time with color picker -->
+      <!-- <a
                 class="button primary icon-for-button nav-cta-cart shop-redirect"
+                href="https://lorika-8398.myshopify.com/"
+                target="_blank"
                 aria-label={navData?.cartAriaLabel}
                 aria-current={activeLinkPath === "/cart" ? "page" : undefined}
             >
@@ -135,8 +144,8 @@ const navData = siteNavigators.navbar;
                     </g>
                 </svg>
             </a> -->
-        </div>
     </div>
+  </div>
 </nav>
 <!-- NOTE: leave this here as css will find it with brother operator -->
 <!-- blur curtain -->
@@ -144,29 +153,28 @@ const navData = siteNavigators.navbar;
 
 <!-- MOBILE MENU TOGGLE -->
 <script>
-    const mobileMenuBtn = document.getElementById("mobile-menu-button");
-    const topNavbar = document.getElementById("top-navbar");
-    const blurCurtain = document.getElementById("blur-curtain");
+  const mobileMenuBtn = document.getElementById("mobile-menu-button");
+  const topNavbar = document.getElementById("top-navbar");
+  const blurCurtain = document.getElementById("blur-curtain");
 
-    if (mobileMenuBtn && topNavbar) {
-        const toggleMobileMenu = (_: MouseEvent) => {
-            switch (topNavbar.dataset.mobileMenuOpened) {
-                case "opened":
-                    topNavbar.dataset.mobileMenuOpened = "closed";
-                    break;
-                case "closed":
-                    topNavbar.dataset.mobileMenuOpened = "opened";
-                    break;
-            }
-        };
-        //ADD CLICK EVENT LOGIC
-        mobileMenuBtn.addEventListener("click", toggleMobileMenu);
-        //optional
-        if (blurCurtain)
-            blurCurtain.addEventListener("click", toggleMobileMenu);
-    } else {
-        console.error(
-            "#mobile-menu-button and/or #top-navbar is missing from the navbar",
-        );
-    }
+  if (mobileMenuBtn && topNavbar) {
+    const toggleMobileMenu = (_: MouseEvent) => {
+      switch (topNavbar.dataset.mobileMenuOpened) {
+        case "opened":
+          topNavbar.dataset.mobileMenuOpened = "closed";
+          break;
+        case "closed":
+          topNavbar.dataset.mobileMenuOpened = "opened";
+          break;
+      }
+    };
+    //ADD CLICK EVENT LOGIC
+    mobileMenuBtn.addEventListener("click", toggleMobileMenu);
+    //optional
+    if (blurCurtain) blurCurtain.addEventListener("click", toggleMobileMenu);
+  } else {
+    console.error(
+      "#mobile-menu-button and/or #top-navbar is missing from the navbar",
+    );
+  }
 </script>
