@@ -15,7 +15,7 @@ import "../../public/css/globals/navbar.css";
 import "../../public/css/globals/footer.css";
 import "../../public/css/globals/animations.css";
 import { getLocaleFromLang } from "../scripts/globals/get-locale-from-lang";
-import { urlFor } from "../scripts/globals/sanity-client";
+import { imageUrlFor } from "../scripts/globals/sanity-client";
 import EarlyAccessEn from "../components/EarlyAccess/EarlyAccessEn.astro";
 import EarlyAccessIt from "../components/EarlyAccess/EarlyAccessIt.astro";
 
@@ -38,7 +38,7 @@ const {
 } = Astro.props;
 
 //NOTE - the images are required
-const thumbnailUrl = urlFor(seo.shareImage?.asset?._ref!).url();
+const thumbnailUrl = imageUrlFor(seo.shareImage?.asset?._ref!).url();
 ---
 
 <!doctype html>
