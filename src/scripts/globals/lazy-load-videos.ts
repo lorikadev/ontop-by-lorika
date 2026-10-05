@@ -13,9 +13,9 @@ export function lazyLoadVideos(videoSelector: string, rootMargin: string = "300p
                 const isMobile = window.matchMedia('(max-width: 700px)').matches;
 
                 const videoSrc = isMobile ?
-                    (entry.target as HTMLElement).dataset.srcDesktop
-                    :
                     (entry.target as HTMLElement).dataset.srcMobile
+                    :
+                    (entry.target as HTMLElement).dataset.srcDesktop
 
                 if (videoSrc) {
                     const source = document.createElement('source');
