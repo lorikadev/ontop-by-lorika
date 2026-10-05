@@ -19,14 +19,14 @@ export function createIntroTimeline(group: Object3D<Object3DEventMap>, coverObjR
         //FIRST TRANSLATION
         tl.to(group.position, {
             y: 0.25,
-            duration: 2,
+            duration: 1.5,
             ease: 'power2.out'
         }, "first_translation");
 
         //ROTATE DURING TRANSLATION
         tl.to(group.rotation, {
             x: -Math.PI * 0.15, //29 deg
-            duration: 1,
+            duration: 0.75,
             ease: 'power2.inOut'
         }, "first_translation+=0.8")
 
@@ -35,7 +35,7 @@ export function createIntroTimeline(group: Object3D<Object3DEventMap>, coverObjR
             { progress: 0 },
             {
                 progress: 1,
-                duration: 3,
+                duration: 2,
                 ease: 'sine.inOut',
                 onUpdate() {
                     const t = this.targets()[0].progress;

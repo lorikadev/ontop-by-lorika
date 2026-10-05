@@ -39,7 +39,7 @@ export function loadHeroEyeglassInteraction() {
         rimLight.position.set(-1, 0, -6);
         scene.add(rimLight);
 
-        new TextureLoader().load('/3d/hdr.jpg', (hdr) => {
+        new TextureLoader().load('/3d/hdr.webp', (hdr) => {
             hdr.mapping = EquirectangularReflectionMapping;
             scene.environment = hdr;
             scene.environmentRotation.set(0, 0.6, 0);
