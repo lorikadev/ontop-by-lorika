@@ -149,9 +149,12 @@ let { homePageData, colorPickerData } = Astro.props;
   <!-- SUB HERO -->
   <img
     class="sub-hero"
-    src={urlFor(homePageData?.lightSubHeroImage?.asset?._ref!).url()}
+    src={urlFor(homePageData?.lightSubHeroVideo?.asset?._ref!).url()}
     aria-hidden="true"
   />
+  <video class="sub-hero" src="">
+    <source src="" type="" />
+  </video>
 </section>
 <!-- !SECTION - SECTION LIGHT -->
 
@@ -224,12 +227,14 @@ let { homePageData, colorPickerData } = Astro.props;
   <!-- SUB HERO -->
   <div id="dark-sub-hero" style="position: relative;">
     <img
+      loading="lazy"
       style="border-radius: 10px;"
       class="sub-hero"
       src={urlFor(homePageData?.darkSubHeroImage?.asset?._ref!).url()}
       aria-hidden="true"
     />
     <img
+      loading="lazy"
       id="logo-over-image"
       src="/images/logo/logo-ontop-lorika-white.svg"
       alt="Ontop by Lorika logo"

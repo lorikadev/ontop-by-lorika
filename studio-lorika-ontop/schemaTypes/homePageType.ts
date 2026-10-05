@@ -140,9 +140,12 @@ export const homePageType = defineType({
             group: GROUPS.LIGHT,
         }),
         defineField({
-            name: 'lightSubHeroImage',
-            title: 'Sub Hero Image',
-            type: 'image',
+            name: 'lightSubHeroVideo',
+            title: 'Sub Hero Video',
+            type: 'file',
+            options: {
+                accept: 'video/*'
+            },
             group: GROUPS.LIGHT,
         }),
 

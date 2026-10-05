@@ -1388,7 +1388,7 @@
         },
         "optional": true
       },
-      "lightSubHeroImage": {
+      "lightSubHeroVideo": {
         "type": "objectAttribute",
         "value": {
           "type": "object",
@@ -1397,7 +1397,7 @@
               "type": "objectAttribute",
               "value": {
                 "type": "inline",
-                "name": "sanity.imageAsset.reference"
+                "name": "sanity.fileAsset.reference"
               },
               "optional": true
             },
@@ -1408,27 +1408,11 @@
               },
               "optional": true
             },
-            "hotspot": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "inline",
-                "name": "sanity.imageHotspot"
-              },
-              "optional": true
-            },
-            "crop": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "inline",
-                "name": "sanity.imageCrop"
-              },
-              "optional": true
-            },
             "_type": {
               "type": "objectAttribute",
               "value": {
                 "type": "string",
-                "value": "image"
+                "value": "file"
               }
             }
           }

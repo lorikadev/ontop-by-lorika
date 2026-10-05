@@ -12,392 +12,408 @@
  * ---------------------------------------------------------------------------------
  */
 
-export declare const internalGroqTypeReferenceTo: unique symbol;
+export declare const internalGroqTypeReferenceTo: unique symbol
 
 // Source: schema.json
 export type Seo = {
-  title?: string;
-  description?: string;
-  robots?: "index, follow" | "noindex, follow" | "index, nofollow" | "noindex, nofollow";
-  shareImage?: ShareImage;
-  ogType?: "website";
-  ogSiteName?: string;
-  twitterCard?: "summary_large_image" | "summary";
-};
+  title?: string
+  description?: string
+  robots?: 'index, follow' | 'noindex, follow' | 'index, nofollow' | 'noindex, nofollow'
+  shareImage?: ShareImage
+  ogType?: 'website'
+  ogSiteName?: string
+  twitterCard?: 'summary_large_image' | 'summary'
+}
 
 export type SanityImageAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-};
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+}
 
 export type ShareImage = {
-  asset?: SanityImageAssetReference;
+  asset?: SanityImageAssetReference
   media?: unknown // Unable to locate the referenced type "media" in schema
-;
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  _type: "image";
-};
+  hotspot?: SanityImageHotspot
+  crop?: SanityImageCrop
+  _type: 'image'
+}
 
 export type OntopCover = {
-  _id: string;
-  _type: "ontopCover";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  lang?: "it" | "en";
-  seo?: Seo;
-  gallerySectionAriaLabel?: string;
+  _id: string
+  _type: 'ontopCover'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  lang?: 'it' | 'en'
+  seo?: Seo
+  gallerySectionAriaLabel?: string
   mainPhoto?: {
     image?: {
-      asset?: SanityImageAssetReference;
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
-    alternativeText?: string;
-  };
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
+    }
+    alternativeText?: string
+  }
   secondaryPhotos?: Array<{
     image?: {
-      asset?: SanityImageAssetReference;
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
-    alternativeText?: string;
-    _key: string;
-  }>;
-  productInfoSectionAriaLabel?: string;
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
+    }
+    alternativeText?: string
+    _key: string
+  }>
+  productInfoSectionAriaLabel?: string
   infos?: Array<{
-    title?: string;
-    htmlContent?: string;
-    _key: string;
-  }>;
+    title?: string
+    htmlContent?: string
+    _key: string
+  }>
   buyNowCta?: {
-    label?: string;
-    ariaLabel?: string;
-  };
-};
+    label?: string
+    ariaLabel?: string
+  }
+}
 
 export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
 
 export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
-};
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
+}
 
 export type SanityFileAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-};
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
+}
 
 export type AboutUs = {
-  _id: string;
-  _type: "aboutUs";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  lang?: "it" | "en";
-  seo?: Seo;
-  heroTitle?: string;
-  heroContent?: string;
+  _id: string
+  _type: 'aboutUs'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  lang?: 'it' | 'en'
+  seo?: Seo
+  heroTitle?: string
+  heroContent?: string
   heroVideoDesktop?: {
-    asset?: SanityFileAssetReference;
-    media?: unknown;
-    _type: "file";
-  };
+    asset?: SanityFileAssetReference
+    media?: unknown
+    _type: 'file'
+  }
   heroVideoMobile?: {
-    asset?: SanityFileAssetReference;
-    media?: unknown;
-    _type: "file";
-  };
-  leftBlockContent?: string;
-  rightBlockContent?: string;
+    asset?: SanityFileAssetReference
+    media?: unknown
+    _type: 'file'
+  }
+  leftBlockContent?: string
+  rightBlockContent?: string
   rightBlockLogo?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  behindContent?: string;
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  behindContent?: string
   behindContentBackground?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  firstProductContent?: string;
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  firstProductContent?: string
   firstProductContentBackground?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  overTheProductContent?: string;
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  overTheProductContent?: string
   overTheProductContentBackgroundLeft?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
   overTheProductContentBackgroundRight?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-};
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+}
 
 export type ColorPicker = {
-  _id: string;
-  _type: "colorPicker";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  lang?: "it" | "en";
-  groupAriaLabel?: string;
-  RAL2008Label?: string;
-  RAL3002Label?: string;
-  RAL4006Label?: string;
-  RAL7036Label?: string;
-  RAL6037Label?: string;
-  RAL9001Label?: string;
-  RAL5015Label?: string;
-  RAL1018Label?: string;
-  RAL1002Label?: string;
-  RAL9005Label?: string;
-};
+  _id: string
+  _type: 'colorPicker'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  lang?: 'it' | 'en'
+  groupAriaLabel?: string
+  RAL2008Label?: string
+  RAL3002Label?: string
+  RAL4006Label?: string
+  RAL7036Label?: string
+  RAL6037Label?: string
+  RAL9001Label?: string
+  RAL5015Label?: string
+  RAL1018Label?: string
+  RAL1002Label?: string
+  RAL9005Label?: string
+}
 
 export type HomePage = {
-  _id: string;
-  _type: "homePage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  lang?: "it" | "en";
-  seo?: Seo;
-  heroTitle?: string;
-  mobileAds?: string;
-  buyNowLabel?: string;
-  buyNowAriaLabel?: string;
-  discoverLabel?: string;
-  discoverAriaLabel?: string;
-  sectionLightAriaLabel?: string;
-  productPhotoAriaLabel?: string;
-  productPhotoAndModelsAriaLabel?: string;
+  _id: string
+  _type: 'homePage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  lang?: 'it' | 'en'
+  seo?: Seo
+  heroTitle?: string
+  mobileAds?: string
+  buyNowLabel?: string
+  buyNowAriaLabel?: string
+  discoverLabel?: string
+  discoverAriaLabel?: string
+  sectionLightAriaLabel?: string
+  productPhotoAriaLabel?: string
+  productPhotoAndModelsAriaLabel?: string
   lItem1Image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  lItem2Content?: string;
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  lItem2Content?: string
   lItem3Image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
   lItem4Image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  lItem5Content?: string;
-  lItem6Content?: string;
-  lightSubHeroImage?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  sectionDarkAriaLabel?: string;
-  logoAriaLabel?: string;
-  dItem2Content?: string;
-  dItem3Content?: string;
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  lItem5Content?: string
+  lItem6Content?: string
+  lightSubHeroVideo?: {
+    asset?: SanityFileAssetReference
+    media?: unknown
+    _type: 'file'
+  }
+  sectionDarkAriaLabel?: string
+  logoAriaLabel?: string
+  dItem2Content?: string
+  dItem3Content?: string
   dItem4Image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  dItem5Content?: string;
-  joinUsLabel?: string;
-  joinUsAriaLabel?: string;
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  dItem5Content?: string
+  joinUsLabel?: string
+  joinUsAriaLabel?: string
   darkSubHeroImage?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-};
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+}
 
 export type SiteNavigators = {
-  _id: string;
-  _type: "siteNavigators";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  lang?: "it" | "en";
+  _id: string
+  _type: 'siteNavigators'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  lang?: 'it' | 'en'
   navbar?: {
     logo?: {
-      asset?: SanityImageAssetReference;
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
-    home?: string;
-    aboutUs?: string;
-    ontopCover?: string;
-    ambassadors?: string;
-    shop?: string;
-    shopAriaLabel?: string;
-    cartAriaLabel?: string;
-  };
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
+    }
+    home?: string
+    aboutUs?: string
+    ontopCover?: string
+    ambassadors?: string
+    shop?: string
+    shopAriaLabel?: string
+    cartAriaLabel?: string
+  }
   footer?: {
-    leftBlock?: string;
-    centerBlock?: string;
-    rightBlock?: string;
+    leftBlock?: string
+    centerBlock?: string
+    rightBlock?: string
     subscription?: {
-      title?: string;
-      formButton?: string;
-      privacyTip?: string;
-      success?: string;
-      error?: string;
-    };
-  };
-};
+      title?: string
+      formButton?: string
+      privacyTip?: string
+      success?: string
+      error?: string
+    }
+  }
+}
 
 export type SanityImagePaletteSwatch = {
-  _type: "sanity.imagePaletteSwatch";
-  background?: string;
-  foreground?: string;
-  population?: number;
-  title?: string;
-};
+  _type: 'sanity.imagePaletteSwatch'
+  background?: string
+  foreground?: string
+  population?: number
+  title?: string
+}
 
 export type SanityImagePalette = {
-  _type: "sanity.imagePalette";
-  darkMuted?: SanityImagePaletteSwatch;
-  lightVibrant?: SanityImagePaletteSwatch;
-  darkVibrant?: SanityImagePaletteSwatch;
-  vibrant?: SanityImagePaletteSwatch;
-  dominant?: SanityImagePaletteSwatch;
-  lightMuted?: SanityImagePaletteSwatch;
-  muted?: SanityImagePaletteSwatch;
-};
+  _type: 'sanity.imagePalette'
+  darkMuted?: SanityImagePaletteSwatch
+  lightVibrant?: SanityImagePaletteSwatch
+  darkVibrant?: SanityImagePaletteSwatch
+  vibrant?: SanityImagePaletteSwatch
+  dominant?: SanityImagePaletteSwatch
+  lightMuted?: SanityImagePaletteSwatch
+  muted?: SanityImagePaletteSwatch
+}
 
 export type SanityImageDimensions = {
-  _type: "sanity.imageDimensions";
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
-};
+  _type: 'sanity.imageDimensions'
+  height?: number
+  width?: number
+  aspectRatio?: number
+}
 
 export type SanityImageMetadata = {
-  _type: "sanity.imageMetadata";
-  location?: Geopoint;
-  dimensions?: SanityImageDimensions;
-  palette?: SanityImagePalette;
-  lqip?: string;
-  blurHash?: string;
-  thumbHash?: string;
-  hasAlpha?: boolean;
-  isOpaque?: boolean;
-};
+  _type: 'sanity.imageMetadata'
+  location?: Geopoint
+  dimensions?: SanityImageDimensions
+  palette?: SanityImagePalette
+  lqip?: string
+  blurHash?: string
+  thumbHash?: string
+  hasAlpha?: boolean
+  isOpaque?: boolean
+}
 
 export type SanityFileAsset = {
-  _id: string;
-  _type: "sanity.fileAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
-  uploadId?: string;
-  path?: string;
-  url?: string;
-  source?: SanityAssetSourceData;
-};
+  _id: string
+  _type: 'sanity.fileAsset'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  originalFilename?: string
+  label?: string
+  title?: string
+  description?: string
+  altText?: string
+  sha1hash?: string
+  extension?: string
+  mimeType?: string
+  size?: number
+  assetId?: string
+  uploadId?: string
+  path?: string
+  url?: string
+  source?: SanityAssetSourceData
+}
 
 export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
-  name?: string;
-  id?: string;
-  url?: string;
-};
+  _type: 'sanity.assetSourceData'
+  name?: string
+  id?: string
+  url?: string
+}
 
 export type SanityImageAsset = {
-  _id: string;
-  _type: "sanity.imageAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
-  uploadId?: string;
-  path?: string;
-  url?: string;
-  metadata?: SanityImageMetadata;
-  source?: SanityAssetSourceData;
-};
+  _id: string
+  _type: 'sanity.imageAsset'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  originalFilename?: string
+  label?: string
+  title?: string
+  description?: string
+  altText?: string
+  sha1hash?: string
+  extension?: string
+  mimeType?: string
+  size?: number
+  assetId?: string
+  uploadId?: string
+  path?: string
+  url?: string
+  metadata?: SanityImageMetadata
+  source?: SanityAssetSourceData
+}
 
 export type Geopoint = {
-  _type: "geopoint";
-  lat?: number;
-  lng?: number;
-  alt?: number;
-};
+  _type: 'geopoint'
+  lat?: number
+  lng?: number
+  alt?: number
+}
 
 export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
+  _type: 'slug'
+  current?: string
+  source?: string
+}
 
-export type AllSanitySchemaTypes = Seo | SanityImageAssetReference | ShareImage | OntopCover | SanityImageCrop | SanityImageHotspot | SanityFileAssetReference | AboutUs | ColorPicker | HomePage | SiteNavigators | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint | Slug;
-
+export type AllSanitySchemaTypes =
+  | Seo
+  | SanityImageAssetReference
+  | ShareImage
+  | OntopCover
+  | SanityImageCrop
+  | SanityImageHotspot
+  | SanityFileAssetReference
+  | AboutUs
+  | ColorPicker
+  | HomePage
+  | SiteNavigators
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageMetadata
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset
+  | Geopoint
+  | Slug
