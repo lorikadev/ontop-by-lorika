@@ -140,15 +140,23 @@ export const homePageType = defineType({
             group: GROUPS.LIGHT,
         }),
         defineField({
-            name: 'lightSubHeroVideo',
-            title: 'Sub Hero Video',
+            name: 'lightSubHeroVideoMobile',
+            title: 'Sub Hero Video Mobile',
             type: 'file',
             options: {
                 accept: 'video/*'
             },
             group: GROUPS.LIGHT,
         }),
-
+        defineField({
+            name: 'lightSubHeroVideoDesktop',
+            title: 'Sub Hero Video Desktop',
+            type: 'file',
+            options: {
+                accept: 'video/*'
+            },
+            group: GROUPS.LIGHT,
+        }),
         // DARK SECTION
         defineField({
             name: 'sectionDarkAriaLabel',

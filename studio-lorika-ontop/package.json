@@ -10,7 +10,7 @@
     "deploy-graphql": "sanity graphql deploy",
     "dev": "sanity dev",
     "start": "sanity start",
-    "extract-schema": "npx sanity schema extract",
+    "extract-schema": "npx sanity schema extract && sanity typegen generate",
     "cmd-to-update-file": "THIS IS JUST AN EXAMPLE: npx sanity datasets import PATH-TO-JSON production"
   },
   "keywords": [

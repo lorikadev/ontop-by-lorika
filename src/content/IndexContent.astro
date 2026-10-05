@@ -147,12 +147,20 @@ let { homePageData, colorPickerData } = Astro.props;
   </div>
 
   <!-- SUB HERO -->
-  <video class="sub-hero" autoplay controls muted loop preload="none">
-    <source
-      src={videoUrlFor(homePageData?.lightSubHeroVideo?.asset?._ref!)}
-      type="video/mp4"
-      aria-hidden="true"
-    />
+  <video
+    id="spot-sub-hero"
+    class="sub-hero"
+    autoplay
+    controls
+    muted
+    loop
+    preload="none"
+    data-src-desktop={videoUrlFor(
+      homePageData?.lightSubHeroVideoDesktop?.asset?._ref!,
+    )}
+    data-src-mobile={videoUrlFor(homePageData?.lightSubHeroVideoMobile?.asset?._ref!)}
+  >
+    Your browser does not support the video tag.
   </video>
 </section>
 <!-- !SECTION - SECTION LIGHT -->
@@ -244,6 +252,8 @@ let { homePageData, colorPickerData } = Astro.props;
 <!-- !SECTION - DARK SECTION -->
 
 <script>
+  import { lazyLoadVideos } from "../scripts/globals/lazy-load-videos";
+
   //function that should be called when the browser has ended the initial loading
   async function load3D() {
     //first we setup the lazy loading of the 3D world interaction that is fired only when near it
@@ -276,6 +286,9 @@ let { homePageData, colorPickerData } = Astro.props;
   // Use requestIdleCallback when available to run 3D interaction loading after the browser loaded the page.
   if ("requestIdleCallback" in window) {
     requestIdleCallback(load3D);
+    requestIdleCallback(() => {
+      lazyLoadVideos("#spot-sub-hero", "500px");
+    });
   } else {
     // Fallback for browsers (e.g. Safari) uses requestAnimationFrame + setTimeout:
     // - requestAnimationFrame waits for the next frame (after layout/paint)
@@ -283,6 +296,9 @@ let { homePageData, colorPickerData } = Astro.props;
     // This ensures the work runs right after the initial render, without blocking it.
     requestAnimationFrame(() => {
       setTimeout(load3D, 0);
+      setTimeout(() => {
+        lazyLoadVideos("#spot-sub-hero", "500px");
+      }, 0);
     });
   }
 </script>

@@ -228,7 +228,12 @@ export type HomePage = {
   }
   lItem5Content?: string
   lItem6Content?: string
-  lightSubHeroVideo?: {
+  lightSubHeroVideoMobile?: {
+    asset?: SanityFileAssetReference
+    media?: unknown
+    _type: 'file'
+  }
+  lightSubHeroVideoDesktop?: {
     asset?: SanityFileAssetReference
     media?: unknown
     _type: 'file'
