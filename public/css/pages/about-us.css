@@ -205,7 +205,8 @@
 /* SECTION - FIRST PRODUCT */
 #first-product-hero {
     width: auto;
-    height: 750px;
+    height: 900px;
+    background-position-y: 40%;
 }
 
 #first-product-hero-message-wrapper {
@@ -249,6 +250,7 @@
     #first-product-hero {
         padding: 2rem 0;
         background-position: center;
+        background-size: cover;
     }
 
     #first-product-hero {
