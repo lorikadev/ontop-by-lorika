@@ -31,13 +31,11 @@ let { AboutUsData } = Astro.props;
     <video id="hero-video" autoplay loop muted playsinline aria-hidden="true">
         <source
             src={(AboutUsData as any).heroVideoDesktopUrl}
-            src="/video/loop-about-us-desktop.mp4"
-            class="show-till-mob"
+            media="(max-width: 700px)"
             type="video/mp4"
         />
         <source
-            src={(AboutUsData as any).heroVideoDesktopUrl}
-            class="show-mob"
+            src={(AboutUsData as any).heroVideoMobile}
             type="video/mp4"
         />
         Your browser does not support the video tag.
