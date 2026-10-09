@@ -1,19 +1,19 @@
 :root {
-    --highlight-color: transparent;
-    --secondary-highlight-color: #636466;
+  --highlight-color: transparent;
+  --secondary-highlight-color: #636466;
 
-    --dark-text-color: #000000;
-    --light-text-color: #ffffff;
+  --dark-text-color: #000000;
+  --light-text-color: #ffffff;
 
-    --RAL2008: #FF5700;   /* RAL 2008 */
-    --RAL3002: #9B111E;   /* RAL 3002 */
-    --RAL4006: #A03472;   /* RAL 4006 */
-    --RAL7036: #9C9C9C;   /* RAL 7036 */
-    --RAL6037: #008F39;   /* RAL 6037 */
-    --RAL9001: #eae3d7;   /* RAL 1013 */
-    --RAL5015: #1E6EB3;   /* RAL 5015 */
-    --RAL1018: #FFCD00;   /* RAL 1018 */
-    /* RAL 1002 */
-    /* --RAL1002: #be975f;    */
-    --RAL9005: #0A0A0A;   /* RAL 9005 */
+  --RAL2008: #ff5700; /* RAL 2008 */
+  --RAL3002: #9b111e; /* RAL 3002 */
+  /* RAL 4006 */
+  /* --RAL4006: #a03472; */
+  --RAL7036: #9c9c9c; /* RAL 7036 */
+  --RAL6037: #008f39; /* RAL 6037 */
+  --RAL9001: #eae3d7; /* RAL 1013 */
+  --RAL5015: #1e6eb3; /* RAL 5015 */
+  --RAL1018: #ffcd00; /* RAL 1018 */
+  --RAL1002: #be975f; /* RAL 1002 */
+  --RAL9005: #0a0a0a; /* RAL 9005 */
 }
