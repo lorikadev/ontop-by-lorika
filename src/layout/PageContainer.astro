@@ -248,14 +248,9 @@ const thumbnailUrl = imageUrlFor(seo.shareImage?.asset?._ref!).url();
       e.preventDefault();
 
       const res = await fetch(SHOP_REDIRECT_URL);
-      const data = await res.json();
-      if (data.canUseShopify) window.open(data.url, "_blank");
-      else {
-        const dialogElem = document.getElementById(
-          "priority-access-dialog",
-        ) as HTMLDialogElement;
-        if (dialogElem) dialogElem.showModal();
-      }
+      const location =
+        res.headers.get("Location") ?? "https://lorika-8398.myshopify.com/";
+      window.open(location, "_blank");
     }
 
     const shopButtons = document.querySelectorAll(".shop-redirect");
