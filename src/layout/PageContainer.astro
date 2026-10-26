@@ -244,14 +244,11 @@ const thumbnailUrl = imageUrlFor(seo.shareImage?.asset?._ref!).url();
   <script>
     import { SHOP_REDIRECT_URL } from "../const";
 
-    async function handleShopClick(e: Event) {
-      e.preventDefault();
+  function handleShopClick(e: Event) {
+    e.preventDefault();
 
-      const res = await fetch(SHOP_REDIRECT_URL);
-      const location =
-        res.headers.get("Location") ?? "https://lorika-8398.myshopify.com/";
-      window.open(location, "_blank");
-    }
+    window.open(SHOP_REDIRECT_URL, "_blank", "noopener,noreferrer");
+  }
 
     const shopButtons = document.querySelectorAll(".shop-redirect");
     shopButtons.forEach((btn) => {
